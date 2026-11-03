@@ -18,12 +18,15 @@
     color-scheme: light;
 
     --nav-h: 64px;
+    --sidebar-width: 300px;
+
     --bg: #f7f8fc;
     --surface: #ffffff;
     --surface-2: #f1f4fa;
     --border: #e5e9f4;
     --border-strong: #d5dbee;
     --nav-bg: rgba(255, 255, 255, 0.82);
+    --sidebar-bg: #fafbfe;
 
     --text: #0a102a;
     --text-2: #4b5675;
@@ -69,6 +72,7 @@
     --font-mono: 'JetBrains Mono', 'SF Mono', Monaco, monospace;
 
     --transition: 160ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 280ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 [data-theme="dark"] {
@@ -79,6 +83,7 @@
     --border: #1c2540;
     --border-strong: #2a3556;
     --nav-bg: rgba(9, 12, 22, 0.82);
+    --sidebar-bg: #090d18;
 
     --text: #eaf0ff;
     --text-2: #a7b1ce;
@@ -109,9 +114,49 @@
     --shadow-accent: 0 8px 24px -6px rgba(110, 139, 255, 0.30);
 }
 
+/* ===== FUN MODE — zany candy palette ===== */
+[data-theme="fun"] {
+    color-scheme: light;
+    --bg: #fff0fa;
+    --surface: #ffffff;
+    --surface-2: #ffe9f7;
+    --border: #ffc4ec;
+    --border-strong: #ff9fe0;
+    --nav-bg: rgba(255, 240, 250, 0.85);
+    --sidebar-bg: #fff6fc;
+
+    --text: #3b0a5e;
+    --text-2: #7a2f9e;
+    --text-3: #a55cc4;
+    --text-muted: #c99ad9;
+
+    --accent: #ff2d95;
+    --accent-strong: #d9017a;
+    --accent-soft: rgba(255, 45, 149, 0.10);
+    --accent-line: rgba(255, 45, 149, 0.38);
+    --accent-glow: rgba(255, 45, 149, 0.25);
+    --violet: #00b3ff;
+    --grad: linear-gradient(135deg, #ff2d95 0%, #ff8a00 55%, #00c2ff 100%);
+
+    --success: #00b884;
+    --wa-text: #0b8a53;
+    --wa-bg: rgba(16, 185, 129, 0.12);
+    --wa-bg-hover: rgba(16, 185, 129, 0.22);
+    --wa-border: rgba(13, 148, 136, 0.35);
+
+    --ink: #3b0a5e;
+    --ink-hover: #5a149b;
+
+    --shadow-xs: 0 1px 2px rgba(255, 45, 149, 0.08);
+    --shadow-sm: 0 1px 3px rgba(255, 45, 149, 0.10), 0 1px 2px rgba(255, 45, 149, 0.06);
+    --shadow-md: 0 6px 16px -4px rgba(255, 45, 149, 0.18), 0 2px 4px rgba(255, 45, 149, 0.08);
+    --shadow-lg: 0 16px 40px -8px rgba(255, 45, 149, 0.28), 0 4px 12px rgba(255, 45, 149, 0.10);
+    --shadow-accent: 0 8px 24px -6px rgba(255, 138, 0, 0.40);
+}
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
 
 body {
     font-family: var(--font-sans);
@@ -128,6 +173,7 @@ html.preload *::before,
 html.preload *::after { transition: none !important; }
 
 ::selection { background: rgba(46, 91, 255, 0.18); color: var(--text); }
+[data-theme="fun"] ::selection { background: rgba(255, 45, 149, 0.25); }
 
 :focus-visible {
     outline: 2px solid var(--accent);
@@ -152,9 +198,38 @@ h1, h2, h3, h4 {
     z-index: 100;
     display: flex;
     align-items: center;
-    gap: var(--space-4);
+    gap: var(--space-3);
     padding: 0 var(--space-4);
 }
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    flex: 0 0 auto;
+}
+
+.icon-btn {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: var(--r-sm);
+    color: var(--text-2);
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.icon-btn:hover {
+    color: var(--text);
+    background: var(--surface-2);
+    border-color: var(--border-strong);
+}
+
+.icon-btn svg { width: 18px; height: 18px; }
 
 .brand {
     display: flex;
@@ -182,6 +257,7 @@ h1, h2, h3, h4 {
 
 /* Fixed ink — must NOT flip with theme or the white letter disappears */
 .logo-tile.avs { background: #0b1230; box-shadow: var(--shadow-xs); }
+[data-theme="fun"] .logo-tile.avs { background: #3b0a5e; }
 
 .brand-name {
     font-size: 14px;
@@ -192,23 +268,6 @@ h1, h2, h3, h4 {
 }
 
 .brand-x { color: var(--text-muted); font-size: 13px; font-weight: 500; }
-
-.nav-links {
-    display: flex;
-    gap: var(--space-5);
-    margin: 0 auto;
-}
-
-.nav-links a {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text-2);
-    text-decoration: none;
-    white-space: nowrap;
-    transition: color var(--transition);
-}
-
-.nav-links a:hover { color: var(--accent); }
 
 .nav-actions {
     display: flex;
@@ -247,23 +306,190 @@ h1, h2, h3, h4 {
 
 .nav-btn.nav-wa:hover { background: var(--wa-bg-hover); }
 
-/* Ink button: white text on dark ink in light theme,
-   dark text on light ink in dark theme */
-.nav-btn.nav-book {
-    background: var(--ink);
-    border-color: var(--ink);
+/* Theme toggle: one icon visible per mode */
+.theme-toggle svg { display: none; }
+[data-theme="light"] .theme-toggle .icon-sun { display: block; }
+[data-theme="dark"] .theme-toggle .icon-moon { display: block; }
+[data-theme="fun"] .theme-toggle .icon-fun { display: block; }
+[data-theme="fun"] .theme-toggle { color: var(--accent); border-color: var(--accent-line); }
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: var(--nav-h);
+    bottom: 0;
+    width: var(--sidebar-width);
+    background: var(--sidebar-bg);
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    z-index: 95;
+    transform: translateX(-100%);
+    transition: transform var(--transition-slow) ease;
+}
+
+body.sidebar-open .sidebar { transform: translateX(0); }
+
+.sidebar-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(7, 10, 20, 0.45);
+    backdrop-filter: blur(2px);
+    z-index: 90;
+}
+
+.sidebar-doc {
+    margin: 14px 14px 0;
+    padding: 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: var(--shadow-xs);
+}
+
+.sd-tiles { display: flex; align-items: center; gap: 6px; flex: 0 0 auto; }
+
+.sd-tile {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #ffffff;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 14px;
 }
 
-[data-theme="dark"] .nav-btn.nav-book { color: #0a102a; }
+.sd-tile.hoop { background: var(--grad); }
+.sd-tile.avs { background: #0b1230; }
+[data-theme="fun"] .sd-tile.avs { background: #3b0a5e; }
 
-.nav-btn.nav-book:hover {
-    background: var(--ink-hover);
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-accent);
+.sidebar-doc-title {
+    font-family: var(--font-display);
+    font-size: 13.5px;
+    font-weight: 650;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    line-height: 1.3;
 }
 
-/* ===== MAIN COLUMN ===== */
+.sidebar-doc-sub {
+    font-size: 11px;
+    color: var(--text-3);
+    margin-top: 2px;
+}
+
+.sidebar-nav { padding: 6px 0 var(--space-4); user-select: none; }
+
+.sidebar-part-label {
+    padding: 18px 22px 6px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 2px 14px;
+    padding: 9px 12px;
+    font-size: 13.5px;
+    font-weight: 450;
+    line-height: 1.45;
+    color: var(--text-2);
+    text-decoration: none;
+    border-radius: 9px;
+    transition: all var(--transition);
+}
+
+.sidebar-link:hover {
+    color: var(--text);
+    background: var(--surface-2);
+}
+
+.sidebar-link.active {
+    color: var(--accent);
+    background: var(--accent-soft);
+    font-weight: 600;
+}
+
+.side-num {
+    flex: 0 0 auto;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-line);
+    border-radius: 6px;
+    padding: 2px 6px;
+    letter-spacing: 0.5px;
+}
+
+.sidebar-contact { padding: 4px 0 var(--space-4); }
+
+.sidebar-contact-label {
+    padding: 14px 22px 6px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.sidebar-contact a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 2px 14px;
+    padding: 8px 12px;
+    font-size: 13px;
+    color: var(--text-2);
+    text-decoration: none;
+    border-radius: 9px;
+    transition: all var(--transition);
+}
+
+.sidebar-contact a:hover { color: var(--text); background: var(--surface-2); }
+.sidebar-contact a svg { width: 14px; height: 14px; flex: 0 0 auto; color: var(--text-3); }
+.sidebar-contact a:hover svg { color: var(--accent); }
+
+.sidebar-foot {
+    margin: var(--space-4) 14px 0;
+    padding: 14px 4px 18px;
+    border-top: 1px solid var(--border);
+}
+
+.sidebar-foot-note {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--text-muted);
+    letter-spacing: 0.4px;
+}
+
+/* ===== MAIN ===== */
+.main {
+    padding-top: var(--nav-h);
+    min-height: 100vh;
+    transition: margin-left var(--transition-slow) ease;
+}
+
+@media (min-width: 1024px) {
+    body.sidebar-open .main { margin-left: var(--sidebar-width); }
+}
+
 .content-wrapper {
     max-width: 920px;
     margin: 0 auto;
@@ -305,6 +531,7 @@ h1, h2, h3, h4 {
 
 [data-theme="dark"] .hero::before { background: radial-gradient(circle, rgba(110, 139, 255, 0.14) 0%, transparent 70%); }
 [data-theme="dark"] .hero::after { background: radial-gradient(circle, rgba(167, 139, 250, 0.10) 0%, transparent 70%); }
+[data-theme="fun"] .hero::after { background: radial-gradient(circle, rgba(0, 194, 255, 0.18) 0%, transparent 70%); }
 
 .hero-badges {
     position: relative;
@@ -568,6 +795,13 @@ h1, h2, h3, h4 {
     color: var(--text);
 }
 
+/* Fun mode: chips cycle through the candy palette */
+[data-theme="fun"] .spec-chip { font-weight: 600; }
+[data-theme="fun"] .spec-chip:nth-child(4n+1) { background: rgba(255,45,149,0.14); border-color: rgba(255,45,149,0.40); color: #b0005f; }
+[data-theme="fun"] .spec-chip:nth-child(4n+2) { background: rgba(255,138,0,0.14); border-color: rgba(255,138,0,0.40); color: #a34d00; }
+[data-theme="fun"] .spec-chip:nth-child(4n+3) { background: rgba(0,194,255,0.14); border-color: rgba(0,194,255,0.40); color: #006f95; }
+[data-theme="fun"] .spec-chip:nth-child(4n)   { background: rgba(122,47,158,0.12); border-color: rgba(122,47,158,0.35); color: #5a149b; }
+
 /* ===== TIMELINE STEPS ===== */
 .steps {
     list-style: none;
@@ -783,6 +1017,8 @@ tr:last-child td { border-bottom: none; }
     box-shadow: var(--shadow-accent);
 }
 
+[data-theme="fun"] .cta-btn.elite:hover { transform: rotate(-2deg) translateY(-2px); }
+
 .cta-btn.neutral {
     background: var(--surface);
     border-color: var(--border);
@@ -805,7 +1041,7 @@ tr:last-child td { border-bottom: none; }
 
 .cta-btn svg { width: 16px; height: 16px; flex: 0 0 auto; }
 
-/* ===== FINAL CTA CARD — fixed dark colours, never theme-flips ===== */
+/* ===== FINAL CTA CARD — fixed dark colours in light/dark, ink in fun ===== */
 .cta-programme {
     display: flex;
     flex-direction: column;
@@ -818,6 +1054,8 @@ tr:last-child td { border-bottom: none; }
     margin: var(--space-6) 0 0;
     box-shadow: var(--shadow-lg);
 }
+
+[data-theme="fun"] .cta-programme { background: #3b0a5e; }
 
 .cta-programme h2 {
     font-size: clamp(24px, 3vw, 32px);
@@ -925,11 +1163,30 @@ tr:last-child td { border-bottom: none; }
 
 .to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
 .to-top:hover { color: var(--accent); border-color: var(--accent-line); }
+[data-theme="fun"] .to-top:hover { transform: rotate(8deg); }
 .to-top svg { width: 17px; height: 17px; }
 
 /* ===== RESPONSIVE ===== */
+@media (max-width: 1023px) {
+    .sidebar {
+        width: min(var(--sidebar-width), 88vw);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .sidebar-backdrop {
+        display: block;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 220ms ease, visibility 220ms;
+    }
+
+    body.sidebar-open .sidebar-backdrop {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
 @media (max-width: 920px) {
-    .nav-links { display: none; }
     .stat-strip { grid-template-columns: repeat(2, 1fr); }
     .stat:nth-child(2) { border-right: none; }
     .stat:nth-child(1), .stat:nth-child(2) { border-bottom: 1px solid var(--border); }
@@ -955,25 +1212,108 @@ tr:last-child td { border-bottom: none; }
     html { scroll-behavior: auto; }
 }
 </style>
+
+<!-- Apply saved theme before first paint (prevents flash) -->
+<script>
+(function () {
+    var t = null;
+    try { t = localStorage.getItem('avs-hoop-theme'); } catch (e) { /* no-op */ }
+    if (t !== 'light' && t !== 'dark' && t !== 'fun') {
+        t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    document.documentElement.setAttribute('data-theme', t);
+    document.documentElement.classList.add('preload');
+})();
+</script>
 </head>
 <body>
 
-<!-- ============ TOP NAV ============ -->
-<nav class="top-nav">
-    <div class="brand">
-        <a class="logo-tile hoop" href="index.html" aria-label="Back to adviser chooser">H</a>
-        <span class="brand-name">Hoop Recruitment</span>
-        <span class="brand-x">×</span>
-        <a class="logo-tile avs" href="https://advantagefs.co.uk" target="_blank" rel="noopener" aria-label="Advantage FS website">A</a>
-        <span class="brand-name">Advantage FS</span>
+<!-- Restore saved sidebar state before first paint -->
+<script>
+(function () {
+    var open = null;
+    try {
+        var s = localStorage.getItem('avs-hoop-sidebar');
+        if (s === 'open') open = true;
+        else if (s === 'closed') open = false;
+    } catch (e) { /* no-op */ }
+    if (open === null) open = window.matchMedia('(min-width: 1024px)').matches;
+    if (open) document.body.classList.add('sidebar-open');
+})();
+</script>
+
+<!-- MOBILE BACKDROP -->
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+<!-- ============ SIDEBAR ============ -->
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-doc">
+        <div class="sd-tiles">
+            <div class="sd-tile hoop">H</div>
+            <div class="sd-tile avs">A</div>
+        </div>
+        <div>
+            <div class="sidebar-doc-title">Service Summary</div>
+            <div class="sidebar-doc-sub">Hoop Recruitment × Advantage FS</div>
+        </div>
     </div>
 
-    <div class="nav-links">
-        <a href="#sec-overview">The Partnership</a>
-        <a href="#sec-protection">Protection</a>
-        <a href="#sec-mortgage">Mortgages</a>
-        <a href="#sec-how">How It Works</a>
-        <a href="#sec-why">Why Us</a>
+    <nav class="sidebar-nav">
+        <div class="sidebar-part-label">On this page</div>
+
+        <a href="#sec-overview" class="sidebar-link"><span class="side-num">01</span> Overview of the Partnership</a>
+        <a href="#sec-protection" class="sidebar-link"><span class="side-num">02</span> Protection Advice</a>
+        <a href="#sec-mortgage" class="sidebar-link"><span class="side-num">03</span> Mortgage Advice</a>
+        <a href="#sec-how" class="sidebar-link"><span class="side-num">04</span> How It Works</a>
+        <a href="#sec-why" class="sidebar-link"><span class="side-num">05</span> Why Choose Advantage FS</a>
+        <a href="#sec-book" class="sidebar-link"><span class="side-num">06</span> Get Started</a>
+    </nav>
+
+    <div class="sidebar-contact">
+        <div class="sidebar-contact-label">Get in touch</div>
+        <a href="tel:+441174420498">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            0117 442 0498
+        </a>
+        <a href="https://wa.me/441174420498?text=Hi%2C%20I%27ve%20been%20referred%20by%20Hoop%20Recruitment%20and%20I%27d%20like%20to%20book%20a%20free%20consultation" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+            WhatsApp
+        </a>
+        <a href="mailto:laurence@advantagefs.co.uk?subject=Protection%20advice%20-%20Hoop%20client">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+            Email Laurence
+        </a>
+        <a href="mailto:steve@advantagefs.co.uk?subject=Mortgage%20advice%20-%20Hoop%20client">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+            Email the Mortgage Team
+        </a>
+    </div>
+
+    <div class="sidebar-foot">
+        <div class="sidebar-foot-note">SERVICE SUMMARY · V1.1</div>
+    </div>
+</aside>
+
+<!-- ============ MAIN ============ -->
+<main class="main">
+
+<!-- ============ TOP NAV ============ -->
+<nav class="top-nav">
+    <div class="nav-left">
+        <button class="icon-btn" id="sidebarToggle" title="Toggle navigation" aria-label="Toggle navigation" aria-expanded="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+                <path d="M9 3v18"></path>
+            </svg>
+        </button>
+
+        <div class="brand">
+            <a class="logo-tile hoop" href="index.html" aria-label="Back to adviser chooser">H</a>
+            <span class="brand-name">Hoop Recruitment</span>
+            <span class="brand-x">×</span>
+            <a class="logo-tile avs" href="https://advantagefs.co.uk" target="_blank" rel="noopener" aria-label="Advantage FS website">A</a>
+            <span class="brand-name">Advantage FS</span>
+        </div>
     </div>
 
     <div class="nav-actions">
@@ -982,14 +1322,27 @@ tr:last-child td { border-bottom: none; }
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
             <span class="btn-label">WhatsApp</span>
         </a>
-        <a class="nav-btn nav-book" href="https://advantagefs.co.uk/book-consultation/" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M16 2v4"></path><path d="M8 2v4"></path><path d="M3 10h18"></path></svg>
-            <span class="btn-label">Book Free Consultation</span>
-        </a>
+        <button class="icon-btn theme-toggle" id="themeToggle" title="Theme" aria-label="Change theme">
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2"></path><path d="M12 20v2"></path>
+                <path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path>
+                <path d="M2 12h2"></path><path d="M20 12h2"></path>
+                <path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path>
+            </svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+            </svg>
+            <svg class="icon-fun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3v3"></path><path d="M12 18v3"></path>
+                <path d="M3 12h3"></path><path d="M18 12h3"></path>
+                <path d="M12 8a4 4 0 0 0-4 4c0 1.5.8 2.4 1.6 3.2.6.6 1 1.2 1.1 2.3h2.6c.1-1.1.5-1.7 1.1-2.3.8-.8 1.6-1.7 1.6-3.2a4 4 0 0 0-4-4Z"></path>
+                <path d="M10 21h4"></path>
+            </svg>
+        </button>
     </div>
 </nav>
 
-<main>
 <div class="content-wrapper">
 
     <!-- ============ HERO ============ -->
@@ -1004,8 +1357,8 @@ tr:last-child td { border-bottom: none; }
         <p class="hero-description">
             <strong>Hoop Recruitment has officially partnered with Advantage Financial Solutions</strong> to
             give every candidate direct, exclusive access to expert, independent mortgage and protection
-            advice — completely free of charge. To get started, simply speak to your Hoop adviser, or book
-            directly with the team below.
+            advice — completely free of charge. To get started, simply speak to your Hoop adviser, or get
+            in touch with the team below.
         </p>
 
         <div class="stat-strip">
@@ -1015,16 +1368,16 @@ tr:last-child td { border-bottom: none; }
             <div class="stat"><span class="stat-v">Anytime</span><span class="stat-l">Secure client portal</span></div>
         </div>
 
-        <!-- PRIMARY BOOKING CTA (TOP) -->
+        <!-- PRIMARY CTA (TOP) -->
         <div class="cta-row">
-            <a class="cta-btn elite" href="https://advantagefs.co.uk/book-consultation/" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M16 2v4"></path><path d="M8 2v4"></path><path d="M3 10h18"></path></svg>
-                Book Your Free Consultation
-            </a>
             <a class="cta-btn wa-btn" target="_blank" rel="noopener"
                href="https://wa.me/441174420498?text=Hi%2C%20I%27ve%20been%20referred%20by%20Hoop%20Recruitment%20and%20I%27d%20like%20to%20book%20a%20free%20consultation">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
                 Message Us on WhatsApp
+            </a>
+            <a class="cta-btn neutral" href="tel:+441174420498">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                Call 0117 442 0498
             </a>
         </div>
     </header>
@@ -1057,7 +1410,7 @@ tr:last-child td { border-bottom: none; }
             to take advantage of the partnership and they'll connect you with the right specialist. You can
             also explore the team at
             <a class="inline-link" href="https://advantagefs.co.uk" target="_blank" rel="noopener">advantagefs.co.uk</a>,
-            or book directly using the buttons on this page — whichever suits you.
+            or get in touch using the buttons on this page — whichever suits you.
         </p>
     </section>
 
@@ -1121,11 +1474,6 @@ tr:last-child td { border-bottom: none; }
                     <strong>Cost:</strong> 100% free
                 </p>
                 <div class="person-actions">
-                    <a class="nav-btn nav-book" target="_blank" rel="noopener"
-                       href="https://bookings.cloud.microsoft/bookwithme/user/dd4aac933138452aaf6ccd6b3f13cddd@advantagefs.co.uk/meetingtype/2Rnuqd7RH0C4Ncjz3_Ueow2?anonymous&amp;ismsaljsauthenabled&amp;ep=mLinkFromTile">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M16 2v4"></path><path d="M8 2v4"></path><path d="M3 10h18"></path></svg>
-                        <span class="btn-label">Book a slot in Laurence's diary</span>
-                    </a>
                     <a class="nav-btn" href="mailto:laurence@advantagefs.co.uk?subject=Protection%20advice%20-%20Hoop%20client">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
                         <span class="btn-label">Email Laurence</span>
@@ -1178,14 +1526,15 @@ tr:last-child td { border-bottom: none; }
         </ul>
 
         <div class="callout">
-            <strong>One small thing:</strong> when you book, mention you were referred by
+            <strong>One small thing:</strong> when you get in touch, mention you were referred by
             <strong>Hoop Recruitment</strong> — it helps the team keep everything tracked for your adviser.
         </div>
 
         <div class="cta-row">
-            <a class="cta-btn elite" href="https://advantagefs.co.uk/book-consultation/" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M16 2v4"></path><path d="M8 2v4"></path><path d="M3 10h18"></path></svg>
-                Book a Mortgage Advice Call
+            <a class="cta-btn wa-btn" target="_blank" rel="noopener"
+               href="https://wa.me/441174420498?text=Hi%2C%20I%27ve%20been%20referred%20by%20Hoop%20Recruitment%20and%20I%27d%20like%20to%20book%20a%20free%20consultation">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+                Message Us on WhatsApp
             </a>
             <a class="cta-btn neutral" href="mailto:steve@advantagefs.co.uk?subject=Mortgage%20advice%20-%20Hoop%20client">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
@@ -1205,7 +1554,7 @@ tr:last-child td { border-bottom: none; }
         </div>
 
         <ol class="steps">
-            <li><strong>Free Initial Consultation</strong> — book a no-obligation chat with the friendly team, by phone, video or face-to-face.</li>
+            <li><strong>Free Initial Consultation</strong> — a no-obligation chat with the friendly team, by phone, video or face-to-face.</li>
             <li><strong>Tailored Recommendations</strong> — they search the market and present your best options in plain English.</li>
             <li><strong>Application Management</strong> — they handle the paperwork and chase the lender, so you don't have to.</li>
             <li><strong>Protection Review</strong> — they make sure you and your family are financially secure all the way through.</li>
@@ -1239,30 +1588,31 @@ tr:last-child td { border-bottom: none; }
         </div>
     </section>
 
-    <!-- ============ FINAL CTA (BOTTOM BOOKING BUTTON) ============ -->
+    <!-- ============ FINAL CTA ============ -->
     <section id="sec-book" class="content-section">
         <div class="cta-programme">
             <h2>Ready to Get Started?</h2>
             <p>
-                Speak to your Hoop adviser, or book directly with the team — advisers are typically
+                Speak to your Hoop adviser, or contact the team directly — advisers are typically
                 available Monday to Friday, 10am–7pm. Mention <strong>Hoop Recruitment</strong> when
-                you book.
+                you get in touch.
             </p>
 
             <div class="cta-row">
-                <a class="cta-btn elite" href="https://advantagefs.co.uk/book-consultation/" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M16 2v4"></path><path d="M8 2v4"></path><path d="M3 10h18"></path></svg>
-                    Book Your Free Consultation
-                </a>
                 <a class="cta-btn wa-btn" target="_blank" rel="noopener"
                    href="https://wa.me/441174420498?text=Hi%2C%20I%27ve%20been%20referred%20by%20Hoop%20Recruitment%20and%20I%27d%20like%20to%20book%20a%20free%20consultation">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
                     Message Us on WhatsApp
                 </a>
+                <a class="cta-btn neutral" href="tel:+441174420498">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    Call 0117 442 0498
+                </a>
             </div>
 
             <p class="person-note">
-                Prefer to talk? Call 0117 442 0498 — Monday to Friday, 10am–7pm.
+                Prefer email? Laurence handles protection — laurence@advantagefs.co.uk ·
+                The mortgage team — steve@advantagefs.co.uk
             </p>
         </div>
     </section>
@@ -1305,21 +1655,86 @@ tr:last-child td { border-bottom: none; }
     'use strict';
 
     var root = document.documentElement;
-    root.classList.add('preload');
-
-    var t = null;
-    try { t = localStorage.getItem('avs-hoop-theme'); } catch (e) { /* no-op */ }
-    if (t !== 'light' && t !== 'dark') {
-        t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
-    root.setAttribute('data-theme', t);
-
+    var body = document.body;
+    var sidebar = document.getElementById('sidebar');
+    var backdrop = document.getElementById('sidebarBackdrop');
+    var toggleBtn = document.getElementById('sidebarToggle');
+    var themeBtn = document.getElementById('themeToggle');
     var toTop = document.getElementById('toTop');
+
+    /* ---------- Theme: Light → Dark → Fun ---------- */
+    var ORDER = ['light', 'dark', 'fun'];
+    var LABELS = { light: 'Light', dark: 'Dark', fun: 'Fun' };
+
+    function applyTheme(t) {
+        root.setAttribute('data-theme', t);
+        var label = 'Theme: ' + LABELS[t] + ' — click to change';
+        themeBtn.title = label;
+        themeBtn.setAttribute('aria-label', label);
+        try { localStorage.setItem('avs-hoop-theme', t); } catch (e) { /* no-op */ }
+    }
+
+    applyTheme(root.getAttribute('data-theme') || 'light');
+
+    themeBtn.addEventListener('click', function () {
+        var cur = root.getAttribute('data-theme') || 'light';
+        applyTheme(ORDER[(ORDER.indexOf(cur) + 1) % ORDER.length]);
+    });
+
+    /* ---------- Sidebar collapse ---------- */
+    var isDesktop = function () { return window.matchMedia('(min-width: 1024px)').matches; };
+
+    function setSidebar(open, remember) {
+        body.classList.toggle('sidebar-open', open);
+        toggleBtn.setAttribute('aria-expanded', String(open));
+        if (remember) {
+            try { localStorage.setItem('avs-hoop-sidebar', open ? 'open' : 'closed'); } catch (e) { /* no-op */ }
+        }
+    }
+
+    toggleBtn.addEventListener('click', function () {
+        setSidebar(!body.classList.contains('sidebar-open'), true);
+    });
+
+    backdrop.addEventListener('click', function () { setSidebar(false, true); });
+
+    Array.prototype.forEach.call(sidebar.querySelectorAll('a.sidebar-link'), function (a) {
+        a.addEventListener('click', function () {
+            if (!isDesktop()) setSidebar(false, false);
+        });
+    });
+
+    /* ---------- Scroll spy: highlight the section in view ---------- */
+    var sections = Array.prototype.slice.call(document.querySelectorAll('section.content-section'));
+    var sidebarLinks = Array.prototype.slice.call(sidebar.querySelectorAll('a.sidebar-link'));
+    var lastActive = null;
+
+    function setActive(id) {
+        if (id === lastActive) return;
+        lastActive = id;
+        sidebarLinks.forEach(function (l) {
+            l.classList.toggle('active', l.getAttribute('href') === '#' + id);
+        });
+    }
 
     function onScroll() {
         toTop.classList.toggle('show', window.scrollY > 600);
+
+        if (!sections.length) return;
+        var line = window.scrollY + 180;
+        var current = sections[0].id;
+        for (var i = 0; i < sections.length; i++) {
+            var top = sections[i].getBoundingClientRect().top + window.scrollY;
+            if (top <= line) current = sections[i].id;
+        }
+        if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
+            current = sections[sections.length - 1].id;
+        }
+        setActive(current);
     }
+
     document.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
     onScroll();
 
     toTop.addEventListener('click', function () {
