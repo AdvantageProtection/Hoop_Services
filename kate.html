@@ -1,1 +1,1482 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f7f8fc">
+<meta name="description" content="Advantage FS custom service summary page for Hoop Recruitment clients">
+<title>Advantage FS × Hoop Recruitment — Free Mortgage &amp; Protection Advice</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%232E5BFF'/%3E%3Cstop offset='1' stop-color='%237C3AED'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='44' font-family='Arial,Helvetica,sans-serif' font-size='34' font-weight='800' fill='%23ffffff' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
 
+<!-- To use one web-font nicely and match guide typography -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ===== GH DESIGN SYSTEM · Advantage FS × Hoop partner page ===== */
+:root {
+    color-scheme: light;
+
+    --nav-h: 64px;
+    --bg: #f7f8fc;
+    --surface: #ffffff;
+    --surface-2: #f1f4fa;
+    --surface-3: #e9edf7;
+    --border: #e5e9f4;
+    --border-strong: #d5dbee;
+    --nav-bg: rgba(255, 255, 255, 0.82);
+    --sidebar-bg: #fafbfe;
+
+    --text: #0a102a;
+    --text-2: #4b5675;
+    --text-3: #7a85a6;
+    --text-muted: #a6aec7;
+
+    --accent: #2e5bff;
+    --accent-strong: #1e46d8;
+    --accent-soft: rgba(46, 91, 255, 0.08);
+    --accent-line: rgba(46, 91, 255, 0.28);
+    --accent-glow: rgba(46, 91, 255, 0.18);
+    --violet: #7c3aed;
+    --grad: linear-gradient(135deg, #2e5bff 0%, #7c3aed 100%);
+
+    --quote: #1e46d8;
+
+    --success: #0da678;
+    --wa-text: #0b8a53;
+    --wa-bg: rgba(16, 185, 129, 0.10);
+    --wa-bg-hover: rgba(16, 185, 129, 0.18);
+    --wa-border: rgba(13, 148, 136, 0.30);
+
+    --ink: #0b1230;
+    --ink-hover: #131a3d;
+
+    --shadow-xs: 0 1px 2px rgba(10, 16, 42, 0.05);
+    --shadow-sm: 0 1px 3px rgba(10, 16, 42, 0.06), 0 1px 2px rgba(10, 16, 42, 0.04);
+    --shadow-md: 0 6px 16px -4px rgba(10, 16, 42, 0.08), 0 2px 4px rgba(10, 16, 42, 0.04);
+    --shadow-lg: 0 16px 40px -8px rgba(10, 16, 42, 0.14), 0 4px 12px rgba(10, 16, 42, 0.06);
+    --shadow-accent: 0 8px 24px -6px rgba(46, 91, 255, 0.35);
+
+    --r-sm: 10px;
+    --r-md: 14px;
+    --r-lg: 20px;
+
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 24px;
+    --space-6: 32px;
+    --space-7: 48px;
+    --space-8: 64px;
+
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-display: 'Bricolage Grotesque', 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', 'SF Mono', Monaco, monospace;
+    --text-base: 15px;
+    --text-md: 16px;
+    --text-lg: 18px;
+
+    --transition: 160ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 280ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #070a14;
+    --surface: #0d1220;
+    --surface-2: #121a2c;
+    --surface-3: #182238;
+    --border: #1c2540;
+    --border-strong: #2a3556;
+    --nav-bg: rgba(9, 12, 22, 0.82);
+    --sidebar-bg: #090d18;
+
+    --text: #eaf0ff;
+    --text-2: #a7b1ce;
+    --text-3: #7e89ab;
+    --text-muted: #57627f;
+
+    --accent: #6e8bff;
+    --accent-strong: #93a9ff;
+    --accent-soft: rgba(110, 139, 255, 0.10);
+    --accent-line: rgba(110, 139, 255, 0.32);
+    --accent-glow: rgba(110, 139, 255, 0.22);
+    --violet: #a78bfa;
+    --grad: linear-gradient(135deg, #6e8bff 0%, #a78bfa 100%);
+    --quote: #9db4ff;
+
+    --success: #34d399;
+    --wa-text: #5eead4;
+    --wa-bg: rgba(16, 185, 129, 0.10);
+    --wa-bg-hover: rgba(16, 185, 129, 0.20);
+    --wa-border: rgba(52, 211, 153, 0.30);
+
+    --ink: #e9efff;
+    --ink-hover: #ffffff;
+
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.45);
+    --shadow-md: 0 6px 16px -4px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 16px 40px -8px rgba(0, 0, 0, 0.6);
+    --shadow-accent: 0 8px 24px -6px rgba(110, 139, 255, 0.30);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: 1.6;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html.preload *,
+html.preload *::before,
+html.preload *::after { transition: none !important; }
+
+::selection { background: rgba(46, 91, 255, 0.18); color: var(--text); }
+
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+}
+
+/* ===== TOP NAV ===== */
+.top-nav {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--nav-h);
+    background: var(--nav-bg);
+    backdrop-filter: blur(14px) saturate(1.4);
+    -webkit-backdrop-filter: blur(14px) saturate(1.4);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: 0 var(--space-4);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex: 0 0 auto;
+}
+
+.logo-tile {
+    width: 32px;
+    height: 32px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 15px;
+    flex: 0 0 auto;
+    text-decoration: none;
+}
+
+.logo-tile.hoop { background: var(--grad); box-shadow: var(--shadow-accent); }
+.logo-tile.avs { background: var(--ink); box-shadow: var(--shadow-xs); }
+
+.brand-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+}
+
+.brand-x {
+    color: var(--text-muted);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.nav-links {
+    display: flex;
+    gap: var(--space-5);
+    margin: 0 auto;
+}
+
+.nav-links a {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-2);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color var(--transition);
+}
+
+.nav-links a:hover { color: var(--accent); }
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex: 0 0 auto;
+    margin-left: auto;
+}
+
+.nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    height: 38px;
+    padding: 0 14px;
+    border-radius: 11px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-2);
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 550;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.nav-btn svg { width: 15px; height: 15px; flex: 0 0 auto; }
+
+.nav-btn.nav-wa {
+    color: var(--wa-text);
+    background: var(--wa-bg);
+    border-color: var(--wa-border);
+}
+
+.nav-btn.nav-wa:hover { background: var(--wa-bg-hover); }
+
+.nav-btn.nav-book {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--text);
+}
+
+.nav-btn.nav-book:hover {
+    background: var(--ink-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-accent);
+}
+
+.icon-btn {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: var(--r-sm);
+    color: var(--text-2);
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.icon-btn:hover {
+    color: var(--text);
+    background: var(--surface-2);
+    border-color: var(--border-strong);
+}
+
+.icon-btn svg { width: 18px; height: 18px; }
+
+/* ===== MAIN COLUMN ===== */
+.content-wrapper {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 48px clamp(24px, 4.5vw, 64px) 96px;
+}
+
+/* ===== HERO ===== */
+.hero {
+    position: relative;
+    padding: 40px 0 48px;
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+}
+
+.hero::before,
+.hero::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(70px);
+    pointer-events: none;
+}
+
+.hero::before {
+    width: 420px;
+    height: 420px;
+    top: -160px;
+    right: -80px;
+    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+}
+
+.hero::after {
+    width: 340px;
+    height: 340px;
+    top: 40px;
+    right: 240px;
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.10) 0%, transparent 70%);
+}
+
+[data-theme="dark"] .hero::before { background: radial-gradient(circle, rgba(110, 139, 255, 0.14) 0%, transparent 70%); }
+[data-theme="dark"] .hero::after { background: radial-gradient(circle, rgba(167, 139, 250, 0.10) 0%, transparent 70%); }
+
+.hero-badges {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: 20px;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 13px;
+    background: var(--surface);
+    border: 1px solid var(--accent-line);
+    border-radius: 999px;
+    font-size: var(--text-xs, 12px);
+    font-weight: 550;
+    color: var(--accent);
+    box-shadow: var(--shadow-xs);
+}
+
+.hero-badge .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--success);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.18);
+}
+
+.hero-chip {
+    padding: 5px 11px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--text-3);
+    letter-spacing: 0.4px;
+}
+
+.hero h1 {
+    position: relative;
+    font-size: clamp(30px, 4.4vw, 46px);
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+    margin-bottom: var(--space-4);
+    color: var(--text);
+    max-width: 760px;
+}
+
+.hero h1 .grad-text {
+    background: var(--grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero-description {
+    position: relative;
+    font-size: var(--text-md);
+    color: var(--text-2);
+    line-height: 1.7;
+    max-width: 660px;
+    margin-bottom: var(--space-5);
+}
+
+/* ===== STAT STRIP ===== */
+.stat-strip {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    margin-bottom: var(--space-5);
+}
+
+.stat {
+    padding: 18px 20px;
+    border-right: 1px solid var(--border);
+}
+
+.stat:last-child { border-right: none; }
+
+.stat-v {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text);
+}
+
+.stat-l {
+    display: block;
+    margin-top: 2px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-3);
+}
+
+/* ===== SECTIONS ===== */
+.content-section {
+    padding: 52px 0 60px;
+    border-bottom: 1px solid var(--border);
+    scroll-margin-top: 96px;
+}
+
+.content-section:last-of-type { border-bottom: none; }
+
+.section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: var(--space-6);
+}
+
+.sec-index {
+    flex: 0 0 auto;
+    margin-top: 5px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-line);
+    border-radius: 8px;
+    padding: 5px 9px;
+    letter-spacing: 0.5px;
+}
+
+.section-title {
+    font-size: clamp(24px, 2.8vw, 30px);
+    font-weight: 700;
+    line-height: 1.22;
+    letter-spacing: -0.025em;
+    color: var(--text);
+}
+
+.section-subtitle {
+    font-size: 14px;
+    color: var(--text-3);
+    margin-top: 5px;
+}
+
+.content-section h3 {
+    font-size: var(--text-lg);
+    font-weight: 650;
+    margin: var(--space-6) 0 var(--space-3);
+    color: var(--text);
+}
+
+.content-section p {
+    color: var(--text-2);
+    margin-bottom: var(--space-4);
+    line-height: 1.75;
+}
+
+.content-section strong { color: var(--text); font-weight: 600; }
+
+.lead {
+    font-size: var(--text-md);
+    color: var(--text-2);
+    line-height: 1.8;
+    padding: var(--space-5) var(--space-6);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    margin: 0 0 var(--space-5);
+    box-shadow: var(--shadow-xs);
+    position: relative;
+    overflow: hidden;
+}
+
+.lead::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--grad);
+}
+
+/* ===== CALLOUTS ===== */
+.callout {
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-line);
+    border-radius: var(--r-md);
+    padding: var(--space-4) var(--space-5);
+    margin: var(--space-5) 0;
+    color: var(--text-2);
+    line-height: 1.7;
+}
+
+.callout strong { color: var(--accent-strong); }
+
+.callout-box {
+    background: var(--surface);
+    border: 1px solid var(--accent-line);
+    border-radius: var(--r-md);
+    padding: var(--space-5);
+    margin: var(--space-5) 0;
+    color: var(--text-2);
+    line-height: 1.7;
+    box-shadow: var(--shadow-xs);
+}
+
+.callout-box strong { color: var(--accent-strong); }
+
+/* ===== LISTS ===== */
+.list-feature, .list-highlight { list-style: none; margin: var(--space-4) 0; }
+
+.list-feature li, .list-highlight li {
+    padding: var(--space-3) 0 var(--space-3) var(--space-6);
+    position: relative;
+    color: var(--text-2);
+    line-height: 1.7;
+    border-bottom: 1px solid var(--border);
+}
+
+.list-feature li:last-child, .list-highlight li:last-child { border-bottom: none; }
+
+.list-feature li::before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 21px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--grad);
+}
+
+.list-highlight li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 22px;
+    height: 22px;
+    border-radius: 7px;
+    background: rgba(16, 185, 129, 0.10);
+    color: var(--success);
+    font-weight: 700;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Specialist chips */
+.chip-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin: var(--space-4) 0 0;
+}
+
+.spec-chip {
+    display: inline-block;
+    padding: 7px 14px;
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-line);
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+}
+
+/* ===== TIMELINE STEPS ===== */
+.steps {
+    list-style: none;
+    counter-reset: step;
+    margin: var(--space-4) 0;
+    position: relative;
+}
+
+.steps::before {
+    content: "";
+    position: absolute;
+    left: 15px;
+    top: 22px;
+    bottom: 22px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--accent), var(--violet));
+    opacity: 0.25;
+}
+
+.steps li {
+    counter-increment: step;
+    position: relative;
+    padding: var(--space-3) 0 var(--space-3) 48px;
+    color: var(--text-2);
+    line-height: 1.7;
+}
+
+.steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 15px;
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    background: var(--surface);
+    border: 1px solid var(--accent-line);
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-xs);
+    z-index: 1;
+}
+
+.steps li strong { color: var(--text); }
+
+/* ===== PERSON CARDS (adviser photos) ===== */
+.person-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    padding: var(--space-5);
+    margin: var(--space-5) 0;
+    box-shadow: var(--shadow-xs);
+    display: flex;
+    gap: var(--space-5);
+    align-items: flex-start;
+    transition: all var(--transition);
+}
+
+.person-card:hover {
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-md);
+}
+
+.person-photo {
+    width: 112px;
+    height: 112px;
+    border-radius: 24px;
+    object-fit: cover;
+    flex: 0 0 auto;
+    box-shadow: var(--shadow-md);
+    background: var(--surface-2);
+}
+
+.person-photo.shaped { border-radius: 50%; }
+
+.person-info { flex: 1; min-width: 0; }
+
+.person-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-line);
+    border-radius: 999px;
+    padding: 4px 11px;
+    margin-bottom: var(--space-3);
+}
+
+.person-info h4 {
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+}
+
+.person-role {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-3);
+    margin-bottom: var(--space-3);
+}
+
+.person-info p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-2);
+    margin-bottom: var(--space-3);
+}
+
+.person-meta {
+    font-size: 13px;
+    color: var(--text-3);
+    line-height: 1.7;
+    margin-bottom: 0;
+}
+
+.person-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: var(--space-4);
+}
+
+.person-actions .nav-btn { height: 34px; font-size: 12px; }
+
+/* ===== TABLE ===== */
+.table-container {
+    margin: var(--space-5) 0;
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    overflow: hidden;
+    background: var(--surface);
+    box-shadow: var(--shadow-xs);
+}
+
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+
+thead { background: var(--surface-2); }
+
+th {
+    padding: var(--space-3) var(--space-4);
+    text-align: left;
+    font-weight: 600;
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid var(--border);
+}
+
+td {
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--border);
+    color: var(--text-2);
+    vertical-align: top;
+}
+
+td:first-child { color: var(--text); font-weight: 600; }
+
+tr:last-child td { border-bottom: none; }
+
+/* ===== CARD GRID ===== */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+    margin: var(--space-5) 0;
+}
+
+.card {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    padding: var(--space-5);
+    transition: all var(--transition);
+    overflow: hidden;
+}
+
+.card::after {
+    content: "";
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity var(--transition);
+}
+
+.card:hover {
+    border-color: var(--accent-line);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.card:hover::after { opacity: 1; }
+
+.card h4 {
+    font-size: var(--text-base);
+    font-weight: 650;
+    margin-bottom: var(--space-2);
+    color: var(--text);
+}
+
+.card p {
+    font-size: var(--text-sm, 14px);
+    color: var(--text-2);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* ===== CTA BUTTONS ===== */
+.cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin: var(--space-5) 0;
+}
+
+.cta-programme {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-4);
+    background: var(--ink);
+    border-radius: var(--r-lg);
+    padding: var(--space-7) var(--space-5);
+    margin: var(--space-6) 0;
+    box-shadow: var(--shadow-lg);
+}
+
+.cta-programme h2 {
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: #ffffff;
+}
+
+.cta-programme p {
+    font-size: var(--text-md);
+    line-height: 1.7;
+    color: rgba(233, 239, 255, 0.8);
+    max-width: 560px;
+    margin: 0;
+}
+
+.cta-programme .cta-row { margin: var(--space-3) 0 0; justify-content: center; }
+.cta-programme .person-note {
+    font-size: 12.5px;
+    color: rgba(233, 239, 255, 0.55);
+    margin: 0;
+}
+
+.cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 11px 18px;
+    border-radius: 12px;
+    border: 1px solid var(--ink);
+    background: var(--ink);
+    color: var(--text);
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    transition: all var(--transition);
+    box-shadow: var(--shadow-xs);
+    cursor: pointer;
+}
+
+.cta-btn:hover {
+    background: var(--ink-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-accent);
+}
+
+.cta-btn.elite {
+    background: var(--ink);
+    color: var(--text);
+}
+
+.cta-btn.neutral {
+    background: var(--surface);
+    border-color: var(--border);
+    color: var(--text-2);
+}
+
+.cta-btn.neutral:hover {
+    color: var(--accent);
+    border-color: var(--accent-line);
+    background: var(--accent-soft);
+}
+
+.cta-btn.wa-btn {
+    background: var(--wa-bg);
+    border-color: var(--wa-border);
+    color: var(--wa-text);
+}
+
+.cta-btn.wa-btn:hover { background: var(--wa-bg-hover); }
+
+.cta-programme .cta-btn.elite {
+    background: var(--grad);
+    border-color: transparent;
+    color: #ffffff;
+    padding: 13px 24px;
+    font-size: 15px;
+}
+
+.cta-programme .cta-btn.neutral,
+.cta-programme .cta-btn.wa-btn {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+}
+
+.cta-programme .cta-btn.neutral:hover { background: rgba(255, 255, 255, 0.12); color: #ffffff; }
+.cta-programme .cta-btn.wa-btn:hover { background: rgba(52, 211, 153, 0.15); color: #ffffff; }
+
+.cta-btn svg, .nav-btn svg, .icon-btn svg { flex: 0 0 auto; }
+
+/* ===== INLINE LINKS ===== */
+.inline-link {
+    color: var(--accent);
+    font-weight: 550;
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-line);
+    transition: all var(--transition);
+}
+
+.inline-link:hover {
+    color: var(--accent-strong);
+    border-bottom-color: var(--accent-strong);
+}
+
+/* ===== FOOTER ===== */
+.page-footer {
+    padding: 40px 0 8px;
+    text-align: center;
+    color: var(--text-3);
+    font-size: 13px;
+}
+
+.page-footer .foot-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-4);
+    margin-bottom: var(--space-3);
+}
+
+.page-footer a {
+    color: var(--text-2);
+    text-decoration: none;
+    font-weight: 550;
+}
+
+.page-footer a:hover { color: var(--accent); }
+
+.page-footer .foot-motto {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 650;
+    color: var(--text);
+    margin-bottom: var(--space-3);
+}
+
+.page-footer .foot-note {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 680px;
+    margin: 0 auto var(--space-2);
+}
+
+.page-footer .foot-sub {
+    margin-top: var(--space-3);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.3px;
+    color: var(--text-muted);
+}
+
+/* ===== BACK TO TOP ===== */
+.to-top {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: all var(--transition);
+    z-index: 80;
+}
+
+.to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+
+.to-top:hover { color: var(--accent); border-color: var(--accent-line); }
+
+.to-top svg { width: 17px; height: 17px; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 920px) {
+    .nav-links { display: none; }
+    .stat-strip { grid-template-columns: repeat(2, 1fr); }
+    .stat:nth-child(2) { border-right: none; }
+    .stat:nth-child(1), .stat:nth-child(2) { border-bottom: 1px solid var(--border); }
+    .card-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+    .content-wrapper { padding: 28px 20px 72px; }
+    .hero { padding: 24px 0 36px; }
+    .content-section { padding: 36px 0 44px; }
+    .card-grid { grid-template-columns: 1fr; }
+    .person-card { flex-direction: column; align-items: flex-start; }
+    .section-header { gap: 10px; }
+    .cta-programme { padding: var(--space-6) var(--space-4); }
+}
+
+@media (max-width: 480px) {
+    .brand-name, .brand-x { display: none; }
+    .btn-label { display: none; }
+    .nav-btn { padding: 0 11px; gap: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+    html { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ TOP NAV ============ -->
+<nav class="top-nav">
+
+    <!-- LOGOS: swap these tiles for real logo images when ready.
+         e.g. <a class="logo-tile hoop" href="https://hoop-recruitment.example" target="_blank"><img src="images/hoop-logo.png" alt="Hoop Recruitment" width="32"></a> -->
+    <div class="brand">
+        <a class="logo-tile hoop" href="#" target="_blank" rel="noopener" aria-label="Hoop Recruitment website">H</a>
+        <span class="brand-name">Hoop Recruitment</span>
+        <span class="brand-x">×</span>
+        <a class="logo-tile avs" href="https://advantagefs.co.uk" target="_blank" rel="noopener" aria-label="Advantage FS website">A</a>
+        <span class="brand-name">Advantage FS</span>
+    </div>
+
+    <div class="nav-links">
+        <a href="#sec-mortgage">Mortgages</a>
+        <a href="#sec-protection">Protection</a>
+        <a href="#sec-why">Why Us</a>
+        <a href="#sec-how">How It Works</a>
+    </div>
+
+    <div class="nav-actions">
+        <a class="nav-btn nav-wa" target="_blank" rel="noopener"
+           href="https://wa.me/441174420498?text=Hi%2C%20I%27ve%20been%20referred%20by%20Hoop%20Recruitment%20and%20I%27d%20like%20to%20book%20a%20free%20consultation">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+            <span class="btn-label">WhatsApp</span>
+        </a>
+        <a class="nav-btn nav-book" target="_blank" rel="noopener" href="https://advantagefs.co.uk/book-consultation/">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M16 2v4"></path><path d="M8 2v4"></path><path d="M3 10h18"></path></svg>
+            <span class="btn-label">Book Free Consultation</span>
+        </a>
+        <button class="icon-btn theme-toggle" id="themeToggle" title="Theme" aria-label="Change theme">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+        </button>
+    </div>
+</nav>
+
+<main>
+<div class="content-wrapper">
+
+    <!-- ============ HERO ============ -->
+    <header class="hero">
+        <div class="hero-badges">
+            <span class="hero-badge"><span class="dot"></span>Hoop Recruitment Partner</span>
+            <span class="hero-chip">100% FREE ADVICE · NO OBLIGATION</span>
+            <span class="hero-chip">BRISTOL &amp; BATH · UK-WIDE · BRITISH EXPATS</span>
+        </div>
+
+        <h1>Free mortgage &amp; protection advice, <span class="grad-text">exclusively for Hoop clients</span></h1>
+
+        <p class="hero-description">
+            Your recruitment adviser has partnered with <strong>Advantage FS</strong>, an award-winning,
+            independent mortgage and protection broker based in Bristol &amp; Bath. We've helped thousands of
+            clients across the UK and British expats worldwide secure their dream homes and protect what
+            matters most — and every Hoop client gets privileged access to our team.
+        </p>
+
+        <div class="stat-strip">
+            <div class="stat"><span class="stat-v">£0</span><span class="stat-l">Cost of advice &amp; reviews</span></div>
+            <div class="stat"><span class="stat-v">100+</span><span class="stat-l">Lenders accessed</span></div>
+            <div class="stat"><span class="stat-v">15</span><span class="stat-l">CeMAP-qualified advisers</span></div>
+            <div class="stat"><span class="stat-v">£250</span><span class="stat-l">Exclusive Hoop partner fee</span></div>
+        </div>
+
+        <!-- PRIMARY BOOKING CTA (TOP) -->
+        <div class="cta-row">
+            <a class="cta-btn elite" href="https://advantagefs.co.uk/book-consultation/" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M16 2v4"></path><path d="M8 2v4"></path><path d="M3 10h18"></path></svg>
+                Book Your Free Consultation
+            </a>
+            <a class="cta-btn wa-btn" target="_blank" rel="noopener" href="https://wa.me/441174420498?text=Hi%2C%20I%27ve%20been%20referred%20by%20Hoop%20Recruitment%20and%20I%27d%20like%20to%20book%20a%20free%20consultation">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+                Chat on WhatsApp
+            </a>
+        </div>
+    </header>
+
+    <!-- ============ SECTION 01 · THE PARTNERSHIP ============ -->
+    <section id="sec-partnership" class="content-section">
+        <div class="section-header">
+            <span class="sec-index">01</span>
+            <div>
+                <h2 class="section-title">Who We Are</h2>
+                <p class="section-subtitle">The Hoop × Advantage FS partnership</p>
+            </div>
+        </div>
+
+        <div class="lead">
+            <strong>Hoop Recruitment has partnered with Advantage FS</strong> to give every candidate free access
+            to expert mortgage and protection advice. Whether you're buying your first home, moving up the
+            ladder, or protecting your family's future — one quick chat is all it takes to get started.
+        </div>
+
+        <p>
+            Advantage FS is an award-winning, independent broker based in Bristol &amp; Bath. Because we're not tied
+            to any lender or insurer, we search the whole market for you — and because we've advised thousands of
+            clients, we know how to manage the process so you're never left guessing.
+        </p>
+
+        <!-- HOOP ADVISER CARD — first point of contact -->
+        <div class="person-card">
+            <!-- ▼ REPLACE with the adviser's real photo:
+                 <img class="person-photo" src="images/hoop-adviser.jpg" alt="[Adviser Name], your Hoop Recruitment consultant"> -->
+            <img class="person-photo" alt="Your Hoop Recruitment adviser" width="112" height="112"
+                 src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Crect width='96' height='96' fill='%23e8edf6'/%3E%3Ccircle cx='48' cy='36' r='16' fill='%23a9b8d1'/%3E%3Cpath d='M12 96a36 36 0 0 1 72 0z' fill='%23a9b8d1'/%3E%3C/svg%3E">
+
+            <div class="person-info">
+                <span class="person-tag">Your First Point of Contact</span>
+                <h4>[Adviser Name] — Hoop Recruitment</h4>
+                <p class="person-role">Your recruitment adviser &amp; dedicated consultant</p>
+                <p>
+                    You're in safe hands from day one. [Adviser Name] is your go-to person at Hoop — tell them
+                    what you're looking for and they'll introduce you to the right specialist at Advantage FS,
+                    book you in at a time that suits, and stay updated on your progress throughout.
+                </p>
+                <p class="person-meta">
+                    Speak to [Adviser Name] on your next check-in call, or contact the Advantage FS team directly
+                    using the buttons above — whichever is easiest for you.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SECTION 02 · MORTGAGE ADVICE ============ -->
+    <section id="sec-mortgage" class="content-section">
+        <div class="section-header">
+            <span class="sec-index">02</span>
+            <div>
+                <h2 class="section-title">🏠 Mortgage Advice — 100% Free</h2>
+                <p class="section-subtitle">Whole-of-market advice, whatever your situation</p>
+            </div>
+        </div>
+
+        <p>
+            Whether you're buying your first home, moving up the ladder, remortgaging for a better rate, or
+            investing in property — we've got you covered. Our advice is always free, and with access to
+            <strong>100+ lenders</strong> we dig deeper to find the right deal for your circumstances, not just
+            the obvious ones.
+        </p>
+
+        <h3>We specialise in</h3>
+        <div class="chip-list">
+            <span class="spec-chip">First-time buyers</span>
+            <span class="spec-chip">Home movers &amp; remortgages</span>
+            <span class="spec-chip">Buy-to-let investments</span>
+            <span class="spec-chip">Complex income — self-employed, contractors, multiple income streams</span>
+            <span class="spec-chip">Adverse credit history</span>
+            <span class="spec-chip">Later life mortgages (over 50s)</span>
+            <span class="spec-chip">British expats</span>
+        </div>
+
+        <h3>Exclusive benefits for Hoop clients</h3>
+        <ul class="list-highlight">
+            <li><strong>Free initial eligibility checks</strong> — a zero-obligation review of what you could borrow.</li>
+            <li><strong>Discounted partner fee of just £250</strong> — a single fixed fee, only payable once a
+                formal mortgage offer is issued.</li>
+            <li><strong>"No Offer, No Fee"</strong> — if we can't secure an offer, you pay nothing.</li>
+            <li><strong>Fee-Free Advice for Life</strong> — all future remortgages, home moves and product
+                transfers handled free of charge.</li>
+        </ul>
+
+        <div class="callout-box">
+            <strong>How you'd use this:</strong> checking what you can borrow before house-hunting; locking in a
+            better rate before your current deal expires; moving home; or releasing equity for renovations.
+            The initial chat only takes about <strong>15–20 minutes</strong>.
+        </div>
+
+        <div class="cta-row">
+            <a class="cta-btn elite" href="https://advantagefs.co.uk/book-consultation/" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M16 2v4"></path><path d="M8 2v4"></path><path d="M3 10h18"></path></svg>
+                Book a Mortgage Advice Call
+            </a>
+            <a class="cta-btn neutral" href="mailto:steve@advantagefs.co.uk?subject=Hoop%20Recruitment%20referral%20%C2%A0%E2%80%94%20mortgage%20enquiry">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                Email the Mortgage Team
+            </a>
+        </div>
+
+        <div class="callout">
+            <strong>Quick tip:</strong> when you book, just mention that you were referred by
+            <strong>Hoop Recruitment</strong> — that way we can make sure you get your exclusive partner rate.
+        </div>
+    </section>
+
+    <!-- ============ SECTION 03 · PROTECTION & INSURANCE ============ -->
+    <section id="sec-protection" class="content-section">
+        <div class="section-header">
+            <span class="sec-index">03</span>
+            <div>
+                <h2 class="section-title">🛡️ Protection &amp; Insurance</h2>
+                <p class="section-subtitle">Protecting your most valuable asset — you</p>
+            </div>
+        </div>
+
+        <p>
+            Your ability to earn is your most valuable asset, and we help you protect it. Everything starts
+            with a friendly, free review, after which you'll receive a comprehensive summary of your options,
+            costs and policy features — with absolutely no obligation to take anything out.
+        </p>
+
+        <ul class="list-highlight">
+            <li><strong>Life Insurance</strong> — financial security for your loved ones if the worst happens.</li>
+            <li><strong>Income Protection</strong> — covers your income if illness or injury stops you working.</li>
+            <li><strong>Critical Illness Cover</strong> — a lump sum payment if you're diagnosed with a serious
+                condition.</li>
+            <li><strong>Family Income Benefit</strong> — ongoing financial support for your family.</li>
+            <li><strong>Home Insurance</strong> — buildings, contents, or combined cover to protect your
+                property.</li>
+        </ul>
+
+        <!-- LAURENCE CARD — protection adviser with mugshot -->
+        <div class="person-card">
+            <!-- ▼ REPLACE with Laurence's mugshot:
+                 <img class="person-photo" src="images/laurence.jpg" alt="Laurence [Surname], Protection Adviser at Advantage FS"> -->
+            <img class="person-photo" alt="Laurence, Protection Adviser at Advantage FS" width="112" height="112"
+                 src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Crect width='96' height='96' fill='%23e8edf6'/%3E%3Ccircle cx='48' cy='36' r='16' fill='%23a9b8d1'/%3E%3Cpath d='M12 96a36 36 0 0 1 72 0z' fill='%23a9b8d1'/%3E%3C/svg%3E">
+
+            <div class="person-info">
+                <span class="person-tag">Your Dedicated Protection Adviser</span>
+                <h4>Meet Laurence</h4>
+                <p class="person-role">Protection Adviser · Advantage Financial Solutions</p>
+                <p>
+                    Laurence looks after all Hoop clients for protection advice. He'll spend 20–30 minutes
+                    understanding your setup and what you want to protect, then send you a really comprehensive
+                    summary of all the different options, costs and policy features so you can review everything
+                    in your own time. Once you're happy with a direction, he takes care of all the admin —
+                    and he's your point of contact for years to come if your circumstances change or you ever
+                    need to claim.
+                </p>
+                <p class="person-meta">
+                    <strong>Availability:</strong> Monday–Friday, 10am–7pm · <strong>Email:</strong>
+                    laurence@advantagefs.co.uk · <strong>Cost:</strong> 100% free — if you put a policy in place,
+                    we're paid commission by the insurer, never by you.
+                </p>
+                <div class="person-actions">
+                    <a class="nav-btn nav-book" target="_blank" rel="noopener" href="https://bookings.cloud.microsoft/bookwithme/user/dd4aac933138452aaf6ccd6b3f13cddd@advantagefs.co.uk/meetingtype/2Rnuqd7RH0C4Ncjz3_Ueow2?anonymous&amp;ismsaljsauthenabled&amp;ep=mLinkFromTile">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M16 2v4"></path><path d="M8 2v4"></path><path d="M3 10h18"></path></svg>
+                        <span class="btn-label">Book a slot in Laurence's diary</span>
+                    </a>
+                    <a class="nav-btn" href="mailto:laurence@advantagefs.co.uk?subject=Hoop%20referral%20%E2%80%94%20protection%20review">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                        <span class="btn-label">Email Laurence</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="callout">
+            <strong>No pressure, no obligation.</strong> Laurence provides fully regulated advice tailored to
+            your circumstances. The goal is simply to make sure you have all the facts and clear options, so
+            you can make the right decision for you and your family.
+        </div>
+    </section>
+
+    <!-- ============ SECTION 04 · WHY CHOOSE US ============ -->
+    <section id="sec-why" class="content-section">
+        <div class="section-header">
+            <span class="sec-index">04</span>
+            <div>
+                <h2 class="section-title">Why Choose Advantage FS?</h2>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr><th>Feature</th><th>What it means for you</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Free Advice</td><td>No upfront costs for consultations or recommendations.</td></tr>
+                    <tr><td>No Mortgage, No Fee</td><td>You only pay if we secure your mortgage offer.</td></tr>
+                    <tr><td>Transparent</td><td>We'll tell you about any cheaper deals we can't access directly.</td></tr>
+                    <tr><td>Secure Client Portal</td><td>Track your application, upload documents and message your adviser anytime.</td></tr>
+                    <tr><td>Flexible Service</td><td>Phone, video, email or face-to-face — whatever suits you.</td></tr>
+                    <tr><td>Real Experience</td><td>We've seen it all and manage your expectations throughout.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- ============ SECTION 05 · HOW IT WORKS ============ -->
+    <section id="sec-how" class="content-section">
+        <div class="section-header">
+            <span class="sec-index">05</span>
+            <div>
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">From first chat to completion — and beyond</p>
+            </div>
+        </div>
+
+        <ol class="steps">
+            <li><strong>Free Initial Consultation</strong> — book a no-obligation chat with our friendly team, on the phone, by video, or face-to-face.</li>
+            <li><strong>Tailored Recommendations</strong> — we search the market and present your best options in plain English.</li>
+            <li><strong>Application Management</strong> — we handle the paperwork and chase the lender, so you don't have to.</li>
+            <li><strong>Protection Review</strong> — we make sure you and your family are financially secure all the way through.</li>
+            <li><strong>Completion &amp; Beyond</strong> — ongoing support for remortgages, moves and reviews whenever you need it.</li>
+        </ol>
+    </section>
+
+    <!-- ============ FINAL CTA (BOTTOM BOOKING BUTTON) ============ -->
+    <section id="sec-book" class="content-section">
+        <div class="cta-programme">
+            <h2>Ready to Get Started?</h2>
+            <p>
+                Pick a time that suits you — our advisers are typically available Monday to Friday,
+                10am–7pm. Mention <strong>Hoop Recruitment</strong> when you book so we know your adviser sent you.
+            </p>
+
+            <div class="cta-row">
+                <a class="cta-btn elite" href="https://advantagefs.co.uk/book-consultation/" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M16 2v4"></path><path d="M8 2v4"></path><path d="M3 10h18"></path></svg>
+                    Book Your Free Consultation
+                </a>
+                <a class="cta-btn wa-btn" target="_blank" rel="noopener" href="https://wa.me/441174420498?text=Hi%2C%20I%27ve%20been%20referred%20by%20Hoop%20Recruitment%20and%20I%27d%20like%20to%20book%20a%20free%20consultation">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+                    Reply on WhatsApp
+                </a>
+            </div>
+
+            <p class="person-note">
+                Prefer to talk? Call 0117 442 0498 · Loans &amp; insurance not for everyone — advice is regulated.
+            </p>
+        </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="page-footer">
+        <div class="foot-links">
+            <a href="tel:+441174420498">0117 442 0498</a>
+            <a href="https://advantagefs.co.uk" target="_blank" rel="noopener">advantagefs.co.uk</a>
+            <a href="mailto:laurence@advantagefs.co.uk">laurence@advantagefs.co.uk</a>
+        </div>
+
+        <div class="foot-motto">Our Experience. Your Advantage.</div>
+
+        <p class="foot-note">
+            Based in Bristol &amp; Bath — advising clients across the UK and British expats worldwide.
+        </p>
+
+        <p class="foot-note">
+            Your home may be repossessed if you do not keep up repayments on your mortgage.
+            Advice, reviews and recommendations are free. A broker fee is only charged once a formal
+            mortgage offer is issued; if a protection policy is arranged, we're paid commission by the
+            provider — never by you.
+        </p>
+
+        <p class="foot-sub">
+            © 2026 ADVANTAGE FINANCIAL SOLUTIONS · COMPANY NO. XXXXXXXX · FCA NO. XXXXXX · IN PARTNERSHIP WITH HOOP RECRUITMENT
+        </p>
+    </footer>
+</div>
+</main>
+
+<!-- BACK TO TOP -->
+<button class="to-top" id="toTop" title="Back to top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"></path></svg>
+</button>
+
+<script>
+(function () {
+    'use strict';
+
+    var root = document.documentElement;
+    var themeBtn = document.getElementById('themeToggle');
+    var toTop = document.getElementById('toTop');
+
+    /* Apply saved theme before first paint */
+    var t = null;
+    try { t = localStorage.getItem('avs-hoop-theme'); } catch (e) { /* no-op */ }
+    if (t !== 'light' && t !== 'dark') {
+        t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    root.setAttribute('data-theme', t);
+    root.classList.add('preload');
+
+    themeBtn.addEventListener('click', function () {
+        var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        try { localStorage.setItem('avs-hoop-theme', next); } catch (e) { /* no-op */ }
+    });
+
+    /* Back to top */
+    function onScroll() {
+        toTop.classList.toggle('show', window.scrollY > 600);
+    }
+    document.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    toTop.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    window.addEventListener('load', function () { root.classList.remove('preload'); });
+})();
+</script>
+</body>
+</html>
