@@ -14,9 +14,10 @@
 
 <style>
 /* ============================================================
-   HOOP× ADVANTAGE FS — SERVICE SUMMARY · V5.0
-   V5: light infinity-loop artwork hero, logo images removed
-       (artwork carries the lockup), dark-text overlay panel
+   HOOP × ADVANTAGE FS — SERVICE SUMMARY · V6.0
+   V6: hero is now a clean full-bleed artwork banner.
+       Overview panel moved OUT of the artwork and anchored
+       across the seam (overlap) so the loop reads uninterrupted.
    ============================================================ */
 :root {
     color-scheme: light;
@@ -26,12 +27,12 @@
     --sidebar-w: 300px;
     --measure: 920px;
 
-    --hero-h: clamp(500px, 62vh, 660px);
+    /* Pure-banner hero height */
+    --hero-h: clamp(360px, 52vh, 560px);
 
     --bg: #f6f8fa;
     --surface: #ffffff;
     --surface-2: #f1f5f8;
-    --surface-3: #e8eef3;
     --border: #e1e8ed;
     --border-strong: #ccd8e0;
 
@@ -56,11 +57,10 @@
     --e4: 0 8px 16px rgba(43, 69, 87, 0.06), 0 24px 56px -12px rgba(43, 69, 87, 0.18);
     --e-accent: 0 6px 20px -4px rgba(240, 101, 95, 0.42);
 
-    /* Frosted panel — light artwork means light glass, dark text */
-    --glass: rgba(255, 255, 255, 0.70);
+    --glass: rgba(255, 255, 255, 0.92);
     --glass-border: rgba(255, 255, 255, 0.85);
-    --glass-shadow: 0 2px 6px rgba(30, 60, 90, 0.04),
-                    0 28px 68px -28px rgba(30, 60, 90, 0.28);
+    --glass-shadow: 0 2px 6px rgba(30, 60, 90, 0.05),
+                    0 30px 70px -30px rgba(30, 60, 90, 0.30);
 
     --r-xs: 8px;
     --r-sm: 10px;
@@ -112,10 +112,10 @@
     --e4: 0 8px 16px rgba(0, 0, 0, 0.4), 0 24px 56px -12px rgba(0, 0, 0, 0.6);
     --e-accent: 0 6px 20px -4px rgba(245, 139, 135, 0.3);
 
-    --glass: rgba(14, 28, 38, 0.72);
+    --glass: rgba(15, 28, 37, 0.95);
     --glass-border: rgba(255, 255, 255, 0.12);
-    --glass-shadow: 0 2px 6px rgba(0, 0, 0, 0.3),
-                    0 28px 68px -28px rgba(0, 0, 0, 0.7);
+    --glass-shadow: 0 2px 6px rgba(0, 0, 0, 0.35),
+                    0 30px 70px -30px rgba(0, 0, 0, 0.75);
 }
 
 [data-theme="fun"] {
@@ -142,10 +142,10 @@
     --success: #00b884;
     --e-accent: 0 6px 20px -4px rgba(255, 138, 0, 0.45);
 
-    --glass: rgba(255, 255, 255, 0.72);
-    --glass-border: rgba(255, 255, 255, 0.85);
-    --glass-shadow: 0 2px 6px rgba(120, 20, 90, 0.05),
-                    0 28px 68px -28px rgba(120, 20, 90, 0.25);
+    --glass: rgba(255, 255, 255, 0.94);
+    --glass-border: rgba(255, 255, 255, 0.9);
+    --glass-shadow: 0 2px 6px rgba(120, 20, 90, 0.06),
+                    0 30px 70px -30px rgba(120, 20, 90, 0.28);
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -195,8 +195,7 @@ h1, h2, h3, h4 { font-family: var(--font); line-height: 1.25; letter-spacing: -0
 }
 
 /* ============================================================
-   NAV — transparent on the light artwork, glass on scroll.
-   No logo images: the hero artwork carries the lockup.
+   NAV
    ============================================================ */
 .top-nav {
     position: fixed;
@@ -224,7 +223,6 @@ h1, h2, h3, h4 { font-family: var(--font); line-height: 1.25; letter-spacing: -0
     transition: opacity var(--t-med), transform var(--t-med), color var(--t-med);
 }
 
-/* Only appears once the nav solidifies — keeps the hero art clean */
 body.scrolled .nav-label { opacity: 1; transform: translateX(0); }
 
 .nav-left { display: flex; align-items: center; gap: 14px; flex: 0 0 auto; }
@@ -238,17 +236,16 @@ body.scrolled .nav-label { opacity: 1; transform: translateX(0); }
                 border-color var(--t-fast), transform var(--t-fast);
 }
 
-/* At the top, the art behind is near-white — use light-tinted chrome */
 .top-nav .icon-btn {
     color: var(--text-2);
     border: 1px solid rgba(43, 69, 87, 0.14);
-    background: rgba(255, 255, 255, 0.55);
+    background: rgba(255, 255, 255, 0.62);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 }
 .top-nav .icon-btn:hover {
     color: var(--text);
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.9);
     border-color: rgba(43, 69, 87, 0.22);
 }
 
@@ -282,7 +279,7 @@ body.scrolled .top-nav .icon-btn:hover {
 [data-theme="fun"] .theme-toggle .icon-fun { display: block; }
 
 /* ============================================================
-   SIDEBAR — typographic header, no logo images
+   SIDEBAR
    ============================================================ */
 .sidebar {
     position: fixed;
@@ -377,80 +374,106 @@ body.scrolled.sidebar-open .sidebar { top: var(--nav-h-scrolled); }
     body.sidebar-open .main { margin-left: var(--sidebar-w); }
 }
 
-.content-wrapper {
-    max-width: var(--measure);
-    margin: 0 auto;
-    padding: 0 clamp(20px, 4.5vw, 56px);
-}
-.content-wrapper > .content-section:first-of-type { padding-top: 56px; }
-
 /* ============================================================
-   HERO — light infinity-loop artwork.
-   No darkening scrim: the art is already light, so a soft
-   radial lift keeps the panel floating without killing colour.
+   HERO — clean artwork banner. Nothing sits on the loops.
    ============================================================ */
 .hero {
     position: relative;
     min-height: var(--hero-h);
-    display: flex;
-    align-items: center;
     background-color: #ffffff;
     background-image: url('logo.png');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    overflow: hidden;
-    isolation: isolate;
     border-bottom: 1px solid var(--border);
+    isolation: isolate;
 }
 
-/* Soft edge fade so the artwork's white corners meet the page
-   background without a hard seam. Kept gentle (55% clear centre)
-   so the infinity loop stays fully visible. */
-.hero::before {
+/* Very light edge fade only — the artwork itself stays untouched
+   in the centre 70% so the infinity loop reads cleanly. */
+.hero::after {
     content: "";
     position: absolute;
     inset: 0;
     z-index: -1;
+    pointer-events: none;
     background:
-        radial-gradient(ellipse 88% 100% at 50% 50%,
-            rgba(255, 255, 255, 0) 55%,
-            rgba(246, 248, 250, 0.30) 88%,
-            rgba(246, 248, 250, 0.60) 100%);
-}
-
-[data-theme="dark"] .hero::before {
-    background:
-        radial-gradient(ellipse 90% 100% at 50% 50%,
-            rgba(10, 19, 26, 0.10) 45%,
-            rgba(10, 19, 26, 0.50) 78%,
-            rgba(10, 19, 26, 0.78) 100%);
+        radial-gradient(ellipse 92% 100% at 50% 50%,
+            rgba(255, 255, 255, 0) 70%,
+            rgba(246, 248, 250, 0.22) 92%,
+            rgba(246, 248, 250, 0.45) 100%);
 }
 
 [data-theme="dark"] .hero { background-color: #0f1c25; }
-
-.hero-inner {
-    position: relative;
-    width: 100%;
-    max-width: var(--measure);
-    margin: 0 auto;
-    padding: calc(var(--nav-h) + 34px) clamp(20px, 4.5vw, 56px) 52px;
+[data-theme="dark"] .hero::after {
+    background:
+        radial-gradient(ellipse 92% 100% at 50% 50%,
+            rgba(10, 19, 26, 0.08) 55%,
+            rgba(10, 19, 26, 0.40) 85%,
+            rgba(10, 19, 26, 0.62) 100%);
 }
 
-/* Frameless text block — sits inside one of the loops */
-.hero-panel {
+/* Scroll cue centred at the banner's base */
+.hero-cue {
+    position: absolute;
+    left: 50%;
+    bottom: 22px;
+    transform: translateX(-50%);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(43, 69, 87, 0.10);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--text-2);
+    text-decoration: none;
+    transition: background var(--t-fast), transform var(--t-fast);
+}
+.hero-cue:hover { background: rgba(255, 255, 255, 0.95); transform: translateX(-50%) translateY(-1px); }
+.hero-cue svg { width: 12px; height: 12px; }
+
+[data-theme="dark"] .hero-cue {
+    background: rgba(15, 28, 37, 0.72);
+    border-color: rgba(255, 255, 255, 0.16);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* ============================================================
+   OVERVIEW CARD — pulled up so it straddles the seam,
+   sitting half over the banner's lower edge.
+   ============================================================ */
+.content-wrapper {
+    max-width: var(--measure);
+    margin: 0 auto;
+    padding: 0 clamp(20px, 4.5vw, 56px);
+}
+
+.overview-wrap {
     position: relative;
-    max-width: 600px;
-    padding: clamp(26px, 3.4vw, 42px);
+    z-index: 2;
+    margin-top: -72px;          /* the overlap */
+    margin-bottom: 8px;
+}
+
+.overview-card {
+    position: relative;
     background: var(--glass);
-    backdrop-filter: blur(20px) saturate(1.6);
-    -webkit-backdrop-filter: blur(20px) saturate(1.6);
+    backdrop-filter: blur(22px) saturate(1.5);
+    -webkit-backdrop-filter: blur(22px) saturate(1.5);
     border: 1px solid var(--glass-border);
     border-radius: var(--r-xl);
     box-shadow: var(--glass-shadow);
+    padding: clamp(26px, 3.4vw, 44px);
 }
 
-.hero-panel::before {
+.overview-card::before {
     content: "";
     position: absolute;
     top: -1px; left: 34px;
@@ -459,35 +482,27 @@ body.scrolled.sidebar-open .sidebar { top: var(--nav-h-scrolled); }
     background: var(--accent);
 }
 
-/* Partnership line — text stands in for the logo lockup */
 .hero-partners {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     gap: 10px;
-    margin-bottom: 22px;
-    padding-bottom: 18px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
     border-bottom: 1px solid rgba(43, 69, 87, 0.12);
 }
 [data-theme="dark"] .hero-partners { border-bottom-color: rgba(255, 255, 255, 0.14); }
 
 .hero-brand {
-    font-size: 14px;
+    font-size: 13.5px;
     font-weight: 700;
     letter-spacing: -0.01em;
     color: var(--text);
 }
 
-.hero-brand.dim {
-    font-weight: 600;
-    color: var(--text-3);
-}
+.hero-brand.dim { font-weight: 600; color: var(--text-3); }
 
-.hero-sep {
-    width: 1px;
-    height: 14px;
-    background: var(--accent-line);
-}
+.hero-sep { width: 1px; height: 14px; background: var(--accent-line); }
 
 .kicker {
     display: inline-flex;
@@ -510,33 +525,32 @@ body.scrolled.sidebar-open .sidebar { top: var(--nav-h-scrolled); }
     background: var(--accent-grad);
 }
 
-.hero h1 {
+.overview-card h1 {
     font-size: var(--fs-h1);
     font-weight: 700;
     letter-spacing: -0.025em;
     color: var(--text);
-    margin-bottom: 15px;
+    margin-bottom: 14px;
 }
 
-.hero h1 .accent-text {
+.overview-card h1 .accent-text {
     background: var(--accent-grad);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 }
 
-.hero-description {
+.overview-lead {
     font-size: var(--fs-lead);
     line-height: 1.8;
     color: var(--text-2);
 }
-.hero-description strong { color: var(--text); font-weight: 600; }
+.overview-lead strong { color: var(--text); font-weight: 600; }
 
-/* Readability guard on dark glass */
-[data-theme="dark"] .hero h1,
-[data-theme="dark"] .hero-description strong,
+[data-theme="dark"] .overview-card h1,
+[data-theme="dark"] .overview-lead strong,
 [data-theme="dark"] .hero-brand { color: #ffffff; }
-[data-theme="dark"] .hero-description { color: rgba(255, 255, 255, 0.82); }
+[data-theme="dark"] .overview-lead { color: rgba(255, 255, 255, 0.84); }
 
 /* ============================================================
    SECTIONS
@@ -735,7 +749,7 @@ body.scrolled.sidebar-open .sidebar { top: var(--nav-h-scrolled); }
 [data-theme="dark"] .steps li::before { color: #0f1c25; }
 
 /* ============================================================
-   PERSON CARD — the only image on the page
+   PERSON CARD
    ============================================================ */
 .person-card {
     display: flex;
@@ -916,15 +930,11 @@ body.scrolled.sidebar-open .sidebar { top: var(--nav-h-scrolled); }
 }
 
 @media (max-width: 900px) {
-    .hero {
-        min-height: 0;
-        background-position: center top;
-        background-size: 142% auto;
-    }
-    .hero-inner { padding: calc(var(--nav-h) + 26px) 18px 40px; }
-    .hero-panel { max-width: none; }
-    .hero-panel { background: rgba(255, 255, 255, 0.86); }
-    [data-theme="dark"] .hero-panel { background: rgba(12, 24, 33, 0.88); }
+    :root { --hero-h: clamp(300px, 44vh, 420px); }
+    .hero { background-position: center top; background-size: 138% auto; }
+    .overview-wrap { margin-top: -52px; }
+    .overview-card { background: rgba(255, 255, 255, 0.96); }
+    [data-theme="dark"] .overview-card { background: rgba(15, 28, 37, 0.97); }
 }
 
 @media (max-width: 760px) {
@@ -933,10 +943,11 @@ body.scrolled.sidebar-open .sidebar { top: var(--nav-h-scrolled); }
 
 @media (max-width: 640px) {
     .content-wrapper { padding: 0 18px; }
-    .content-wrapper > .content-section:first-of-type { padding-top: 40px; }
-    .hero-panel { padding: 26px 22px; border-radius: var(--r-lg); }
-    .hero-panel::before { left: 22px; width: 64px; }
-    .hero-partners { font-size: 13px; }
+    .overview-wrap { margin-top: -44px; }
+    .overview-card { padding: 24px 20px; border-radius: var(--r-lg); }
+    .overview-card::before { left: 20px; width: 64px; }
+    .hero-partners { font-size: 12.5px; }
+    .hero-cue { display: none; }
     .content-section { padding: 40px 0 44px; }
     .person-card { flex-direction: column; gap: 20px; }
     .lead { padding: 20px 22px 20px 24px; }
@@ -944,9 +955,10 @@ body.scrolled.sidebar-open .sidebar { top: var(--nav-h-scrolled); }
 }
 
 @media (max-width: 480px) {
-    :root { --nav-h: 62px; --nav-h-scrolled: 56px; }
+    :root { --nav-h: 62px; --nav-h-scrolled: 56px; --hero-h: 260px; }
     .nav-label { display: none; }
-    .hero { background-size: 172% auto; }
+    .hero { background-size: 165% auto; }
+    .overview-wrap { margin-top: -36px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -977,7 +989,7 @@ body.scrolled.sidebar-open .sidebar { top: var(--nav-h-scrolled); }
     </nav>
 
     <div class="sidebar-foot">
-        <div class="sidebar-foot-note">SERVICE SUMMARY · V5.0</div>
+        <div class="sidebar-foot-note">SERVICE SUMMARY · V6.0</div>
     </div>
 </aside>
 
@@ -1016,10 +1028,19 @@ body.scrolled.sidebar-open .sidebar { top: var(--nav-h-scrolled); }
     </div>
 </nav>
 
-<!-- ============ HERO — INFINITY LOOP ARTWORK ============ -->
-<header class="hero" id="overview">
-    <div class="hero-inner">
-        <div class="hero-panel">
+<!-- ============ HERO — CLEAN ARTWORK BANNER ============ -->
+<header class="hero" aria-label="Hoop Recruitment and Advantage Financial Solutions partnership artwork">
+    <a class="hero-cue" href="#overview">
+        Scroll for details
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg>
+    </a>
+</header>
+
+<div class="content-wrapper">
+
+    <!-- ============ OVERVIEW — straddles the banner edge ============ -->
+    <section id="overview" class="overview-wrap">
+        <div class="overview-card">
             <div class="hero-partners">
                 <span class="hero-brand">Hoop Recruitment</span>
                 <span class="hero-sep"></span>
@@ -1029,17 +1050,14 @@ body.scrolled.sidebar-open .sidebar { top: var(--nav-h-scrolled); }
             <p class="kicker">Official Partnership</p>
             <h1>Overview of <span class="accent-text">Partnership</span></h1>
 
-            <p class="hero-description">
+            <p class="overview-lead">
                 <strong>Hoop Recruitment has officially partnered with Advantage Financial Solutions</strong> to
                 give every candidate direct, exclusive access to expert, independent mortgage and protection
                 advice. This partnership connects locum professionals with specialists who understand how your
                 career operates and how you earn.
             </p>
         </div>
-    </div>
-</header>
-
-<div class="content-wrapper">
+    </section>
 
     <section id="protection" class="content-section">
         <div class="section-header">
@@ -1349,7 +1367,7 @@ body.scrolled.sidebar-open .sidebar { top: var(--nav-h-scrolled); }
     });
 
     var sections = Array.prototype.slice.call(
-        document.querySelectorAll('section.content-section, header.hero')
+        document.querySelectorAll('section.content-section, section.overview-wrap')
     );
     var links = Array.prototype.slice.call(sidebar.querySelectorAll('a.sidebar-link'));
     var lastActive = null;
@@ -1367,8 +1385,8 @@ body.scrolled.sidebar-open .sidebar { top: var(--nav-h-scrolled); }
 
         progress.style.transform = 'scaleX(' + (max > 0 ? Math.min(y / max, 1) : 0) + ')';
 
-        var heroEl = document.getElementById('overview');
-        var threshold = heroEl ? heroEl.offsetHeight * 0.55 : 200;
+        var heroEl = document.querySelector('.hero');
+        var threshold = heroEl ? heroEl.offsetHeight * 0.4 : 200;
         body.classList.toggle('scrolled', y > threshold);
         toTop.classList.toggle('show', y > 600);
 
