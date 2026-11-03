@@ -1,1 +1,1394 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f7f9fb">
+<meta name="description" content="Hoop Recruitment has officially partnered with Advantage Financial Solutions to give every candidate direct, exclusive access to expert, independent mortgage and protection advice.">
+<title>Hoop Recruitment × Advantage FS — Mortgage &amp; Protection Advice for Locums</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%233d5a6e'/%3E%3Ccircle cx='32' cy='32' r='14' fill='none' stroke='%23f0655f' stroke-width='7'/%3E%3C/svg%3E">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   HOOP × ADVANTAGE FS — SERVICE SUMMARY · V3.0 (gold pass)
+   Brand: Hoop navy #3d5a6e · coral #f0655f · Poppins
+   Additions: token layer, progress bar, glass nav state,
+   depth ramp, coral accent gradients, hero texture
+   ============================================================ */
+
+/* ---- 1. DESIGN TOKENS ---- */
+:root {
+    color-scheme: light;
+
+    /* Layout */
+    --nav-h: 72px;
+    --nav-h-scrolled: 62px;
+    --sidebar-w: 300px;
+    --measure: 920px;
+
+    /* Surfaces */
+    --bg: #f6f8fa;
+    --bg-tint: #eef3f6;
+    --surface: #ffffff;
+    --surface-2: #f1f5f8;
+    --surface-3: #e8eef3;
+    --border: #e1e8ed;
+    --border-strong: #ccd8e0;
+
+    /* Text */
+    --text: #2b4557;
+    --text-2: #587084;
+    --text-3: #7f95a5;
+    --text-muted: #a4b6c2;
+
+    /* Brand */
+    --navy: #3d5a6e;
+    --navy-deep: #2e4557;
+    --accent: #f0655f;
+    --accent-strong: #d64d48;
+    --accent-light: #ff8d88;
+    --accent-soft: rgba(240, 101, 95, 0.08);
+    --accent-line: rgba(240, 101, 95, 0.26);
+    --accent-glow: rgba(240, 101, 95, 0.14);
+    --accent-grad: linear-gradient(135deg, #f0655f 0%, #ff8d88 100%);
+    --success: #2b9b6a;
+
+    /* Elevation ramp — each level visibly deeper than the last */
+    --e0: 0 1px 1px rgba(43, 69, 87, 0.04);
+    --e1: 0 1px 2px rgba(43, 69, 87, 0.06), 0 1px 1px rgba(43, 69, 87, 0.04);
+    --e2: 0 2px 4px rgba(43, 69, 87, 0.05), 0 6px 14px -4px rgba(43, 69, 87, 0.09);
+    --e3: 0 4px 8px rgba(43, 69, 87, 0.05), 0 12px 28px -6px rgba(43, 69, 87, 0.12);
+    --e4: 0 8px 16px rgba(43, 69, 87, 0.06), 0 24px 56px -12px rgba(43, 69, 87, 0.18);
+    --e-accent: 0 6px 20px -4px rgba(240, 101, 95, 0.42);
+
+    /* Radii */
+    --r-xs: 8px;
+    --r-sm: 10px;
+    --r-md: 14px;
+    --r-lg: 20px;
+    --r-xl: 26px;
+
+    /* Type scale */
+    --fs-h1: clamp(30px, 4.1vw, 43px);
+    --fs-h2: clamp(23px, 2.7vw, 29px);
+    --fs-h3: 18px;
+    --fs-body: 15px;
+    --fs-lead: 16.5px;
+    --fs-small: 13.5px;
+    --fs-micro: 11px;
+
+    /* Motion */
+    --ease: cubic-bezier(0.4, 0, 0.2, 1);
+    --t-fast: 140ms var(--ease);
+    --t-med: 240ms var(--ease);
+    --t-slow: 360ms var(--ease);
+
+    --font: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* ---- 2. DARK ---- */
+[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #0a131a;
+    --bg-tint: #0d1820;
+    --surface: #0f1c25;
+    --surface-2: #152530;
+    --surface-3: #1b2d3a;
+    --border: #22333f;
+    --border-strong: #31464f;
+
+    --text: #e7f0f6;
+    --text-2: #adbec9;
+    --text-3: #7c909c;
+    --text-muted: #5a6d79;
+
+    --navy: #e7f0f6;
+    --navy-deep: #ffffff;
+    --accent: #f58b87;
+    --accent-strong: #ffb1ac;
+    --accent-light: #ffc7c3;
+    --accent-soft: rgba(245, 139, 135, 0.09);
+    --accent-line: rgba(245, 139, 135, 0.28);
+    --accent-glow: rgba(245, 139, 135, 0.12);
+    --accent-grad: linear-gradient(135deg, #f58b87 0%, #ffb1ac 100%);
+    --success: #4cc795;
+
+    --e0: 0 1px 1px rgba(0, 0, 0, 0.3);
+    --e1: 0 1px 2px rgba(0, 0, 0, 0.4), 0 1px 1px rgba(0, 0, 0, 0.25);
+    --e2: 0 2px 4px rgba(0, 0, 0, 0.35), 0 6px 14px -4px rgba(0, 0, 0, 0.45);
+    --e3: 0 4px 8px rgba(0, 0, 0, 0.35), 0 12px 28px -6px rgba(0, 0, 0, 0.5);
+    --e4: 0 8px 16px rgba(0, 0, 0, 0.4), 0 24px 56px -12px rgba(0, 0, 0, 0.6);
+    --e-accent: 0 6px 20px -4px rgba(245, 139, 135, 0.3);
+}
+
+/* ---- 3. FUN ---- */
+[data-theme="fun"] {
+    color-scheme: light;
+    --bg: #fff0fa;
+    --bg-tint: #ffe6f6;
+    --surface: #ffffff;
+    --surface-2: #ffe9f7;
+    --surface-3: #ffdcf2;
+    --border: #ffc4ec;
+    --border-strong: #ff9fe0;
+
+    --text: #3b0a5e;
+    --text-2: #7a2f9e;
+    --text-3: #a55cc4;
+    --text-muted: #c99ad9;
+
+    --navy: #3b0a5e;
+    --navy-deep: #24063a;
+    --accent: #ff2d95;
+    --accent-strong: #d9017a;
+    --accent-light: #ff7ec0;
+    --accent-soft: rgba(255, 45, 149, 0.10);
+    --accent-line: rgba(255, 45, 149, 0.36);
+    --accent-glow: rgba(255, 45, 149, 0.22);
+    --accent-grad: linear-gradient(135deg, #ff2d95 0%, #ff8a00 100%);
+    --success: #00b884;
+
+    --e-accent: 0 6px 20px -4px rgba(255, 138, 0, 0.45);
+}
+
+/* ---- 4. RESET ---- */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--nav-h) + 24px);
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: var(--font);
+    font-size: var(--fs-body);
+    line-height: 1.7;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color var(--t-med), color var(--t-med);
+    overflow-x: hidden;
+}
+
+/* Pre-paint guard so nothing animates or flashes on load */
+html.preload *, html.preload *::before, html.preload *::after {
+    transition: none !important;
+    animation: none !important;
+}
+
+img { max-width: 100%; }
+::selection { background: rgba(240, 101, 95, 0.22); }
+[data-theme="fun"] ::selection { background: rgba(255, 45, 149, 0.25); }
+
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 5px;
+}
+
+h1, h2, h3, h4 { font-family: var(--font); line-height: 1.25; letter-spacing: -0.015em; }
+
+/* ============================================================
+   5. CHROME — progress bar, nav, sidebar
+   ============================================================ */
+
+/* Reading progress — 2px coral, grows with scroll */
+.progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 2px;
+    width: 100%;
+    background: var(--accent-grad);
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    z-index: 200;
+    pointer-events: none;
+}
+
+.top-nav {
+    position: sticky;
+    top: 0;
+    height: var(--nav-h);
+    background: color-mix(in srgb, var(--surface) 78%, transparent);
+    backdrop-filter: blur(16px) saturate(1.6);
+    -webkit-backdrop-filter: blur(16px) saturate(1.6);
+    border-bottom: 1px solid var(--border);
+    z-index: 150;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 20px;
+    transition: height var(--t-med), box-shadow var(--t-med), border-color var(--t-med);
+}
+
+/* Nav "lifts" once you start scrolling — definition without noise */
+body.scrolled .top-nav {
+    height: var(--nav-h-scrolled);
+    box-shadow: 0 1px 0 var(--border), 0 8px 24px -12px rgba(43, 69, 87, 0.22);
+}
+
+.nav-left { display: flex; align-items: center; gap: 16px; flex: 0 0 auto; }
+
+.icon-btn {
+    width: 40px; height: 40px;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: var(--r-sm);
+    color: var(--text-2);
+    cursor: pointer;
+    transition: color var(--t-fast), background var(--t-fast), border-color var(--t-fast), transform var(--t-fast);
+}
+.icon-btn:hover { color: var(--text); background: var(--surface-2); border-color: var(--border-strong); }
+.icon-btn:active { transform: scale(0.96); }
+.icon-btn svg { width: 18px; height: 18px; }
+
+.brand { display: flex; align-items: center; gap: 14px; }
+
+/* Logos: no chips in light mode; white plate only in dark/fun */
+.logo-img { display: block; width: auto; height: auto; flex: 0 0 auto; }
+.logo-hoop { height: 26px; }
+.logo-avs  { height: 32px; }
+[data-theme="dark"] .logo-img,
+[data-theme="fun"] .logo-img { background: #fff; border-radius: 7px; padding: 3px 6px; }
+
+.brand-x { color: var(--text-muted); font-size: 13px; font-weight: 500; }
+
+.nav-actions { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+
+.theme-toggle svg { display: none; }
+[data-theme="light"] .theme-toggle .icon-sun { display: block; }
+[data-theme="dark"] .theme-toggle .icon-moon { display: block; }
+[data-theme="fun"] .theme-toggle .icon-fun { display: block; }
+[data-theme="fun"] .theme-toggle { color: var(--accent); border-color: var(--accent-line); }
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: var(--nav-h);
+    bottom: 0;
+    width: var(--sidebar-w);
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    z-index: 140;
+    transform: translateX(-100%);
+    transition: transform var(--t-slow), top var(--t-med);
+}
+body.sidebar-open .sidebar { transform: translateX(0); }
+body.scrolled.sidebar-open .sidebar { top: var(--nav-h-scrolled); }
+
+.sidebar-backdrop {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(43, 69, 87, 0.42);
+    backdrop-filter: blur(3px);
+    z-index: 135;
+}
+
+.sidebar-doc { margin: 16px 16px 0; padding: 18px; background: var(--surface-2); border-radius: var(--r-md); }
+
+.sd-logos { display: flex; align-items: center; gap: 12px; padding-bottom: 14px; margin-bottom: 14px; border-bottom: 1px solid var(--border); }
+.sd-logos .logo-hoop { height: 18px; }
+.sd-logos .logo-avs  { height: 24px; }
+
+.sidebar-doc-title { font-size: 13.5px; font-weight: 600; color: var(--text); line-height: 1.35; }
+.sidebar-doc-sub { font-size: 11px; color: var(--text-3); margin-top: 2px; }
+
+.sidebar-nav { padding: 6px 0 20px; }
+
+.sidebar-part-label {
+    padding: 16px 22px 8px;
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.sidebar-link {
+    position: relative;
+    display: block;
+    margin: 1px 12px;
+    padding: 9px 14px;
+    font-size: 13px; font-weight: 500; line-height: 1.45;
+    color: var(--text-2);
+    text-decoration: none;
+    border-radius: var(--r-xs);
+    transition: color var(--t-fast), background var(--t-fast), padding var(--t-fast);
+}
+.sidebar-link:hover { color: var(--text); background: var(--surface-2); }
+.sidebar-link.active {
+    color: var(--accent-strong);
+    background: var(--accent-soft);
+    font-weight: 600;
+}
+
+.sidebar-foot { margin: 16px 16px 0; padding: 14px 4px 18px; border-top: 1px solid var(--border); }
+.sidebar-foot-note { font-size: 10px; letter-spacing: 0.5px; color: var(--text-muted); }
+
+/* ============================================================
+   6. LAYOUT
+   ============================================================ */
+.main {
+    min-height: 100vh;
+    transition: margin-left var(--t-slow);
+}
+@media (min-width: 1024px) {
+    body.sidebar-open .main { margin-left: var(--sidebar-w); }
+}
+
+.content-wrapper {
+    max-width: var(--measure);
+    margin: 0 auto;
+    padding: 32px clamp(20px, 4.5vw, 56px) 0;
+}
+
+/* ============================================================
+   7. HERO — the anchor surface
+   ============================================================ */
+.hero { padding: 8px 0 28px; }
+
+.hero-card {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-xl);
+    box-shadow: var(--e4);
+    padding: clamp(32px, 5.2vw, 58px);
+}
+
+/* Blueprint grid — barely-there definition behind the content */
+.hero-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background-image:
+        linear-gradient(to right, var(--border) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+    background-size: 34px 34px;
+    opacity: 0.4;
+    mask-image: radial-gradient(ellipse 90% 75% at 78% 18%, #000 0%, transparent 72%);
+    -webkit-mask-image: radial-gradient(ellipse 90% 75% at 78% 18%, #000 0%, transparent 72%);
+}
+
+/* Coral ring — the Hoop "O", oversized and cropped */
+.hero-card::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 320px; height: 320px;
+    top: -130px; right: -110px;
+    border-radius: 50%;
+    border: 40px solid var(--accent);
+    opacity: 0.13;
+    pointer-events: none;
+}
+
+.hero-ring-sm {
+    position: absolute;
+    z-index: -1;
+    width: 116px; height: 116px;
+    bottom: -44px; right: 150px;
+    border-radius: 50%;
+    border: 20px solid var(--accent);
+    opacity: 0.09;
+    pointer-events: none;
+}
+
+[data-theme="dark"] .hero-card::after { opacity: 0.10; }
+[data-theme="dark"] .hero-ring-sm { opacity: 0.07; }
+[data-theme="fun"] .hero-card::after { opacity: 0.16; }
+
+.hero-logos {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+.hero-logos .logo-hoop { height: 42px; }
+.hero-logos .logo-avs  { height: 54px; }
+.hero-x { color: var(--text-muted); font-size: 17px; font-weight: 500; }
+
+/* Kicker with coral rule — consistent editorial marker */
+.kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-size: var(--fs-micro);
+    font-weight: 700;
+    letter-spacing: 2.2px;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+    margin-bottom: 14px;
+}
+.kicker::before {
+    content: "";
+    width: 18px; height: 2px;
+    border-radius: 2px;
+    background: var(--accent-grad);
+}
+
+.hero h1 {
+    position: relative;
+    font-size: var(--fs-h1);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: var(--text);
+    margin-bottom: 16px;
+    max-width: 660px;
+}
+.hero h1 .accent-text {
+    background: var(--accent-grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero-description {
+    position: relative;
+    font-size: var(--fs-lead);
+    line-height: 1.85;
+    color: var(--text-2);
+    max-width: 650px;
+}
+.hero-description strong { color: var(--text); font-weight: 600; }
+
+/* ============================================================
+   8. SECTIONS
+   ============================================================ */
+.content-section {
+    position: relative;
+    padding: 54px 0 58px;
+    border-bottom: 1px solid var(--border);
+}
+.content-section:last-of-type { border-bottom: none; }
+
+.section-header { margin-bottom: 28px; }
+
+.section-title {
+    font-size: var(--fs-h2);
+    font-weight: 700;
+    letter-spacing: -0.022em;
+    color: var(--text);
+}
+
+/* Coral underline gradient — replaces the flat 3px bar */
+.section-title::after {
+    content: "";
+    display: block;
+    width: 52px; height: 3px;
+    margin-top: 13px;
+    border-radius: 3px;
+    background: var(--accent-grad);
+}
+
+.content-section h3 {
+    position: relative;
+    font-size: var(--fs-h3);
+    font-weight: 600;
+    color: var(--text);
+    margin: 34px 0 14px;
+    padding-bottom: 10px;
+}
+.content-section h3::after {
+    content: "";
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 28px; height: 2px;
+    border-radius: 2px;
+    background: var(--accent-line);
+}
+
+.content-section p { color: var(--text-2); margin-bottom: 16px; line-height: 1.8; }
+.content-section strong { color: var(--text); font-weight: 600; }
+
+/* Lead block — tinted, coral-railed, sits proud of the body text */
+.lead {
+    position: relative;
+    font-size: var(--fs-lead);
+    line-height: 1.8;
+    color: var(--text-2);
+    padding: 24px 28px 24px 30px;
+    background: linear-gradient(180deg, var(--accent-soft), var(--surface));
+    border: 1px solid var(--accent-line);
+    border-radius: var(--r-md);
+    box-shadow: var(--e1);
+    margin: 0 0 22px;
+    overflow: hidden;
+}
+.lead::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: var(--accent-grad);
+}
+
+.callout-box {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--accent-line);
+    border-radius: var(--r-md);
+    box-shadow: var(--e1);
+    padding: 18px 24px 18px 26px;
+    margin: 22px 0;
+    color: var(--text-2);
+    line-height: 1.75;
+}
+.callout-box::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: var(--accent-grad);
+    border-radius: var(--r-md) 0 0 var(--r-md);
+}
+.callout-box strong { color: var(--accent-strong); }
+
+/* ============================================================
+   9. LISTS
+   ============================================================ */
+.list-highlight { list-style: none; margin: 18px 0; }
+
+.list-highlight li {
+    position: relative;
+    padding: 13px 0 13px 34px;
+    color: var(--text-2);
+    line-height: 1.75;
+    border-bottom: 1px solid var(--border);
+    transition: color var(--t-fast);
+}
+.list-highlight li:last-child { border-bottom: none; }
+.list-highlight li:hover { color: var(--text); }
+
+.list-highlight li::before {
+    content: "✓";
+    position: absolute;
+    left: 0; top: 13px;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: rgba(43, 155, 106, 0.12);
+    color: var(--success);
+    font-size: 11px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+}
+
+/* ============================================================
+   10. CARDS
+   ============================================================ */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+}
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+}
+
+.card {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    box-shadow: var(--e2);
+    padding: 22px;
+    overflow: hidden;
+    transition: transform var(--t-med), box-shadow var(--t-med), border-color var(--t-med);
+}
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--accent-grad);
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    transition: transform var(--t-med);
+}
+.card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent-line);
+    box-shadow: var(--e3);
+}
+.card:hover::before { transform: scaleX(1); }
+
+.card h4 { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+.card p { font-size: var(--fs-small); color: var(--text-2); line-height: 1.7; margin: 0; }
+
+.card .rating {
+    display: inline-block;
+    margin-bottom: 8px;
+    font-size: 19px; font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+}
+
+/* ============================================================
+   11. STEPS — gradient markers on a rail
+   ============================================================ */
+.steps {
+    list-style: none;
+    counter-reset: step;
+    position: relative;
+    margin: 20px 0;
+}
+.steps::before {
+    content: "";
+    position: absolute;
+    left: 19px; top: 26px; bottom: 26px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--accent), transparent);
+    opacity: 0.35;
+}
+
+.steps li {
+    counter-increment: step;
+    position: relative;
+    padding: 14px 0 14px 62px;
+    color: var(--text-2);
+    line-height: 1.75;
+}
+
+.steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0; top: 15px;
+    width: 40px; height: 40px;
+    border-radius: 13px;
+    background: var(--accent-grad);
+    color: #fff;
+    font-size: 15px; font-weight: 600;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: var(--e-accent);
+    z-index: 1;
+}
+.steps li strong { color: var(--text); font-weight: 600; }
+
+/* Dark mode: markers go light, so numerals flip */
+[data-theme="dark"] .steps li::before { color: #0f1c25; }
+
+/* ============================================================
+   12. PERSON CARD
+   ============================================================ */
+.person-card {
+    display: flex;
+    gap: 26px;
+    align-items: flex-start;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    box-shadow: var(--e3);
+    padding: 24px;
+    margin: 24px 0;
+    transition: box-shadow var(--t-med), border-color var(--t-med);
+}
+.person-card:hover { border-color: var(--border-strong); box-shadow: var(--e4); }
+
+.person-photo-wrap { position: relative; flex: 0 0 auto; }
+.person-photo-wrap::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: rotate(-4deg) translate(-8px, 8px);
+    border-radius: 16px;
+    background: var(--accent-grad);
+    opacity: 0.22;
+}
+.person-photo {
+    position: relative;
+    display: block;
+    width: 148px;
+    height: auto;
+    border-radius: 14px;
+    background: var(--surface-2);
+    box-shadow: var(--e3);
+}
+
+.person-info { flex: 1; min-width: 0; }
+
+.person-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase;
+    color: var(--accent-strong);
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-line);
+    border-radius: 999px;
+    padding: 4px 12px;
+    margin-bottom: 12px;
+}
+
+.person-info h4 { font-size: 19px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+.person-role { font-size: 12.5px; font-weight: 500; color: var(--text-3); margin-bottom: 12px; }
+.person-info p { font-size: var(--fs-small); line-height: 1.75; color: var(--text-2); margin: 0; }
+
+/* ============================================================
+   13. LINKS & BUTTONS
+   ============================================================ */
+.inline-link {
+    color: var(--accent-strong);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-line);
+    transition: color var(--t-fast), border-color var(--t-fast);
+}
+.inline-link:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 22px 0; }
+
+.cta-btn {
+    display: inline-flex; align-items: center; gap: 9px;
+    padding: 12px 20px;
+    border-radius: var(--r-sm);
+    border: 1px solid var(--navy);
+    background: var(--navy);
+    color: #fff;
+    font-family: inherit; font-size: 14px; font-weight: 600;
+    text-decoration: none;
+    box-shadow: var(--e2);
+    transition: transform var(--t-fast), box-shadow var(--t-fast), background var(--t-fast);
+    cursor: pointer;
+}
+.cta-btn:hover { transform: translateY(-1px); box-shadow: var(--e3); background: var(--navy-deep); }
+[data-theme="dark"] .cta-btn { color: #0a131a; }
+.cta-btn.wa-btn { background: var(--accent-grad); border-color: transparent; color: #fff; }
+.cta-btn svg { width: 16px; height: 16px; flex: 0 0 auto; }
+
+/* ============================================================
+   14. FOOTER — navy band with brand mark
+   ============================================================ */
+.page-footer {
+    margin-top: 56px;
+    background: var(--navy-deep);
+    color: rgba(255, 255, 255, 0.76);
+    padding: 56px 24px 34px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+[data-theme="dark"] .page-footer { background: #08121a; border-top: 1px solid var(--border); }
+
+.page-footer::before {
+    content: "";
+    position: absolute;
+    width: 260px; height: 260px;
+    top: -140px; left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    border: 34px solid var(--accent);
+    opacity: 0.10;
+}
+
+.foot-mark {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    border: 3px solid var(--accent);
+    margin-bottom: 18px;
+    font-size: 17px; font-weight: 700; color: #fff;
+    letter-spacing: -1px;
+}
+
+.page-footer .foot-links {
+    position: relative;
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 18px;
+    margin-bottom: 14px;
+}
+.page-footer a { color: rgba(255, 255, 255, 0.86); text-decoration: none; font-weight: 500; transition: color var(--t-fast); }
+.page-footer a:hover { color: var(--accent-light); }
+
+.page-footer .foot-motto {
+    position: relative;
+    font-size: 16px; font-weight: 600; color: #fff;
+    margin-bottom: 14px;
+}
+.page-footer .foot-motto span { color: var(--accent-light); }
+
+.page-footer .foot-note {
+    position: relative;
+    font-size: 11.5px;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.75;
+    max-width: 640px;
+    margin: 0 auto 8px;
+}
+.page-footer .foot-sub {
+    position: relative;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.10);
+    font-size: 10px; letter-spacing: 0.4px;
+    color: rgba(255, 255, 255, 0.38);
+}
+
+/* ============================================================
+   15. BACK TO TOP
+   ============================================================ */
+.to-top {
+    position: fixed;
+    right: 22px; bottom: 22px;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--border-strong);
+    background: var(--surface);
+    color: var(--text-2);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--e3);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity var(--t-med), transform var(--t-med), visibility var(--t-med), color var(--t-fast);
+    z-index: 120;
+}
+.to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+.to-top:hover { color: var(--accent-strong); }
+.to-top svg { width: 17px; height: 17px; }
+
+/* ============================================================
+   16. RESPONSIVE
+   ============================================================ */
+@media (max-width: 1023px) {
+    .sidebar { width: min(var(--sidebar-w), 86vw); box-shadow: var(--e4); }
+    .sidebar-backdrop {
+        display: block;
+        opacity: 0; visibility: hidden;
+        transition: opacity var(--t-med), visibility var(--t-med);
+    }
+    body.sidebar-open .sidebar-backdrop { opacity: 1; visibility: visible; }
+}
+
+@media (max-width: 760px) {
+    .card-grid, .grid-2 { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+    .content-wrapper { padding: 20px 18px 0; }
+    .hero-card { padding: 26px 22px; border-radius: var(--r-lg); }
+    .hero-card::before { opacity: 0.25; }
+    .hero-ring-sm { display: none; }
+    .hero-logos .logo-hoop { height: 32px; }
+    .hero-logos .logo-avs  { height: 42px; }
+    .content-section { padding: 40px 0 44px; }
+    .person-card { flex-direction: column; gap: 20px; }
+    .lead { padding: 20px 22px 20px 24px; }
+    .page-footer { padding: 44px 20px 28px; }
+}
+
+@media (max-width: 480px) {
+    :root { --nav-h: 64px; --nav-h-scrolled: 58px; }
+    .brand .logo-hoop { height: 20px; }
+    .brand .logo-avs  { height: 26px; }
+    .brand { gap: 10px; }
+    .brand-x { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition-duration: 0.01ms !important; animation: none !important; }
+    html { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+
+<!-- MOBILE BACKDROP -->
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+<!-- ============ SIDEBAR ============ -->
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-doc">
+        <div class="sd-logos">
+            <img class="logo-img logo-hoop" src="oop.png" alt="Hoop Recruitment" width="66" height="18">
+            <img class="logo-img logo-avs" src="advantage-logo.png" alt="Advantage Financial Solutions" width="32" height="24">
+        </div>
+        <div>
+            <div class="sidebar-doc-title">Service Summary</div>
+            <div class="sidebar-doc-sub">Hoop Recruitment × Advantage FS</div>
+        </div>
+    </div>
+
+    <nav class="sidebar-nav">
+        <div class="sidebar-part-label">On this page</div>
+        <a href="#overview" class="sidebar-link">Overview of the Partnership</a>
+        <a href="#protection" class="sidebar-link">Protection Advice for Locums &amp; Contractors</a>
+        <a href="#mortgage-advice" class="sidebar-link">Mortgage Advice for Locums &amp; Contractors</a>
+        <a href="#protection-service" class="sidebar-link">Summary of the Protection Advice Service</a>
+        <a href="#mortgage-service" class="sidebar-link">Mortgage Services for Locums</a>
+        <a href="#why-choose" class="sidebar-link">Why Choose Advantage Financial Solutions?</a>
+    </nav>
+
+    <div class="sidebar-foot">
+        <div class="sidebar-foot-note">SERVICE SUMMARY · V3.0</div>
+    </div>
+</aside>
+
+<!-- ============ MAIN ============ -->
+<main class="main">
+
+<nav class="top-nav">
+    <div class="nav-left">
+        <button class="icon-btn" id="sidebarToggle" title="Toggle navigation" aria-label="Toggle navigation" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+                <path d="M9 3v18"></path>
+            </svg>
+        </button>
+
+        <div class="brand">
+            <a href="index.html" aria-label="Back to adviser chooser">
+                <img class="logo-img logo-hoop" src="oop.png" alt="Hoop Recruitment" width="95" height="26">
+            </a>
+            <span class="brand-x">×</span>
+            <a href="https://advantagefs.co.uk" target="_blank" rel="noopener" aria-label="Advantage FS website">
+                <img class="logo-img logo-avs" src="advantage-logo.png" alt="Advantage Financial Solutions" width="43" height="32">
+            </a>
+        </div>
+    </div>
+
+    <div class="nav-actions">
+        <button class="icon-btn theme-toggle" id="themeToggle" title="Theme" aria-label="Change theme">
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2"></path><path d="M12 20v2"></path>
+                <path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path>
+                <path d="M2 12h2"></path><path d="M20 12h2"></path>
+                <path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path>
+            </svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+            </svg>
+            <svg class="icon-fun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3v3"></path><path d="M12 18v3"></path>
+                <path d="M3 12h3"></path><path d="M18 12h3"></path>
+                <path d="M12 8a4 4 0 0 0-4 4c0 1.5.8 2.4 1.6 3.2.6.6 1 1.2 1.1 2.3h2.6c.1-1.1.5-1.7 1.1-2.3.8-.8 1.6-1.7 1.6-3.2a4 4 0 0 0-4-4Z"></path>
+                <path d="M10 21h4"></path>
+            </svg>
+        </button>
+    </div>
+</nav>
+
+<div class="content-wrapper">
+
+    <!-- ============ HERO · OVERVIEW ============ -->
+    <header class="hero" id="overview">
+        <div class="hero-card">
+            <span class="hero-ring-sm" aria-hidden="true"></span>
+
+            <div class="hero-logos">
+                <img class="logo-img logo-hoop" src="oop.png" alt="Hoop Recruitment" width="153" height="42">
+                <span class="hero-x">×</span>
+                <img class="logo-img logo-avs" src="advantage-logo.png" alt="Advantage Financial Solutions" width="72" height="54">
+            </div>
+
+            <p class="kicker">Official Partnership</p>
+            <h1>Overview of <span class="accent-text">Partnership</span></h1>
+
+            <p class="hero-description">
+                <strong>Hoop Recruitment has officially partnered with Advantage Financial Solutions</strong> to
+                give every candidate direct, exclusive access to expert, independent mortgage and protection
+                advice. This partnership connects locum professionals with specialists who understand how your
+                career operates and how you earn.
+            </p>
+        </div>
+    </header>
+
+    <!-- ============ PROTECTION ADVICE ============ -->
+    <section id="protection" class="content-section">
+        <div class="section-header">
+            <p class="kicker">Protection</p>
+            <h2 class="section-title">Protection Advice for Locums &amp; Contractors</h2>
+        </div>
+
+        <p>
+            Because independent working means you do not receive employer-funded sick pay or
+            death-in-service benefits, a specialist advisory service is available to help you explore how
+            to protect yourself and your family financially. This includes looking at ways to maintain a
+            reliable income if an injury or illness stops you from working, ensuring your home and mortgage
+            are covered if the unexpected happens, and providing lump-sum financial security for your loved
+            ones.
+        </p>
+
+        <p><a class="inline-link" href="#protection-service">See the full protection service details below ↓</a></p>
+    </section>
+
+    <!-- ============ MORTGAGE ADVICE ============ -->
+    <section id="mortgage-advice" class="content-section">
+        <div class="section-header">
+            <p class="kicker">Mortgages</p>
+            <h2 class="section-title">Mortgage Advice for Locums &amp; Contractors</h2>
+        </div>
+
+        <p>
+            Because being self-employed or working on a contract basis can sometimes make securing property
+            financing feel complicated through high-street lenders, a specialist mortgage service is
+            available to help navigate the market. This includes understanding how lenders assess variable
+            or non-traditional earnings, and helping you explore your options whether you are buying your
+            first home, moving up the property ladder, or looking at a remortgage.
+        </p>
+
+        <p><a class="inline-link" href="#mortgage-service">See the full mortgage service details below ↓</a></p>
+    </section>
+
+    <!-- ============ PROTECTION SERVICE ============ -->
+    <section id="protection-service" class="content-section">
+        <div class="section-header">
+            <p class="kicker">Protection Service</p>
+            <h2 class="section-title">Summary of the Protection Advice Service</h2>
+        </div>
+
+        <div class="lead">
+            As a self-employed professional, navigating financial security without corporate employee
+            benefits requires a tailored approach. Through our partnership with Advantage Financial
+            Solutions, you have access to expert protection advice from <strong>Laurence</strong>, a
+            specialist financial adviser dedicated to helping locums and self-employed individuals protect
+            their income and families.
+        </div>
+
+        <div class="callout-box">
+            <strong>Best of all, this advisory service is completely free.</strong>
+        </div>
+
+        <div class="person-card">
+            <div class="person-photo-wrap">
+                <img class="person-photo" src="adviser.png" alt="Laurence, Specialist Protection Adviser at Advantage FS" width="148" height="197">
+            </div>
+
+            <div class="person-info">
+                <span class="person-tag">Your Dedicated Protection Adviser</span>
+                <h4>Meet Laurence</h4>
+                <p class="person-role">Specialist Protection Adviser · Advantage Financial Solutions</p>
+                <p>
+                    Laurence is the dedicated protection adviser for Hoop candidates. He'll guide you
+                    through every stage of the advisory process — from the initial informal call, through
+                    tailored market research and recommendations, to application and underwriting support —
+                    making sure your cover is set up correctly and remains affordable and comprehensive as
+                    your circumstances change.
+                </p>
+            </div>
+        </div>
+
+        <h3>Who This Service Is Most Useful For</h3>
+        <div class="card-grid">
+            <div class="card">
+                <h4>New to Self-Employment</h4>
+                <p>Ideal for those who have recently transitioned out of permanent employment and want to
+                understand the different ways to protect themselves financially now that standard workplace
+                benefits and sick pay are gone.</p>
+            </div>
+            <div class="card">
+                <h4>Reviewing Existing Cover</h4>
+                <p>Essential for anyone who holds protection policies taken out during previous employment
+                but has not reviewed them since becoming self-employed.</p>
+            </div>
+            <div class="card">
+                <h4>Optimising Current Policies</h4>
+                <p>Suited for individuals who want to explore how to make their existing cover more
+                comprehensive and cost-effective, ensuring it matches their current way of working.</p>
+            </div>
+        </div>
+
+        <h3>Income Protection: A Key Focus for Self-Employed Professionals</h3>
+        <p>
+            For most locums and contractors, Income Protection is the most valuable safety net you can
+            have. Because your earnings depend entirely on the shifts you work, losing your health means
+            losing your income overnight. Here is why income protection is such a powerful tool for
+            self-employed professionals:
+        </p>
+        <ul class="list-highlight">
+            <li><strong>Replaces Your Lost Earnings:</strong> if an accident or illness stops you from working shifts, the policy pays out a regular, tax-free monthly income to keep your household afloat.</li>
+            <li><strong>Covers All Your Financial Commitments:</strong> it ensures that your mortgage or rent, utility bills, food, and daily living costs are taken care of without dipping into your savings.</li>
+            <li><strong>Tailored to How You Work:</strong> policies can be structured around your specific earnings, waiting periods, and budget, meaning you only pay for the exact cover level you need.</li>
+            <li><strong>Bridges the Workplace Gap:</strong> since you don't receive employer sick pay, this steps in as your own private sick pay scheme, giving you complete peace of mind while you focus entirely on recovery.</li>
+        </ul>
+
+        <h3>How the Advisory Process Works</h3>
+        <ol class="steps">
+            <li><strong>Initial 20-Minute Call:</strong> a brief, informal discussion to understand your current situation. Laurence will give a comprehensive overview of all the options available for Income Protection, Life Insurance &amp; Critical Illness Cover. Having details of any existing policies to hand is useful for the call (but not essential).</li>
+            <li><strong>Tailored Market Research:</strong> Laurence conducts independent research across the market to find which providers offer the most comprehensive and cost-effective cover based on your health, earnings, and lifestyle.</li>
+            <li><strong>Options &amp; Recommendations Summary:</strong> you receive a comprehensive summary of the research and different options available. This is useful to understand the different variables that affect the cost of the different policies. Laurence will then help tailor policies to suit your exact budget and requirements.</li>
+            <li><strong>Application &amp; Underwriting Support:</strong> Laurence manages the entire application process from start to finish. He handles the paperwork and liaises directly with underwriters to ensure your cover is underwritten accurately, set up correctly, and remains as affordable and comprehensive as possible.</li>
+        </ol>
+    </section>
+
+    <!-- ============ MORTGAGE SERVICE ============ -->
+    <section id="mortgage-service" class="content-section">
+        <div class="section-header">
+            <p class="kicker">Mortgage Service</p>
+            <h2 class="section-title">Mortgage Services for Locums</h2>
+        </div>
+
+        <div class="lead">
+            Securing property financing when you are self-employed or working on a contract basis requires
+            a specialist approach. Traditional high-street lenders often struggle to assess non-standard
+            income structures properly. Through our partnership with Advantage Financial Solutions, you
+            have access to a <strong>team of 15 specialist mortgage advisers</strong> who understand locum
+            earnings, contract structures, and how to position your income with the right lenders.
+        </div>
+
+        <h3>Transparent Fee Structure</h3>
+        <ul class="list-highlight">
+            <li><strong>Free Initial Advice:</strong> all initial consultations, borrowing assessments, and Agreement in Principle (AIP) setups are completely free.</li>
+            <li><strong>Exclusive Hoop Discount:</strong> if you decide to proceed with a full mortgage application, Hoop candidates receive an exclusive discounted broker fee of £250 (reduced from the standard fee).</li>
+            <li><strong>Lifetime Free Service:</strong> once this initial fee is paid, all future mortgage services — including remortgaging, moving home, or arranging additional borrowing — are completely free of charge for life.</li>
+        </ul>
+
+        <h3>Who This Service Is Most Useful For</h3>
+        <div class="card-grid">
+            <div class="card">
+                <h4>First-Time Buyers &amp; Initial Enquiries</h4>
+                <p>Ideal if you are taking your first steps towards buying a home and want to understand
+                how much you can borrow based on your day rate, shift history, or annual accounts.</p>
+            </div>
+            <div class="card">
+                <h4>Moving Home or Remortgaging</h4>
+                <p>Suited for existing homeowners looking to move or secure a better rate when an existing
+                deal finishes, without getting stuck in high-street underwriting red tape.</p>
+            </div>
+            <div class="card">
+                <h4>Complex Earnings &amp; Contractors</h4>
+                <p>Perfect for locums with varying income streams, short contract histories, or day-rate
+                structures that standard bank calculators fail to evaluate correctly.</p>
+            </div>
+        </div>
+
+        <h3>Why Specialist Mortgage Advice Matters for Locums</h3>
+        <p>
+            For self-employed professionals and contractors, securing a mortgage isn't just about how much
+            you earn — it is about how your income is assessed:
+        </p>
+        <ul class="list-highlight">
+            <li><strong>Day Rate &amp; Contract Assessment:</strong> specialist lenders can base borrowing power on your daily contract rate rather than relying strictly on two or three years of submitted accounts.</li>
+            <li><strong>Navigating Income Variations:</strong> advisers know which lenders are comfortable with gaps between locum contracts, short contract histories, or flexible working hours.</li>
+            <li><strong>Cutting Through Red Tape:</strong> by placing your application with lenders who understand your employment model, you avoid unnecessary delays, automatic declines, or lower borrowing limits from automated high-street scoring.</li>
+            <li><strong>Whole-of-Market Access:</strong> accessing specialist lenders across the market ensures you get competitive interest rates tailored to your exact borrowing profile.</li>
+        </ul>
+
+        <h3>How the Mortgage Process Works</h3>
+        <ol class="steps">
+            <li><strong>Initial Free Consultation:</strong> a quick, informal discussion with a specialist mortgage adviser to review your career setup, contract structure, and homebuying goals.</li>
+            <li><strong>Borrowing Assessment &amp; Market Research:</strong> the team analyses your specific income setup across the market to determine maximum borrowing capacity and locate lenders offering the best rates for your scenario.</li>
+            <li><strong>Agreement in Principle (AIP):</strong> once the right lender and strategy are identified, your adviser secures an Agreement in Principle, allowing you to make offers on properties with confidence.</li>
+            <li><strong>Full Application &amp; Lifetime Support:</strong> your dedicated adviser handles the end-to-end application process — liaising directly with underwriters, estate agents, and solicitors to take your mortgage smoothly through to completion.</li>
+        </ol>
+    </section>
+
+    <!-- ============ WHY CHOOSE ============ -->
+    <section id="why-choose" class="content-section">
+        <div class="section-header">
+            <p class="kicker">The Advantage</p>
+            <h2 class="section-title">Why Choose Advantage Financial Solutions?</h2>
+        </div>
+
+        <p>
+            Navigating financial services as a locum requires an adviser who understands non-standard
+            working models and has access to the right solutions. Here is why this partnership provides
+            the best support for your mortgage and protection needs:
+        </p>
+
+        <div class="grid-2">
+            <div class="card">
+                <h4>Truly Independent &amp; Whole-of-Market Access</h4>
+                <p>Unlike bank advisers restricted to single-brand products, Advantage searches the entire
+                UK market to secure rates and terms tailored to self-employed professionals.</p>
+            </div>
+            <div class="card">
+                <h4>Exclusive Discounts for Hoop Candidates</h4>
+                <p>Access specialist financial services with exclusive candidate rates, including
+                completely free protection advice and a discounted lifetime mortgage package.</p>
+            </div>
+            <div class="card">
+                <h4>Locum &amp; Contractor Specialists</h4>
+                <p>The advisory team specialises in day-rate calculations, variable shift earnings, and
+                self-employed income structures, avoiding the delays of high-street automated
+                underwriting.</p>
+            </div>
+            <div class="card">
+                <span class="rating">5.0 ★★★★★</span>
+                <h4>Proven 5-Star Track Record</h4>
+                <p>Advantage is backed by an exceptional reputation, boasting a 5.0 out of 5-star rating
+                across nearly 1,000 Google reviews from clients who value clear, reliable, and
+                straightforward financial advice.</p>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<footer class="page-footer">
+    <div class="foot-mark" aria-hidden="true">A</div>
+
+    <div class="foot-links">
+        <a href="https://advantagefs.co.uk" target="_blank" rel="noopener">advantagefs.co.uk</a>
+    </div>
+
+    <div class="foot-motto">Our Experience. <span>Your Advantage.</span></div>
+
+    <p class="foot-note">
+        Provided in partnership with Hoop Recruitment. Based in Bristol — advising clients across the UK.
+    </p>
+
+    <p class="foot-note">
+        Your home may be repossessed if you do not keep up repayments on your mortgage.
+        Protection advice and initial mortgage consultations are free. A discounted broker fee of £250
+        applies only if you proceed with a full mortgage application; if a protection policy is arranged,
+        Advantage FS is paid commission by the provider — never by you.
+    </p>
+
+    <p class="foot-sub">
+        © 2026 ADVANTAGE FINANCIAL SOLUTIONS · COMPANY NO. XXXXXXXX · FCA NO. XXXXXX
+    </p>
+</footer>
+
+</main>
+
+<button class="to-top" id="toTop" title="Back to top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"></path></svg>
+</button>
+
+<script>
+(function () {
+    'use strict';
+
+    var root = document.documentElement;
+    var body = document.body;
+    var sidebar = document.getElementById('sidebar');
+    var backdrop = document.getElementById('sidebarBackdrop');
+    var toggleBtn = document.getElementById('sidebarToggle');
+    var themeBtn = document.getElementById('themeToggle');
+    var toTop = document.getElementById('toTop');
+    var progress = document.getElementById('progress');
+
+    /* ---------- Theme ---------- */
+    var ORDER = ['light', 'dark', 'fun'];
+    var LABELS = { light: 'Light', dark: 'Dark', fun: 'Fun' };
+
+    function applyTheme(t) {
+        root.setAttribute('data-theme', t);
+        var label = 'Theme: ' + LABELS[t] + ' — click to change';
+        themeBtn.title = label;
+        themeBtn.setAttribute('aria-label', label);
+        try { localStorage.setItem('avs-hoop-theme', t); } catch (e) {}
+    }
+
+    var savedTheme = root.getAttribute('data-theme') || 'light';
+    applyTheme(savedTheme === 'dark' || savedTheme === 'fun' ? savedTheme : 'light');
+
+    themeBtn.addEventListener('click', function () {
+        var cur = root.getAttribute('data-theme') || 'light';
+        applyTheme(ORDER[(ORDER.indexOf(cur) + 1) % ORDER.length]);
+    });
+
+    /* ---------- Sidebar ---------- */
+    var isDesktop = function () { return window.matchMedia('(min-width: 1024px)').matches; };
+    var initiallyOpen = false;
+    try {
+        var s = localStorage.getItem('avs-hoop-sidebar');
+        if (s === 'open') initiallyOpen = true;
+        else if (s === 'closed') initiallyOpen = false;
+        else initiallyOpen = isDesktop();
+    } catch (e) { initiallyOpen = isDesktop(); }
+
+    function setSidebar(open, remember) {
+        body.classList.toggle('sidebar-open', open);
+        toggleBtn.setAttribute('aria-expanded', String(open));
+        if (remember) {
+            try { localStorage.setItem('avs-hoop-sidebar', open ? 'open' : 'closed'); } catch (e) {}
+        }
+    }
+
+    setSidebar(initiallyOpen, false);
+
+    toggleBtn.addEventListener('click', function () {
+        setSidebar(!body.classList.contains('sidebar-open'), true);
+    });
+    backdrop.addEventListener('click', function () { setSidebar(false, true); });
+
+    Array.prototype.forEach.call(sidebar.querySelectorAll('a.sidebar-link'), function (a) {
+        a.addEventListener('click', function () { if (!isDesktop()) setSidebar(false, false); });
+    });
+
+    /* ---------- Scroll spy + progress + nav state ---------- */
+    var sections = Array.prototype.slice.call(
+        document.querySelectorAll('section.content-section, header.hero')
+    );
+    var sidebarLinks = Array.prototype.slice.call(sidebar.querySelectorAll('a.sidebar-link'));
+    var lastActive = null;
+
+    function setActive(id) {
+        if (id === lastActive) return;
+        lastActive = id;
+        sidebarLinks.forEach(function (l) {
+            l.classList.toggle('active', l.getAttribute('href') === '#' + id);
+        });
+    }
+
+    function onScroll() {
+        var y = window.scrollY;
+        var doc = document.documentElement;
+        var max = doc.scrollHeight - window.innerHeight;
+
+        progress.style.transform = 'scaleX(' + (max > 0 ? Math.min(y / max, 1) : 0) + ')';
+        body.classList.toggle('scrolled', y > 8);
+        toTop.classList.toggle('show', y > 600);
+
+        if (!sections.length) return;
+        var line = y + 200;
+        var current = sections[0].id;
+        for (var i = 0; i < sections.length; i++) {
+            var top = sections[i].getBoundingClientRect().top + y;
+            if (top <= line) current = sections[i].id;
+        }
+        if (window.innerHeight + y >= doc.scrollHeight - 4) {
+            current = sections[sections.length - 1].id;
+        }
+        setActive(current);
+    }
+
+    var raf = false;
+    function onScrollThrottled() {
+        if (raf) return;
+        raf = true;
+        window.requestAnimationFrame(function () { onScroll(); raf = false; });
+    }
+
+    document.addEventListener('scroll', onScrollThrottled, { passive: true });
+    window.addEventListener('resize', onScrollThrottled);
+    onScroll();
+
+    toTop.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    /* Release the pre-paint guard once layout is settled */
+    window.requestAnimationFrame(function () {
+        window.requestAnimationFrame(function () {
+            root.classList.remove('preload');
+        });
+    });
+})();
+</script>
+</body>
+</html>
