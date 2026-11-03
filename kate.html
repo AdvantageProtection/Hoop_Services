@@ -14,9 +14,9 @@
 
 <style>
 /* ============================================================
-   HOOP × ADVANTAGE FS — SERVICE SUMMARY
+   HOOP × ADVANTAGE FS — SERVICE SUMMARY · V2.1
    Brand: Hoop navy #3d5a6e · coral #f0655f · Poppins
-   Layout: Vercel-style — clean cards, sidebar, generous space
+   Layout: Vercel-style — hero card, depth, coral ring motif
    ============================================================ */
 :root {
     color-scheme: light;
@@ -32,12 +32,12 @@
     --nav-bg: rgba(255, 255, 255, 0.86);
     --sidebar-bg: #fbfcfd;
 
-    --text: #334f63;        /* Hoop navy */
+    --text: #334f63;
     --text-2: #5a7183;
     --text-3: #8298a8;
     --text-muted: #a9bac6;
 
-    --accent: #f0655f;      /* Hoop coral */
+    --accent: #f0655f;
     --accent-strong: #d94f4a;
     --accent-soft: rgba(240, 101, 95, 0.09);
     --accent-line: rgba(240, 101, 95, 0.30);
@@ -45,7 +45,7 @@
 
     --success: #2e9e6b;
 
-    --ink: #3d5a6e;         /* Hoop navy — primary buttons */
+    --ink: #3d5a6e;
     --ink-hover: #324a5c;
 
     --shadow-xs: 0 1px 2px rgba(51, 79, 99, 0.06);
@@ -105,7 +105,7 @@
     --shadow-accent: 0 8px 24px -6px rgba(245, 139, 135, 0.25);
 }
 
-/* ===== FUN MODE — kept from previous version ===== */
+/* ===== FUN MODE ===== */
 [data-theme="fun"] {
     color-scheme: light;
     --bg: #fff0fa;
@@ -172,22 +172,24 @@ h1, h2, h3, h4 {
     line-height: 1.25;
 }
 
-/* ===== LOGOS ===== */
-/* content-box so height = the logo itself; chip padding wraps around */
+/* ===== LOGOS — bare, no chips. Optical balance via per-logo heights ===== */
 .logo-img {
     display: block;
-    box-sizing: content-box;
-    height: 40px;
+    height: auto;
     width: auto;
-    background: #ffffff;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 6px 10px;
-    box-shadow: var(--shadow-xs);
+    flex: 0 0 auto;
 }
 
-[data-theme="dark"] .logo-img { border-color: var(--border-strong); }
-[data-theme="fun"] .logo-img { border-color: var(--border-strong); }
+.logo-hoop { height: 28px; }   /* wide wordmark */
+.logo-avs  { height: 34px; }   /* squarish crest — taller to match optical weight */
+
+/* Dark & Fun: original artwork sits on a small white plate so it stays legible */
+[data-theme="dark"] .logo-img,
+[data-theme="fun"] .logo-img {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 4px 7px;
+}
 
 /* ===== TOP NAV ===== */
 .top-nav {
@@ -202,13 +204,13 @@ h1, h2, h3, h4 {
     display: flex;
     align-items: center;
     gap: var(--space-3);
-    padding: 0 var(--space-4);
+    padding: 0 var(--space-5);
 }
 
 .nav-left {
     display: flex;
     align-items: center;
-    gap: var(--space-3);
+    gap: var(--space-4);
     flex: 0 0 auto;
 }
 
@@ -237,11 +239,11 @@ h1, h2, h3, h4 {
 .brand {
     display: flex;
     align-items: center;
-    gap: var(--space-3);
+    gap: 14px;
     flex: 0 0 auto;
 }
 
-.brand-x { color: var(--text-muted); font-size: 15px; font-weight: 500; }
+.brand-x { color: var(--text-muted); font-size: 14px; font-weight: 500; }
 
 .nav-actions {
     display: flex;
@@ -250,7 +252,6 @@ h1, h2, h3, h4 {
     margin-left: auto;
 }
 
-/* Theme toggle: one icon visible per mode */
 .theme-toggle svg { display: none; }
 [data-theme="light"] .theme-toggle .icon-sun { display: block; }
 [data-theme="dark"] .theme-toggle .icon-moon { display: block; }
@@ -284,20 +285,27 @@ body.sidebar-open .sidebar { transform: translateX(0); }
     z-index: 90;
 }
 
+/* Sidebar header: logos on their own row, title below — no cramping */
 .sidebar-doc {
-    margin: 14px 14px 0;
-    padding: 16px;
+    margin: 16px 16px 0;
+    padding: 18px;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--r-md);
-    display: flex;
-    align-items: center;
-    gap: 12px;
     box-shadow: var(--shadow-xs);
 }
 
-.sd-tiles { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.sd-tiles .logo-img { height: 34px; padding: 5px 8px; }
+.sd-logos {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 14px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+}
+
+.sd-logos .logo-hoop { height: 20px; }
+.sd-logos .logo-avs  { height: 26px; }
 
 .sidebar-doc-title {
     font-family: var(--font-display);
@@ -317,7 +325,7 @@ body.sidebar-open .sidebar { transform: translateX(0); }
 .sidebar-nav { padding: 8px 0 var(--space-5); user-select: none; }
 
 .sidebar-part-label {
-    padding: 18px 22px 8px;
+    padding: 14px 22px 8px;
     font-family: var(--font-display);
     font-size: 10.5px;
     font-weight: 600;
@@ -336,6 +344,7 @@ body.sidebar-open .sidebar { transform: translateX(0); }
     color: var(--text-2);
     text-decoration: none;
     border-radius: 9px;
+    border-left: 3px solid transparent;
     transition: all var(--transition);
 }
 
@@ -347,11 +356,12 @@ body.sidebar-open .sidebar { transform: translateX(0); }
 .sidebar-link.active {
     color: var(--accent-strong);
     background: var(--accent-soft);
+    border-left-color: var(--accent);
     font-weight: 600;
 }
 
 .sidebar-foot {
-    margin: var(--space-4) 14px 0;
+    margin: var(--space-4) 16px 0;
     padding: 14px 4px 18px;
     border-top: 1px solid var(--border);
 }
@@ -376,41 +386,78 @@ body.sidebar-open .sidebar { transform: translateX(0); }
 .content-wrapper {
     max-width: 920px;
     margin: 0 auto;
-    padding: 40px clamp(24px, 4.5vw, 64px) 96px;
+    padding: 40px clamp(24px, 4.5vw, 64px) 80px;
 }
 
-/* ===== HERO — Overview of Partnership ===== */
+/* ===== HERO — elevated card with Hoop's coral ring motif ===== */
 .hero {
+    padding: 8px 0 24px;
+}
+
+.hero-card {
     position: relative;
-    padding: 32px 0 56px;
-    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    box-shadow: var(--shadow-lg);
+    padding: clamp(32px, 5.5vw, 60px);
     overflow: hidden;
 }
 
-.hero::before {
+/* Coral rings — the "O" from the Hoop logo, echoing their homepage */
+.hero-card::before {
     content: "";
     position: absolute;
-    width: 460px;
-    height: 460px;
-    top: -220px;
-    right: -120px;
+    width: 340px;
+    height: 340px;
+    top: -120px;
+    right: -100px;
     border-radius: 50%;
-    filter: blur(80px);
+    border: 42px solid var(--accent);
+    opacity: 0.14;
     pointer-events: none;
-    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
 }
+
+.hero-card::after {
+    content: "";
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    bottom: -50px;
+    right: 180px;
+    border-radius: 50%;
+    border: 22px solid var(--accent);
+    opacity: 0.10;
+    pointer-events: none;
+}
+
+[data-theme="dark"] .hero-card::before { opacity: 0.10; }
+[data-theme="dark"] .hero-card::after  { opacity: 0.07; }
+[data-theme="fun"] .hero-card::before  { opacity: 0.18; }
 
 .hero-logos {
     position: relative;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 14px;
-    margin-bottom: 28px;
+    gap: 16px;
+    margin-bottom: 30px;
 }
 
-.hero-logos .logo-img { height: 64px; padding: 8px 12px; border-radius: 12px; }
+.hero-logos .logo-hoop { height: 46px; }
+.hero-logos .logo-avs  { height: 58px; }
+
 .hero-x { color: var(--text-muted); font-weight: 500; font-size: 18px; }
+
+.hero-kicker {
+    position: relative;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.4px;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+    margin-bottom: 14px;
+}
 
 .hero h1 {
     position: relative;
@@ -419,17 +466,17 @@ body.sidebar-open .sidebar { transform: translateX(0); }
     letter-spacing: -0.02em;
     margin-bottom: var(--space-4);
     color: var(--text);
-    max-width: 760px;
+    max-width: 700px;
 }
 
 .hero h1 .accent-text { color: var(--accent); }
 
 .hero-description {
     position: relative;
-    font-size: 17px;
+    font-size: 16.5px;
     color: var(--text-2);
-    line-height: 1.8;
-    max-width: 720px;
+    line-height: 1.85;
+    max-width: 680px;
 }
 
 /* ===== SECTIONS ===== */
@@ -441,8 +488,15 @@ body.sidebar-open .sidebar { transform: translateX(0); }
 
 .content-section:last-of-type { border-bottom: none; }
 
-.section-header {
-    margin-bottom: var(--space-6);
+.section-header { margin-bottom: var(--space-6); }
+
+.kicker {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.4px;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+    margin-bottom: 10px;
 }
 
 .section-title {
@@ -452,7 +506,6 @@ body.sidebar-open .sidebar { transform: translateX(0); }
     color: var(--text);
 }
 
-/* Short coral rule under each section title — quiet brand accent */
 .section-title::after {
     content: "";
     display: block;
@@ -489,11 +542,10 @@ body.sidebar-open .sidebar { transform: translateX(0); }
     color: var(--text-2);
     line-height: 1.85;
     padding: var(--space-5) var(--space-6);
-    background: var(--surface);
-    border: 1px solid var(--border);
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-line);
     border-radius: var(--r-md);
     margin: 0 0 var(--space-5);
-    box-shadow: var(--shadow-xs);
     position: relative;
     overflow: hidden;
 }
@@ -504,7 +556,7 @@ body.sidebar-open .sidebar { transform: translateX(0); }
     left: 0;
     top: 0;
     bottom: 0;
-    width: 3px;
+    width: 4px;
     background: var(--accent);
 }
 
@@ -512,6 +564,7 @@ body.sidebar-open .sidebar { transform: translateX(0); }
 .callout-box {
     background: var(--surface);
     border: 1px solid var(--accent-line);
+    border-left: 4px solid var(--accent);
     border-radius: var(--r-md);
     padding: var(--space-4) var(--space-5);
     margin: var(--space-5) 0;
@@ -539,11 +592,11 @@ body.sidebar-open .sidebar { transform: translateX(0); }
     content: "✓";
     position: absolute;
     left: 0;
-    top: 8px;
+    top: 10px;
     width: 22px;
     height: 22px;
-    border-radius: 7px;
-    background: rgba(46, 158, 107, 0.10);
+    border-radius: 50%;
+    background: rgba(46, 158, 107, 0.12);
     color: var(--success);
     font-weight: 700;
     font-size: 12px;
@@ -573,19 +626,20 @@ body.sidebar-open .sidebar { transform: translateX(0); }
     border: 1px solid var(--border);
     border-radius: var(--r-lg);
     padding: var(--space-5);
+    box-shadow: var(--shadow-xs);
     transition: all var(--transition);
     overflow: hidden;
 }
 
-.card::after {
+/* Coral top edge reveals on hover — quiet depth cue */
+.card::before {
     content: "";
     position: absolute;
-    top: -40px;
-    right: -40px;
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--accent);
     opacity: 0;
     transition: opacity var(--transition);
 }
@@ -593,10 +647,10 @@ body.sidebar-open .sidebar { transform: translateX(0); }
 .card:hover {
     border-color: var(--accent-line);
     box-shadow: var(--shadow-md);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
 }
 
-.card:hover::after { opacity: 1; }
+.card:hover::before { opacity: 1; }
 
 .card h4 {
     font-size: 15.5px;
@@ -612,7 +666,6 @@ body.sidebar-open .sidebar { transform: translateX(0); }
     line-height: 1.7;
 }
 
-/* Rating flourish for the 5-star card */
 .card .rating {
     display: inline-block;
     margin-bottom: var(--space-2);
@@ -622,7 +675,7 @@ body.sidebar-open .sidebar { transform: translateX(0); }
     letter-spacing: 2px;
 }
 
-/* ===== STEPS ===== */
+/* ===== STEPS — filled coral markers for brand weight ===== */
 .steps {
     list-style: none;
     counter-reset: step;
@@ -633,9 +686,9 @@ body.sidebar-open .sidebar { transform: translateX(0); }
 .steps::before {
     content: "";
     position: absolute;
-    left: 17px;
-    top: 24px;
-    bottom: 24px;
+    left: 18px;
+    top: 26px;
+    bottom: 26px;
     width: 2px;
     background: var(--accent-line);
 }
@@ -643,7 +696,7 @@ body.sidebar-open .sidebar { transform: translateX(0); }
 .steps li {
     counter-increment: step;
     position: relative;
-    padding: var(--space-3) 0 var(--space-3) 56px;
+    padding: var(--space-3) 0 var(--space-3) 60px;
     color: var(--text-2);
     line-height: 1.75;
 }
@@ -652,25 +705,24 @@ body.sidebar-open .sidebar { transform: translateX(0); }
     content: counter(step);
     position: absolute;
     left: 0;
-    top: 14px;
-    width: 36px;
-    height: 36px;
+    top: 16px;
+    width: 38px;
+    height: 38px;
     border-radius: 12px;
-    background: var(--surface);
-    border: 1px solid var(--accent-line);
-    color: var(--accent);
+    background: var(--accent);
+    color: #ffffff;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: var(--shadow-xs);
+    box-shadow: var(--shadow-accent);
     z-index: 1;
 }
 
 .steps li strong { color: var(--text); font-weight: 600; }
 
-/* ===== PERSON CARD ===== */
+/* ===== PERSON CARD — photo sits on a tilted coral plate ===== */
 .person-card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -689,13 +741,27 @@ body.sidebar-open .sidebar { transform: translateX(0); }
     box-shadow: var(--shadow-md);
 }
 
-/* Natural 3:4 portrait — no cropping */
+.person-photo-wrap {
+    position: relative;
+    flex: 0 0 auto;
+}
+
+.person-photo-wrap::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: rotate(-4deg) translate(-8px, 8px);
+    border-radius: 16px;
+    background: var(--accent);
+    opacity: 0.18;
+}
+
 .person-photo {
+    position: relative;
     display: block;
     width: 150px;
     height: auto;
     border-radius: 14px;
-    flex: 0 0 auto;
     box-shadow: var(--shadow-md);
     background: var(--surface-2);
 }
@@ -753,7 +819,7 @@ body.sidebar-open .sidebar { transform: translateX(0); }
     border-bottom-color: var(--accent);
 }
 
-/* ===== CTA BUTTONS — kept for when booking links return ===== */
+/* ===== CTA BUTTONS — dormant, ready for booking links ===== */
 .cta-row {
     display: flex;
     flex-wrap: wrap;
@@ -797,13 +863,15 @@ body.sidebar-open .sidebar { transform: translateX(0); }
 
 .cta-btn svg { width: 16px; height: 16px; flex: 0 0 auto; }
 
-/* ===== FOOTER ===== */
+/* ===== FOOTER — full-width navy brand band ===== */
 .page-footer {
-    padding: var(--space-7) 0 8px;
+    background: #334f63;
+    color: rgba(255, 255, 255, 0.78);
+    padding: 52px 24px 36px;
     text-align: center;
-    color: var(--text-3);
-    font-size: 13px;
 }
+
+[data-theme="dark"] .page-footer { background: #0e1a23; border-top: 1px solid var(--border); }
 
 .page-footer .foot-links {
     display: flex;
@@ -815,24 +883,27 @@ body.sidebar-open .sidebar { transform: translateX(0); }
 }
 
 .page-footer a {
-    color: var(--text-2);
+    color: rgba(255, 255, 255, 0.85);
     text-decoration: none;
     font-weight: 500;
+    transition: color var(--transition);
 }
 
-.page-footer a:hover { color: var(--accent-strong); }
+.page-footer a:hover { color: #ffaba6; }
 
 .page-footer .foot-motto {
     font-family: var(--font-display);
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
-    color: var(--text);
+    color: #ffffff;
     margin-bottom: var(--space-3);
 }
 
+.page-footer .foot-motto span { color: #ff9d98; }
+
 .page-footer .foot-note {
     font-size: 12px;
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.55);
     line-height: 1.75;
     max-width: 680px;
     margin: 0 auto var(--space-2);
@@ -842,7 +913,7 @@ body.sidebar-open .sidebar { transform: translateX(0); }
     margin-top: var(--space-3);
     font-size: 10.5px;
     letter-spacing: 0.4px;
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.4);
 }
 
 /* ===== BACK TO TOP ===== */
@@ -899,17 +970,20 @@ body.sidebar-open .sidebar { transform: translateX(0); }
 }
 
 @media (max-width: 640px) {
-    .content-wrapper { padding: 24px 20px 72px; }
-    .hero { padding: 20px 0 40px; }
-    .hero-logos .logo-img { height: 48px; }
+    .content-wrapper { padding: 24px 20px 64px; }
+    .hero { padding: 4px 0 16px; }
+    .hero-card { padding: 26px 22px; border-radius: 18px; }
+    .hero-card::after { display: none; }
+    .hero-logos .logo-hoop { height: 34px; }
+    .hero-logos .logo-avs  { height: 44px; }
     .content-section { padding: 40px 0 44px; }
     .person-card { flex-direction: column; align-items: flex-start; }
-    .person-photo { width: 130px; }
 }
 
 @media (max-width: 480px) {
-    .brand .logo-img { height: 30px; padding: 4px 7px; }
-    .hero-logos .logo-img { height: 40px; }
+    .brand .logo-hoop { height: 22px; }
+    .brand .logo-avs  { height: 28px; }
+    .brand { gap: 10px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -953,9 +1027,9 @@ body.sidebar-open .sidebar { transform: translateX(0); }
 <!-- ============ SIDEBAR ============ -->
 <aside class="sidebar" id="sidebar">
     <div class="sidebar-doc">
-        <div class="sd-tiles">
-            <img class="logo-img" src="oop.png" alt="Hoop Recruitment" width="108" height="34">
-            <img class="logo-img" src="advantage-logo.png" alt="Advantage Financial Solutions" width="51" height="34">
+        <div class="sd-logos">
+            <img class="logo-img logo-hoop" src="oop.png" alt="Hoop Recruitment" width="73" height="20">
+            <img class="logo-img logo-avs" src="advantage-logo.png" alt="Advantage Financial Solutions" width="35" height="26">
         </div>
         <div>
             <div class="sidebar-doc-title">Service Summary</div>
@@ -975,7 +1049,7 @@ body.sidebar-open .sidebar { transform: translateX(0); }
     </nav>
 
     <div class="sidebar-foot">
-        <div class="sidebar-foot-note">SERVICE SUMMARY · V2.0</div>
+        <div class="sidebar-foot-note">SERVICE SUMMARY · V2.1</div>
     </div>
 </aside>
 
@@ -994,11 +1068,11 @@ body.sidebar-open .sidebar { transform: translateX(0); }
 
         <div class="brand">
             <a href="index.html" aria-label="Back to adviser chooser">
-                <img class="logo-img" src="oop.png" alt="Hoop Recruitment" width="127" height="40">
+                <img class="logo-img logo-hoop" src="oop.png" alt="Hoop Recruitment" width="102" height="28">
             </a>
             <span class="brand-x">×</span>
             <a href="https://advantagefs.co.uk" target="_blank" rel="noopener" aria-label="Advantage FS website">
-                <img class="logo-img" src="advantage-logo.png" alt="Advantage Financial Solutions" width="60" height="40">
+                <img class="logo-img logo-avs" src="advantage-logo.png" alt="Advantage Financial Solutions" width="48" height="34">
             </a>
         </div>
     </div>
@@ -1029,25 +1103,30 @@ body.sidebar-open .sidebar { transform: translateX(0); }
 
     <!-- ============ HERO · OVERVIEW OF PARTNERSHIP ============ -->
     <header class="hero" id="overview">
-        <div class="hero-logos">
-            <img class="logo-img" src="oop.png" alt="Hoop Recruitment" width="204" height="64">
-            <span class="hero-x">×</span>
-            <img class="logo-img" src="advantage-logo.png" alt="Advantage Financial Solutions" width="96" height="64">
+        <div class="hero-card">
+            <div class="hero-logos">
+                <img class="logo-img logo-hoop" src="oop.png" alt="Hoop Recruitment" width="168" height="46">
+                <span class="hero-x">×</span>
+                <img class="logo-img logo-avs" src="advantage-logo.png" alt="Advantage Financial Solutions" width="80" height="58">
+            </div>
+
+            <p class="hero-kicker">Official Partnership</p>
+
+            <h1>Overview of <span class="accent-text">Partnership</span></h1>
+
+            <p class="hero-description">
+                <strong>Hoop Recruitment has officially partnered with Advantage Financial Solutions</strong> to
+                give every candidate direct, exclusive access to expert, independent mortgage and protection
+                advice. This partnership connects locum professionals with specialists who understand how your
+                career operates and how you earn.
+            </p>
         </div>
-
-        <h1>Overview of <span class="accent-text">Partnership</span></h1>
-
-        <p class="hero-description">
-            <strong>Hoop Recruitment has officially partnered with Advantage Financial Solutions</strong> to
-            give every candidate direct, exclusive access to expert, independent mortgage and protection
-            advice. This partnership connects locum professionals with specialists who understand how your
-            career operates and how you earn.
-        </p>
     </header>
 
     <!-- ============ PROTECTION ADVICE FOR LOCUMS/CONTRACTORS ============ -->
     <section id="protection" class="content-section">
         <div class="section-header">
+            <p class="kicker">Protection</p>
             <h2 class="section-title">Protection Advice for Locums &amp; Contractors</h2>
         </div>
 
@@ -1068,6 +1147,7 @@ body.sidebar-open .sidebar { transform: translateX(0); }
     <!-- ============ MORTGAGE ADVICE FOR LOCUMS/CONTRACTORS ============ -->
     <section id="mortgage-advice" class="content-section">
         <div class="section-header">
+            <p class="kicker">Mortgages</p>
             <h2 class="section-title">Mortgage Advice for Locums &amp; Contractors</h2>
         </div>
 
@@ -1087,6 +1167,7 @@ body.sidebar-open .sidebar { transform: translateX(0); }
     <!-- ============ SUMMARY OF THE PROTECTION ADVICE SERVICE ============ -->
     <section id="protection-service" class="content-section">
         <div class="section-header">
+            <p class="kicker">Protection Service</p>
             <h2 class="section-title">Summary of the Protection Advice Service</h2>
         </div>
 
@@ -1102,9 +1183,11 @@ body.sidebar-open .sidebar { transform: translateX(0); }
             <strong>Best of all, this advisory service is completely free.</strong>
         </div>
 
-        <!-- LAURENCE CARD — no contact details, info only -->
+        <!-- LAURENCE CARD — photo on tilted coral plate, no contact details -->
         <div class="person-card">
-            <img class="person-photo" src="adviser.png" alt="Laurence, Specialist Protection Adviser at Advantage FS" width="150" height="200">
+            <div class="person-photo-wrap">
+                <img class="person-photo" src="adviser.png" alt="Laurence, Specialist Protection Adviser at Advantage FS" width="150" height="200">
+            </div>
 
             <div class="person-info">
                 <span class="person-tag">Your Dedicated Protection Adviser</span>
@@ -1166,6 +1249,7 @@ body.sidebar-open .sidebar { transform: translateX(0); }
     <!-- ============ MORTGAGE SERVICES FOR LOCUMS ============ -->
     <section id="mortgage-service" class="content-section">
         <div class="section-header">
+            <p class="kicker">Mortgage Service</p>
             <h2 class="section-title">Mortgage Services for Locums</h2>
         </div>
 
@@ -1227,6 +1311,7 @@ body.sidebar-open .sidebar { transform: translateX(0); }
     <!-- ============ WHY CHOOSE ADVANTAGE FINANCIAL SOLUTIONS? ============ -->
     <section id="why-choose" class="content-section">
         <div class="section-header">
+            <p class="kicker">The Advantage</p>
             <h2 class="section-title">Why Choose Advantage Financial Solutions?</h2>
         </div>
 
@@ -1263,30 +1348,32 @@ body.sidebar-open .sidebar { transform: translateX(0); }
         </div>
     </section>
 
-    <!-- ============ FOOTER ============ -->
-    <footer class="page-footer">
-        <div class="foot-links">
-            <a href="https://advantagefs.co.uk" target="_blank" rel="noopener">advantagefs.co.uk</a>
-        </div>
-
-        <div class="foot-motto">Our Experience. Your Advantage.</div>
-
-        <p class="foot-note">
-            Provided in partnership with Hoop Recruitment. Based in Bristol — advising clients across the UK.
-        </p>
-
-        <p class="foot-note">
-            Your home may be repossessed if you do not keep up repayments on your mortgage.
-            Protection advice and initial mortgage consultations are free. A discounted broker fee of £250
-            applies only if you proceed with a full mortgage application; if a protection policy is
-            arranged, Advantage FS is paid commission by the provider — never by you.
-        </p>
-
-        <p class="foot-sub">
-            © 2026 ADVANTAGE FINANCIAL SOLUTIONS · COMPANY NO. XXXXXXXX · FCA NO. XXXXXX
-        </p>
-    </footer>
 </div>
+
+<!-- ============ FOOTER — full-width navy brand band ============ -->
+<footer class="page-footer">
+    <div class="foot-links">
+        <a href="https://advantagefs.co.uk" target="_blank" rel="noopener">advantagefs.co.uk</a>
+    </div>
+
+    <div class="foot-motto">Our Experience. <span>Your Advantage.</span></div>
+
+    <p class="foot-note">
+        Provided in partnership with Hoop Recruitment. Based in Bristol — advising clients across the UK.
+    </p>
+
+    <p class="foot-note">
+        Your home may be repossessed if you do not keep up repayments on your mortgage.
+        Protection advice and initial mortgage consultations are free. A discounted broker fee of £250
+        applies only if you proceed with a full mortgage application; if a protection policy is
+        arranged, Advantage FS is paid commission by the provider — never by you.
+    </p>
+
+    <p class="foot-sub">
+        © 2026 ADVANTAGE FINANCIAL SOLUTIONS · COMPANY NO. XXXXXXXX · FCA NO. XXXXXX
+    </p>
+</footer>
+
 </main>
 
 <!-- BACK TO TOP -->
