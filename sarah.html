@@ -13,16 +13,12 @@
 
 <style>
 /* ============================================================
-   HOOP × ADVANTAGE FS · "LIVING DOCUMENT" · V7.1
+   HOOP × ADVANTAGE FS · "LIVING DOCUMENT" · V7.2
    ------------------------------------------------------------
-   V7.1: glass editorial sidebar (rail-aware), Bauhaus fun mode
+   V7.2: fun mode rebuilt as candy-pop (Bauhaus retired).
+   ALL fun styling now lives in one consolidated layer at the
+   bottom of this stylesheet — tokens, shapes and extras.
    ============================================================ */
-
-@property --accent-hue {
-    syntax: '<number>';
-    inherits: true;
-    initial-value: 8;
-}
 
 /* ---- Tokens ---- */
 :root {
@@ -76,31 +72,6 @@
     --accent-rule: hsla(8, 90%, 70%, 0.30);
     --navy: #eaf2f7;
     --navy-deep: #ffffff;
-}
-
-/* ---- FUN MODE · BAUHAUS ----
-   Signal red, cobalt blue, cream stock, near-black ink.
-   Geometric corners: cards square, circles stay circles. */
-[data-theme="fun"] {
-    color-scheme: light;
-    --paper: #f2ecdf;
-    --paper-2: #e9e1cf;
-    --ink: #17130e;
-    --ink-2: #3f3a30;
-    --ink-3: #6e6759;
-    --ink-4: #9d947f;
-    --rule: #d9d1bd;
-    --rule-strong: #c3b99f;
-    --card: #fbf8ef;
-
-    --accent: #e63312;
-    --accent-deep: #b32509;
-    --accent-wash: rgba(230, 51, 18, 0.10);
-    --accent-rule: rgba(230, 51, 18, 0.34);
-    --navy: #1e4f91;
-    --navy-deep: #153a6e;
-
-    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -263,9 +234,6 @@ img { max-width: 100%; display: block; }
 [data-theme="dark"] .theme-btn .s-moon { display: block; }
 [data-theme="fun"] .theme-btn .s-spark { display: block; }
 
-/* Bauhaus: buttons go square in fun mode */
-[data-theme="fun"] .icon-btn { border-radius: 2px; }
-
 /* ============================================================
    SIDEBAR — glass editorial contents panel
    ============================================================ */
@@ -313,7 +281,6 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     border-radius: 12px;
     background: color-mix(in srgb, var(--card) 55%, transparent);
 }
-[data-theme="fun"] .side-doc { border-radius: 0; }
 
 .side-doc .loop-mark { width: 30px; height: 20px; }
 .side-doc .loop-mark i { width: 20px; height: 20px; border-width: 2.2px; }
@@ -378,7 +345,6 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     line-height: 1.4;
 }
 
-/* Active: accent left bar, filled numeral — echoes the rail */
 .side-link.active { color: var(--ink); }
 .side-link.active .n { color: var(--accent); font-weight: 700; }
 .side-link.active::before {
@@ -392,8 +358,6 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     background: var(--accent);
 }
 .side-link.active { padding-left: 16px; }
-
-[data-theme="fun"] .side-link.active::before { border-radius: 0; }
 
 .side-foot {
     margin: 14px 16px 0;
@@ -539,10 +503,9 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
         0 2px 4px rgba(28,47,61,0.05),
         0 24px 56px -22px rgba(28,47,61,0.30);
     transform: rotate(-1.2deg);
-    transition: transform 0.6s var(--ease-out), border-radius 0.4s;
+    transition: transform 0.6s var(--ease-out);
 }
 .hero-plate:hover { transform: rotate(0deg) scale(1.012); }
-[data-theme="fun"] .hero-plate { border-radius: 0; }
 
 .hero-plate::after {
     content: "";
@@ -679,7 +642,6 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     border-radius: 12px;
     max-width: var(--measure);
 }
-[data-theme="fun"] .signature { border-radius: 0; }
 
 .signature .sig-label {
     font-family: var(--font-mono);
@@ -774,7 +736,6 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     box-shadow: 0 12px 30px -14px rgba(28,47,61,0.24);
 }
 .aud-card:hover::before { transform: scaleY(1); }
-[data-theme="fun"] .aud-card { border-radius: 0; }
 
 .aud-card .aud-kicker {
     font-family: var(--font-mono);
@@ -852,9 +813,6 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     transform: scale(1.06);
 }
 
-/* Bauhaus: process markers become squares in fun mode */
-[data-theme="fun"] .process li::after { border-radius: 2px; }
-
 .process .p-title {
     display: block;
     font-size: 15.5px;
@@ -885,7 +843,6 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     border-radius: 16px;
     margin-top: 8px;
 }
-[data-theme="fun"] .adviser { border-radius: 0; }
 
 @media (min-width: 620px) {
     .adviser { grid-template-columns: 132px minmax(0, 1fr); gap: 28px; }
@@ -901,7 +858,6 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     background: var(--paper-2);
     box-shadow: 0 10px 26px -12px rgba(28,47,61,0.34);
 }
-[data-theme="fun"] .adviser-photo { border-radius: 0; }
 
 .adviser-photo img {
     width: 100%;
@@ -935,8 +891,6 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     background: var(--accent);
     box-shadow: 0 0 0 3px var(--accent-wash);
 }
-/* Bauhaus: the meta dot becomes a square */
-[data-theme="fun"] .adviser-meta::before { border-radius: 1px; }
 
 [data-theme="dark"] .adviser-meta { color: var(--accent); }
 
@@ -999,7 +953,6 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     padding-inline: 14px;
     margin-inline: -14px;
 }
-[data-theme="fun"] .fee-row.is-key { border-radius: 0; }
 .fee-row.is-key dt { color: var(--accent-deep); font-weight: 500; }
 [data-theme="dark"] .fee-row.is-key dt { color: var(--accent); }
 
@@ -1029,7 +982,6 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     border-color: var(--rule-strong);
     box-shadow: 0 14px 34px -18px rgba(28,47,61,0.22);
 }
-[data-theme="fun"] .bento-card { border-radius: 0; }
 
 .bento-card .ghost {
     position: absolute;
@@ -1174,6 +1126,86 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 }
 
 /* ============================================================
+   FUN MODE · CANDY POP (V7.2)
+   ------------------------------------------------------------
+   Everything for fun mode lives in this one block.
+   Palette: candy-floss paper, grape ink, hot pink accent,
+   electric violet secondary, tangerine + cyan pops.
+   Shapes: everything goes extra-round — pills and bubbles.
+   ============================================================ */
+[data-theme="fun"] {
+    color-scheme: light;
+
+    --paper: #fff1f8;
+    --paper-2: #ffe6f3;
+    --ink: #47126b;
+    --ink-2: #7a3ba3;
+    --ink-3: #a874c9;
+    --ink-4: #c9a8e0;
+    --rule: #f7d2ea;
+    --rule-strong: #efb6dd;
+    --card: #ffffff;
+
+    --accent: #ff2d92;
+    --accent-deep: #cf0f74;
+    --accent-wash: rgba(255, 45, 146, 0.10);
+    --accent-rule: rgba(255, 45, 146, 0.32);
+    --navy: #6d28d9;
+    --navy-deep: #4c1d95;
+}
+
+/* Candy gradient shorthand colours */
+[data-theme="fun"] .scroll-progress {
+    background: linear-gradient(90deg, #ff2d92, #ff8a00, #00b8ff);
+}
+[data-theme="fun"] .rail::after {
+    background: linear-gradient(180deg, #ff2d92, #ff8a00, #00b8ff);
+}
+
+/* Candy hairlines */
+[data-theme="fun"] .masthead {
+    border-bottom: 2px solid;
+    border-image: linear-gradient(90deg, #ff2d92, #ff8a00, #00b8ff) 1;
+}
+[data-theme="fun"] .colophon {
+    border-top: 2px solid;
+    border-image: linear-gradient(90deg, #00b8ff, #ff8a00, #ff2d92) 1;
+}
+[data-theme="fun"] .sec-num::after {
+    background: linear-gradient(90deg, #ff2d92, #ff8a00);
+}
+[data-theme="fun"] .eyebrow::before {
+    background: linear-gradient(90deg, #ff2d92, #ff8a00);
+}
+
+/* Everything extra-round */
+[data-theme="fun"] .icon-btn { border-radius: 999px; }
+[data-theme="fun"] .side-doc { border-radius: 18px; }
+[data-theme="fun"] .side-link { border-radius: 999px; }
+[data-theme="fun"] .side-link.active { padding-left: 12px; }
+[data-theme="fun"] .hero-plate { border-radius: 24px; }
+[data-theme="fun"] .aud-card { border-radius: 22px; }
+[data-theme="fun"] .bento-card { border-radius: 22px; }
+[data-theme="fun"] .adviser { border-radius: 22px; }
+[data-theme="fun"] .adviser-photo { border-radius: 18px; }
+[data-theme="fun"] .signature { border-radius: 999px; }
+[data-theme="fun"] .fee-row.is-key { border-radius: 18px; }
+
+/* Ghost numerals become candy watermarks, one colour per card */
+[data-theme="fun"] .bento-card:nth-of-type(1) .ghost { color: #ff2d92; opacity: 0.13; }
+[data-theme="fun"] .bento-card:nth-of-type(2) .ghost { color: #ff8a00; opacity: 0.13; }
+[data-theme="fun"] .bento-card:nth-of-type(3) .ghost { color: #00b8ff; opacity: 0.13; }
+[data-theme="fun"] .bento-card:nth-of-type(4) .ghost { color: #6d28d9; opacity: 0.13; }
+
+/* Candy gradient stars */
+[data-theme="fun"] .rating-card .stars {
+    background: linear-gradient(90deg, #ff2d92, #ff8a00, #00b8ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* ============================================================
    SCROLL-DRIVEN REVEALS
    ============================================================ */
 @supports (animation-timeline: view()) {
@@ -1280,7 +1312,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     </nav>
 
     <div class="side-foot">
-        <p class="side-foot-note">Service Summary &middot; V7.1</p>
+        <p class="side-foot-note">Service Summary &middot; V7.2</p>
     </div>
 </aside>
 
@@ -1704,7 +1736,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 
             <div class="foot-right">
                 <a class="site" href="https://advantagefs.co.uk" target="_blank" rel="noopener">advantagefs.co.uk</a>
-                <p class="ref">Service summary &middot; V7.1</p>
+                <p class="ref">Service summary &middot; V7.2</p>
                 <p class="ref">&copy; 2026 Advantage Financial Solutions</p>
                 <p class="ref">Company no. XXXXXXXX &middot; FCA no. XXXXXX</p>
             </div>
@@ -1725,7 +1757,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     var backdrop = document.getElementById('sideBackdrop');
     var progress = document.getElementById('progress');
 
-    /* ---------- Theme: light → dark → fun (Bauhaus) ---------- */
+    /* ---------- Theme: light → dark → fun ---------- */
     var ORDER = ['light', 'dark', 'fun'];
     var LABELS = { light: 'Light', dark: 'Dark', fun: 'Fun' };
 
