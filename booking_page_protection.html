@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fafbfc">
+<meta name="description" content="Book a free, no-obligation income protection appointment with Laurence, your dedicated specialist protection adviser at Advantage Financial Solutions, exclusive to Hoop Recruitment candidates.">
+<title>Book Your Free Protection Appointment — Hoop × Advantage FS</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   HOOP × ADVANTAGE FS · BOOKING PAGE · V1.0
+   ------------------------------------------------------------
+   Embedded Microsoft Bookings iframe for income protection
+   appointments with Laurence. Shares the index page's design
+   tokens, masthead, theme system and colophon.
+   ============================================================ */
+
+/* ---- Tokens (identical to index) ---- */
+:root {
+    color-scheme: light;
+
+    --gutter: clamp(18px, 4.5vw, 56px);
+    --mast-h: 62px;
+
+    --paper: #fafbfc;
+    --paper-2: #f2f5f7;
+    --ink: #1c2f3d;
+    --ink-2: #4a6478;
+    --ink-3: #7d94a5;
+    --ink-4: #a9bcc8;
+    --rule: #dfe6ec;
+    --rule-strong: #c4d2dc;
+    --card: #ffffff;
+
+    --accent-hue: 8;
+    --accent: hsl(var(--accent-hue) 82% 62%);
+    --accent-deep: hsl(var(--accent-hue) 74% 48%);
+    --accent-wash: hsl(var(--accent-hue) 82% 62% / 0.10);
+    --accent-rule: hsl(var(--accent-hue) 82% 62% / 0.30);
+    --navy: #3d5a6e;
+    --navy-deep: #2b4354;
+
+    --cta-bg: var(--accent-deep);
+    --cta-ink: #ffffff;
+
+    --success: #0e9f5d;
+    --success-deep: #0b7c49;
+    --success-wash: rgba(14, 159, 93, 0.10);
+    --success-rule: rgba(14, 159, 93, 0.38);
+
+    --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+    --font-serif: 'Instrument Serif', Georgia, serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --shadow-sm: 0 1px 2px rgba(28, 47, 61, 0.06);
+    --shadow-md: 0 12px 28px -16px rgba(28, 47, 61, 0.28);
+    --shadow-lg: 0 24px 54px -24px rgba(28, 47, 61, 0.32);
+}
+
+[data-theme="dark"] {
+    color-scheme: dark;
+    --paper: #0c1419;
+    --paper-2: #111d25;
+    --ink: #eaf2f7;
+    --ink-2: #a8bcc9;
+    --ink-3: #7a8fa0;
+    --ink-4: #526675;
+    --rule: #1e2f3b;
+    --rule-strong: #2c4353;
+    --card: #101c24;
+
+    --accent: hsl(8 90% 70%);
+    --accent-deep: hsl(8 90% 78%);
+    --accent-wash: hsla(8, 90%, 70%, 0.12);
+    --accent-rule: hsla(8, 90%, 70%, 0.30);
+    --navy: #eaf2f7;
+    --navy-deep: #ffffff;
+
+    --cta-bg: var(--accent);
+    --cta-ink: #101c24;
+
+    --success: #3fd692;
+    --success-deep: #7ce8b8;
+    --success-wash: rgba(63, 214, 146, 0.12);
+    --success-rule: rgba(63, 214, 146, 0.35);
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+    --shadow-md: 0 12px 28px -16px rgba(0, 0, 0, 0.55);
+    --shadow-lg: 0 24px 54px -24px rgba(0, 0, 0, 0.65);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+    font-family: var(--font-display);
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--ink);
+    background: var(--paper);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    transition: background-color 0.4s var(--ease-out), color 0.4s var(--ease-out);
+}
+
+::selection { background: var(--accent-wash); color: var(--ink); }
+
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* ============================================================
+   MASTHEAD (matches index)
+   ============================================================ */
+.masthead {
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 0 var(--gutter);
+    height: var(--mast-h);
+    background: color-mix(in srgb, var(--paper) 85%, transparent);
+    backdrop-filter: blur(18px) saturate(1.7);
+    -webkit-backdrop-filter: blur(18px) saturate(1.7);
+    border-bottom: 1px solid var(--rule);
+}
+
+.mast-mark {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    text-decoration: none;
+    color: inherit;
+    min-width: 0;
+}
+
+.loop-mark { position: relative; width: 32px; height: 21px; flex: 0 0 auto; }
+.loop-mark i {
+    position: absolute;
+    top: 0;
+    width: 21px;
+    height: 21px;
+    border-radius: 50%;
+    border: 2.4px solid var(--navy);
+}
+.loop-mark i:first-child { left: 0; }
+.loop-mark i:last-child {
+    right: 0;
+    border-color: var(--accent);
+    mix-blend-mode: multiply;
+}
+[data-theme="dark"] .loop-mark i:last-child { mix-blend-mode: screen; }
+
+.mast-title {
+    font-size: 14px;
+    font-weight: 650;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.mast-title em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--ink-3);
+}
+
+.mast-right { display: flex; align-items: center; gap: 10px; }
+
+.mast-capsule {
+    display: none;
+    padding: 6px 13px;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--card) 60%, transparent);
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    white-space: nowrap;
+}
+@media (min-width: 700px) { .mast-capsule { display: inline-flex; } }
+
+.icon-btn {
+    width: 36px;
+    height: 36px;
+    display: inline-grid;
+    place-items: center;
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    background: transparent;
+    color: var(--ink-2);
+    cursor: pointer;
+    transition: color 0.18s, background 0.18s, border-color 0.18s, transform 0.18s;
+}
+.icon-btn:hover {
+    color: var(--ink);
+    background: var(--paper-2);
+    border-color: var(--rule-strong);
+}
+.icon-btn:active { transform: scale(0.94); }
+.icon-btn svg { width: 16px; height: 16px; }
+[data-theme="dark"] .icon-btn { border-color: var(--rule-strong); background: rgba(255,255,255,0.04); }
+[data-theme="dark"] .icon-btn:hover { background: rgba(255,255,255,0.09); color: #fff; }
+
+.theme-btn svg { display: none; }
+[data-theme="light"] .theme-btn .s-sun { display: block; }
+[data-theme="dark"] .theme-btn .s-moon { display: block; }
+[data-theme="fun"] .theme-btn .s-spark { display: block; }
+
+/* ============================================================
+   LAYOUT SHELL
+   ============================================================ */
+.shell {
+    max-width: 1000px;
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+}
+
+/* ============================================================
+   PAGE HEAD
+   ============================================================ */
+.page-head {
+    padding-block: clamp(30px, 5vh, 56px) 26px;
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 16px;
+}
+.eyebrow::before {
+    content: "";
+    width: 22px;
+    height: 1px;
+    background: var(--accent);
+}
+
+.page-head h1 {
+    font-size: clamp(30px, 5vw, 52px);
+    font-weight: 700;
+    line-height: 1.02;
+    letter-spacing: -0.034em;
+    color: var(--ink);
+    text-wrap: balance;
+    margin-bottom: 18px;
+}
+.page-head h1 em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.012em;
+    color: var(--accent-deep);
+}
+
+.page-head .standfirst {
+    max-width: 52ch;
+    font-size: clamp(15px, 1.3vw, 17px);
+    line-height: 1.68;
+    color: var(--ink-2);
+    text-wrap: pretty;
+}
+.page-head .standfirst strong { color: var(--ink); font-weight: 600; }
+
+/* Free callout — reuses index signature style */
+.signature {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    padding: 13px 20px;
+    background: linear-gradient(90deg, var(--success-wash), transparent 78%);
+    border: 1px solid var(--success-rule);
+    border-left: 4px solid var(--success);
+    border-radius: 13px;
+}
+.signature .sig-label {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--success-deep);
+}
+.signature .sig-value {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: clamp(14.5px, 1.3vw, 16.5px);
+    font-weight: 700;
+    letter-spacing: -0.014em;
+    color: var(--ink);
+}
+.signature .sig-check { width: 17px; height: 17px; flex: 0 0 auto; color: var(--success); }
+
+/* ============================================================
+   BOOKING PANEL
+   ============================================================ */
+.booking-panel {
+    position: relative;
+    border: 1px solid var(--rule);
+    border-radius: 16px;
+    background: var(--card);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    margin-bottom: clamp(36px, 6vh, 64px);
+}
+
+.panel-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--rule);
+    background: var(--paper-2);
+}
+.panel-bar .bar-label {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+}
+.panel-bar .bar-label .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--success);
+    box-shadow: 0 0 0 3px var(--success-wash);
+    animation: pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 3px var(--success-wash); }
+    50%      { box-shadow: 0 0 0 6px var(--success-wash); }
+}
+.panel-bar .bar-hint {
+    display: none;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-4);
+}
+@media (min-width: 640px) { .panel-bar .bar-hint { display: block; } }
+
+/* Loader sits behind the iframe and disappears once it loads */
+.booking-frame-wrap {
+    position: relative;
+    height: clamp(1150px, 150vh, 1650px);
+    background: var(--card);
+}
+
+.booking-frame-wrap iframe {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+
+.frame-loader {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    display: grid;
+    place-content: center;
+    gap: 14px;
+    justify-items: center;
+    text-align: center;
+    padding: 24px;
+    transition: opacity 0.5s var(--ease-out);
+}
+.booking-frame-wrap.loaded .frame-loader {
+    opacity: 0;
+    pointer-events: none;
+}
+.frame-loader .spin {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2.5px solid var(--accent-rule);
+    border-top-color: var(--accent);
+    animation: rotate 0.9s linear infinite;
+}
+@keyframes rotate { to { transform: rotate(360deg); } }
+.frame-loader .load-txt {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+}
+
+/* Fallback link shown above loader if iframe is blocked */
+.frame-fallback {
+    margin-top: 6px;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+}
+.frame-fallback a {
+    color: var(--accent-deep);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-rule);
+    padding-bottom: 2px;
+}
+.frame-fallback a:hover { border-bottom-color: var(--accent); }
+
+/* ============================================================
+   PREP CHECKLIST
+   ============================================================ */
+.prep {
+    padding-block: 34px;
+    border-top: 1px solid var(--rule);
+}
+
+.prep h2 {
+    font-size: clamp(21px, 2.6vw, 28px);
+    font-weight: 680;
+    letter-spacing: -0.024em;
+    line-height: 1.14;
+    color: var(--ink);
+    margin-bottom: 10px;
+    text-wrap: balance;
+}
+
+.prep .prep-intro {
+    max-width: 58ch;
+    font-size: 14.5px;
+    line-height: 1.72;
+    color: var(--ink-2);
+    margin-bottom: 22px;
+}
+
+.keyed {
+    list-style: none;
+    max-width: 72ch;
+    border-top: 1px solid var(--rule);
+    counter-reset: keyed;
+}
+.keyed li {
+    display: grid;
+    grid-template-columns: 32px minmax(0, 1fr);
+    gap: 0 16px;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--rule);
+    counter-increment: keyed;
+}
+.keyed li::before {
+    content: counter(keyed, decimal-leading-zero);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--ink-3);
+    padding-top: 0.26em;
+}
+.keyed .k-title {
+    display: block;
+    font-size: 14.5px;
+    font-weight: 620;
+    letter-spacing: -0.012em;
+    color: var(--ink);
+    margin-bottom: 3px;
+}
+.keyed .k-body {
+    display: block;
+    font-size: 14px;
+    line-height: 1.68;
+    color: var(--ink-2);
+}
+
+/* ============================================================
+   COLOPHON (matches index)
+   ============================================================ */
+.colophon {
+    border-top: 1px solid var(--rule-strong);
+    padding-block: 30px 40px;
+}
+.colophon-grid { display: grid; gap: 20px; }
+@media (min-width: 760px) {
+    .colophon-grid { grid-template-columns: minmax(0, 1fr) auto; align-items: end; }
+}
+.colophon .motto {
+    font-family: var(--font-serif);
+    font-size: clamp(18px, 2.2vw, 24px);
+    font-style: italic;
+    color: var(--ink);
+    margin-bottom: 7px;
+}
+.colophon .motto span { color: var(--accent-deep); }
+[data-theme="dark"] .colophon .motto span { color: var(--accent); }
+.colophon .fca {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    margin-bottom: 11px;
+}
+.colophon .fca strong { color: var(--accent-deep); font-weight: 700; }
+[data-theme="dark"] .colophon .fca strong { color: var(--accent); }
+.colophon .legal {
+    font-size: 11px;
+    line-height: 1.72;
+    color: var(--ink-3);
+    max-width: 62ch;
+}
+.colophon .foot-right {
+    display: grid;
+    gap: 9px;
+    justify-items: start;
+}
+@media (min-width: 760px) { .colophon .foot-right { justify-items: end; text-align: right; } }
+.colophon a.site {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-rule);
+    padding-bottom: 2px;
+}
+.colophon a.site:hover { border-bottom-color: var(--accent); }
+.colophon .ref {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-4);
+}
+
+/* ============================================================
+   FUN MODE (matches index)
+   ============================================================ */
+[data-theme="fun"] {
+    color-scheme: light;
+    --paper: #fff1f8;
+    --paper-2: #ffe6f3;
+    --ink: #47126b;
+    --ink-2: #7a3ba3;
+    --ink-3: #a874c9;
+    --ink-4: #c9a8e0;
+    --rule: #f7d2ea;
+    --rule-strong: #efb6dd;
+    --card: #ffffff;
+    --accent: #ff2d92;
+    --accent-deep: #cf0f74;
+    --accent-wash: rgba(255, 45, 146, 0.10);
+    --accent-rule: rgba(255, 45, 146, 0.32);
+    --navy: #6d28d9;
+    --navy-deep: #4c1d95;
+    --success: #00b374;
+    --success-deep: #00855a;
+    --success-wash: rgba(0, 179, 116, 0.12);
+    --success-rule: rgba(0, 179, 116, 0.38);
+}
+[data-theme="fun"] .masthead {
+    border-bottom: 2px solid;
+    border-image: linear-gradient(90deg, #ff2d92, #ff8a00, #00b8ff) 1;
+}
+[data-theme="fun"] .colophon {
+    border-top: 2px solid;
+    border-image: linear-gradient(90deg, #00b8ff, #ff8a00, #ff2d92) 1;
+}
+[data-theme="fun"] .eyebrow::before { background: linear-gradient(90deg, #ff2d92, #ff8a00); }
+[data-theme="fun"] .icon-btn { border-radius: 999px; }
+[data-theme="fun"] .booking-panel { border-radius: 22px; }
+[data-theme="fun"] .signature { border-radius: 999px; }
+
+/* ============================================================
+   SMALL SCREENS
+   ============================================================ */
+@media (max-width: 620px) {
+    :root { --mast-h: 56px; }
+    .masthead { padding: 0 16px; }
+    .mast-title em { display: none; }
+    .shell { padding-inline: 16px; }
+    .booking-frame-wrap { height: 1400px; }
+    .prep { padding-block: 26px; }
+    .colophon { padding-block: 26px 32px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ MASTHEAD ============ -->
+<header class="masthead">
+    <a class="mast-mark" href="index.html">
+        <span class="loop-mark" aria-hidden="true"><i></i><i></i></span>
+        <span class="mast-title">Hoop <em>&times;</em> Advantage FS</span>
+    </a>
+
+    <div class="mast-right">
+        <span class="mast-capsule">Book an Appointment</span>
+        <button class="icon-btn theme-btn" id="themeToggle" type="button" aria-label="Change colour theme" title="Change colour theme">
+            <svg class="s-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <circle cx="12" cy="12" r="4.2"/>
+                <path d="M12 2.4v2.2M12 19.4v2.2M2.4 12h2.2M19.4 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/>
+            </svg>
+            <svg class="s-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <path d="M20.5 14.4A8.6 8.6 0 0 1 9.6 3.5a8.6 8.6 0 1 0 10.9 10.9Z"/>
+            </svg>
+            <svg class="s-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <path d="M12 3.2v3M12 17.8v3M3.2 12h3M17.8 12h3M12 7.4a4.6 4.6 0 0 0-4.6 4.6c0 1.9 1.1 3 2 3.9.7.7 1.2 1.4 1.3 2.5h2.6c.1-1.1.6-1.8 1.3-2.5.9-.9 2-2 2-3.9A4.6 4.6 0 0 0 12 7.4Z"/>
+                <path d="M10.4 21h3.2"/>
+            </svg>
+        </button>
+    </div>
+</header>
+
+<main class="shell">
+
+    <!-- ============ PAGE HEAD ============ -->
+    <section class="page-head">
+        <p class="eyebrow">Income Protection &middot; Free Appointment</p>
+        <h1>Book your appointment with <em>Laurence</em>.</h1>
+        <p class="standfirst">
+            Choose a time that suits you below. Your initial <strong>20-minute call</strong> is an
+            informal chat with Laurence, your dedicated specialist protection adviser — a
+            comprehensive overview of the options available for Income Protection, Life Insurance
+            &amp; Critical Illness Cover.
+        </p>
+
+        <div class="signature">
+            <span class="sig-label">Cost</span>
+            <span class="sig-value">
+                <svg class="sig-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                This advisory service is completely free.
+            </span>
+        </div>
+    </section>
+
+    <!-- ============ BOOKING WIDGET ============ -->
+    <section class="booking-panel" aria-label="Appointment booking tool">
+        <div class="panel-bar">
+            <span class="bar-label"><span class="dot" aria-hidden="true"></span> Live availability</span>
+            <span class="bar-hint">Microsoft Bookings &middot; Secure</span>
+        </div>
+
+        <div class="booking-frame-wrap" id="frameWrap">
+            <iframe
+                id="bookingFrame"
+                src="https://bookings.cloud.microsoft/book/AdvantageProtection@NETORGFT5872714.onmicrosoft.com/?ismsaljsauthenabled"
+                title="Book an income protection appointment with Laurence"
+                loading="lazy"
+                allowfullscreen></iframe>
+
+            <div class="frame-loader" aria-hidden="true">
+                <div class="spin"></div>
+                <p class="load-txt">Loading booking calendar&hellip;</p>
+                <p class="frame-fallback">
+                    Calendar not showing? <a href="https://bookings.cloud.microsoft/book/AdvantageProtection@NETORGFT5872714.onmicrosoft.com/?ismsaljsauthenabled" target="_blank" rel="noopener">Open it in a new tab &nearr;</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ PREP CHECKLIST ============ -->
+    <section class="prep">
+        <h2>Before your call</h2>
+        <p class="prep-intro">
+            A little preparation helps Laurence give you the most accurate picture of your options
+            during the 20-minute call. Nothing here is essential — but having details to hand makes
+            the conversation more productive.
+        </p>
+
+        <ul class="keyed">
+            <li>
+                <span>
+                    <span class="k-title">Existing policies</span>
+                    <span class="k-body">If you hold any protection policies from previous employment or past advice, having the provider names and cover amounts handy is useful (but not essential).</span>
+                </span>
+            </li>
+            <li>
+                <span>
+                    <span class="k-title">Rough monthly earnings</span>
+                    <span class="k-body">A ballpark figure of your typical monthly income helps Laurence size any Income Protection recommendation correctly.</span>
+                </span>
+            </li>
+            <li>
+                <span>
+                    <span class="k-title">Monthly commitments</span>
+                    <span class="k-body">Your mortgage or rent, and any other major outgoings, help determine the level of cover that would keep your household afloat.</span>
+                </span>
+            </li>
+            <li>
+                <span>
+                    <span class="k-title">A quiet 20 minutes</span>
+                    <span class="k-body">The call is informal, but a quiet space with a cup of tea means you can focus and ask anything on your mind.</span>
+                </span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- ============ COLOPHON ============ -->
+    <footer class="colophon">
+        <div class="colophon-grid">
+            <div>
+                <p class="motto">Our Experience. <span>Your Advantage.</span></p>
+                <p class="fca">Advantage Financial Solutions · <strong>FCA 965036</strong></p>
+                <p class="legal">
+                    Provided in partnership with Hoop Recruitment. Based in Bristol — advising clients
+                    across the UK. Protection advice is free of charge; if a protection policy is
+                    arranged, Advantage FS is paid commission by the provider — never by you.
+                </p>
+            </div>
+
+            <div class="foot-right">
+                <a class="site" href="https://advantagefs.co.uk" target="_blank" rel="noopener">advantagefs.co.uk</a>
+                <p class="ref">Booking page &middot; V1.0</p>
+                <p class="ref">&copy; 2026 Advantage Financial Solutions</p>
+                <p class="ref">FCA 965036 · Company no. 12291836</p>
+            </div>
+        </div>
+    </footer>
+
+</main>
+
+<script>
+(function () {
+    'use strict';
+
+    var root = document.documentElement;
+    var themeBtn = document.getElementById('themeToggle');
+
+    /* ---------- Theme: light → dark → fun (shared with index) ---------- */
+    var ORDER = ['light', 'dark', 'fun'];
+    var LABELS = { light: 'Light', dark: 'Dark', fun: 'Fun' };
+
+    function applyTheme(t) {
+        root.setAttribute('data-theme', t);
+        var label = 'Theme: ' + LABELS[t] + ' — click to change';
+        themeBtn.title = label;
+        themeBtn.setAttribute('aria-label', label);
+        try { localStorage.setItem('avs-theme', t); } catch (e) {}
+    }
+
+    var savedTheme = null;
+    try { savedTheme = localStorage.getItem('avs-theme'); } catch (e) {}
+    if (ORDER.indexOf(savedTheme) === -1) {
+        savedTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    applyTheme(savedTheme);
+
+    themeBtn.addEventListener('click', function () {
+        var cur = root.getAttribute('data-theme') || 'light';
+        applyTheme(ORDER[(ORDER.indexOf(cur) + 1) % ORDER.length]);
+    });
+
+    /* ---------- Booking iframe loader ---------- */
+    var frameWrap = document.getElementById('frameWrap');
+    var bookingFrame = document.getElementById('bookingFrame');
+
+    function markLoaded() {
+        frameWrap.classList.add('loaded');
+    }
+
+    bookingFrame.addEventListener('load', markLoaded);
+
+    // Safety net: if the load event never fires (e.g. blocked or slow),
+    // fade the loader out after 6 seconds so the fallback link is visible.
+    setTimeout(markLoaded, 6000);
+})();
+</script>
+</body>
+</html>
