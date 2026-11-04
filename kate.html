@@ -13,14 +13,14 @@
 
 <style>
 /* ============================================================
-   HOOP × ADVANTAGE FS · "LIVING DOCUMENT" · V7.4
+   HOOP × ADVANTAGE FS · "LIVING DOCUMENT" · V7.5
    ------------------------------------------------------------
-   V7.4: hero plate stacks the three partner logos (Hoop,
-   Advantage Protection, Advantage Mortgage Advice). Mortgage
+   V7.5: all section/sidebar numbering removed. Logos presented
+   in a "Provided by" card (miniature of the hero plate) beside
+   the Protection Service & Mortgage Service headings. Mortgage
    sections use the booking-button blue; protection and general
-   accents keep the existing red. Sidebar trimmed to Overview /
-   Protection Service / Mortgage Service / Why Advantage.
-   "Book an appointment" CTAs added to both service sections.
+   accents keep the existing red. Sidebar: Overview / Protection
+   Service / Mortgage Service / Why Advantage.
    ============================================================ */
 
 /* ---- Tokens ---- */
@@ -346,10 +346,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 
 .side-link {
     position: relative;
-    display: grid;
-    grid-template-columns: 26px minmax(0, 1fr);
-    gap: 0 10px;
-    align-items: baseline;
+    display: block;
     padding: 10px 12px;
     border-radius: 9px;
     text-decoration: none;
@@ -360,14 +357,8 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     color: var(--ink);
     background: color-mix(in srgb, var(--paper-2) 70%, transparent);
 }
-.side-link .n {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    letter-spacing: 0.08em;
-    color: var(--ink-4);
-    transition: color 0.2s;
-}
 .side-link .t {
+    display: block;
     font-family: var(--font-display);
     font-size: 13.5px;
     font-weight: 550;
@@ -376,7 +367,6 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 }
 
 .side-link.active { color: var(--ink); }
-.side-link.active .n { color: var(--accent); font-weight: 700; }
 .side-link.active::before {
     content: "";
     position: absolute;
@@ -584,38 +574,13 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 }
 
 .section-head {
-    display: grid;
-    gap: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px 40px;
     margin-bottom: clamp(26px, 3.6vw, 44px);
 }
-
-@media (min-width: 760px) {
-    .section-head {
-        grid-template-columns: 92px minmax(0, 1fr);
-        gap: 0 34px;
-        align-items: start;
-    }
-}
-
-/* Section numerals: bigger and bolder */
-.sec-num {
-    font-family: var(--font-mono);
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    color: var(--ink-2);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-.sec-num::after {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: var(--rule);
-}
-@media (min-width: 760px) { .sec-num { padding-top: 0.35em; } }
-@media (max-width: 759px) { .sec-num::after { max-width: 40px; } }
 
 .section h2 {
     font-family: var(--font-display);
@@ -628,15 +593,36 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     max-width: 30ch;
 }
 
-/* Brand logo under a section heading */
-.sec-head-main {
-    display: grid;
-    justify-items: start;
-    gap: 2px;
+/* "Provided by" brand card — a miniature of the hero plate */
+.provided-by {
+    display: inline-grid;
+    justify-items: center;
+    gap: 9px;
+    padding: 16px 26px 18px;
+    background: #ffffff;
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    box-shadow:
+        0 1px 0 rgba(255,255,255,0.6) inset,
+        0 2px 4px rgba(28,47,61,0.05),
+        0 18px 40px -20px rgba(28,47,61,0.28);
+    transform: rotate(-1.2deg);
+    transition: transform 0.6s var(--ease-out);
+    flex: 0 0 auto;
 }
-.sec-logo {
-    margin-top: 12px;
-    width: clamp(170px, 20vw, 250px);
+.provided-by:hover { transform: rotate(0deg) scale(1.02); }
+
+.provided-by .pb-label {
+    font-family: var(--font-mono);
+    font-size: 8.5px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+}
+
+.provided-by img {
+    width: clamp(150px, 17vw, 205px);
     height: auto;
     object-fit: contain;
 }
@@ -644,14 +630,6 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 .section-body {
     display: grid;
     gap: 22px;
-}
-
-@media (min-width: 760px) {
-    .section-body {
-        grid-template-columns: 92px minmax(0, 1fr);
-        gap: 0 34px;
-    }
-    .section-body > * { grid-column: 2; }
 }
 
 /* Subheads: promoted to proper bold accent headings */
@@ -1331,9 +1309,6 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     border-top: 2px solid;
     border-image: linear-gradient(90deg, #00b8ff, #ff8a00, #ff2d92) 1;
 }
-[data-theme="fun"] .sec-num::after {
-    background: linear-gradient(90deg, #ff2d92, #ff8a00);
-}
 [data-theme="fun"] .eyebrow::before {
     background: linear-gradient(90deg, #ff2d92, #ff8a00);
 }
@@ -1343,6 +1318,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 [data-theme="fun"] .side-link { border-radius: 999px; }
 [data-theme="fun"] .side-link.active { padding-left: 12px; }
 [data-theme="fun"] .hero-plate { border-radius: 24px; }
+[data-theme="fun"] .provided-by { border-radius: 22px; }
 [data-theme="fun"] .aud-card { border-radius: 22px; }
 [data-theme="fun"] .bento-card { border-radius: 22px; }
 [data-theme="fun"] .adviser { border-radius: 22px; }
@@ -1396,7 +1372,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
         animation-duration: 0.01ms !important;
         transition-duration: 0.01ms !important;
     }
-    .hero-plate { transform: none; }
+    .hero-plate, .provided-by { transform: none; }
 }
 
 /* ============================================================
@@ -1420,6 +1396,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     .shell { padding-inline: 18px; }
     .hero { padding-block: 32px 36px; }
     .hero-plate { transform: none; }
+    .provided-by { transform: none; }
     .section { padding-block: 38px; }
     .adviser { padding: 18px; }
     .bento-card .ghost { font-size: 64px; }
@@ -1450,21 +1427,21 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     <p class="side-label">Contents</p>
     <nav class="side-nav" id="sideNav">
         <a class="side-link" href="#overview" data-spy="overview">
-            <span class="n">00</span><span class="t">Overview</span>
+            <span class="t">Overview</span>
         </a>
         <a class="side-link" href="#protection-service" data-spy="protection-service">
-            <span class="n">03</span><span class="t">Protection Service</span>
+            <span class="t">Protection Service</span>
         </a>
         <a class="side-link" href="#mortgage-service" data-spy="mortgage-service">
-            <span class="n">04</span><span class="t">Mortgage Service</span>
+            <span class="t">Mortgage Service</span>
         </a>
         <a class="side-link" href="#why-choose" data-spy="why-choose">
-            <span class="n">05</span><span class="t">Why Advantage</span>
+            <span class="t">Why Advantage</span>
         </a>
     </nav>
 
     <div class="side-foot">
-        <p class="side-foot-note">Service Summary &middot; V7.4</p>
+        <p class="side-foot-note">Service Summary &middot; V7.5</p>
     </div>
 </aside>
 
@@ -1531,10 +1508,9 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
         </figure>
     </section>
 
-    <!-- ============ 01 · PROTECTION ADVICE ============ -->
+    <!-- ============ PROTECTION ADVICE (INTRO) ============ -->
     <section class="section" id="protection" data-spy-as="protection-service">
         <div class="section-head">
-            <p class="sec-num">01</p>
             <h2>Protection advice for locums &amp; contractors</h2>
         </div>
 
@@ -1556,10 +1532,9 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
         </div>
     </section>
 
-    <!-- ============ 02 · MORTGAGE ADVICE ============ -->
+    <!-- ============ MORTGAGE ADVICE (INTRO) ============ -->
     <section class="section theme-mortgage" id="mortgage-advice" data-spy-as="mortgage-service">
         <div class="section-head">
-            <p class="sec-num">02</p>
             <h2>Mortgage advice for locums &amp; contractors</h2>
         </div>
 
@@ -1580,13 +1555,13 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
         </div>
     </section>
 
-    <!-- ============ 03 · PROTECTION SERVICE ============ -->
+    <!-- ============ PROTECTION SERVICE ============ -->
     <section class="section" id="protection-service">
         <div class="section-head">
-            <p class="sec-num">03</p>
-            <div class="sec-head-main">
-                <h2>Protection Service</h2>
-                <img class="sec-logo" src="bbb.png" alt="Advantage Protection" loading="lazy" decoding="async">
+            <h2>Protection Service</h2>
+            <div class="provided-by reveal-soft">
+                <p class="pb-label">Provided by</p>
+                <img src="bbb.png" alt="Advantage Protection" loading="lazy" decoding="async">
             </div>
         </div>
 
@@ -1613,14 +1588,14 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
                 </span>
             </div>
 
-            <!-- TODO: replace href with your booking link -->
             <p class="cta-row reveal">
-                <a class="cta-btn" href="#">
-                    Book an appointment
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
-                </a>
-            </p>
-
+    <a class="cta-btn"
+       href="https://bookings.cloud.microsoft/bookwithme/user/dd4aac933138452aaf6ccd6b3f13cddd@advantagefs.co.uk/meetingtype/pX14LRmrSUunjYyKv7O_0A2?anonymous&ismsaljsauthenabled&ep=mlink"
+       target="_blank" rel="noopener">
+        Book an appointment
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+    </a>
+</p>
             <div class="adviser reveal">
                 <div class="adviser-photo">
                     <img src="adviser.png" alt="Laurence, Specialist Protection Adviser at Advantage Financial Solutions" width="132" height="176" loading="lazy" decoding="async">
@@ -1724,13 +1699,13 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
         </div>
     </section>
 
-    <!-- ============ 04 · MORTGAGE SERVICE ============ -->
+    <!-- ============ MORTGAGE SERVICE ============ -->
     <section class="section theme-mortgage" id="mortgage-service">
         <div class="section-head">
-            <p class="sec-num">04</p>
-            <div class="sec-head-main">
-                <h2>Mortgage Service</h2>
-                <img class="sec-logo" src="aaa.png" alt="Advantage Mortgage Advice" loading="lazy" decoding="async">
+            <h2>Mortgage Service</h2>
+            <div class="provided-by reveal-soft">
+                <p class="pb-label">Provided by</p>
+                <img src="aaa.png" alt="Advantage Mortgage Advice" loading="lazy" decoding="async">
             </div>
         </div>
 
@@ -1761,13 +1736,13 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
                 </div>
             </dl>
 
-            <!-- TODO: replace href with your booking link -->
             <p class="cta-row reveal">
-                <a class="cta-btn" href="#">
-                    Book an appointment
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
-                </a>
-            </p>
+    <a class="cta-btn"
+       href="mailto:info@advantagefs.co.uk?subject=Hoop%20recruitment%20-Mortgage%20enquiry">
+        Book an appointment
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+    </a>
+</p>
 
             <p class="subhead">Who this service is most useful for</p>
 
@@ -1852,10 +1827,9 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
         </div>
     </section>
 
-    <!-- ============ 05 · WHY ADVANTAGE ============ -->
+    <!-- ============ WHY ADVANTAGE ============ -->
     <section class="section" id="why-choose">
         <div class="section-head">
-            <p class="sec-num">05</p>
             <h2>Why choose Advantage Financial Solutions?</h2>
         </div>
 
@@ -1947,7 +1921,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 
             <div class="foot-right">
                 <a class="site" href="https://advantagefs.co.uk" target="_blank" rel="noopener">advantagefs.co.uk</a>
-                <p class="ref">Service summary &middot; V7.4</p>
+                <p class="ref">Service summary &middot; V7.5</p>
                 <p class="ref">&copy; 2026 Advantage Financial Solutions</p>
                 <p class="ref">FCA 965036 · Company no. 12291836</p>
             </div>
@@ -2037,7 +2011,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
         var spy = new IntersectionObserver(function (entries) {
             entries.forEach(function (en) {
                 if (!en.isIntersecting) return;
-                /* Intro sections (01/02) map to their service sidebar item */
+                /* Intro sections map to their service sidebar item */
                 var id = en.target.getAttribute('data-spy-as') || en.target.id;
                 setActive(id);
             });
