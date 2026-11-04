@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#fafbfc">
+<meta name="theme-color" content="#ffffff">
 <meta name="description" content="Book a free, no-obligation income protection appointment with Laurence, your dedicated specialist protection adviser at Advantage Financial Solutions, exclusive to Hoop Recruitment candidates.">
 <title>Book Your Free Protection Appointment — Hoop × Advantage FS</title>
 
@@ -13,21 +13,21 @@
 
 <style>
 /* ============================================================
-   HOOP × ADVANTAGE FS · BOOKING PAGE · V1.0
+   HOOP × ADVANTAGE FS · BOOKING PAGE · V1.1
    ------------------------------------------------------------
-   Embedded Microsoft Bookings iframe for income protection
-   appointments with Laurence. Shares the index page's design
-   tokens, masthead, theme system and colophon.
+   V1.1: seamless white-on-white booking panel, adviser portrait
+   beside the headline, back arrow in masthead.
    ============================================================ */
 
-/* ---- Tokens (identical to index) ---- */
+/* ---- Tokens (matches index, except paper is pure white
+        so the Bookings iframe blends seamlessly) ---- */
 :root {
     color-scheme: light;
 
     --gutter: clamp(18px, 4.5vw, 56px);
     --mast-h: 62px;
 
-    --paper: #fafbfc;
+    --paper: #ffffff;
     --paper-2: #f2f5f7;
     --ink: #1c2f3d;
     --ink-2: #4a6478;
@@ -44,9 +44,6 @@
     --accent-rule: hsl(var(--accent-hue) 82% 62% / 0.30);
     --navy: #3d5a6e;
     --navy-deep: #2b4354;
-
-    --cta-bg: var(--accent-deep);
-    --cta-ink: #ffffff;
 
     --success: #0e9f5d;
     --success-deep: #0b7c49;
@@ -81,9 +78,6 @@
     --accent-rule: hsla(8, 90%, 70%, 0.30);
     --navy: #eaf2f7;
     --navy-deep: #ffffff;
-
-    --cta-bg: var(--accent);
-    --cta-ink: #101c24;
 
     --success: #3fd692;
     --success-deep: #7ce8b8;
@@ -120,7 +114,7 @@ body {
 }
 
 /* ============================================================
-   MASTHEAD (matches index)
+   MASTHEAD (matches index, plus back arrow)
    ============================================================ */
 .masthead {
     position: sticky;
@@ -136,6 +130,13 @@ body {
     backdrop-filter: blur(18px) saturate(1.7);
     -webkit-backdrop-filter: blur(18px) saturate(1.7);
     border-bottom: 1px solid var(--rule);
+}
+
+.mast-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
 }
 
 .mast-mark {
@@ -208,6 +209,7 @@ body {
     background: transparent;
     color: var(--ink-2);
     cursor: pointer;
+    text-decoration: none;
     transition: color 0.18s, background 0.18s, border-color 0.18s, transform 0.18s;
 }
 .icon-btn:hover {
@@ -239,6 +241,24 @@ body {
    ============================================================ */
 .page-head {
     padding-block: clamp(30px, 5vh, 56px) 26px;
+}
+
+.head-flex {
+    display: flex;
+    align-items: flex-start;
+    gap: clamp(20px, 3.4vw, 34px);
+}
+
+.adviser-avatar {
+    flex: 0 0 auto;
+    width: clamp(92px, 13vw, 132px);
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    object-position: center 12%;
+    border-radius: 14px;
+    border: 1px solid var(--rule);
+    box-shadow: var(--shadow-md);
+    background: var(--paper-2);
 }
 
 .eyebrow {
@@ -286,7 +306,7 @@ body {
 }
 .page-head .standfirst strong { color: var(--ink); font-weight: 600; }
 
-/* Free callout — reuses index signature style */
+/* Free callout */
 .signature {
     display: inline-flex;
     align-items: center;
@@ -319,65 +339,32 @@ body {
 .signature .sig-check { width: 17px; height: 17px; flex: 0 0 auto; color: var(--success); }
 
 /* ============================================================
-   BOOKING PANEL
+   BOOKING PANEL — seamless, blends with the white page
    ============================================================ */
 .booking-panel {
     position: relative;
+    margin-bottom: clamp(36px, 6vh, 64px);
+}
+
+/* In dark mode a bare white iframe would glare, so reinstate
+   the card treatment there only. */
+[data-theme="dark"] .booking-panel,
+[data-theme="fun"] .booking-panel {
     border: 1px solid var(--rule);
     border-radius: 16px;
     background: var(--card);
     box-shadow: var(--shadow-lg);
     overflow: hidden;
-    margin-bottom: clamp(36px, 6vh, 64px);
 }
 
-.panel-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 12px 18px;
-    border-bottom: 1px solid var(--rule);
-    background: var(--paper-2);
-}
-.panel-bar .bar-label {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    font-family: var(--font-mono);
-    font-size: 9px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--ink-3);
-}
-.panel-bar .bar-label .dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--success);
-    box-shadow: 0 0 0 3px var(--success-wash);
-    animation: pulse 2.4s ease-in-out infinite;
-}
-@keyframes pulse {
-    0%, 100% { box-shadow: 0 0 0 3px var(--success-wash); }
-    50%      { box-shadow: 0 0 0 6px var(--success-wash); }
-}
-.panel-bar .bar-hint {
-    display: none;
-    font-family: var(--font-mono);
-    font-size: 9px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--ink-4);
-}
-@media (min-width: 640px) { .panel-bar .bar-hint { display: block; } }
-
-/* Loader sits behind the iframe and disappears once it loads */
 .booking-frame-wrap {
     position: relative;
     height: clamp(1150px, 150vh, 1650px);
-    background: var(--card);
+    background: transparent;
 }
+
+[data-theme="dark"] .booking-frame-wrap,
+[data-theme="fun"] .booking-frame-wrap { background: var(--card); }
 
 .booking-frame-wrap iframe {
     position: relative;
@@ -387,6 +374,9 @@ body {
     border: 0;
     display: block;
 }
+
+[data-theme="dark"] .booking-frame-wrap iframe,
+[data-theme="fun"] .booking-frame-wrap iframe { border-radius: 15px; }
 
 .frame-loader {
     position: absolute;
@@ -421,7 +411,6 @@ body {
     color: var(--ink-3);
 }
 
-/* Fallback link shown above loader if iframe is blocked */
 .frame-fallback {
     margin-top: 6px;
     font-family: var(--font-mono);
@@ -598,6 +587,7 @@ body {
 [data-theme="fun"] .icon-btn { border-radius: 999px; }
 [data-theme="fun"] .booking-panel { border-radius: 22px; }
 [data-theme="fun"] .signature { border-radius: 999px; }
+[data-theme="fun"] .adviser-avatar { border-radius: 22px; }
 
 /* ============================================================
    SMALL SCREENS
@@ -607,6 +597,8 @@ body {
     .masthead { padding: 0 16px; }
     .mast-title em { display: none; }
     .shell { padding-inline: 16px; }
+    .head-flex { flex-direction: column; gap: 18px; }
+    .adviser-avatar { width: 88px; }
     .booking-frame-wrap { height: 1400px; }
     .prep { padding-block: 26px; }
     .colophon { padding-block: 26px 32px; }
@@ -625,10 +617,18 @@ body {
 
 <!-- ============ MASTHEAD ============ -->
 <header class="masthead">
-    <a class="mast-mark" href="index.html">
-        <span class="loop-mark" aria-hidden="true"><i></i><i></i></span>
-        <span class="mast-title">Hoop <em>&times;</em> Advantage FS</span>
-    </a>
+    <div class="mast-left">
+        <a class="icon-btn" href="index.html" aria-label="Back to the service summary" title="Back to the service summary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5"/>
+                <path d="M12 19l-7-7 7-7"/>
+            </svg>
+        </a>
+        <a class="mast-mark" href="index.html">
+            <span class="loop-mark" aria-hidden="true"><i></i><i></i></span>
+            <span class="mast-title">Hoop <em>&times;</em> Advantage FS</span>
+        </a>
+    </div>
 
     <div class="mast-right">
         <span class="mast-capsule">Book an Appointment</span>
@@ -652,30 +652,35 @@ body {
 
     <!-- ============ PAGE HEAD ============ -->
     <section class="page-head">
-        <p class="eyebrow">Income Protection &middot; Free Appointment</p>
-        <h1>Book your appointment with <em>Laurence</em>.</h1>
-        <p class="standfirst">
-            Choose a time that suits you below. Your initial <strong>20-minute call</strong> is an
-            informal chat with Laurence, your dedicated specialist protection adviser — a
-            comprehensive overview of the options available for Income Protection, Life Insurance
-            &amp; Critical Illness Cover.
-        </p>
+        <div class="head-flex">
+            <img class="adviser-avatar"
+                 src="adviser.png"
+                 alt="Laurence, Specialist Protection Adviser at Advantage Financial Solutions"
+                 loading="lazy" decoding="async">
 
-        <div class="signature">
-            <span class="sig-label">Cost</span>
-            <span class="sig-value">
-                <svg class="sig-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-                This advisory service is completely free.
-            </span>
+            <div>
+                <p class="eyebrow">Income Protection &middot; Free Appointment</p>
+                <h1>Book your appointment with <em>Laurence</em>.</h1>
+                <p class="standfirst">
+                    Choose a time that suits you below. Your initial <strong>20-minute call</strong> is an
+                    informal chat with Laurence, your dedicated specialist protection adviser — a
+                    comprehensive overview of the options available for Income Protection, Life Insurance
+                    &amp; Critical Illness Cover.
+                </p>
+
+                <div class="signature">
+                    <span class="sig-label">Cost</span>
+                    <span class="sig-value">
+                        <svg class="sig-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                        This advisory service is completely free.
+                    </span>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- ============ BOOKING WIDGET ============ -->
     <section class="booking-panel" aria-label="Appointment booking tool">
-        <div class="panel-bar">
-            <span class="bar-label"><span class="dot" aria-hidden="true"></span> Live availability</span>
-            <span class="bar-hint">Microsoft Bookings &middot; Secure</span>
-        </div>
 
         <div class="booking-frame-wrap" id="frameWrap">
             <iframe
@@ -747,7 +752,7 @@ body {
 
             <div class="foot-right">
                 <a class="site" href="https://advantagefs.co.uk" target="_blank" rel="noopener">advantagefs.co.uk</a>
-                <p class="ref">Booking page &middot; V1.0</p>
+                <p class="ref">Booking page &middot; V1.1</p>
                 <p class="ref">&copy; 2026 Advantage Financial Solutions</p>
                 <p class="ref">FCA 965036 · Company no. 12291836</p>
             </div>
