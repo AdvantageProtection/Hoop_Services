@@ -13,11 +13,14 @@
 
 <style>
 /* ============================================================
-   HOOP × ADVANTAGE FS · "LIVING DOCUMENT" · V7.2
+   HOOP × ADVANTAGE FS · "LIVING DOCUMENT" · V7.4
    ------------------------------------------------------------
-   V7.2: fun mode rebuilt as candy-pop (Bauhaus retired).
-   ALL fun styling now lives in one consolidated layer at the
-   bottom of this stylesheet — tokens, shapes and extras.
+   V7.4: hero plate stacks the three partner logos (Hoop,
+   Advantage Protection, Advantage Mortgage Advice). Mortgage
+   sections use the booking-button blue; protection and general
+   accents keep the existing red. Sidebar trimmed to Overview /
+   Protection Service / Mortgage Service / Why Advantage.
+   "Book an appointment" CTAs added to both service sections.
    ============================================================ */
 
 /* ---- Tokens ---- */
@@ -47,6 +50,21 @@
     --navy: #3d5a6e;
     --navy-deep: #2b4354;
 
+    /* Mortgage accent — matches the "Book an appointment" button blue */
+    --m-accent: #4a72a8;
+    --m-accent-deep: #3a5c8a;
+    --m-accent-wash: rgba(74, 114, 168, 0.10);
+    --m-accent-rule: rgba(74, 114, 168, 0.32);
+
+    /* Section CTA colours (protection = existing red by default) */
+    --cta-bg: var(--accent-deep);
+    --cta-ink: #ffffff;
+
+    --success: #0e9f5d;
+    --success-deep: #0b7c49;
+    --success-wash: rgba(14, 159, 93, 0.10);
+    --success-rule: rgba(14, 159, 93, 0.38);
+
     --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
     --font-serif: 'Instrument Serif', Georgia, serif;
     --font-mono: 'JetBrains Mono', ui-monospace, monospace;
@@ -72,6 +90,18 @@
     --accent-rule: hsla(8, 90%, 70%, 0.30);
     --navy: #eaf2f7;
     --navy-deep: #ffffff;
+
+    --m-accent: hsl(210 65% 72%);
+    --m-accent-deep: hsl(210 70% 80%);
+    --m-accent-wash: hsla(210, 65%, 70%, 0.12);
+    --m-accent-rule: hsla(210, 65%, 70%, 0.30);
+    --cta-bg: var(--accent);
+    --cta-ink: #101c24;
+
+    --success: #3fd692;
+    --success-deep: #7ce8b8;
+    --success-wash: rgba(63, 214, 146, 0.12);
+    --success-rule: rgba(63, 214, 146, 0.35);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -104,7 +134,7 @@ img { max-width: 100%; display: block; }
 }
 
 /* ============================================================
-   SCROLL PROGRESS — CSS scroll-driven, JS fallback
+   SCROLL PROGRESS
    ============================================================ */
 .scroll-progress {
     position: fixed;
@@ -235,7 +265,7 @@ img { max-width: 100%; display: block; }
 [data-theme="fun"] .theme-btn .s-spark { display: block; }
 
 /* ============================================================
-   SIDEBAR — glass editorial contents panel
+   SIDEBAR
    ============================================================ */
 .sidebar {
     position: fixed;
@@ -373,7 +403,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 }
 
 /* ============================================================
-   RAIL — shifts right with the sidebar; never breaks
+   RAIL
    ============================================================ */
 .rail {
     position: fixed;
@@ -492,12 +522,16 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 }
 .hero-standfirst strong { color: var(--ink); font-weight: 600; }
 
+/* Plate: white field with the three partner logos stacked */
 .hero-plate {
     position: relative;
-    aspect-ratio: 4 / 3;
+    display: grid;
+    align-content: center;
+    padding: clamp(16px, 2.4vw, 28px);
     border-radius: 18px;
     overflow: hidden;
-    background: var(--paper-2) url('logo.png') center / cover no-repeat;
+    background: #ffffff;
+    border: 1px solid var(--rule);
     box-shadow:
         0 1px 0 rgba(255,255,255,0.6) inset,
         0 2px 4px rgba(28,47,61,0.05),
@@ -507,15 +541,21 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 }
 .hero-plate:hover { transform: rotate(0deg) scale(1.012); }
 
-.hero-plate::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 18px;
-    width: 3px;
-    height: 56px;
-    background: var(--accent);
+.logo-row {
+    display: grid;
+    place-items: center;
+    padding: clamp(12px, 1.8vw, 20px) 8px;
 }
+.logo-row + .logo-row { border-top: 1px solid #e8edf2; }
+.logo-row img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: clamp(56px, 7.5vw, 88px);
+    object-fit: contain;
+}
+/* Advantage logos carry extra whitespace — rendered a touch larger */
+.logo-row.tall img { max-height: clamp(84px, 11vw, 128px); }
 
 .hero-plate figcaption {
     position: absolute;
@@ -528,11 +568,10 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--ink-2);
-    background: linear-gradient(to top, rgba(255,255,255,0.94), rgba(255,255,255,0));
+    background: linear-gradient(to top, rgba(255,255,255,0.96), rgba(255,255,255,0));
 }
 [data-theme="dark"] .hero-plate figcaption {
-    background: linear-gradient(to top, rgba(12,20,25,0.92), rgba(12,20,25,0));
-    color: var(--ink-2);
+    color: var(--ink-3);
 }
 
 /* ============================================================
@@ -558,12 +597,13 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     }
 }
 
+/* Section numerals: bigger and bolder */
 .sec-num {
     font-family: var(--font-mono);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.16em;
-    color: var(--ink-4);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--ink-2);
     display: flex;
     align-items: center;
     gap: 10px;
@@ -574,7 +614,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     height: 1px;
     background: var(--rule);
 }
-@media (min-width: 760px) { .sec-num { padding-top: 0.5em; } }
+@media (min-width: 760px) { .sec-num { padding-top: 0.35em; } }
 @media (max-width: 759px) { .sec-num::after { max-width: 40px; } }
 
 .section h2 {
@@ -586,6 +626,19 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     color: var(--ink);
     text-wrap: balance;
     max-width: 30ch;
+}
+
+/* Brand logo under a section heading */
+.sec-head-main {
+    display: grid;
+    justify-items: start;
+    gap: 2px;
+}
+.sec-logo {
+    margin-top: 12px;
+    width: clamp(170px, 20vw, 250px);
+    height: auto;
+    object-fit: contain;
 }
 
 .section-body {
@@ -601,14 +654,19 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     .section-body > * { grid-column: 2; }
 }
 
+/* Subheads: promoted to proper bold accent headings */
 .subhead {
-    font-family: var(--font-mono);
-    font-size: 10.5px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--ink-3);
-    margin-top: 14px;
+    font-family: var(--font-display);
+    font-size: clamp(19px, 2vw, 23px);
+    font-weight: 720;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    color: var(--accent-deep);
+    margin-top: 26px;
+    text-wrap: balance;
 }
+[data-theme="dark"] .subhead { color: var(--accent); }
+[data-theme="fun"] .subhead { color: var(--accent-deep); }
 
 .prose {
     max-width: var(--measure);
@@ -632,31 +690,89 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     text-wrap: pretty;
 }
 
+/* Signature: the "completely free" callout — green, loud */
 .signature {
     display: flex;
-    align-items: baseline;
-    gap: 14px;
+    align-items: center;
+    gap: 16px;
     flex-wrap: wrap;
-    padding: 16px 20px;
-    background: var(--accent-wash);
-    border-radius: 12px;
+    padding: 20px 24px;
+    background: linear-gradient(90deg, var(--success-wash), transparent 78%);
+    border: 1px solid var(--success-rule);
+    border-left: 5px solid var(--success);
+    border-radius: 14px;
     max-width: var(--measure);
+    box-shadow: 0 8px 22px -14px rgba(14, 159, 93, 0.45);
 }
 
 .signature .sig-label {
     font-family: var(--font-mono);
-    font-size: 9.5px;
+    font-size: 10px;
+    font-weight: 700;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--accent-deep);
+    color: var(--success-deep);
 }
 .signature .sig-value {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
     font-family: var(--font-display);
-    font-size: 15px;
-    font-weight: 600;
+    font-size: clamp(16.5px, 1.5vw, 19px);
+    font-weight: 720;
+    letter-spacing: -0.015em;
     color: var(--ink);
 }
-[data-theme="dark"] .signature .sig-label { color: var(--accent); }
+.signature .sig-check {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 auto;
+    color: var(--success);
+}
+[data-theme="dark"] .signature .sig-label { color: var(--success-deep); }
+
+/* ============================================================
+   MORTGAGE ACCENT · booking-button blue
+   Applied to mortgage sections only. Protection and general
+   elements keep the default red accent.
+   ============================================================ */
+.theme-mortgage {
+    --accent: var(--m-accent);
+    --accent-deep: var(--m-accent-deep);
+    --accent-wash: var(--m-accent-wash);
+    --accent-rule: var(--m-accent-rule);
+    --cta-bg: #4a72a8;
+    --cta-ink: #ffffff;
+}
+
+/* ============================================================
+   CTA · BOOK AN APPOINTMENT
+   ============================================================ */
+.cta-row { margin-top: 30px; }
+.cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    padding: 15px 28px;
+    border-radius: 999px;
+    background: var(--cta-bg);
+    color: var(--cta-ink);
+    font-family: var(--font-display);
+    font-size: 13.5px;
+    font-weight: 750;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    box-shadow: 0 14px 28px -14px rgba(28, 47, 61, 0.45);
+    transition: transform 0.24s var(--ease-out), box-shadow 0.24s, filter 0.2s;
+}
+.cta-btn svg { width: 15px; height: 15px; flex: 0 0 auto; }
+.cta-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(0.93);
+    box-shadow: 0 18px 34px -14px rgba(28, 47, 61, 0.55);
+}
+.cta-btn:active { transform: translateY(0) scale(0.98); }
 
 /* ============================================================
    KEYED LIST
@@ -669,7 +785,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 }
 .keyed li {
     display: grid;
-    grid-template-columns: 30px minmax(0, 1fr);
+    grid-template-columns: 34px minmax(0, 1fr);
     gap: 0 18px;
     padding: 15px 0;
     border-bottom: 1px solid var(--rule);
@@ -678,11 +794,11 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 .keyed li::before {
     content: counter(keyed, decimal-leading-zero);
     font-family: var(--font-mono);
-    font-size: 10.5px;
-    font-weight: 500;
+    font-size: 12.5px;
+    font-weight: 700;
     letter-spacing: 0.06em;
-    color: var(--ink-4);
-    padding-top: 0.28em;
+    color: var(--ink-3);
+    padding-top: 0.24em;
 }
 .keyed .k-title {
     display: block;
@@ -1018,18 +1134,52 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     max-width: 48ch;
 }
 
-.rating-card .stars {
-    display: block;
-    font-size: 15px;
-    letter-spacing: 2px;
-    color: var(--accent);
-    margin-bottom: 10px;
+/* Rating card with Google badge */
+.rating-top {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 14px;
 }
+
+.g-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    padding: 8px 14px;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    background: var(--paper);
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s var(--ease-out);
+}
+.g-badge:hover {
+    border-color: var(--rule-strong);
+    box-shadow: 0 6px 16px -8px rgba(28,47,61,0.30);
+    transform: translateY(-1px);
+}
+.g-badge svg { width: 22px; height: 22px; }
+.g-badge .g-word {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+}
+
 .rating-card .rating-figure {
     display: flex;
     align-items: baseline;
-    gap: 8px;
-    margin-bottom: 12px;
+    gap: 10px;
+}
+.rating-card .stars {
+    font-size: 16px;
+    letter-spacing: 2px;
+    color: var(--accent);
 }
 .rating-card .rating-figure .num {
     font-family: var(--font-display);
@@ -1087,10 +1237,22 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     font-size: clamp(20px, 2.4vw, 26px);
     font-style: italic;
     color: var(--ink);
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 .colophon .motto span { color: var(--accent-deep); }
 [data-theme="dark"] .colophon .motto span { color: var(--accent); }
+
+.colophon .fca {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    margin-bottom: 12px;
+}
+.colophon .fca strong { color: var(--accent-deep); font-weight: 700; }
+[data-theme="dark"] .colophon .fca strong { color: var(--accent); }
 
 .colophon .legal {
     font-size: 11.5px;
@@ -1126,12 +1288,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 }
 
 /* ============================================================
-   FUN MODE · CANDY POP (V7.2)
-   ------------------------------------------------------------
-   Everything for fun mode lives in this one block.
-   Palette: candy-floss paper, grape ink, hot pink accent,
-   electric violet secondary, tangerine + cyan pops.
-   Shapes: everything goes extra-round — pills and bubbles.
+   FUN MODE · CANDY POP
    ============================================================ */
 [data-theme="fun"] {
     color-scheme: light;
@@ -1152,9 +1309,13 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     --accent-rule: rgba(255, 45, 146, 0.32);
     --navy: #6d28d9;
     --navy-deep: #4c1d95;
+
+    --success: #00b374;
+    --success-deep: #00855a;
+    --success-wash: rgba(0, 179, 116, 0.12);
+    --success-rule: rgba(0, 179, 116, 0.38);
 }
 
-/* Candy gradient shorthand colours */
 [data-theme="fun"] .scroll-progress {
     background: linear-gradient(90deg, #ff2d92, #ff8a00, #00b8ff);
 }
@@ -1162,7 +1323,6 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     background: linear-gradient(180deg, #ff2d92, #ff8a00, #00b8ff);
 }
 
-/* Candy hairlines */
 [data-theme="fun"] .masthead {
     border-bottom: 2px solid;
     border-image: linear-gradient(90deg, #ff2d92, #ff8a00, #00b8ff) 1;
@@ -1178,7 +1338,6 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     background: linear-gradient(90deg, #ff2d92, #ff8a00);
 }
 
-/* Everything extra-round */
 [data-theme="fun"] .icon-btn { border-radius: 999px; }
 [data-theme="fun"] .side-doc { border-radius: 18px; }
 [data-theme="fun"] .side-link { border-radius: 999px; }
@@ -1190,14 +1349,13 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 [data-theme="fun"] .adviser-photo { border-radius: 18px; }
 [data-theme="fun"] .signature { border-radius: 999px; }
 [data-theme="fun"] .fee-row.is-key { border-radius: 18px; }
+[data-theme="fun"] .g-badge { border-radius: 999px; }
 
-/* Ghost numerals become candy watermarks, one colour per card */
 [data-theme="fun"] .bento-card:nth-of-type(1) .ghost { color: #ff2d92; opacity: 0.13; }
 [data-theme="fun"] .bento-card:nth-of-type(2) .ghost { color: #ff8a00; opacity: 0.13; }
 [data-theme="fun"] .bento-card:nth-of-type(3) .ghost { color: #00b8ff; opacity: 0.13; }
 [data-theme="fun"] .bento-card:nth-of-type(4) .ghost { color: #6d28d9; opacity: 0.13; }
 
-/* Candy gradient stars */
 [data-theme="fun"] .rating-card .stars {
     background: linear-gradient(90deg, #ff2d92, #ff8a00, #00b8ff);
     -webkit-background-clip: text;
@@ -1261,7 +1419,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     .mast-title em { display: none; }
     .shell { padding-inline: 18px; }
     .hero { padding-block: 32px 36px; }
-    .hero-plate { aspect-ratio: 16 / 11; transform: none; }
+    .hero-plate { transform: none; }
     .section { padding-block: 38px; }
     .adviser { padding: 18px; }
     .bento-card .ghost { font-size: 64px; }
@@ -1294,12 +1452,6 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
         <a class="side-link" href="#overview" data-spy="overview">
             <span class="n">00</span><span class="t">Overview</span>
         </a>
-        <a class="side-link" href="#protection" data-spy="protection">
-            <span class="n">01</span><span class="t">Protection Advice</span>
-        </a>
-        <a class="side-link" href="#mortgage-advice" data-spy="mortgage-advice">
-            <span class="n">02</span><span class="t">Mortgage Advice</span>
-        </a>
         <a class="side-link" href="#protection-service" data-spy="protection-service">
             <span class="n">03</span><span class="t">Protection Service</span>
         </a>
@@ -1312,7 +1464,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     </nav>
 
     <div class="side-foot">
-        <p class="side-foot-note">Service Summary &middot; V7.2</p>
+        <p class="side-foot-note">Service Summary &middot; V7.4</p>
     </div>
 </aside>
 
@@ -1366,12 +1518,21 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
         </div>
 
         <figure class="hero-plate reveal-soft">
-            <figcaption>Hoop Recruitment &middot; Advantage Protection</figcaption>
+            <div class="logo-row">
+                <img src="oop.png" alt="Hoop Recruitment" decoding="async">
+            </div>
+            <div class="logo-row tall">
+                <img src="bbb.png" alt="Advantage Protection" decoding="async">
+            </div>
+            <div class="logo-row tall">
+                <img src="aaa.png" alt="Advantage Mortgage Advice" decoding="async">
+            </div>
+            <figcaption>Hoop Recruitment &middot; Advantage Protection &middot; Advantage Mortgage Advice</figcaption>
         </figure>
     </section>
 
     <!-- ============ 01 · PROTECTION ADVICE ============ -->
-    <section class="section" id="protection">
+    <section class="section" id="protection" data-spy-as="protection-service">
         <div class="section-head">
             <p class="sec-num">01</p>
             <h2>Protection advice for locums &amp; contractors</h2>
@@ -1396,7 +1557,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     </section>
 
     <!-- ============ 02 · MORTGAGE ADVICE ============ -->
-    <section class="section" id="mortgage-advice">
+    <section class="section theme-mortgage" id="mortgage-advice" data-spy-as="mortgage-service">
         <div class="section-head">
             <p class="sec-num">02</p>
             <h2>Mortgage advice for locums &amp; contractors</h2>
@@ -1423,7 +1584,10 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     <section class="section" id="protection-service">
         <div class="section-head">
             <p class="sec-num">03</p>
-            <h2>Summary of the protection advice service</h2>
+            <div class="sec-head-main">
+                <h2>Protection Service</h2>
+                <img class="sec-logo" src="bbb.png" alt="Advantage Protection" loading="lazy" decoding="async">
+            </div>
         </div>
 
         <div class="section-body">
@@ -1443,8 +1607,19 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 
             <div class="signature reveal">
                 <span class="sig-label">Cost</span>
-                <span class="sig-value">This advisory service is completely free.</span>
+                <span class="sig-value">
+                    <svg class="sig-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                    This advisory service is completely free.
+                </span>
             </div>
+
+            <!-- TODO: replace href with your booking link -->
+            <p class="cta-row reveal">
+                <a class="cta-btn" href="#">
+                    Book an appointment
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+                </a>
+            </p>
 
             <div class="adviser reveal">
                 <div class="adviser-photo">
@@ -1550,10 +1725,13 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     </section>
 
     <!-- ============ 04 · MORTGAGE SERVICE ============ -->
-    <section class="section" id="mortgage-service">
+    <section class="section theme-mortgage" id="mortgage-service">
         <div class="section-head">
             <p class="sec-num">04</p>
-            <h2>Mortgage services for locums</h2>
+            <div class="sec-head-main">
+                <h2>Mortgage Service</h2>
+                <img class="sec-logo" src="aaa.png" alt="Advantage Mortgage Advice" loading="lazy" decoding="async">
+            </div>
         </div>
 
         <div class="section-body">
@@ -1582,6 +1760,14 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
                     <dd><strong>Free thereafter.</strong> Once this initial fee is paid, all future mortgage services — including remortgaging, moving home, or arranging additional borrowing — are completely free of charge for life.</dd>
                 </div>
             </dl>
+
+            <!-- TODO: replace href with your booking link -->
+            <p class="cta-row reveal">
+                <a class="cta-btn" href="#">
+                    Book an appointment
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+                </a>
+            </p>
 
             <p class="subhead">Who this service is most useful for</p>
 
@@ -1697,15 +1883,39 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 
                 <article class="bento-card b-wide rating-card">
                     <span class="ghost" aria-hidden="true">04</span>
-                    <span class="stars" aria-hidden="true">★★★★★</span>
-                    <div class="rating-figure">
-                        <span class="num">5.0</span>
-                        <span class="of">OUT OF 5</span>
+                    <div class="rating-top">
+                        <a class="g-badge"
+                           href="https://www.google.com/search?q=advantage+fs+bristol+google+score"
+                           target="_blank" rel="noopener"
+                           aria-label="See Advantage FS Google reviews">
+                            <svg viewBox="0 0 48 48" aria-hidden="true">
+                                <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+                                <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+                                <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+                                <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+                            </svg>
+                            <span class="g-word">Google</span>
+                        </a>
+
+                        <div class="rating-figure">
+                            <span class="stars" aria-hidden="true">★★★★★</span>
+                            <span class="num">5.0</span>
+                            <span class="of">OUT OF 5</span>
+                        </div>
                     </div>
+
                     <h3>Proven 5-star track record</h3>
                     <p>Advantage is backed by an exceptional reputation, boasting a 5.0 out of 5-star
                     rating across nearly 1,000 Google reviews from clients who value clear, reliable, and
                     straightforward financial advice.</p>
+
+                    <p style="margin-top:12px;">
+                        <a class="jump" href="https://www.google.com/search?q=advantage+fs+bristol+google+score"
+                           target="_blank" rel="noopener">
+                            See our Google reviews
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+                        </a>
+                    </p>
                 </article>
 
                 <article class="bento-card b-wide">
@@ -1724,6 +1934,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
         <div class="colophon-grid">
             <div>
                 <p class="motto">Our Experience. <span>Your Advantage.</span></p>
+                <p class="fca">Advantage Financial Solutions · <strong>FCA 965036</strong></p>
                 <p class="legal">
                     Provided in partnership with Hoop Recruitment. Based in Bristol — advising clients
                     across the UK. Your home may be repossessed if you do not keep up repayments on your
@@ -1736,9 +1947,9 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 
             <div class="foot-right">
                 <a class="site" href="https://advantagefs.co.uk" target="_blank" rel="noopener">advantagefs.co.uk</a>
-                <p class="ref">Service summary &middot; V7.2</p>
+                <p class="ref">Service summary &middot; V7.4</p>
                 <p class="ref">&copy; 2026 Advantage Financial Solutions</p>
-                <p class="ref">Company no. XXXXXXXX &middot; FCA no. XXXXXX</p>
+                <p class="ref">FCA 965036 · Company no. 12291836</p>
             </div>
         </div>
     </footer>
@@ -1811,7 +2022,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
         }
     );
 
-    /* ---------- Scroll spy (IntersectionObserver) ---------- */
+    /* ---------- Scroll spy ---------- */
     var links = Array.prototype.slice.call(
         document.querySelectorAll('a.side-link[data-spy]')
     );
@@ -1825,7 +2036,10 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     if ('IntersectionObserver' in window) {
         var spy = new IntersectionObserver(function (entries) {
             entries.forEach(function (en) {
-                if (en.isIntersecting) setActive(en.target.id);
+                if (!en.isIntersecting) return;
+                /* Intro sections (01/02) map to their service sidebar item */
+                var id = en.target.getAttribute('data-spy-as') || en.target.id;
+                setActive(id);
             });
         }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
 
