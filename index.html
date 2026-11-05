@@ -15,13 +15,14 @@
 /* ============================================================
    HOOP × ADVANTAGE FS · "LIVING DOCUMENT" · V8
    ------------------------------------------------------------
-   V8: Orange removed entirely — Advantage brand colour #e91837
-   is now the standard accent (mortgage sections keep their own
-   blue). All grey text unified to darkest grey. All small-caps
-   micro-type removed and replaced with regular text; caps links
-   now use the standard brand colour. Wobbly logo plates removed;
-   clean stacked logo headings. Tiny grey list numbers removed;
-   animated step numbers kept in brand colour. Two-column lists.
+   V8.1 edits:
+   - Sidebar: "Book Your Protection Appointment" nested under
+     Protection Service Summary, and "Book Your Mortgage
+     Appointment" nested under Mortgage Service Summary.
+   - Hero guide title now uses the standard display font.
+   - Fixed specificity clash so the Protection Service Summary
+     heading renders in the brand colour and the Mortgage
+     Service Summary heading renders in the mortgage blue.
    ============================================================ */
 
 /* ---- Tokens ---- */
@@ -382,6 +383,19 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 }
 .side-link.active { padding-left: 18px; }
 
+/* Booking sub-links — nested under their service summary entry,
+   same link layout, indented one level */
+.side-link.sub {
+    padding-left: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.side-link.sub .t {
+    font-size: 14px;
+    font-weight: 550;
+    letter-spacing: -0.008em;
+}
+
 .side-foot {
     margin: 14px 16px 0;
     padding: 16px 8px 20px;
@@ -533,12 +547,15 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     text-wrap: balance;
     margin-bottom: 24px;
 }
+
+/* V8.1: guide title now uses the same display font as everything
+   else (was Instrument Serif italic) */
 .hero h1 em {
     display: block;
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-weight: 400;
-    letter-spacing: -0.015em;
+    font-family: var(--font-display);
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: -0.02em;
     color: var(--accent-deep);
 }
 
@@ -596,8 +613,15 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 
 /* Coloured service titles */
 .title-protection { color: var(--accent-deep); }
-[data-theme="dark"] .title-protection { color: var(--accent); }
 .title-mortgage { color: var(--m-accent); }
+[data-theme="dark"] .title-protection { color: var(--accent); }
+
+/* V8.1: heading-scoped rules so they outrank `.section h2` —
+   previously `.section h2` (0,1,1) beat `.title-protection`
+   (0,1,0), so the big Summary headings stayed default ink */
+.section h2.title-protection { color: var(--accent-deep); }
+.section h2.title-mortgage { color: var(--m-accent); }
+[data-theme="dark"] .section h2.title-protection { color: var(--accent); }
 
 .section-body {
     display: grid;
@@ -1442,8 +1466,14 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
         <a class="side-link" href="#protection-service" data-spy="protection-service">
             <span class="t">Protection Service Summary</span>
         </a>
+        <a class="side-link sub" href="https://advantageprotection.github.io/Hoop_Services/booking_page_protection.html" target="_blank" rel="noopener">
+            <span class="t">Book Your Protection Appointment</span>
+        </a>
         <a class="side-link" href="#mortgage-service" data-spy="mortgage-service">
             <span class="t">Mortgage Service Summary</span>
+        </a>
+        <a class="side-link sub" href="mailto:info@advantagefs.co.uk?subject=Hoop%20recruitment%20-Mortgage%20enquiry">
+            <span class="t">Book Your Mortgage Appointment</span>
         </a>
         <a class="side-link" href="#why-choose" data-spy="why-choose">
             <span class="t">Why Advantage</span>
