@@ -13,10 +13,17 @@
 
 <style>
 /* ============================================================
-   HOOP × ADVANTAGE FS · BOOKING PAGE · V1.1
+   HOOP × ADVANTAGE FS · BOOKING PAGE · V1.2
    ------------------------------------------------------------
-   V1.1: seamless white-on-white booking panel, adviser portrait
-   beside the headline, back arrow in masthead.
+   V1.2: theme synced with index V8 —
+   - Accent switched from hsl(8) orange-red to the Advantage
+     brand colour #e91837 (deep #b8122c), dark variants matched.
+   - All text unified to the darkest grey, matching the index.
+   - Small-caps mono micro-type removed; regular display text.
+   - Headline name now uses the standard display font.
+   - Keyed prep list numbers removed (matches index).
+   - Extra white padding around the booking widget.
+   Paper stays pure white so the iframe area blends seamlessly.
    ============================================================ */
 
 /* ---- Tokens (matches index, except paper is pure white
@@ -29,19 +36,20 @@
 
     --paper: #ffffff;
     --paper-2: #f2f5f7;
-    --ink: #1c2f3d;
-    --ink-2: #4a6478;
-    --ink-3: #7d94a5;
-    --ink-4: #a9bcc8;
+    --ink: #222222;      /* uniform darkest grey for ALL text */
+    --ink-2: #222222;
+    --ink-3: #222222;
+    --ink-4: #222222;
     --rule: #dfe6ec;
     --rule-strong: #c4d2dc;
     --card: #ffffff;
 
-    --accent-hue: 8;
-    --accent: hsl(var(--accent-hue) 82% 62%);
-    --accent-deep: hsl(var(--accent-hue) 74% 48%);
-    --accent-wash: hsl(var(--accent-hue) 82% 62% / 0.10);
-    --accent-rule: hsl(var(--accent-hue) 82% 62% / 0.30);
+    /* Advantage Protection brand colour — matches the index */
+    --brand: #e91837;
+    --accent: #e91837;
+    --accent-deep: #b8122c;
+    --accent-wash: rgba(233, 24, 55, 0.10);
+    --accent-rule: rgba(233, 24, 55, 0.30);
     --navy: #3d5a6e;
     --navy-deep: #2b4354;
 
@@ -65,17 +73,17 @@
     --paper: #0c1419;
     --paper-2: #111d25;
     --ink: #eaf2f7;
-    --ink-2: #a8bcc9;
-    --ink-3: #7a8fa0;
-    --ink-4: #526675;
+    --ink-2: #dbe4ea;
+    --ink-3: #dbe4ea;
+    --ink-4: #dbe4ea;
     --rule: #1e2f3b;
     --rule-strong: #2c4353;
     --card: #101c24;
 
-    --accent: hsl(8 90% 70%);
-    --accent-deep: hsl(8 90% 78%);
-    --accent-wash: hsla(8, 90%, 70%, 0.12);
-    --accent-rule: hsla(8, 90%, 70%, 0.30);
+    --accent: #ff4d67;
+    --accent-deep: #ff6a80;
+    --accent-wash: rgba(233, 24, 55, 0.16);
+    --accent-rule: rgba(233, 24, 55, 0.40);
     --navy: #eaf2f7;
     --navy-deep: #ffffff;
 
@@ -166,6 +174,7 @@ body {
 [data-theme="dark"] .loop-mark i:last-child { mix-blend-mode: screen; }
 
 .mast-title {
+    font-family: var(--font-display);
     font-size: 14px;
     font-weight: 650;
     letter-spacing: -0.015em;
@@ -179,7 +188,7 @@ body {
     font-style: italic;
     font-weight: 400;
     font-size: 16px;
-    color: var(--ink-3);
+    color: var(--ink);
 }
 
 .mast-right { display: flex; align-items: center; gap: 10px; }
@@ -190,11 +199,12 @@ body {
     border: 1px solid var(--rule);
     border-radius: 999px;
     background: color-mix(in srgb, var(--card) 60%, transparent);
-    font-family: var(--font-mono);
-    font-size: 9px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--ink-3);
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--ink);
     white-space: nowrap;
 }
 @media (min-width: 700px) { .mast-capsule { display: inline-flex; } }
@@ -207,7 +217,7 @@ body {
     border: 1px solid var(--rule);
     border-radius: 10px;
     background: transparent;
-    color: var(--ink-2);
+    color: var(--ink);
     cursor: pointer;
     text-decoration: none;
     transition: color 0.18s, background 0.18s, border-color 0.18s, transform 0.18s;
@@ -265,18 +275,18 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    font-family: var(--font-mono);
-    font-size: 10px;
+    font-family: var(--font-display);
+    font-size: 14px;
     font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--ink-3);
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--ink);
     margin-bottom: 16px;
 }
 .eyebrow::before {
     content: "";
-    width: 22px;
-    height: 1px;
+    width: 24px;
+    height: 2px;
     background: var(--accent);
 }
 
@@ -289,22 +299,26 @@ body {
     text-wrap: balance;
     margin-bottom: 18px;
 }
+
+/* V1.2: the name now uses the standard display font, matching
+   the index hero treatment (was Instrument Serif italic) */
 .page-head h1 em {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-weight: 400;
-    letter-spacing: -0.012em;
+    font-family: var(--font-display);
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: -0.02em;
     color: var(--accent-deep);
 }
+[data-theme="dark"] .page-head h1 em { color: var(--accent); }
 
 .page-head .standfirst {
     max-width: 52ch;
     font-size: clamp(15px, 1.3vw, 17px);
     line-height: 1.68;
-    color: var(--ink-2);
+    color: var(--ink);
     text-wrap: pretty;
 }
-.page-head .standfirst strong { color: var(--ink); font-weight: 600; }
+.page-head .standfirst strong { color: var(--ink); font-weight: 700; }
 
 /* Free callout */
 .signature {
@@ -320,11 +334,11 @@ body {
     border-radius: 13px;
 }
 .signature .sig-label {
-    font-family: var(--font-mono);
-    font-size: 9.5px;
+    font-family: var(--font-display);
+    font-size: 14px;
     font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
+    letter-spacing: 0;
+    text-transform: none;
     color: var(--success-deep);
 }
 .signature .sig-value {
@@ -340,10 +354,17 @@ body {
 
 /* ============================================================
    BOOKING PANEL — seamless, blends with the white page
+   NOTE: the light-grey canvas behind the calendar is painted by
+   Microsoft's own page INSIDE the iframe. Cross-origin iframes
+   cannot be restyled from this file — that background is changed
+   in the Microsoft Bookings admin (booking page appearance
+   settings), not here. This page keeps pure white around the
+   widget with generous breathing room.
    ============================================================ */
 .booking-panel {
     position: relative;
     margin-bottom: clamp(36px, 6vh, 64px);
+    padding-block: 10px 28px;   /* extra white padding around the widget */
 }
 
 /* In dark mode a bare white iframe would glare, so reinstate
@@ -404,18 +425,19 @@ body {
 }
 @keyframes rotate { to { transform: rotate(360deg); } }
 .frame-loader .load-txt {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--ink-3);
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--ink);
 }
 
 .frame-fallback {
     margin-top: 6px;
-    font-family: var(--font-mono);
-    font-size: 10.5px;
-    letter-spacing: 0.06em;
+    font-family: var(--font-display);
+    font-size: 13.5px;
+    letter-spacing: 0;
 }
 .frame-fallback a {
     color: var(--accent-deep);
@@ -424,9 +446,10 @@ body {
     padding-bottom: 2px;
 }
 .frame-fallback a:hover { border-bottom-color: var(--accent); }
+[data-theme="dark"] .frame-fallback a { color: var(--accent); }
 
 /* ============================================================
-   PREP CHECKLIST
+   PREP CHECKLIST — matches the index keyed list (no numbers)
    ============================================================ */
 .prep {
     padding-block: 34px;
@@ -447,7 +470,7 @@ body {
     max-width: 58ch;
     font-size: 14.5px;
     line-height: 1.72;
-    color: var(--ink-2);
+    color: var(--ink);
     margin-bottom: 22px;
 }
 
@@ -455,38 +478,33 @@ body {
     list-style: none;
     max-width: 72ch;
     border-top: 1px solid var(--rule);
-    counter-reset: keyed;
 }
 .keyed li {
-    display: grid;
-    grid-template-columns: 32px minmax(0, 1fr);
-    gap: 0 16px;
-    padding: 13px 0;
+    display: block;
+    padding: 16px 0;
     border-bottom: 1px solid var(--rule);
-    counter-increment: keyed;
+    break-inside: avoid;
 }
-.keyed li::before {
-    content: counter(keyed, decimal-leading-zero);
-    font-family: var(--font-mono);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    color: var(--ink-3);
-    padding-top: 0.26em;
+@media (min-width: 700px) {
+    .keyed {
+        column-count: 2;
+        column-gap: 44px;
+    }
+    .keyed li:first-child { border-top: none; }
 }
 .keyed .k-title {
     display: block;
-    font-size: 14.5px;
-    font-weight: 620;
+    font-size: 15px;
+    font-weight: 650;
     letter-spacing: -0.012em;
     color: var(--ink);
-    margin-bottom: 3px;
+    margin-bottom: 4px;
 }
 .keyed .k-body {
     display: block;
-    font-size: 14px;
+    font-size: 14.5px;
     line-height: 1.68;
-    color: var(--ink-2);
+    color: var(--ink);
 }
 
 /* ============================================================
@@ -510,20 +528,20 @@ body {
 .colophon .motto span { color: var(--accent-deep); }
 [data-theme="dark"] .colophon .motto span { color: var(--accent); }
 .colophon .fca {
-    font-family: var(--font-mono);
-    font-size: 10.5px;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink-2);
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--ink);
     margin-bottom: 11px;
 }
 .colophon .fca strong { color: var(--accent-deep); font-weight: 700; }
 [data-theme="dark"] .colophon .fca strong { color: var(--accent); }
 .colophon .legal {
-    font-size: 11px;
-    line-height: 1.72;
-    color: var(--ink-3);
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--ink);
     max-width: 62ch;
 }
 .colophon .foot-right {
@@ -533,21 +551,22 @@ body {
 }
 @media (min-width: 760px) { .colophon .foot-right { justify-items: end; text-align: right; } }
 .colophon a.site {
-    font-family: var(--font-mono);
-    font-size: 11.5px;
-    letter-spacing: 0.06em;
-    color: var(--ink);
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0;
+    color: var(--accent-deep);
     text-decoration: none;
     border-bottom: 1px solid var(--accent-rule);
     padding-bottom: 2px;
 }
-.colophon a.site:hover { border-bottom-color: var(--accent); }
+.colophon a.site:hover { color: var(--accent); border-bottom-color: var(--accent); }
 .colophon .ref {
-    font-family: var(--font-mono);
-    font-size: 9px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--ink-4);
+    font-family: var(--font-display);
+    font-size: 12px;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--ink);
 }
 
 /* ============================================================
@@ -558,9 +577,9 @@ body {
     --paper: #fff1f8;
     --paper-2: #ffe6f3;
     --ink: #47126b;
-    --ink-2: #7a3ba3;
-    --ink-3: #a874c9;
-    --ink-4: #c9a8e0;
+    --ink-2: #47126b;
+    --ink-3: #47126b;
+    --ink-4: #47126b;
     --rule: #f7d2ea;
     --rule-strong: #efb6dd;
     --card: #ffffff;
@@ -711,28 +730,20 @@ body {
 
         <ul class="keyed">
             <li>
-                <span>
-                    <span class="k-title">Existing policies</span>
-                    <span class="k-body">If you hold any protection policies from previous employment or past advice, having the provider names and cover amounts handy is useful (but not essential).</span>
-                </span>
+                <span class="k-title">Existing policies</span>
+                <span class="k-body">If you hold any protection policies from previous employment or past advice, having the provider names and cover amounts handy is useful (but not essential).</span>
             </li>
             <li>
-                <span>
-                    <span class="k-title">Rough monthly earnings</span>
-                    <span class="k-body">A ballpark figure of your typical monthly income helps Laurence size any Income Protection recommendation correctly.</span>
-                </span>
+                <span class="k-title">Rough monthly earnings</span>
+                <span class="k-body">A ballpark figure of your typical monthly income helps Laurence size any Income Protection recommendation correctly.</span>
             </li>
             <li>
-                <span>
-                    <span class="k-title">Monthly commitments</span>
-                    <span class="k-body">Your mortgage or rent, and any other major outgoings, help determine the level of cover that would keep your household afloat.</span>
-                </span>
+                <span class="k-title">Monthly commitments</span>
+                <span class="k-body">Your mortgage or rent, and any other major outgoings, help determine the level of cover that would keep your household afloat.</span>
             </li>
             <li>
-                <span>
-                    <span class="k-title">A quiet 20 minutes</span>
-                    <span class="k-body">The call is informal, but a quiet space with a cup of tea means you can focus and ask anything on your mind.</span>
-                </span>
+                <span class="k-title">A quiet 20 minutes</span>
+                <span class="k-body">The call is informal, but a quiet space with a cup of tea means you can focus and ask anything on your mind.</span>
             </li>
         </ul>
     </section>
@@ -752,7 +763,7 @@ body {
 
             <div class="foot-right">
                 <a class="site" href="https://advantagefs.co.uk" target="_blank" rel="noopener">advantagefs.co.uk</a>
-                <p class="ref">Booking page &middot; V1.1</p>
+                <p class="ref">Booking page &middot; V1.2</p>
                 <p class="ref">&copy; 2026 Advantage Financial Solutions</p>
                 <p class="ref">FCA 965036 · Company no. 12291836</p>
             </div>
