@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffffff">
+<meta name="description" content="Request a free mortgage appointment with the Advantage Financial Solutions specialist team, exclusive to Hoop Recruitment candidates.">
+<title>Request a Mortgage Appointment — Hoop × Advantage FS</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   HOOP × ADVANTAGE FS · MORTGAGE BOOKING PAGE · V1.0
+   Layout mirrors the Protection booking page, themed in the
+   mortgage blue. The "booking widget" is a contact form that
+   opens a pre-filled email to Laurence & Gavin on submit.
+   ============================================================ */
+
+/* ---- Tokens (mortgage blue accents; paper pure white) ---- */
+:root {
+    color-scheme: light;
+
+    --gutter: clamp(18px, 4.5vw, 56px);
+    --mast-h: 62px;
+
+    --paper: #ffffff;
+    --paper-2: #f2f5f7;
+    --ink: #222222;      /* uniform darkest grey for ALL text */
+    --ink-2: #222222;
+    --ink-3: #222222;
+    --ink-4: #222222;
+    --rule: #dfe6ec;
+    --rule-strong: #c4d2dc;
+    --card: #ffffff;
+
+    /* Mortgage brand blue — matches the index mortgage sections */
+    --accent: #4a72a8;
+    --accent-deep: #3a5c8a;
+    --accent-wash: rgba(74, 114, 168, 0.10);
+    --accent-rule: rgba(74, 114, 168, 0.32);
+    --cta-bg: #4a72a8;
+    --cta-ink: #ffffff;
+    --navy: #3d5a6e;
+    --navy-deep: #2b4354;
+
+    --ph: #93a5b1; /* grey placeholder text */
+
+    --success: #0e9f5d;
+    --success-deep: #0b7c49;
+    --success-wash: rgba(14, 159, 93, 0.10);
+    --success-rule: rgba(14, 159, 93, 0.38);
+
+    --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+    --font-serif: 'Instrument Serif', Georgia, serif;
+
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --shadow-md: 0 12px 28px -16px rgba(28, 47, 61, 0.28);
+}
+
+[data-theme="dark"] {
+    color-scheme: dark;
+    --paper: #0c1419;
+    --paper-2: #111d25;
+    --ink: #eaf2f7;
+    --ink-2: #dbe4ea;
+    --ink-3: #dbe4ea;
+    --ink-4: #dbe4ea;
+    --rule: #1e2f3b;
+    --rule-strong: #2c4353;
+    --card: #101c24;
+
+    --accent: hsl(210 65% 72%);
+    --accent-deep: hsl(210 70% 80%);
+    --accent-wash: hsla(210, 65%, 70%, 0.12);
+    --accent-rule: hsla(210, 65%, 70%, 0.30);
+    --cta-bg: hsl(210 65% 62%);
+    --cta-ink: #101c24;
+    --navy: #eaf2f7;
+    --navy-deep: #ffffff;
+
+    --ph: #526675;
+
+    --success: #3fd692;
+    --success-deep: #7ce8b8;
+    --success-wash: rgba(63, 214, 146, 0.12);
+    --success-rule: rgba(63, 214, 146, 0.35);
+
+    --shadow-md: 0 12px 28px -16px rgba(0, 0, 0, 0.55);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+    font-family: var(--font-display);
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--ink);
+    background: var(--paper);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    transition: background-color 0.4s var(--ease-out), color 0.4s var(--ease-out);
+}
+
+::selection { background: var(--accent-wash); color: var(--ink); }
+
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* ============================================================
+   MASTHEAD (matches protection booking page, plus back arrow)
+   ============================================================ */
+.masthead {
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 0 var(--gutter);
+    height: var(--mast-h);
+    background: color-mix(in srgb, var(--paper) 85%, transparent);
+    backdrop-filter: blur(18px) saturate(1.7);
+    -webkit-backdrop-filter: blur(18px) saturate(1.7);
+    border-bottom: 1px solid var(--rule);
+}
+
+.mast-left { display: flex; align-items: center; gap: 12px; min-width: 0; }
+
+.mast-mark {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    text-decoration: none;
+    color: inherit;
+    min-width: 0;
+}
+
+.loop-mark { position: relative; width: 32px; height: 21px; flex: 0 0 auto; }
+.loop-mark i {
+    position: absolute;
+    top: 0;
+    width: 21px;
+    height: 21px;
+    border-radius: 50%;
+    border: 2.4px solid var(--navy);
+}
+.loop-mark i:first-child { left: 0; }
+.loop-mark i:last-child {
+    right: 0;
+    border-color: var(--accent);
+    mix-blend-mode: multiply;
+}
+[data-theme="dark"] .loop-mark i:last-child { mix-blend-mode: screen; }
+
+.mast-title {
+    font-size: 14px;
+    font-weight: 650;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.mast-title em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--ink);
+}
+
+.mast-right { display: flex; align-items: center; gap: 10px; }
+
+.mast-capsule {
+    display: none;
+    padding: 6px 13px;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--card) 60%, transparent);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink);
+    white-space: nowrap;
+}
+@media (min-width: 700px) { .mast-capsule { display: inline-flex; } }
+
+.icon-btn {
+    width: 36px;
+    height: 36px;
+    display: inline-grid;
+    place-items: center;
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.18s, background 0.18s, border-color 0.18s, transform 0.18s;
+}
+.icon-btn:hover {
+    color: var(--ink);
+    background: var(--paper-2);
+    border-color: var(--rule-strong);
+}
+.icon-btn:active { transform: scale(0.94); }
+.icon-btn svg { width: 16px; height: 16px; }
+[data-theme="dark"] .icon-btn { border-color: var(--rule-strong); background: rgba(255,255,255,0.04); }
+[data-theme="dark"] .icon-btn:hover { background: rgba(255,255,255,0.09); color: #fff; }
+
+.theme-btn svg { display: none; }
+[data-theme="light"] .theme-btn .s-sun { display: block; }
+[data-theme="dark"] .theme-btn .s-moon { display: block; }
+[data-theme="fun"] .theme-btn .s-spark { display: block; }
+
+/* ============================================================
+   LAYOUT SHELL
+   ============================================================ */
+.shell {
+    max-width: 1000px;
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+}
+
+/* ============================================================
+   PAGE HEAD
+   ============================================================ */
+.page-head { padding-block: clamp(30px, 5vh, 56px) 26px; }
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 16px;
+}
+.eyebrow::before {
+    content: "";
+    width: 24px;
+    height: 2px;
+    background: var(--accent);
+}
+
+.page-head h1 {
+    font-size: clamp(30px, 5vw, 52px);
+    font-weight: 700;
+    line-height: 1.02;
+    letter-spacing: -0.034em;
+    color: var(--ink);
+    text-wrap: balance;
+    margin-bottom: 18px;
+}
+.page-head h1 em {
+    font-family: var(--font-display);
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--accent-deep);
+}
+[data-theme="dark"] .page-head h1 em { color: var(--accent); }
+
+.page-head .standfirst {
+    max-width: 56ch;
+    font-size: clamp(15px, 1.3vw, 17px);
+    line-height: 1.68;
+    color: var(--ink);
+    text-wrap: pretty;
+}
+.page-head .standfirst strong { color: var(--ink); font-weight: 700; }
+
+.page-head .assist {
+    margin-top: 12px;
+    font-size: 15px;
+    color: var(--ink);
+}
+.page-head .assist a {
+    color: var(--accent-deep);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-rule);
+    padding-bottom: 2px;
+}
+.page-head .assist a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+[data-theme="dark"] .page-head .assist a { color: var(--accent); }
+
+/* ============================================================
+   CONTACT FORM — the mortgage "booking widget"
+   ============================================================ */
+.contact-panel {
+    margin-bottom: clamp(36px, 6vh, 64px);
+    padding-block: 6px 8px;
+}
+
+.form-grid { display: grid; gap: 18px; }
+@media (min-width: 700px) {
+    .form-grid { grid-template-columns: 1fr 1fr; }
+    .form-grid .full { grid-column: 1 / -1; }
+}
+
+.field label {
+    display: block;
+    font-size: 14.5px;
+    font-weight: 650;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 7px;
+}
+.field .req { color: var(--accent-deep); }
+
+.field input,
+.field select,
+.field textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--rule-strong);
+    border-radius: 10px;
+    background: var(--card);
+    color: var(--ink);
+    font-family: var(--font-display);
+    font-size: 15px;
+    line-height: 1.5;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.field input::placeholder,
+.field textarea::placeholder { color: var(--ph); opacity: 1; }
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-wash);
+}
+
+.field textarea { resize: vertical; min-height: 96px; }
+
+.field select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, var(--ink) 50%),
+                      linear-gradient(135deg, var(--ink) 50%, transparent 50%);
+    background-position: calc(100% - 20px) 50%, calc(100% - 15px) 50%;
+    background-size: 5px 5px;
+    background-repeat: no-repeat;
+    padding-right: 40px;
+}
+
+/* "Other" reveal */
+.other-wrap { margin-top: 12px; }
+.other-wrap[hidden] { display: none; }
+.other-wrap label { margin-bottom: 7px; }
+
+/* Submit + confirmation */
+.submit-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+}
+
+.submit-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    padding: 15px 28px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--cta-bg);
+    color: var(--cta-ink);
+    font-family: var(--font-display);
+    font-size: 14.5px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 14px 28px -14px rgba(28, 47, 61, 0.45);
+    transition: transform 0.24s var(--ease-out), box-shadow 0.24s, filter 0.2s;
+}
+.submit-btn svg { width: 15px; height: 15px; flex: 0 0 auto; }
+.submit-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(0.93);
+    box-shadow: 0 18px 34px -14px rgba(28, 47, 61, 0.55);
+}
+.submit-btn:active { transform: translateY(0) scale(0.98); }
+
+.submit-note {
+    font-size: 13px;
+    color: var(--ink);
+    max-width: 40ch;
+}
+
+.confirm {
+    margin-top: 22px;
+    padding: 18px 20px;
+    background: linear-gradient(90deg, var(--success-wash), transparent 78%);
+    border: 1px solid var(--success-rule);
+    border-left: 4px solid var(--success);
+    border-radius: 13px;
+}
+.confirm[hidden] { display: none; }
+.confirm p { font-size: 14.5px; color: var(--ink); }
+.confirm strong { font-weight: 700; }
+.confirm a {
+    color: var(--success-deep);
+    text-decoration: none;
+    border-bottom: 1px solid var(--success-rule);
+    padding-bottom: 2px;
+}
+.confirm a:hover { color: var(--success); border-bottom-color: var(--success); }
+[data-theme="dark"] .confirm a { color: var(--success-deep); }
+
+/* ============================================================
+   COLOPHON (matches the other pages)
+   ============================================================ */
+.colophon {
+    border-top: 1px solid var(--rule-strong);
+    padding-block: 30px 40px;
+}
+.colophon-grid { display: grid; gap: 20px; }
+@media (min-width: 760px) {
+    .colophon-grid { grid-template-columns: minmax(0, 1fr) auto; align-items: end; }
+}
+.colophon .motto {
+    font-family: var(--font-serif);
+    font-size: clamp(18px, 2.2vw, 24px);
+    font-style: italic;
+    color: var(--ink);
+    margin-bottom: 7px;
+}
+.colophon .motto span { color: var(--accent-deep); }
+[data-theme="dark"] .colophon .motto span { color: var(--accent); }
+.colophon .fca {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 11px;
+}
+.colophon .fca strong { color: var(--accent-deep); font-weight: 700; }
+[data-theme="dark"] .colophon .fca strong { color: var(--accent); }
+.colophon .legal {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--ink);
+    max-width: 62ch;
+}
+.colophon .foot-right { display: grid; gap: 9px; justify-items: start; }
+@media (min-width: 760px) { .colophon .foot-right { justify-items: end; text-align: right; } }
+.colophon a.site {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent-deep);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-rule);
+    padding-bottom: 2px;
+}
+.colophon a.site:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.colophon .ref { font-size: 12px; color: var(--ink); }
+
+/* ============================================================
+   FUN MODE (matches the other pages)
+   ============================================================ */
+[data-theme="fun"] {
+    color-scheme: light;
+    --paper: #fff1f8;
+    --paper-2: #ffe6f3;
+    --ink: #47126b;
+    --ink-2: #47126b;
+    --ink-3: #47126b;
+    --ink-4: #47126b;
+    --rule: #f7d2ea;
+    --rule-strong: #efb6dd;
+    --card: #ffffff;
+    --accent: #ff2d92;
+    --accent-deep: #cf0f74;
+    --accent-wash: rgba(255, 45, 146, 0.10);
+    --accent-rule: rgba(255, 45, 146, 0.32);
+    --cta-bg: #ff2d92;
+    --cta-ink: #ffffff;
+    --navy: #6d28d9;
+    --navy-deep: #4c1d95;
+    --ph: #c9a8e0;
+    --success: #00b374;
+    --success-deep: #00855a;
+    --success-wash: rgba(0, 179, 116, 0.12);
+    --success-rule: rgba(0, 179, 116, 0.38);
+}
+[data-theme="fun"] .masthead {
+    border-bottom: 2px solid;
+    border-image: linear-gradient(90deg, #ff2d92, #ff8a00, #00b8ff) 1;
+}
+[data-theme="fun"] .colophon {
+    border-top: 2px solid;
+    border-image: linear-gradient(90deg, #00b8ff, #ff8a00, #ff2d92) 1;
+}
+[data-theme="fun"] .eyebrow::before { background: linear-gradient(90deg, #ff2d92, #ff8a00); }
+[data-theme="fun"] .icon-btn { border-radius: 999px; }
+[data-theme="fun"] .confirm { border-radius: 999px; }
+
+/* ============================================================
+   SMALL SCREENS
+   ============================================================ */
+@media (max-width: 620px) {
+    :root { --mast-h: 56px; }
+    .masthead { padding: 0 16px; }
+    .mast-title em { display: none; }
+    .shell { padding-inline: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ MASTHEAD ============ -->
+<header class="masthead">
+    <div class="mast-left">
+        <a class="icon-btn" href="index.html" aria-label="Back to the service summary" title="Back to the service summary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5"/>
+                <path d="M12 19l-7-7 7-7"/>
+            </svg>
+        </a>
+        <a class="mast-mark" href="index.html">
+            <span class="loop-mark" aria-hidden="true"><i></i><i></i></span>
+            <span class="mast-title">Hoop <em>&times;</em> Advantage FS</span>
+        </a>
+    </div>
+
+    <div class="mast-right">
+        <span class="mast-capsule">Mortgage Appointment</span>
+        <button class="icon-btn theme-btn" id="themeToggle" type="button" aria-label="Change colour theme" title="Change colour theme">
+            <svg class="s-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <circle cx="12" cy="12" r="4.2"/>
+                <path d="M12 2.4v2.2M12 19.4v2.2M2.4 12h2.2M19.4 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/>
+            </svg>
+            <svg class="s-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <path d="M20.5 14.4A8.6 8.6 0 0 1 9.6 3.5a8.6 8.6 0 1 0 10.9 10.9Z"/>
+            </svg>
+            <svg class="s-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <path d="M12 3.2v3M12 17.8v3M3.2 12h3M17.8 12h3M12 7.4a4.6 4.6 0 0 0-4.6 4.6c0 1.9 1.1 3 2 3.9.7.7 1.2 1.4 1.3 2.5h2.6c.1-1.1.6-1.8 1.3-2.5.9-.9 2-2 2-3.9A4.6 4.6 0 0 0 12 7.4Z"/>
+                <path d="M10.4 21h3.2"/>
+            </svg>
+        </button>
+    </div>
+</header>
+
+<main class="shell">
+
+    <!-- ============ PAGE HEAD ============ -->
+    <section class="page-head">
+        <p class="eyebrow">Mortgage Services &middot; Free Appointment Request</p>
+        <h1>Request your mortgage <em>appointment</em>.</h1>
+        <p class="standfirst">
+            Please complete the contact form below; we will check our mortgage advisers'
+            availability and send confirmation of your appointment.
+        </p>
+        <p class="assist">
+            If you need any assistance with your appointment please email:
+            <a href="mailto:laurence@advantagefs.co.uk">laurence@advantagefs.co.uk</a>
+        </p>
+    </section>
+
+    <!-- ============ CONTACT FORM ============ -->
+    <section class="contact-panel" aria-label="Mortgage appointment contact form">
+        <form id="contactForm" novalidate>
+
+            <div class="form-grid">
+                <div class="field">
+                    <label for="fName">Name</label>
+                    <input type="text" id="fName" name="name" autocomplete="name" placeholder="Your full name">
+                </div>
+
+                <div class="field">
+                    <label for="fEmail">Email Address <span class="req" aria-hidden="true">*</span></label>
+                    <input type="email" id="fEmail" name="email" autocomplete="email" required placeholder="you@example.com">
+                </div>
+
+                <div class="field">
+                    <label for="fPhone">Phone Number <span class="req" aria-hidden="true">*</span></label>
+                    <input type="tel" id="fPhone" name="phone" autocomplete="tel" inputmode="tel" required placeholder="Your contact number">
+                </div>
+
+                <div class="field">
+                    <label for="fAdviser">Hoop Adviser <span class="req" aria-hidden="true">*</span></label>
+                    <input type="text" id="fAdviser" name="hoopAdviser" required placeholder="Your Hoop adviser's name">
+                </div>
+
+                <div class="field full">
+                    <label for="fRequirement">Please provide a brief summary of your requirements <span class="req" aria-hidden="true">*</span></label>
+                    <select id="fRequirement" name="requirement" required>
+                        <option value="" selected disabled>Please select&hellip;</option>
+                        <option>General Advice</option>
+                        <option>Looking to buy my first home</option>
+                        <option>Looking to move home</option>
+                        <option>Remortgage</option>
+                        <option>Buy to let</option>
+                        <option>Commercial/Bridging finance</option>
+                        <option>Equity release</option>
+                        <option>Product transfer</option>
+                        <option>Other</option>
+                    </select>
+
+                    <div class="other-wrap" id="otherWrap" hidden>
+                        <label for="fOther">Please give brief details <span class="req" aria-hidden="true">*</span></label>
+                        <input type="text" id="fOther" name="otherDetail" placeholder="Tell us briefly what you need">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="fIdeal">Ideal appointment day/time <span class="req" aria-hidden="true">*</span></label>
+                    <input type="text" id="fIdeal" name="idealTime" required placeholder="e.g. Tuesday 15th September @ 6pm">
+                </div>
+
+                <div class="field">
+                    <label for="fAvailability">Summary of availability</label>
+                    <input type="text" id="fAvailability" name="availability" placeholder="Any other times that suit you (optional)">
+                </div>
+
+                <div class="field full submit-row">
+                    <button class="submit-btn" type="submit">
+                        Send appointment request
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+                    </button>
+                    <p class="submit-note">
+                        This opens your email app with everything pre-filled for Laurence and
+                        Gavin — just press send.
+                    </p>
+                </div>
+            </div>
+
+            <div class="confirm" id="confirmBox" hidden aria-live="polite">
+                <p>
+                    <strong>Almost there.</strong> Your email app should now be open with the
+                    request pre-filled for laurence@advantagefs.co.uk and
+                    gavin@advantagefs.co.uk — just press send.
+                    <span id="confirmFallback">Nothing happened?
+                        <a id="manualLink" href="#">Open the pre-filled email manually</a>.
+                    </span>
+                </p>
+            </div>
+        </form>
+    </section>
+
+    <!-- ============ COLOPHON ============ -->
+    <footer class="colophon">
+        <div class="colophon-grid">
+            <div>
+                <p class="motto">Our Experience. <span>Your Advantage.</span></p>
+                <p class="fca">Advantage Financial Solutions · <strong>FCA 965036</strong></p>
+                <p class="legal">
+                    Provided in partnership with Hoop Recruitment. Based in Bristol — advising clients
+                    across the UK. Your home may be repossessed if you do not keep up repayments on your
+                    mortgage. Initial mortgage consultations are free; a discounted broker fee of &pound;250
+                    applies only if you proceed with a full mortgage application.
+                </p>
+            </div>
+
+            <div class="foot-right">
+                <a class="site" href="https://advantagefs.co.uk" target="_blank" rel="noopener">advantagefs.co.uk</a>
+                <p class="ref">Mortgage booking page &middot; V1.0</p>
+                <p class="ref">&copy; 2026 Advantage Financial Solutions</p>
+                <p class="ref">FCA 965036 · Company no. 12291836</p>
+            </div>
+        </div>
+    </footer>
+
+</main>
+
+<script>
+(function () {
+    'use strict';
+
+    /* ---------- Theme: light → dark → fun (shared with the other pages) ---------- */
+    var root = document.documentElement;
+    var themeBtn = document.getElementById('themeToggle');
+    var ORDER = ['light', 'dark', 'fun'];
+    var LABELS = { light: 'Light', dark: 'Dark', fun: 'Fun' };
+
+    function applyTheme(t) {
+        root.setAttribute('data-theme', t);
+        var label = 'Theme: ' + LABELS[t] + ' — click to change';
+        themeBtn.title = label;
+        themeBtn.setAttribute('aria-label', label);
+        try { localStorage.setItem('avs-theme', t); } catch (e) {}
+    }
+
+    var savedTheme = null;
+    try { savedTheme = localStorage.getItem('avs-theme'); } catch (e) {}
+    if (ORDER.indexOf(savedTheme) === -1) {
+        savedTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    applyTheme(savedTheme);
+
+    themeBtn.addEventListener('click', function () {
+        var cur = root.getAttribute('data-theme') || 'light';
+        applyTheme(ORDER[(ORDER.indexOf(cur) + 1) % ORDER.length]);
+    });
+
+    /* ---------- "Other" reveal ---------- */
+    var reqSelect = document.getElementById('fRequirement');
+    var otherWrap = document.getElementById('otherWrap');
+    var otherInput = document.getElementById('fOther');
+
+    reqSelect.addEventListener('change', function () {
+        var isOther = reqSelect.value === 'Other';
+        otherWrap.hidden = !isOther;
+        otherInput.required = isOther;
+        if (!isOther) { otherInput.value = ''; }
+    });
+
+    /* ---------- Build & open the pre-filled email ---------- */
+    var form = document.getElementById('contactForm');
+    var confirmBox = document.getElementById('confirmBox');
+    var confirmFallback = document.getElementById('confirmFallback');
+    var manualLink = document.getElementById('manualLink');
+
+    var RECIPIENTS = 'laurence@advantagefs.co.uk,gavin@advantagefs.co.uk';
+
+    function val(id) {
+        var el = document.getElementById(id);
+        return el ? el.value.trim() : '';
+    }
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        /* Validate (we use novalidate so we control the UX) */
+        var invalid = [];
+        var requiredIds = ['fEmail', 'fPhone', 'fAdviser', 'fRequirement', 'fIdeal'];
+        if (!otherWrap.hidden) { requiredIds.push('fOther'); }
+
+        requiredIds.forEach(function (id) {
+            var el = document.getElementById(id);
+            var bad = !el.value.trim() ||
+                (id === 'fEmail' && !/^\S+@\S+\.\S+$/.test(el.value.trim()));
+            el.style.borderColor = bad ? 'var(--accent-deep)' : '';
+            if (bad) { invalid.push(el); }
+        });
+
+        if (invalid.length) {
+            invalid[0].focus();
+            confirmBox.hidden = true;
+            return;
+        }
+
+        /* Compose the body */
+        var lines = [
+            'Mortgage appointment request (Hoop × Advantage FS)',
+            '',
+            'Name: ' + (val('fName') || 'Not provided'),
+            'Email: ' + val('fEmail'),
+            'Phone: ' + val('fPhone'),
+            'Hoop adviser: ' + val('fAdviser'),
+            'Requirement: ' + reqSelect.value
+        ];
+        if (!otherWrap.hidden && otherInput.value.trim()) {
+            lines.push('Other details: ' + otherInput.value.trim());
+        }
+        lines.push('Ideal appointment day/time: ' + val('fIdeal'));
+        lines.push('Summary of availability: ' + (val('fAvailability') || 'Not provided'));
+
+        var subject = 'Hoop recruitment - Mortgage appointment request';
+        var href = 'mailto:' + RECIPIENTS +
+            '?subject=' + encodeURIComponent(subject) +
+            '&body=' + encodeURIComponent(lines.join('\r\n'));
+
+        /* Open the visitor's email app */
+        window.location.href = href;
+
+        /* Confirmation + manual fallback */
+        manualLink.href = href;
+        confirmFallback.style.display = '';
+        confirmBox.hidden = false;
+        confirmBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+})();
+</script>
+</body>
+</html>
