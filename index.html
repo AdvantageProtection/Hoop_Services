@@ -13,14 +13,15 @@
 
 <style>
 /* ============================================================
-   HOOP × ADVANTAGE FS · "LIVING DOCUMENT" · V7.5
+   HOOP × ADVANTAGE FS · "LIVING DOCUMENT" · V8
    ------------------------------------------------------------
-   V7.5: all section/sidebar numbering removed. Logos presented
-   in a "Provided by" card (miniature of the hero plate) beside
-   the Protection Service & Mortgage Service headings. Mortgage
-   sections use the booking-button blue; protection and general
-   accents keep the existing red. Sidebar: Overview / Protection
-   Service / Mortgage Service / Why Advantage.
+   V8: Orange removed entirely — Advantage brand colour #e91837
+   is now the standard accent (mortgage sections keep their own
+   blue). All grey text unified to darkest grey. All small-caps
+   micro-type removed and replaced with regular text; caps links
+   now use the standard brand colour. Wobbly logo plates removed;
+   clean stacked logo headings. Tiny grey list numbers removed;
+   animated step numbers kept in brand colour. Two-column lists.
    ============================================================ */
 
 /* ---- Tokens ---- */
@@ -34,29 +35,31 @@
 
     --paper: #fafbfc;
     --paper-2: #f2f5f7;
-    --ink: #1c2f3d;
-    --ink-2: #4a6478;
-    --ink-3: #7d94a5;
-    --ink-4: #a9bcc8;
+    --ink: #222222;      /* uniform darkest grey for ALL text */
+    --ink-2: #222222;
+    --ink-3: #222222;
+    --ink-4: #222222;
     --rule: #dfe6ec;
     --rule-strong: #c4d2dc;
     --card: #ffffff;
 
-    --accent-hue: 8;
-    --accent: hsl(var(--accent-hue) 82% 62%);
-    --accent-deep: hsl(var(--accent-hue) 74% 48%);
-    --accent-wash: hsl(var(--accent-hue) 82% 62% / 0.10);
-    --accent-rule: hsl(var(--accent-hue) 82% 62% / 0.30);
+    /* Advantage Protection brand colour — the standard accent */
+    --brand: #e91837;
+    --accent: #e91837;
+    --accent-deep: #b8122c;
+    --accent-wash: rgba(233, 24, 55, 0.10);
+    --accent-rule: rgba(233, 24, 55, 0.30);
     --navy: #3d5a6e;
     --navy-deep: #2b4354;
 
-    /* Mortgage accent — matches the "Book an appointment" button blue */
+    /* Mortgage accent — matches the "Book an appointment" button blue.
+       Mortgage sections NEVER use the brand purple/red. */
     --m-accent: #4a72a8;
     --m-accent-deep: #3a5c8a;
     --m-accent-wash: rgba(74, 114, 168, 0.10);
     --m-accent-rule: rgba(74, 114, 168, 0.32);
 
-    /* Section CTA colours (protection = existing red by default) */
+    /* Section CTA colours */
     --cta-bg: var(--accent-deep);
     --cta-ink: #ffffff;
 
@@ -77,17 +80,17 @@
     --paper: #0c1419;
     --paper-2: #111d25;
     --ink: #eaf2f7;
-    --ink-2: #a8bcc9;
-    --ink-3: #7a8fa0;
-    --ink-4: #526675;
+    --ink-2: #dbe4ea;
+    --ink-3: #dbe4ea;
+    --ink-4: #dbe4ea;
     --rule: #1e2f3b;
     --rule-strong: #2c4353;
     --card: #101c24;
 
-    --accent: hsl(8 90% 70%);
-    --accent-deep: hsl(8 90% 78%);
-    --accent-wash: hsla(8, 90%, 70%, 0.12);
-    --accent-rule: hsla(8, 90%, 70%, 0.30);
+    --accent: #ff4d67;
+    --accent-deep: #ff6a80;
+    --accent-wash: rgba(233, 24, 55, 0.16);
+    --accent-rule: rgba(233, 24, 55, 0.40);
     --navy: #eaf2f7;
     --navy-deep: #ffffff;
 
@@ -228,7 +231,7 @@ img { max-width: 100%; display: block; }
     font-style: italic;
     font-weight: 400;
     font-size: 16px;
-    color: var(--ink-3);
+    color: var(--ink);
 }
 
 .mast-right {
@@ -245,7 +248,7 @@ img { max-width: 100%; display: block; }
     border: 1px solid var(--rule);
     border-radius: 10px;
     background: transparent;
-    color: var(--ink-2);
+    color: var(--ink);
     cursor: pointer;
     transition: color 0.18s, background 0.18s, border-color 0.18s, transform 0.18s;
 }
@@ -317,29 +320,29 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 
 .side-title {
     font-family: var(--font-display);
-    font-size: 13.5px;
-    font-weight: 650;
+    font-size: 16px;
+    font-weight: 700;
     letter-spacing: -0.012em;
     color: var(--ink);
     line-height: 1.3;
 }
 .side-sub {
-    font-family: var(--font-mono);
-    font-size: 9.5px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink-3);
-    margin-top: 3px;
+    font-family: var(--font-display);
+    font-size: 13px;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--ink);
+    margin-top: 4px;
 }
 
 .side-label {
-    padding: 22px 24px 10px;
-    font-family: var(--font-mono);
-    font-size: 9.5px;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--ink-4);
+    padding: 26px 24px 12px;
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    text-transform: none;
+    color: var(--ink);
 }
 
 .side-nav { padding: 0 12px 12px; }
@@ -347,10 +350,10 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 .side-link {
     position: relative;
     display: block;
-    padding: 10px 12px;
+    padding: 14px 14px;
     border-radius: 9px;
     text-decoration: none;
-    color: var(--ink-2);
+    color: var(--ink);
     transition: color 0.2s, background 0.2s, padding-left 0.24s var(--ease-out);
 }
 .side-link:hover {
@@ -360,10 +363,10 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 .side-link .t {
     display: block;
     font-family: var(--font-display);
-    font-size: 13.5px;
-    font-weight: 550;
+    font-size: 15.5px;
+    font-weight: 600;
     letter-spacing: -0.012em;
-    line-height: 1.4;
+    line-height: 1.45;
 }
 
 .side-link.active { color: var(--ink); }
@@ -371,25 +374,25 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     content: "";
     position: absolute;
     left: 0;
-    top: 10px;
-    bottom: 10px;
-    width: 2px;
+    top: 12px;
+    bottom: 12px;
+    width: 3px;
     border-radius: 2px;
     background: var(--accent);
 }
-.side-link.active { padding-left: 16px; }
+.side-link.active { padding-left: 18px; }
 
 .side-foot {
     margin: 14px 16px 0;
-    padding: 14px 8px 18px;
+    padding: 16px 8px 20px;
     border-top: 1px solid var(--rule);
 }
 .side-foot-note {
-    font-family: var(--font-mono);
-    font-size: 9px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--ink-4);
+    font-family: var(--font-display);
+    font-size: 12px;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--ink);
 }
 
 /* ============================================================
@@ -453,49 +456,85 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 }
 
 /* ============================================================
-   HERO
+   HERO — clean central logo stack (no wobbly plate)
    ============================================================ */
 .hero {
-    padding-block: clamp(48px, 9vh, 110px) clamp(40px, 6vh, 72px);
+    padding-block: clamp(44px, 8vh, 96px) clamp(40px, 6vh, 72px);
     display: grid;
-    gap: clamp(28px, 5vw, 64px);
-    align-items: start;
+    gap: clamp(26px, 4.5vw, 52px);
+    justify-items: center;
+    text-align: center;
 }
 
-@media (min-width: 900px) {
-    .hero { grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); }
+.hero-logos {
+    display: grid;
+    justify-items: center;
+    gap: clamp(20px, 3vw, 34px);
+    width: 100%;
+    max-width: 760px;
+}
+
+.hero-logo-main {
+    width: auto;
+    max-width: min(420px, 82vw);
+    height: auto;
+    max-height: clamp(88px, 11vw, 140px);
+    object-fit: contain;
+}
+
+.hero-logo-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-items: start;
+    gap: clamp(20px, 4vw, 48px);
+    width: 100%;
+}
+.hero-logo-pair img:last-child { justify-self: end; }
+.hero-logo-pair img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: clamp(64px, 8.5vw, 104px);
+    object-fit: contain;
+}
+
+@media (max-width: 560px) {
+    .hero-logo-pair { gap: 16px; }
+    .hero-logo-pair img { max-height: 56px; }
 }
 
 .eyebrow {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    font-family: var(--font-mono);
-    font-size: 10.5px;
+    font-family: var(--font-display);
+    font-size: 15px;
     font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--ink-3);
-    margin-bottom: 22px;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--ink);
+    margin-bottom: 20px;
 }
 .eyebrow::before {
     content: "";
     width: 26px;
-    height: 1px;
+    height: 2px;
     background: var(--accent);
 }
 
 .hero h1 {
     font-family: var(--font-display);
-    font-size: clamp(38px, 6.2vw, 74px);
+    font-size: clamp(34px, 5.4vw, 62px);
     font-weight: 700;
-    line-height: 0.98;
-    letter-spacing: -0.038em;
+    line-height: 1.04;
+    letter-spacing: -0.032em;
     color: var(--ink);
     text-wrap: balance;
-    margin-bottom: 28px;
+    margin-bottom: 24px;
 }
 .hero h1 em {
+    display: block;
     font-family: var(--font-serif);
     font-style: italic;
     font-weight: 400;
@@ -504,65 +543,13 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 }
 
 .hero-standfirst {
-    max-width: 46ch;
+    max-width: 52ch;
     font-size: clamp(15.5px, 1.35vw, 18px);
     line-height: 1.65;
-    color: var(--ink-2);
+    color: var(--ink);
     text-wrap: pretty;
 }
-.hero-standfirst strong { color: var(--ink); font-weight: 600; }
-
-/* Plate: white field with the three partner logos stacked */
-.hero-plate {
-    position: relative;
-    display: grid;
-    align-content: center;
-    padding: clamp(16px, 2.4vw, 28px);
-    border-radius: 18px;
-    overflow: hidden;
-    background: #ffffff;
-    border: 1px solid var(--rule);
-    box-shadow:
-        0 1px 0 rgba(255,255,255,0.6) inset,
-        0 2px 4px rgba(28,47,61,0.05),
-        0 24px 56px -22px rgba(28,47,61,0.30);
-    transform: rotate(-1.2deg);
-    transition: transform 0.6s var(--ease-out);
-}
-.hero-plate:hover { transform: rotate(0deg) scale(1.012); }
-
-.logo-row {
-    display: grid;
-    place-items: center;
-    padding: clamp(12px, 1.8vw, 20px) 8px;
-}
-.logo-row + .logo-row { border-top: 1px solid #e8edf2; }
-.logo-row img {
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    max-height: clamp(56px, 7.5vw, 88px);
-    object-fit: contain;
-}
-/* Advantage logos carry extra whitespace — rendered a touch larger */
-.logo-row.tall img { max-height: clamp(84px, 11vw, 128px); }
-
-.hero-plate figcaption {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 14px 16px;
-    font-family: var(--font-mono);
-    font-size: 9.5px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--ink-2);
-    background: linear-gradient(to top, rgba(255,255,255,0.96), rgba(255,255,255,0));
-}
-[data-theme="dark"] .hero-plate figcaption {
-    color: var(--ink-3);
-}
+.hero-standfirst strong { color: var(--ink); font-weight: 700; }
 
 /* ============================================================
    SECTIONS
@@ -582,10 +569,24 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     margin-bottom: clamp(26px, 3.6vw, 44px);
 }
 
+/* Stacked brand heading: logo left-aligned, title below it */
+.section-head-stacked {
+    display: block;
+}
+.section-head-stacked .section-logo {
+    width: auto;
+    max-width: min(230px, 60vw);
+    height: auto;
+    max-height: 92px;
+    object-fit: contain;
+    margin-bottom: 14px;
+}
+.section-head-stacked h2 { max-width: none; }
+
 .section h2 {
     font-family: var(--font-display);
     font-size: clamp(24px, 3.2vw, 38px);
-    font-weight: 680;
+    font-weight: 700;
     line-height: 1.1;
     letter-spacing: -0.028em;
     color: var(--ink);
@@ -593,46 +594,17 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     max-width: 30ch;
 }
 
-/* "Provided by" brand card — a miniature of the hero plate */
-.provided-by {
-    display: inline-grid;
-    justify-items: center;
-    gap: 9px;
-    padding: 16px 26px 18px;
-    background: #ffffff;
-    border: 1px solid var(--rule);
-    border-radius: 14px;
-    box-shadow:
-        0 1px 0 rgba(255,255,255,0.6) inset,
-        0 2px 4px rgba(28,47,61,0.05),
-        0 18px 40px -20px rgba(28,47,61,0.28);
-    transform: rotate(-1.2deg);
-    transition: transform 0.6s var(--ease-out);
-    flex: 0 0 auto;
-}
-.provided-by:hover { transform: rotate(0deg) scale(1.02); }
-
-.provided-by .pb-label {
-    font-family: var(--font-mono);
-    font-size: 8.5px;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--ink-3);
-}
-
-.provided-by img {
-    width: clamp(150px, 17vw, 205px);
-    height: auto;
-    object-fit: contain;
-}
+/* Coloured service titles */
+.title-protection { color: var(--accent-deep); }
+[data-theme="dark"] .title-protection { color: var(--accent); }
+.title-mortgage { color: var(--m-accent); }
 
 .section-body {
     display: grid;
     gap: 22px;
 }
 
-/* Subheads: promoted to proper bold accent headings */
+/* Subheads: bold accent headings */
 .subhead {
     font-family: var(--font-display);
     font-size: clamp(19px, 2vw, 23px);
@@ -650,10 +622,10 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     max-width: var(--measure);
     font-size: clamp(15px, 1.15vw, 16.5px);
     line-height: 1.78;
-    color: var(--ink-2);
+    color: var(--ink);
     text-wrap: pretty;
 }
-.prose strong { color: var(--ink); font-weight: 600; }
+.prose strong { color: var(--ink); font-weight: 700; }
 
 .pullquote {
     position: relative;
@@ -684,11 +656,11 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 }
 
 .signature .sig-label {
-    font-family: var(--font-mono);
-    font-size: 10px;
+    font-family: var(--font-display);
+    font-size: 15px;
     font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
+    letter-spacing: 0;
+    text-transform: none;
     color: var(--success-deep);
 }
 .signature .sig-value {
@@ -712,7 +684,8 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 /* ============================================================
    MORTGAGE ACCENT · booking-button blue
    Applied to mortgage sections only. Protection and general
-   elements keep the default red accent.
+   elements keep the Advantage brand colour. The brand colour
+   is NEVER used inside mortgage sections.
    ============================================================ */
 .theme-mortgage {
     --accent: var(--m-accent);
@@ -736,10 +709,10 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     background: var(--cta-bg);
     color: var(--cta-ink);
     font-family: var(--font-display);
-    font-size: 13.5px;
-    font-weight: 750;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    font-size: 14.5px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    text-transform: none;
     text-decoration: none;
     box-shadow: 0 14px 28px -14px rgba(28, 47, 61, 0.45);
     transition: transform 0.24s var(--ease-out), box-shadow 0.24s, filter 0.2s;
@@ -753,44 +726,78 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 .cta-btn:active { transform: translateY(0) scale(0.98); }
 
 /* ============================================================
-   KEYED LIST
+   KEYED LIST — two columns, no numbers
    ============================================================ */
 .keyed {
     list-style: none;
     max-width: var(--measure);
     border-top: 1px solid var(--rule);
-    counter-reset: keyed;
 }
 .keyed li {
-    display: grid;
-    grid-template-columns: 34px minmax(0, 1fr);
-    gap: 0 18px;
-    padding: 15px 0;
+    display: block;
+    padding: 16px 0;
     border-bottom: 1px solid var(--rule);
-    counter-increment: keyed;
+    break-inside: avoid;
 }
-.keyed li::before {
-    content: counter(keyed, decimal-leading-zero);
-    font-family: var(--font-mono);
-    font-size: 12.5px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    color: var(--ink-3);
-    padding-top: 0.24em;
+@media (min-width: 700px) {
+    .keyed {
+        column-count: 2;
+        column-gap: 44px;
+    }
+    .keyed li:first-child { border-top: none; }
 }
 .keyed .k-title {
     display: block;
-    font-size: 15px;
-    font-weight: 620;
+    font-size: 15.5px;
+    font-weight: 650;
     letter-spacing: -0.012em;
     color: var(--ink);
-    margin-bottom: 3px;
+    margin-bottom: 4px;
 }
 .keyed .k-body {
     display: block;
     font-size: 14.5px;
     line-height: 1.68;
-    color: var(--ink-2);
+    color: var(--ink);
+}
+
+/* ============================================================
+   SERVICE OVERVIEW (Mortgage) — two-column plain-English grid
+   ============================================================ */
+.svc-overview {
+    display: grid;
+    gap: 14px;
+    margin-top: 6px;
+}
+@media (min-width: 700px) {
+    .svc-overview { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.svc-item {
+    padding: 20px 20px 22px;
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    transition: border-color 0.3s, box-shadow 0.3s, transform 0.32s var(--ease-out);
+}
+.svc-item:hover {
+    border-color: var(--rule-strong);
+    box-shadow: 0 12px 30px -14px rgba(28,47,61,0.24);
+    transform: translateY(-3px);
+}
+.svc-item h3 {
+    font-size: 16px;
+    font-weight: 680;
+    letter-spacing: -0.014em;
+    line-height: 1.3;
+    color: var(--m-accent-deep);
+    margin-bottom: 8px;
+    text-wrap: balance;
+}
+[data-theme="dark"] .svc-item h3 { color: var(--m-accent); }
+.svc-item p {
+    font-size: 14px;
+    line-height: 1.68;
+    color: var(--ink);
 }
 
 /* ============================================================
@@ -832,11 +839,12 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 .aud-card:hover::before { transform: scaleY(1); }
 
 .aud-card .aud-kicker {
-    font-family: var(--font-mono);
-    font-size: 9.5px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--ink-4);
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 650;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--ink);
     margin-bottom: 10px;
 }
 .aud-card h3 {
@@ -851,11 +859,11 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 .aud-card p {
     font-size: 14px;
     line-height: 1.68;
-    color: var(--ink-2);
+    color: var(--ink);
 }
 
 /* ============================================================
-   PROCESS
+   PROCESS — animated step numbers kept, in brand colour
    ============================================================ */
 .process {
     list-style: none;
@@ -894,9 +902,9 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     border-radius: 50%;
     border: 1.5px solid var(--accent-rule);
     background: var(--card);
-    font-family: var(--font-mono);
-    font-size: 12px;
-    font-weight: 500;
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 700;
     color: var(--accent-deep);
     transition: background 0.3s, border-color 0.3s, color 0.3s, transform 0.3s var(--ease-out);
 }
@@ -920,7 +928,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     display: block;
     font-size: 14.5px;
     line-height: 1.72;
-    color: var(--ink-2);
+    color: var(--ink);
 }
 
 /* ============================================================
@@ -970,10 +978,11 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     display: flex;
     align-items: center;
     gap: 8px;
-    font-family: var(--font-mono);
-    font-size: 9.5px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
+    font-family: var(--font-display);
+    font-size: 13.5px;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
     color: var(--accent-deep);
     margin-bottom: 10px;
 }
@@ -996,17 +1005,18 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     margin-bottom: 3px;
 }
 .adviser .adviser-role {
-    font-family: var(--font-mono);
-    font-size: 10.5px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-3);
+    font-family: var(--font-display);
+    font-size: 13.5px;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--ink);
     margin-bottom: 14px;
 }
 .adviser p {
     font-size: 14.5px;
     line-height: 1.72;
-    color: var(--ink-2);
+    color: var(--ink);
 }
 
 /* ============================================================
@@ -1027,19 +1037,20 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     .fee-row { grid-template-columns: 190px minmax(0, 1fr); align-items: baseline; }
 }
 .fee-row dt {
-    font-family: var(--font-mono);
-    font-size: 10.5px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-3);
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--ink);
     padding-top: 2px;
 }
 .fee-row dd {
     font-size: 14.5px;
     line-height: 1.7;
-    color: var(--ink-2);
+    color: var(--ink);
 }
-.fee-row dd strong { color: var(--ink); font-weight: 620; }
+.fee-row dd strong { color: var(--ink); font-weight: 700; }
 
 .fee-row.is-key {
     background: linear-gradient(90deg, var(--accent-wash), transparent 70%);
@@ -1047,7 +1058,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     padding-inline: 14px;
     margin-inline: -14px;
 }
-.fee-row.is-key dt { color: var(--accent-deep); font-weight: 500; }
+.fee-row.is-key dt { color: var(--accent-deep); font-weight: 700; }
 [data-theme="dark"] .fee-row.is-key dt { color: var(--accent); }
 
 /* ============================================================
@@ -1108,7 +1119,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     position: relative;
     font-size: 14px;
     line-height: 1.68;
-    color: var(--ink-2);
+    color: var(--ink);
     max-width: 48ch;
 }
 
@@ -1141,12 +1152,12 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 }
 .g-badge svg { width: 22px; height: 22px; }
 .g-badge .g-word {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-2);
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--ink);
 }
 
 .rating-card .rating-figure {
@@ -1168,23 +1179,24 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     color: var(--ink);
 }
 .rating-card .rating-figure .of {
-    font-family: var(--font-mono);
-    font-size: 10.5px;
-    letter-spacing: 0.12em;
-    color: var(--ink-3);
+    font-family: var(--font-display);
+    font-size: 13px;
+    letter-spacing: 0;
+    color: var(--ink);
 }
 
 /* ============================================================
-   JUMP LINK
+   JUMP LINKS — regular text in standard brand colour
    ============================================================ */
 .jump {
     display: inline-flex;
     align-items: center;
     gap: 7px;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    font-family: var(--font-display);
+    font-size: 14.5px;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
     color: var(--accent-deep);
     text-decoration: none;
     padding-bottom: 2px;
@@ -1192,7 +1204,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     transition: color 0.2s, border-color 0.2s, gap 0.24s var(--ease-out);
 }
 .jump:hover { color: var(--accent); border-bottom-color: var(--accent); gap: 11px; }
-.jump svg { width: 12px; height: 12px; }
+.jump svg { width: 13px; height: 13px; }
 [data-theme="dark"] .jump { color: var(--accent); }
 
 /* ============================================================
@@ -1221,21 +1233,21 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 [data-theme="dark"] .colophon .motto span { color: var(--accent); }
 
 .colophon .fca {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink-2);
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--ink);
     margin-bottom: 12px;
 }
 .colophon .fca strong { color: var(--accent-deep); font-weight: 700; }
 [data-theme="dark"] .colophon .fca strong { color: var(--accent); }
 
 .colophon .legal {
-    font-size: 11.5px;
+    font-size: 13px;
     line-height: 1.7;
-    color: var(--ink-3);
+    color: var(--ink);
     max-width: 62ch;
 }
 
@@ -1247,22 +1259,23 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 @media (min-width: 760px) { .colophon .foot-right { justify-items: end; text-align: right; } }
 
 .colophon a.site {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    letter-spacing: 0.06em;
-    color: var(--ink);
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0;
+    color: var(--accent-deep);
     text-decoration: none;
     border-bottom: 1px solid var(--accent-rule);
     padding-bottom: 2px;
 }
-.colophon a.site:hover { border-bottom-color: var(--accent); }
+.colophon a.site:hover { color: var(--accent); border-bottom-color: var(--accent); }
 
 .colophon .ref {
-    font-family: var(--font-mono);
-    font-size: 9.5px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--ink-4);
+    font-family: var(--font-display);
+    font-size: 12px;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--ink);
 }
 
 /* ============================================================
@@ -1274,9 +1287,9 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     --paper: #fff1f8;
     --paper-2: #ffe6f3;
     --ink: #47126b;
-    --ink-2: #7a3ba3;
-    --ink-3: #a874c9;
-    --ink-4: #c9a8e0;
+    --ink-2: #47126b;
+    --ink-3: #47126b;
+    --ink-4: #47126b;
     --rule: #f7d2ea;
     --rule-strong: #efb6dd;
     --card: #ffffff;
@@ -1317,9 +1330,8 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 [data-theme="fun"] .side-doc { border-radius: 18px; }
 [data-theme="fun"] .side-link { border-radius: 999px; }
 [data-theme="fun"] .side-link.active { padding-left: 12px; }
-[data-theme="fun"] .hero-plate { border-radius: 24px; }
-[data-theme="fun"] .provided-by { border-radius: 22px; }
 [data-theme="fun"] .aud-card { border-radius: 22px; }
+[data-theme="fun"] .svc-item { border-radius: 22px; }
 [data-theme="fun"] .bento-card { border-radius: 22px; }
 [data-theme="fun"] .adviser { border-radius: 22px; }
 [data-theme="fun"] .adviser-photo { border-radius: 18px; }
@@ -1372,16 +1384,16 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
         animation-duration: 0.01ms !important;
         transition-duration: 0.01ms !important;
     }
-    .hero-plate, .provided-by { transform: none; }
 }
 
 /* ============================================================
    CONTAINER QUERIES
    ============================================================ */
-.aud-card, .bento-card { container-type: inline-size; }
+.aud-card, .svc-item, .bento-card { container-type: inline-size; }
 
 @container (max-width: 240px) {
     .aud-card { padding: 18px 16px 20px; }
+    .svc-item { padding: 18px 16px 20px; }
     .bento-card { padding: 20px 18px; }
     .bento-card .ghost { font-size: 68px; }
 }
@@ -1395,8 +1407,6 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     .mast-title em { display: none; }
     .shell { padding-inline: 18px; }
     .hero { padding-block: 32px 36px; }
-    .hero-plate { transform: none; }
-    .provided-by { transform: none; }
     .section { padding-block: 38px; }
     .adviser { padding: 18px; }
     .bento-card .ghost { font-size: 64px; }
@@ -1430,10 +1440,10 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
             <span class="t">Overview</span>
         </a>
         <a class="side-link" href="#protection-service" data-spy="protection-service">
-            <span class="t">Protection Service</span>
+            <span class="t">Protection Service Summary</span>
         </a>
         <a class="side-link" href="#mortgage-service" data-spy="mortgage-service">
-            <span class="t">Mortgage Service</span>
+            <span class="t">Mortgage Service Summary</span>
         </a>
         <a class="side-link" href="#why-choose" data-spy="why-choose">
             <span class="t">Why Advantage</span>
@@ -1441,7 +1451,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     </nav>
 
     <div class="side-foot">
-        <p class="side-foot-note">Service Summary &middot; V7.5</p>
+        <p class="side-foot-note">Service Summary &middot; V8</p>
     </div>
 </aside>
 
@@ -1483,9 +1493,17 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 
     <!-- ============ HERO / OVERVIEW ============ -->
     <section class="hero" id="overview">
+        <div class="hero-logos reveal-soft">
+            <img class="hero-logo-main" src="oop.png" alt="Hoop Recruitment" decoding="async">
+            <div class="hero-logo-pair">
+                <img src="bbb.png" alt="Advantage Protection" decoding="async">
+                <img src="aaa.png" alt="Advantage Mortgage Advice" decoding="async">
+            </div>
+        </div>
+
         <div>
             <p class="eyebrow">Official Partnership &middot; Service Summary</p>
-            <h1>Two firms, one <em>continuous</em> line of advice.</h1>
+            <h1>Hoop recruitment &amp; Advantage: <em>Your Protection &amp; Mortgage Services Guide</em></h1>
             <p class="hero-standfirst">
                 <strong>Hoop Recruitment has officially partnered with Advantage Financial Solutions</strong>
                 to give every candidate direct, exclusive access to expert, independent mortgage and
@@ -1493,25 +1511,12 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
                 understand how your career operates and how you earn.
             </p>
         </div>
-
-        <figure class="hero-plate reveal-soft">
-            <div class="logo-row">
-                <img src="oop.png" alt="Hoop Recruitment" decoding="async">
-            </div>
-            <div class="logo-row tall">
-                <img src="bbb.png" alt="Advantage Protection" decoding="async">
-            </div>
-            <div class="logo-row tall">
-                <img src="aaa.png" alt="Advantage Mortgage Advice" decoding="async">
-            </div>
-            <figcaption>Hoop Recruitment &middot; Advantage Protection &middot; Advantage Mortgage Advice</figcaption>
-        </figure>
     </section>
 
     <!-- ============ PROTECTION ADVICE (INTRO) ============ -->
     <section class="section" id="protection" data-spy-as="protection-service">
         <div class="section-head">
-            <h2>Protection advice for locums &amp; contractors</h2>
+            <h2><span class="title-protection">Protection</span> advice for locums &amp; contractors</h2>
         </div>
 
         <div class="section-body">
@@ -1535,7 +1540,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     <!-- ============ MORTGAGE ADVICE (INTRO) ============ -->
     <section class="section theme-mortgage" id="mortgage-advice" data-spy-as="mortgage-service">
         <div class="section-head">
-            <h2>Mortgage advice for locums &amp; contractors</h2>
+            <h2><span class="title-mortgage">Mortgage</span> advice for locums &amp; contractors</h2>
         </div>
 
         <div class="section-body">
@@ -1557,12 +1562,9 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 
     <!-- ============ PROTECTION SERVICE ============ -->
     <section class="section" id="protection-service">
-        <div class="section-head">
-            <h2>Protection Service</h2>
-            <div class="provided-by reveal-soft">
-                <p class="pb-label">Provided by</p>
-                <img src="bbb.png" alt="Advantage Protection" loading="lazy" decoding="async">
-            </div>
+        <div class="section-head section-head-stacked">
+            <img class="section-logo" src="bbb.png" alt="Advantage Protection" loading="lazy" decoding="async">
+            <h2 class="title-protection">Protection Service Summary</h2>
         </div>
 
         <div class="section-body">
@@ -1589,12 +1591,13 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
             </div>
 
             <p class="cta-row reveal">
-    <a class="cta-btn"
-       href="https://advantageprotection.github.io/Hoop_Services/booking_page_protection.html">
-        Book an appointment
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
-    </a>
-</p>
+                <a class="cta-btn"
+                   href="https://advantageprotection.github.io/Hoop_Services/booking_page_protection.html">
+                    Book your Protection appointment
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+                </a>
+            </p>
+
             <div class="adviser reveal">
                 <div class="adviser-photo">
                     <img src="adviser.png" alt="Laurence, Specialist Protection Adviser at Advantage Financial Solutions" width="132" height="176" loading="lazy" decoding="async">
@@ -1650,28 +1653,20 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 
             <ul class="keyed reveal">
                 <li>
-                    <span>
-                        <span class="k-title">Replaces your lost earnings</span>
-                        <span class="k-body">If an accident or illness stops you from working shifts, the policy pays out a regular, tax-free monthly income to keep your household afloat.</span>
-                    </span>
+                    <span class="k-title">Replaces your lost earnings</span>
+                    <span class="k-body">If an accident or illness stops you from working shifts, the policy pays out a regular, tax-free monthly income to keep your household afloat.</span>
                 </li>
                 <li>
-                    <span>
-                        <span class="k-title">Covers all your financial commitments</span>
-                        <span class="k-body">It ensures that your mortgage or rent, utility bills, food, and daily living costs are taken care of without dipping into your savings.</span>
-                    </span>
+                    <span class="k-title">Covers all your financial commitments</span>
+                    <span class="k-body">It ensures that your mortgage or rent, utility bills, food, and daily living costs are taken care of without dipping into your savings.</span>
                 </li>
                 <li>
-                    <span>
-                        <span class="k-title">Tailored to how you work</span>
-                        <span class="k-body">Policies can be structured around your specific earnings, waiting periods, and budget, meaning you only pay for the exact cover level you need.</span>
-                    </span>
+                    <span class="k-title">Tailored to how you work</span>
+                    <span class="k-body">Policies can be structured around your specific earnings, waiting periods, and budget, meaning you only pay for the exact cover level you need.</span>
                 </li>
                 <li>
-                    <span>
-                        <span class="k-title">Bridges the workplace gap</span>
-                        <span class="k-body">Since you don't receive employer sick pay, this steps in as your own private sick pay scheme, giving you complete peace of mind while you focus entirely on recovery.</span>
-                    </span>
+                    <span class="k-title">Bridges the workplace gap</span>
+                    <span class="k-body">Since you don't receive employer sick pay, this steps in as your own private sick pay scheme, giving you complete peace of mind while you focus entirely on recovery.</span>
                 </li>
             </ul>
 
@@ -1700,12 +1695,9 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 
     <!-- ============ MORTGAGE SERVICE ============ -->
     <section class="section theme-mortgage" id="mortgage-service">
-        <div class="section-head">
-            <h2>Mortgage Service</h2>
-            <div class="provided-by reveal-soft">
-                <p class="pb-label">Provided by</p>
-                <img src="aaa.png" alt="Advantage Mortgage Advice" loading="lazy" decoding="async">
-            </div>
+        <div class="section-head section-head-stacked">
+            <img class="section-logo" src="aaa.png" alt="Advantage Mortgage Advice" loading="lazy" decoding="async">
+            <h2 class="title-mortgage">Mortgage Service Summary</h2>
         </div>
 
         <div class="section-body">
@@ -1717,6 +1709,35 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
                 <strong>team of 15 specialist mortgage advisers</strong> who understand locum earnings,
                 contract structures, and how to position your income with the right lenders.
             </p>
+
+            <p class="subhead">Our services at a glance</p>
+
+            <div class="svc-overview reveal">
+                <article class="svc-item">
+                    <h3>Looking to buy my first home</h3>
+                    <p>We work out what you can borrow on locum or contract income, secure your Agreement in Principle, and guide you all the way from offer to keys in hand.</p>
+                </article>
+                <article class="svc-item">
+                    <h3>Looking to move home</h3>
+                    <p>Whether you're upsizing, downsizing, or relocating, we port your existing deal or find a better one, and handle the whole chain on your behalf.</p>
+                </article>
+                <article class="svc-item">
+                    <h3>Remortgage</h3>
+                    <p>When your current deal ends, we search the market for a better rate — potentially saving you hundreds of pounds a year on your repayments.</p>
+                </article>
+                <article class="svc-item">
+                    <h3>Buy to let</h3>
+                    <p>Thinking about renting out a property? We find lenders who understand rental income calculations and structure your investment borrowing correctly.</p>
+                </article>
+                <article class="svc-item">
+                    <h3>Commercial/Bridging finance</h3>
+                    <p>For premises, business premises, or short-term funding gaps, we arrange commercial and bridging finance tailored to your timescale and circumstances.</p>
+                </article>
+                <article class="svc-item">
+                    <h3>Equity release</h3>
+                    <p>If you're older and want to unlock money tied up in your home, we explain all your options clearly, with no obligation and no jargon.</p>
+                </article>
+            </div>
 
             <p class="subhead">Transparent fee structure</p>
 
@@ -1736,12 +1757,12 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
             </dl>
 
             <p class="cta-row reveal">
-    <a class="cta-btn"
-       href="mailto:info@advantagefs.co.uk?subject=Hoop%20recruitment%20-Mortgage%20enquiry">
-        Book an appointment
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
-    </a>
-</p>
+                <a class="cta-btn"
+                   href="mailto:info@advantagefs.co.uk?subject=Hoop%20recruitment%20-Mortgage%20enquiry">
+                    Book your Mortgage appointment
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+                </a>
+            </p>
 
             <p class="subhead">Who this service is most useful for</p>
 
@@ -1778,28 +1799,20 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 
             <ul class="keyed reveal">
                 <li>
-                    <span>
-                        <span class="k-title">Day rate &amp; contract assessment</span>
-                        <span class="k-body">Specialist lenders can base borrowing power on your daily contract rate rather than relying strictly on two or three years of submitted accounts.</span>
-                    </span>
+                    <span class="k-title">Day rate &amp; contract assessment</span>
+                    <span class="k-body">Specialist lenders can base borrowing power on your daily contract rate rather than relying strictly on two or three years of submitted accounts.</span>
                 </li>
                 <li>
-                    <span>
-                        <span class="k-title">Navigating income variations</span>
-                        <span class="k-body">Advisers know which lenders are comfortable with gaps between locum contracts, short contract histories, or flexible working hours.</span>
-                    </span>
+                    <span class="k-title">Navigating income variations</span>
+                    <span class="k-body">Advisers know which lenders are comfortable with gaps between locum contracts, short contract histories, or flexible working hours.</span>
                 </li>
                 <li>
-                    <span>
-                        <span class="k-title">Cutting through red tape</span>
-                        <span class="k-body">By placing your application with lenders who understand your employment model, you avoid unnecessary delays, automatic declines, or lower borrowing limits from automated high-street scoring.</span>
-                    </span>
+                    <span class="k-title">Cutting through red tape</span>
+                    <span class="k-body">By placing your application with lenders who understand your employment model, you avoid unnecessary delays, automatic declines, or lower borrowing limits from automated high-street scoring.</span>
                 </li>
                 <li>
-                    <span>
-                        <span class="k-title">Whole-of-market access</span>
-                        <span class="k-body">Accessing specialist lenders across the market ensures you get competitive interest rates tailored to your exact borrowing profile.</span>
-                    </span>
+                    <span class="k-title">Whole-of-market access</span>
+                    <span class="k-body">Accessing specialist lenders across the market ensures you get competitive interest rates tailored to your exact borrowing profile.</span>
                 </li>
             </ul>
 
@@ -1873,7 +1886,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
                         <div class="rating-figure">
                             <span class="stars" aria-hidden="true">★★★★★</span>
                             <span class="num">5.0</span>
-                            <span class="of">OUT OF 5</span>
+                            <span class="of">out of 5</span>
                         </div>
                     </div>
 
@@ -1920,7 +1933,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 
             <div class="foot-right">
                 <a class="site" href="https://advantagefs.co.uk" target="_blank" rel="noopener">advantagefs.co.uk</a>
-                <p class="ref">Service summary &middot; V7.5</p>
+                <p class="ref">Service summary &middot; V8</p>
                 <p class="ref">&copy; 2026 Advantage Financial Solutions</p>
                 <p class="ref">FCA 965036 · Company no. 12291836</p>
             </div>
