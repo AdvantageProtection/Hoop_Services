@@ -13,10 +13,10 @@
 
 <style>
 /* ============================================================
-   HOOP × ADVANTAGE FS · MORTGAGE BOOKING PAGE · V1.0
+   HOOP × ADVANTAGE FS · MORTGAGE BOOKING PAGE · V1.1
    Layout mirrors the Protection booking page, themed in the
    mortgage blue. The "booking widget" is a contact form that
-   opens a pre-filled email to Laurence & Gavin on submit.
+   opens a pre-filled email to Gavin on submit.
    ============================================================ */
 
 /* ---- Tokens (mortgage blue accents; paper pure white) ---- */
@@ -394,12 +394,6 @@ body {
 }
 .submit-btn:active { transform: translateY(0) scale(0.98); }
 
-.submit-note {
-    font-size: 13px;
-    color: var(--ink);
-    max-width: 40ch;
-}
-
 .confirm {
     margin-top: 22px;
     padding: 18px 20px;
@@ -572,8 +566,8 @@ body {
             availability and send confirmation of your appointment.
         </p>
         <p class="assist">
-            If you need any assistance with your appointment please email:
-            <a href="mailto:laurence@advantagefs.co.uk">laurence@advantagefs.co.uk</a>
+            If you need any assistance with your booking, please email:
+            <a href="mailto:gavin@advantagefs.co.uk">gavin@advantagefs.co.uk</a>
         </p>
     </section>
 
@@ -633,23 +627,28 @@ body {
                     <input type="text" id="fAvailability" name="availability" placeholder="Any other times that suit you (optional)">
                 </div>
 
+                <div class="field full">
+                    <label for="fChallenges">Do you have any specific mortgage challenges you would like help with</label>
+                    <input type="text" id="fChallenges" name="challenges" placeholder="e.g. general enquiry to understand lending options, looking to buy my first home">
+                </div>
+
+                <div class="field full">
+                    <label for="fComments">Additional comments</label>
+                    <textarea id="fComments" name="additionalComments" placeholder="Anything else you'd like us to know (optional)"></textarea>
+                </div>
+
                 <div class="field full submit-row">
                     <button class="submit-btn" type="submit">
                         Send appointment request
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
                     </button>
-                    <p class="submit-note">
-                        This opens your email app with everything pre-filled for Laurence and
-                        Gavin — just press send.
-                    </p>
                 </div>
             </div>
 
             <div class="confirm" id="confirmBox" hidden aria-live="polite">
                 <p>
                     <strong>Almost there.</strong> Your email app should now be open with the
-                    request pre-filled for laurence@advantagefs.co.uk and
-                    gavin@advantagefs.co.uk — just press send.
+                    request pre-filled — just press send.
                     <span id="confirmFallback">Nothing happened?
                         <a id="manualLink" href="#">Open the pre-filled email manually</a>.
                     </span>
@@ -674,7 +673,7 @@ body {
 
             <div class="foot-right">
                 <a class="site" href="https://advantagefs.co.uk" target="_blank" rel="noopener">advantagefs.co.uk</a>
-                <p class="ref">Mortgage booking page &middot; V1.0</p>
+                <p class="ref">Mortgage booking page &middot; V1.1</p>
                 <p class="ref">&copy; 2026 Advantage Financial Solutions</p>
                 <p class="ref">FCA 965036 · Company no. 12291836</p>
             </div>
@@ -731,7 +730,7 @@ body {
     var confirmFallback = document.getElementById('confirmFallback');
     var manualLink = document.getElementById('manualLink');
 
-    var RECIPIENTS = 'laurence@advantagefs.co.uk,gavin@advantagefs.co.uk';
+    var RECIPIENTS = 'gavin@advantagefs.co.uk';
 
     function val(id) {
         var el = document.getElementById(id);
@@ -762,7 +761,23 @@ body {
 
         /* Compose the body */
         var lines = [
-            'Mortgage appointment request (Hoop × Advantage FS)',
+            '==============================================',
+            '  A D V A N T A G E   F I N A N C I A L',
+            '  S O L U T I O N S',
+            '  Our Experience. Your Advantage.',
+            '==============================================',
+            '',
+            'MORTGAGE APPOINTMENT REQUEST',
+            '',
+            'Just hit send on this email and you\u2019ll receive an',
+            'appointment confirmation within 1 hour. \u2705',
+            '',
+            'All initial advice is completely free of charge.',
+            '',
+            'If you need any assistance with your booking,',
+            'please email gavin@advantagefs.co.uk',
+            '',
+            '----------------------------------------------',
             '',
             'Name: ' + (val('fName') || 'Not provided'),
             'Email: ' + val('fEmail'),
@@ -775,6 +790,24 @@ body {
         }
         lines.push('Ideal appointment day/time: ' + val('fIdeal'));
         lines.push('Summary of availability: ' + (val('fAvailability') || 'Not provided'));
+        lines.push('Do you have any specific mortgage challenges you would like help with: ' + (val('fChallenges') || 'Not provided'));
+        lines.push('Additional comments: ' + (val('fComments') || 'Not provided'));
+        lines.push('');
+        lines.push('----------------------------------------------');
+        lines.push('');
+        lines.push('FCA regulatory information:');
+        lines.push('');
+        lines.push('Advantage Financial Solutions is authorised and regulated by the Financial Conduct Authority (FCA 965036). Registered in England & Wales, company no. 12291836.');
+        lines.push('');
+        lines.push('Your home may be repossessed if you do not keep up repayments on your mortgage.');
+        lines.push('');
+        lines.push('Initial mortgage consultations are free of charge; a discounted broker fee of \u00a3250 applies only if you proceed with a full mortgage application.');
+        lines.push('');
+        lines.push('Based in Bristol \u2014 advising clients across the UK. Provided in partnership with Hoop Recruitment.');
+        lines.push('');
+        lines.push('advantagefs.co.uk');
+        lines.push('');
+        lines.push('If you need any assistance with your booking, please email gavin@advantagefs.co.uk');
 
         var subject = 'Hoop recruitment - Mortgage appointment request';
         var href = 'mailto:' + RECIPIENTS +
