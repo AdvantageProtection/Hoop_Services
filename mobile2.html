@@ -314,9 +314,9 @@ h1{
 }
 .hero-note svg{width:15px;height:15px;margin-top:2px;color:var(--ok);flex:0 0 auto}
 
-/* partner lockup */
+/* ---------- partner lockup ---------- */
 .lockup{
-    padding:clamp(22px,2.4vw,32px);
+    padding:clamp(24px,2.6vw,34px);
     background:var(--surface);
     border:1px solid var(--line);
     border-radius:18px;
@@ -328,20 +328,32 @@ h1{
     letter-spacing:.16em;
     text-transform:uppercase;
     color:var(--ink-3);
-    margin-bottom:20px;
+    margin-bottom:22px;
 }
-.lockup-hoop{max-height:30px;width:auto}
+.lockup-hoop{
+    max-height:46px;
+    width:auto;
+    object-fit:contain;
+}
 .lockup-rule{
     display:block;
     height:1px;
     background:var(--line);
-    margin:20px 0;
+    margin:24px 0;
 }
-.lockup-adv{display:grid;gap:16px;justify-items:start}
-.lockup-adv img{max-height:26px;width:auto}
+.lockup-adv{
+    display:grid;
+    gap:20px;
+    justify-items:start;
+}
+.lockup-adv img{
+    max-height:40px;
+    width:auto;
+    object-fit:contain;
+}
 .lockup-foot{
-    margin-top:22px;
-    padding-top:16px;
+    margin-top:24px;
+    padding-top:18px;
     border-top:1px solid var(--line);
     font-size:12.5px;
     line-height:1.55;
@@ -419,16 +431,22 @@ h2{
     }
 }
 
+/* bigger service logo plates */
 .logo-plate{
     display:inline-flex;
     align-items:center;
-    padding:10px 14px;
-    margin-bottom:20px;
+    justify-content:center;
+    padding:15px 20px;
+    margin-bottom:22px;
     background:var(--surface);
     border:1px solid var(--line);
-    border-radius:10px;
+    border-radius:12px;
 }
-.logo-plate img{max-height:24px;width:auto}
+.logo-plate img{
+    max-height:44px;
+    width:auto;
+    object-fit:contain;
+}
 
 .svc h2{margin-bottom:14px}
 
@@ -807,6 +825,15 @@ footer{
     .hero{padding-top:34px}
     .hero-actions .btn{width:100%}
     .lockup{border-radius:14px}
+
+    /* logos stay legible on phones */
+    .lockup-hoop{max-height:36px}
+    .lockup-adv{gap:16px}
+    .lockup-adv img{max-height:30px}
+    .lockup-rule{margin:20px 0}
+
+    .logo-plate{padding:12px 16px;margin-bottom:18px}
+    .logo-plate img{max-height:32px}
 
     .facts{gap:12px;margin-top:22px}
 
