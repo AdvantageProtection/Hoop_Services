@@ -13,36 +13,34 @@
 
 <style>
 /* ============================================================
-   HOOP × ADVANTAGE FS · BOOKING PAGE · V2 (flat)
-   Desktop: spiel left · docked calendar right.
-   Mobile: single column, natural scroll order.
-   Flat style: solid rules, no shadows, no gradients, no blur.
+   HOOP × ADVANTAGE FS · BOOKING PAGE · V3 (uniform)
+   One radius (12px). One border colour. One spacing scale.
+   Accent used sparingly: eyebrow rule, name, footer link.
+   Desktop: spiel left · calendar right. Mobile: one column.
    ============================================================ */
 
-/* ---- Tokens ---- */
 :root {
     color-scheme: light;
 
-    --gutter: clamp(18px, 4.5vw, 56px);
-    --mast-h: 62px;
+    /* spacing scale: 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 */
+    --gutter: clamp(20px, 4.5vw, 56px);
+    --mast-h: 60px;
+    --r: 12px;
 
     --paper: #ffffff;
-    --paper-2: #f2f5f7;
+    --paper-2: #f4f7f9;
     --ink: #222222;
-    --rule: #dfe6ec;
-    --rule-strong: #c4d2dc;
+    --muted: #4a5560;
+    --rule: #e4e9ee;
     --card: #ffffff;
 
     --accent: #e91837;
     --accent-deep: #b8122c;
-    --accent-wash: rgba(233, 24, 55, 0.10);
+    --accent-wash: rgba(233, 24, 55, 0.08);
     --accent-rule: rgba(233, 24, 55, 0.30);
     --navy: #3d5a6e;
 
-    --success: #0e9f5d;
-    --success-deep: #0b7c49;
-    --success-wash: rgba(14, 159, 93, 0.10);
-    --success-rule: rgba(14, 159, 93, 0.38);
+    --ok: #0e9f5d;
 
     --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
     --font-serif: 'Instrument Serif', Georgia, serif;
@@ -53,8 +51,8 @@
     --paper: #0c1419;
     --paper-2: #111d25;
     --ink: #eaf2f7;
+    --muted: #9db0bd;
     --rule: #1e2f3b;
-    --rule-strong: #2c4353;
     --card: #101c24;
 
     --accent: #ff4d67;
@@ -63,10 +61,7 @@
     --accent-rule: rgba(233, 24, 55, 0.40);
     --navy: #eaf2f7;
 
-    --success: #3fd692;
-    --success-deep: #7ce8b8;
-    --success-wash: rgba(63, 214, 146, 0.12);
-    --success-rule: rgba(63, 214, 146, 0.35);
+    --ok: #3fd692;
 }
 
 [data-theme="fun"] {
@@ -74,8 +69,8 @@
     --paper: #fff1f8;
     --paper-2: #ffe6f3;
     --ink: #47126b;
+    --muted: #7a4d99;
     --rule: #f7d2ea;
-    --rule-strong: #efb6dd;
     --card: #ffffff;
 
     --accent: #ff2d92;
@@ -84,10 +79,7 @@
     --accent-rule: rgba(255, 45, 146, 0.32);
     --navy: #6d28d9;
 
-    --success: #00b374;
-    --success-deep: #00855a;
-    --success-wash: rgba(0, 179, 116, 0.12);
-    --success-rule: rgba(0, 179, 116, 0.38);
+    --ok: #00b374;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -114,7 +106,7 @@ img { max-width: 100%; display: block; }
 }
 
 /* ============================================================
-   MASTHEAD — flat, solid
+   MASTHEAD
    ============================================================ */
 .masthead {
     position: sticky;
@@ -178,7 +170,7 @@ img { max-width: 100%; display: block; }
     font-size: 16px;
 }
 
-.mast-right { display: flex; align-items: center; gap: 10px; }
+.mast-right { display: flex; align-items: center; gap: 8px; }
 
 .mast-capsule {
     display: none;
@@ -192,22 +184,19 @@ img { max-width: 100%; display: block; }
 @media (min-width: 700px) { .mast-capsule { display: inline-flex; } }
 
 .icon-btn {
-    width: 36px;
-    height: 36px;
+    width: 34px;
+    height: 34px;
     display: inline-grid;
     place-items: center;
     border: 1px solid var(--rule);
-    border-radius: 10px;
+    border-radius: var(--r);
     background: transparent;
     color: var(--ink);
     cursor: pointer;
     text-decoration: none;
-    transition: background 0.15s, border-color 0.15s;
+    transition: background 0.15s;
 }
-.icon-btn:hover {
-    background: var(--paper-2);
-    border-color: var(--rule-strong);
-}
+.icon-btn:hover { background: var(--paper-2); }
 .icon-btn svg { width: 16px; height: 16px; }
 
 .theme-btn svg { display: none; }
@@ -226,146 +215,133 @@ img { max-width: 100%; display: block; }
 
 .layout {
     display: grid;
-    gap: 36px;
-    padding-block: 32px 48px;
+    padding-block: 40px 56px;
 }
 @media (min-width: 1000px) {
     .layout {
-        grid-template-columns: minmax(0, 1fr) minmax(440px, 540px);
-        column-gap: clamp(40px, 5vw, 80px);
-        padding-block: 48px 64px;
+        grid-template-columns: minmax(0, 1fr) minmax(440px, 520px);
+        column-gap: clamp(48px, 6vw, 96px);
+        padding-block: 56px 72px;
     }
-    .booking-col { position: sticky; top: calc(var(--mast-h) + 20px); align-self: start; }
+    .booking-col { position: sticky; top: calc(var(--mast-h) + 24px); align-self: start; }
 }
 
 /* ============================================================
    LEFT — SPIEL
+   Uniform rhythm: every block sits on the same 24px beat,
+   separated by the same hairline rule.
    ============================================================ */
+.spiel > * + * { margin-top: 24px; }
+
 .adviser-avatar {
-    width: clamp(92px, 13vw, 128px);
+    width: 96px;
     aspect-ratio: 3 / 4;
     object-fit: cover;
     object-position: center 12%;
-    border-radius: 14px;
+    border-radius: var(--r);
     border: 1px solid var(--rule);
     background: var(--paper-2);
-    margin-bottom: 20px;
 }
 
 .eyebrow {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 14px;
-    font-weight: 500;
-    margin-bottom: 14px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--muted);
 }
 .eyebrow::before {
     content: "";
     width: 24px;
     height: 2px;
     background: var(--accent);
+    flex: 0 0 auto;
 }
 
 h1 {
-    font-size: clamp(30px, 5vw, 50px);
+    font-size: clamp(30px, 4.6vw, 46px);
     font-weight: 700;
-    line-height: 1.02;
-    letter-spacing: -0.034em;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
     text-wrap: balance;
-    margin-bottom: 16px;
 }
 h1 em {
     font-style: normal;
     font-weight: 600;
-    letter-spacing: -0.02em;
     color: var(--accent-deep);
 }
-[data-theme="dark"] h1 em { color: var(--accent); }
+[data-theme="dark"] h1 em,
+[data-theme="fun"] h1 em { color: var(--accent); }
 
-.standfirst {
+.lede {
     max-width: 52ch;
-    font-size: clamp(15px, 1.3vw, 17px);
-    line-height: 1.68;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--muted);
     text-wrap: pretty;
 }
-.standfirst strong { font-weight: 700; }
+.lede strong { color: var(--ink); font-weight: 700; }
 
-/* Free callout — flat box, no gradient */
-.signature {
-    display: inline-flex;
+/* Free line — plain text with a tick, no box.
+   The single green note on the page. */
+.free {
+    display: flex;
     align-items: center;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-top: 20px;
-    padding: 12px 18px;
-    background: var(--card);
-    border: 1px solid var(--success-rule);
-    border-left: 4px solid var(--success);
-    border-radius: 10px;
-}
-.signature .sig-label {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--success-deep);
-}
-.signature .sig-value {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+    gap: 9px;
     font-size: 15px;
-    font-weight: 700;
-    letter-spacing: -0.014em;
-}
-.signature .sig-check { width: 17px; height: 17px; flex: 0 0 auto; color: var(--success); }
-
-/* ---- Prep checklist ---- */
-.prep {
-    margin-top: clamp(30px, 5vh, 44px);
-    padding-top: clamp(24px, 4vh, 34px);
+    font-weight: 650;
+    color: var(--ink);
+    padding-top: 24px;
     border-top: 1px solid var(--rule);
 }
+.free svg { width: 18px; height: 18px; flex: 0 0 auto; color: var(--ok); }
 
-.prep h2 {
-    font-size: clamp(21px, 2.6vw, 28px);
-    font-weight: 680;
-    letter-spacing: -0.024em;
-    line-height: 1.14;
-    margin-bottom: 10px;
-    text-wrap: balance;
+/* ---- Prep: uniform 2×2 grid, identical cells ---- */
+.prep {
+    padding-top: 32px;
+    border-top: 1px solid var(--rule);
 }
-
+.prep h2 {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+}
 .prep .prep-intro {
-    max-width: 58ch;
     font-size: 14.5px;
-    line-height: 1.72;
+    line-height: 1.65;
+    color: var(--muted);
+    max-width: 52ch;
     margin-bottom: 20px;
 }
 
-.keyed {
-    list-style: none;
-    max-width: 72ch;
-    border-top: 1px solid var(--rule);
+.prep-grid {
+    display: grid;
+    gap: 12px;
 }
-.keyed li {
-    padding: 15px 0;
-    border-bottom: 1px solid var(--rule);
+@media (min-width: 560px) {
+    .prep-grid { grid-template-columns: 1fr 1fr; }
 }
-@media (min-width: 700px) {
-    .keyed { column-count: 2; column-gap: 44px; }
-    .keyed li:first-child { border-top: none; }
+.prep-item {
+    padding: 16px 18px;
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: var(--r);
 }
-.keyed .k-title {
-    display: block;
-    font-size: 15px;
-    font-weight: 650;
-    letter-spacing: -0.012em;
-    margin-bottom: 4px;
-}
-.keyed .k-body {
+.prep-item .k-title {
     display: block;
     font-size: 14.5px;
-    line-height: 1.68;
+    font-weight: 650;
+    letter-spacing: -0.01em;
+    margin-bottom: 3px;
+}
+.prep-item .k-body {
+    display: block;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--muted);
 }
 
 /* ============================================================
@@ -374,7 +350,7 @@ h1 em {
 .booking-card {
     background: var(--card);
     border: 1px solid var(--rule);
-    border-radius: 14px;
+    border-radius: var(--r);
     overflow: hidden;
 }
 
@@ -387,14 +363,14 @@ h1 em {
     border-bottom: 1px solid var(--rule);
 }
 .bh-title { font-size: 14.5px; font-weight: 700; letter-spacing: -0.012em; }
-.bh-sub { font-size: 12px; font-weight: 500; margin-top: 1px; }
+.bh-sub { font-size: 12px; font-weight: 500; color: var(--muted); margin-top: 1px; }
 .dot {
     display: inline-flex;
     align-items: center;
     gap: 6px;
     font-size: 11.5px;
     font-weight: 650;
-    color: var(--success-deep);
+    color: var(--ok);
     white-space: nowrap;
 }
 .dot::before {
@@ -402,19 +378,19 @@ h1 em {
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: var(--success);
+    background: var(--ok);
 }
 
 .booking-frame-wrap {
     position: relative;
-    height: 1150px;              /* full height on mobile — page scrolls naturally */
+    height: 1150px;              /* mobile: full height, page scrolls */
     background: var(--card);
 }
 @media (min-width: 1000px) {
     .booking-frame-wrap {
-        height: calc(100vh - var(--mast-h) - 110px);
+        height: calc(100vh - var(--mast-h) - 120px);
         min-height: 620px;
-        max-height: 900px;
+        max-height: 880px;
     }
 }
 
@@ -444,30 +420,24 @@ h1 em {
     pointer-events: none;
 }
 .frame-loader .spin {
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
     border: 2.5px solid var(--accent-rule);
     border-top-color: var(--accent);
     animation: rotate 0.9s linear infinite;
 }
 @keyframes rotate { to { transform: rotate(360deg); } }
-.frame-loader .load-txt {
-    font-size: 13px;
-    font-weight: 600;
-}
+.frame-loader .load-txt { font-size: 13px; font-weight: 600; }
 
-.frame-fallback {
-    margin-top: 6px;
-    font-size: 13.5px;
-}
+.frame-fallback { margin-top: 6px; font-size: 13px; color: var(--muted); }
 .frame-fallback a {
     color: var(--accent-deep);
     text-decoration: none;
     border-bottom: 1px solid var(--accent-rule);
-    padding-bottom: 2px;
+    padding-bottom: 1px;
 }
-.frame-fallback a:hover { border-bottom-color: var(--accent); }
+.frame-fallback a:hover { color: var(--accent); border-bottom-color: var(--accent); }
 [data-theme="dark"] .frame-fallback a,
 [data-theme="fun"] .frame-fallback a { color: var(--accent); }
 
@@ -475,8 +445,8 @@ h1 em {
    COLOPHON
    ============================================================ */
 .colophon {
-    border-top: 1px solid var(--rule-strong);
-    padding-block: 30px 40px;
+    border-top: 1px solid var(--rule);
+    padding-block: 32px 44px;
 }
 .colophon-grid { display: grid; gap: 20px; }
 @media (min-width: 760px) {
@@ -486,7 +456,7 @@ h1 em {
     font-family: var(--font-serif);
     font-size: clamp(18px, 2.2vw, 24px);
     font-style: italic;
-    margin-bottom: 7px;
+    margin-bottom: 6px;
 }
 .colophon .motto span { color: var(--accent-deep); }
 [data-theme="dark"] .colophon .motto span,
@@ -494,7 +464,7 @@ h1 em {
 .colophon .fca {
     font-size: 13px;
     font-weight: 600;
-    margin-bottom: 11px;
+    margin-bottom: 10px;
 }
 .colophon .fca strong { color: var(--accent-deep); font-weight: 700; }
 [data-theme="dark"] .colophon .fca strong,
@@ -502,40 +472,30 @@ h1 em {
 .colophon .legal {
     font-size: 13px;
     line-height: 1.7;
+    color: var(--muted);
     max-width: 62ch;
 }
 .colophon .foot-right {
     display: grid;
-    gap: 9px;
+    gap: 8px;
     justify-items: start;
+    font-size: 12px;
+    color: var(--muted);
 }
-@media (min-width: 760px) { .colophon .foot-right { justify-items: end; text-align: right; } }
+@media (min-width: 760px) {
+    .colophon .foot-right { justify-items: end; text-align: right; }
+}
 .colophon a.site {
-    font-size: 14px;
+    font-size: 13.5px;
     font-weight: 600;
     color: var(--accent-deep);
     text-decoration: none;
     border-bottom: 1px solid var(--accent-rule);
-    padding-bottom: 2px;
+    padding-bottom: 1px;
 }
 .colophon a.site:hover { color: var(--accent); border-bottom-color: var(--accent); }
 [data-theme="dark"] .colophon a.site,
 [data-theme="fun"] .colophon a.site { color: var(--accent); }
-.colophon .ref {
-    font-size: 12px;
-}
-
-/* ============================================================
-   FUN MODE extras
-   ============================================================ */
-[data-theme="fun"] .masthead {
-    border-bottom: 2px solid;
-    border-image: linear-gradient(90deg, #ff2d92, #ff8a00, #00b8ff) 1;
-}
-[data-theme="fun"] .colophon {
-    border-top: 2px solid;
-    border-image: linear-gradient(90deg, #00b8ff, #ff8a00, #ff2d92) 1;
-}
 
 /* ============================================================
    SMALL SCREENS
@@ -545,7 +505,8 @@ h1 em {
     .masthead { padding: 0 16px; }
     .mast-title em { display: none; }
     .shell { padding-inline: 16px; }
-    .layout { padding-block: 24px 36px; gap: 30px; }
+    .layout { padding-block: 28px 40px; }
+    .adviser-avatar { width: 84px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -595,57 +556,55 @@ h1 em {
     <div class="layout">
 
         <!-- ============ LEFT: SPIEL ============ -->
-        <div class="spiel-col">
+        <div class="spiel">
 
             <img class="adviser-avatar"
                  src="adviser.png"
                  alt="Laurence, Specialist Protection Adviser at Advantage Financial Solutions"
                  loading="lazy" decoding="async">
 
-            <p class="eyebrow">Income Protection &middot; Free Appointment</p>
+            <p class="eyebrow">Income Protection &middot; Free appointment</p>
+
             <h1>Book your appointment with <em>Laurence</em>.</h1>
-            <p class="standfirst">
+
+            <p class="lede">
                 Choose a time that suits you below. Your initial <strong>20-minute call</strong> is an
                 informal chat with Laurence, your dedicated specialist protection adviser — a
                 comprehensive overview of the options available for Income Protection, Life Insurance
                 &amp; Critical Illness Cover.
             </p>
 
-            <div class="signature">
-                <span class="sig-label">Cost</span>
-                <span class="sig-value">
-                    <svg class="sig-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-                    This advisory service is completely free.
-                </span>
-            </div>
+            <p class="free">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                This advisory service is completely free.
+            </p>
 
-            <!-- ============ PREP CHECKLIST ============ -->
-            <section class="prep">
+            <!-- ============ PREP ============ -->
+            <section class="prep" aria-label="Before your call">
                 <h2>Before your call</h2>
                 <p class="prep-intro">
-                    A little preparation helps Laurence give you the most accurate picture of your options
-                    during the 20-minute call. Nothing here is essential — but having details to hand makes
-                    the conversation more productive.
+                    Nothing here is essential, but having details to hand makes the conversation
+                    more productive.
                 </p>
 
-                <ul class="keyed">
-                    <li>
+                <div class="prep-grid">
+                    <div class="prep-item">
                         <span class="k-title">Existing policies</span>
-                        <span class="k-body">If you hold any protection policies from previous employment or past advice, having the provider names and cover amounts handy is useful (but not essential).</span>
-                    </li>
-                    <li>
-                        <span class="k-title">Rough monthly earnings</span>
-                        <span class="k-body">A ballpark figure of your typical monthly income helps Laurence size any Income Protection recommendation correctly.</span>
-                    </li>
-                    <li>
+                        <span class="k-body">Provider names and cover amounts for any protection you hold from previous employment or past advice.</span>
+                    </div>
+                    <div class="prep-item">
+                        <span class="k-title">Monthly earnings</span>
+                        <span class="k-body">A ballpark of your typical monthly income, so any Income Protection recommendation is sized correctly.</span>
+                    </div>
+                    <div class="prep-item">
                         <span class="k-title">Monthly commitments</span>
-                        <span class="k-body">Your mortgage or rent, and any other major outgoings, help determine the level of cover that would keep your household afloat.</span>
-                    </li>
-                    <li>
+                        <span class="k-body">Your mortgage or rent and major outgoings, to establish the cover your household would need.</span>
+                    </div>
+                    <div class="prep-item">
                         <span class="k-title">A quiet 20 minutes</span>
-                        <span class="k-body">The call is informal, but a quiet space with a cup of tea means you can focus and ask anything on your mind.</span>
-                    </li>
-                </ul>
+                        <span class="k-body">The call is informal — a quiet space means you can focus and ask anything on your mind.</span>
+                    </div>
+                </div>
             </section>
 
         </div>
@@ -697,7 +656,6 @@ h1 em {
 
         <div class="foot-right">
             <a class="site" href="https://advantagefs.co.uk" target="_blank" rel="noopener">advantagefs.co.uk</a>
-            <p class="ref">Booking page &middot; V2</p>
             <p class="ref">&copy; 2026 Advantage Financial Solutions</p>
             <p class="ref">FCA 965036 · Company no. 12291836</p>
         </div>
