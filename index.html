@@ -7,6 +7,12 @@
 <meta name="description" content="Hoop Recruitment has officially partnered with Advantage Financial Solutions to give every candidate direct, exclusive access to expert, independent mortgage and protection advice.">
 <title>Hoop × Advantage FS — Partnership Service Summary</title>
 
+<!-- ============================================================
+     Made and compiled by Gavin Hoffman
+     Gavin Hoffman Web Design — 2026
+     All rights reserved.
+     ============================================================ -->
+
 <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
 <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,7 +21,7 @@
 
 <style>
 /* ============================================================
-   HOOP × ADVANTAGE FS · "LIVING DOCUMENT" · V9.2 (editorial)
+   HOOP × ADVANTAGE FS · "LIVING DOCUMENT" · V9.3 (editorial)
    ------------------------------------------------------------
    Palette matched to the booking page: warm-grey neutrals with
    the booking red as the brand accent. Mortgage blue retained
@@ -529,7 +535,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     font-style: normal;
     font-weight: 500;
     letter-spacing: -0.02em;
-    color: var(--ink);
+    color: var(--accent);
 }
 
 .hero-standfirst {
@@ -585,6 +591,9 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 
 /* Mortgage titles keep the blue */
 .section h2.title-mortgage { color: var(--m-accent); }
+
+/* Protection titles carry the booking red */
+.section h2.title-accent { color: var(--accent); }
 
 .section-body {
     display: grid;
@@ -1147,6 +1156,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     color: var(--ink);
     margin-bottom: 8px;
 }
+.colophon .motto span { color: var(--accent); }
 
 .colophon .fca {
     font-size: 14px;
@@ -1182,6 +1192,15 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 .colophon .ref {
     font-size: 13.5px;
     color: var(--ink);
+}
+
+/* Tiny designer credit — right at the very bottom */
+.gh-credit {
+    margin-top: 18px;
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    opacity: 0.35;
 }
 
 /* ============================================================
@@ -1365,7 +1384,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     </nav>
 
     <div class="side-foot">
-        <p class="side-foot-note">Service Summary &middot; V9.2</p>
+        <p class="side-foot-note">Service Summary &middot; V9.3</p>
     </div>
 </aside>
 
@@ -1409,7 +1428,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     <section class="hero" id="overview">
         <div class="hero-logos reveal-soft">
             <div class="logo-plate hero-logo-main-plate">
-                <img src="oop.png" alt="Hoop Recruitment" decoding="async">
+                <img src="hoop.png" alt="Hoop Recruitment" decoding="async">
             </div>
             <div class="hero-logo-pair">
                 <div class="logo-plate">
@@ -1436,7 +1455,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     <!-- ============ PROTECTION ADVICE (INTRO) ============ -->
     <section class="section" id="protection" data-spy-as="protection-service">
         <div class="section-head">
-            <h2>Protection advice for locums &amp; contractors</h2>
+            <h2 class="title-accent">Protection advice for locums &amp; contractors</h2>
         </div>
 
         <div class="section-body">
@@ -1486,7 +1505,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
             <div class="logo-plate section-logo-plate">
                 <img src="bbb.png" alt="Advantage Protection" loading="lazy" decoding="async">
             </div>
-            <h2>Protection Service Summary</h2>
+            <h2 class="title-accent">Protection Service Summary</h2>
         </div>
 
         <div class="section-body">
@@ -1843,7 +1862,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     <footer class="colophon">
         <div class="colophon-grid">
             <div>
-                <p class="motto">Our Experience. <span>Your Advantage.</span></p>
+                <p class="motto"><span>Our Experience.</span> Your Advantage.</p>
                 <p class="fca">Advantage Financial Solutions · FCA 965036</p>
                 <p class="legal">
                     Provided in partnership with Hoop Recruitment. Based in Bristol — advising clients
@@ -1857,11 +1876,13 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 
             <div class="foot-right">
                 <a class="site" href="https://advantagefs.co.uk" target="_blank" rel="noopener">advantagefs.co.uk</a>
-                <p class="ref">Service summary &middot; V9.2</p>
+                <p class="ref">Service summary &middot; V9.3</p>
                 <p class="ref">&copy; 2026 Advantage Financial Solutions</p>
                 <p class="ref">FCA 965036 · Company no. 12291836</p>
             </div>
         </div>
+
+        <p class="gh-credit">Site by Gavin Hoffman Web Design</p>
     </footer>
 
 </main>
