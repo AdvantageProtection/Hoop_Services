@@ -3,83 +3,69 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#ffffff">
-<meta name="description" content="Book a free, no-obligation income protection appointment with Laurence, your dedicated specialist protection adviser at Advantage Financial Solutions, exclusive to Hoop Recruitment candidates.">
-<title>Book Your Free Protection Appointment — Hoop × Advantage FS</title>
+<meta name="theme-color" content="#0e0e10">
+<meta name="description" content="Book a free, no-obligation income protection appointment with Laurence, your dedicated specialist protection adviser at Advantage Financial Solutions.">
+<title>Book an Appointment — Advantage FS × Hoop</title>
 
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=satoshi@400,500,700&f[]=jetbrains-mono@400&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 
 <style>
 /* ============================================================
-   HOOP × ADVANTAGE FS · BOOKING PAGE · V3 (uniform)
-   One radius (12px). One border colour. One spacing scale.
-   Accent used sparingly: eyebrow rule, name, footer link.
-   Desktop: spiel left · calendar right. Mobile: one column.
+   ADVANTAGE FS × HOOP · BOOKING · V4 (editorial)
+   Type-led. No cards, no shadows — hairlines and scale
+   carry the hierarchy. Red used once per view.
    ============================================================ */
 
 :root {
     color-scheme: light;
 
-    /* spacing scale: 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 */
-    --gutter: clamp(20px, 4.5vw, 56px);
-    --mast-h: 60px;
-    --r: 12px;
+    --paper: #f6f6f4;
+    --ink: #0e0e10;
+    --ink-2: #55555c;
+    --line: #dcdcd8;
+    --panel: #ffffff;
 
-    --paper: #ffffff;
-    --paper-2: #f4f7f9;
-    --ink: #222222;
-    --muted: #4a5560;
-    --rule: #e4e9ee;
-    --card: #ffffff;
+    --red: #e91837;
+    --red-deep: #b8122c;
+    --green: #0e9f5d;
 
-    --accent: #e91837;
-    --accent-deep: #b8122c;
-    --accent-wash: rgba(233, 24, 55, 0.08);
-    --accent-rule: rgba(233, 24, 55, 0.30);
-    --navy: #3d5a6e;
-
-    --ok: #0e9f5d;
-
-    --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+    --font-display: 'Clash Display', system-ui, sans-serif;
+    --font-body: 'Satoshi', system-ui, sans-serif;
     --font-serif: 'Instrument Serif', Georgia, serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+    --gutter: clamp(20px, 4vw, 56px);
+    --mast-h: 64px;
 }
 
 [data-theme="dark"] {
     color-scheme: dark;
-    --paper: #0c1419;
-    --paper-2: #111d25;
-    --ink: #eaf2f7;
-    --muted: #9db0bd;
-    --rule: #1e2f3b;
-    --card: #101c24;
+    --paper: #0e0e10;
+    --ink: #f2f2ef;
+    --ink-2: #9a9aa2;
+    --line: #26262b;
+    --panel: #141417;
 
-    --accent: #ff4d67;
-    --accent-deep: #ff6a80;
-    --accent-wash: rgba(233, 24, 55, 0.16);
-    --accent-rule: rgba(233, 24, 55, 0.40);
-    --navy: #eaf2f7;
-
-    --ok: #3fd692;
+    --red: #ff4d67;
+    --red-deep: #ff8093;
+    --green: #3fd692;
 }
 
 [data-theme="fun"] {
     color-scheme: light;
     --paper: #fff1f8;
-    --paper-2: #ffe6f3;
     --ink: #47126b;
-    --muted: #7a4d99;
-    --rule: #f7d2ea;
-    --card: #ffffff;
+    --ink-2: #7a4d99;
+    --line: #f0c6e2;
+    --panel: #ffffff;
 
-    --accent: #ff2d92;
-    --accent-deep: #cf0f74;
-    --accent-wash: rgba(255, 45, 146, 0.10);
-    --accent-rule: rgba(255, 45, 146, 0.32);
-    --navy: #6d28d9;
-
-    --ok: #00b374;
+    --red: #ff2d92;
+    --red-deep: #cf0f74;
+    --green: #00b374;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -87,9 +73,9 @@
 html { -webkit-text-size-adjust: 100%; }
 
 body {
-    font-family: var(--font-display);
+    font-family: var(--font-body);
     font-size: 16px;
-    line-height: 1.65;
+    line-height: 1.6;
     color: var(--ink);
     background: var(--paper);
     -webkit-font-smoothing: antialiased;
@@ -97,304 +83,294 @@ body {
 }
 
 img { max-width: 100%; display: block; }
-::selection { background: var(--accent-wash); }
+::selection { background: var(--red); color: #fff; }
 
 :focus-visible {
-    outline: 2px solid var(--accent);
+    outline: 2px solid var(--red);
     outline-offset: 3px;
-    border-radius: 4px;
 }
 
 /* ============================================================
-   MASTHEAD
+   TOP BAR — index strip, mono labels
    ============================================================ */
-.masthead {
+.topbar {
     position: sticky;
     top: 0;
-    z-index: 200;
+    z-index: 100;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 16px;
-    padding: 0 var(--gutter);
     height: var(--mast-h);
+    padding: 0 var(--gutter);
     background: var(--paper);
-    border-bottom: 1px solid var(--rule);
+    border-bottom: 1px solid var(--line);
 }
 
-.mast-left {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    min-width: 0;
-}
-
-.mast-mark {
-    display: flex;
-    align-items: center;
-    gap: 11px;
-    text-decoration: none;
-    color: inherit;
-    min-width: 0;
-}
-
-.loop-mark { position: relative; width: 32px; height: 21px; flex: 0 0 auto; }
-.loop-mark i {
-    position: absolute;
-    top: 0;
-    width: 21px;
-    height: 21px;
-    border-radius: 50%;
-    border: 2.4px solid var(--navy);
-}
-.loop-mark i:first-child { left: 0; }
-.loop-mark i:last-child {
-    right: 0;
-    border-color: var(--accent);
-    mix-blend-mode: multiply;
-}
-[data-theme="dark"] .loop-mark i:last-child { mix-blend-mode: screen; }
-
-.mast-title {
-    font-size: 14px;
-    font-weight: 650;
-    letter-spacing: -0.015em;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-.mast-title em {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-weight: 400;
-    font-size: 16px;
-}
-
-.mast-right { display: flex; align-items: center; gap: 8px; }
-
-.mast-capsule {
-    display: none;
-    padding: 6px 13px;
-    border: 1px solid var(--rule);
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: 600;
-    white-space: nowrap;
-}
-@media (min-width: 700px) { .mast-capsule { display: inline-flex; } }
-
-.icon-btn {
-    width: 34px;
-    height: 34px;
-    display: inline-grid;
-    place-items: center;
-    border: 1px solid var(--rule);
-    border-radius: var(--r);
-    background: transparent;
-    color: var(--ink);
-    cursor: pointer;
-    text-decoration: none;
-    transition: background 0.15s;
-}
-.icon-btn:hover { background: var(--paper-2); }
-.icon-btn svg { width: 16px; height: 16px; }
-
-.theme-btn svg { display: none; }
-[data-theme="light"] .theme-btn .s-sun { display: block; }
-[data-theme="dark"] .theme-btn .s-moon { display: block; }
-[data-theme="fun"] .theme-btn .s-spark { display: block; }
-
-/* ============================================================
-   LAYOUT
-   ============================================================ */
-.shell {
-    max-width: 1240px;
-    margin-inline: auto;
-    padding-inline: var(--gutter);
-}
-
-.layout {
-    display: grid;
-    padding-block: 40px 56px;
-}
-@media (min-width: 1000px) {
-    .layout {
-        grid-template-columns: minmax(0, 1fr) minmax(440px, 520px);
-        column-gap: clamp(48px, 6vw, 96px);
-        padding-block: 56px 72px;
-    }
-    .booking-col { position: sticky; top: calc(var(--mast-h) + 24px); align-self: start; }
-}
-
-/* ============================================================
-   LEFT — SPIEL
-   Uniform rhythm: every block sits on the same 24px beat,
-   separated by the same hairline rule.
-   ============================================================ */
-.spiel > * + * { margin-top: 24px; }
-
-.adviser-avatar {
-    width: 96px;
-    aspect-ratio: 3 / 4;
-    object-fit: cover;
-    object-position: center 12%;
-    border-radius: var(--r);
-    border: 1px solid var(--rule);
-    background: var(--paper-2);
-}
-
-.eyebrow {
+.topbar .wordmark {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 13px;
+    font-family: var(--font-display);
     font-weight: 600;
-    letter-spacing: 0.02em;
-    color: var(--muted);
+    font-size: 15px;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    color: var(--ink);
 }
-.eyebrow::before {
-    content: "";
-    width: 24px;
-    height: 2px;
-    background: var(--accent);
+.topbar .wordmark i {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--red);
     flex: 0 0 auto;
 }
 
+.topbar .tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+}
+@media (max-width: 640px) { .topbar .tag { display: none; } }
+
+.top-right { display: flex; align-items: center; gap: 8px; }
+
+.chip {
+    display: inline-flex;
+    padding: 7px 14px;
+    border: 1px solid var(--ink);
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    transition: background 0.15s, color 0.15s;
+}
+.chip:hover { background: var(--ink); color: var(--paper); }
+.chip svg { width: 13px; height: 13px; }
+
+/* ============================================================
+   MAIN GRID
+   ============================================================ */
+main {
+    display: grid;
+    min-height: calc(100vh - var(--mast-h));
+}
+@media (min-width: 1020px) {
+    main {
+        grid-template-columns: minmax(0, 1fr) minmax(460px, 560px);
+    }
+    .book {
+        border-left: 1px solid var(--line);
+        position: sticky;
+        top: var(--mast-h);
+        height: calc(100vh - var(--mast-h));
+    }
+}
+
+/* ============================================================
+   LEFT — EDITORIAL SPIEL
+   ============================================================ */
+.spiel {
+    display: flex;
+    flex-direction: column;
+    padding: clamp(32px, 5vh, 64px) var(--gutter) 48px;
+}
+
+.kicker {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    margin-bottom: clamp(20px, 3vh, 36px);
+}
+.kicker::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+}
+
+/* The hero: oversized display + one serif italic word */
 h1 {
-    font-size: clamp(30px, 4.6vw, 46px);
-    font-weight: 700;
-    line-height: 1.05;
-    letter-spacing: -0.03em;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(44px, 7.5vw, 96px);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
     text-wrap: balance;
 }
-h1 em {
-    font-style: normal;
-    font-weight: 600;
-    color: var(--accent-deep);
+h1 .serif {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--red);
 }
-[data-theme="dark"] h1 em,
-[data-theme="fun"] h1 em { color: var(--accent); }
 
 .lede {
-    max-width: 52ch;
-    font-size: 16px;
+    margin-top: clamp(20px, 3vh, 32px);
+    max-width: 46ch;
+    font-size: clamp(15.5px, 1.35vw, 18px);
     line-height: 1.7;
-    color: var(--muted);
+    color: var(--ink-2);
     text-wrap: pretty;
 }
 .lede strong { color: var(--ink); font-weight: 700; }
 
-/* Free line — plain text with a tick, no box.
-   The single green note on the page. */
-.free {
+/* Meta strip: three facts, hairline-separated */
+.meta {
     display: flex;
-    align-items: center;
-    gap: 9px;
-    font-size: 15px;
-    font-weight: 650;
-    color: var(--ink);
-    padding-top: 24px;
-    border-top: 1px solid var(--rule);
+    flex-wrap: wrap;
+    margin-top: clamp(28px, 4vh, 44px);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
 }
-.free svg { width: 18px; height: 18px; flex: 0 0 auto; color: var(--ok); }
+.meta > div {
+    flex: 1 1 33%;
+    min-width: 140px;
+    padding: 18px 20px 18px 0;
+}
+.meta > div + div {
+    border-left: 1px solid var(--line);
+    padding-left: 20px;
+}
+.meta dt {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    margin-bottom: 4px;
+}
+.meta dd {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(17px, 1.6vw, 21px);
+    letter-spacing: -0.01em;
+}
+.meta .good { color: var(--green); }
 
-/* ---- Prep: uniform 2×2 grid, identical cells ---- */
+/* Prep — compact numbered rows */
 .prep {
-    padding-top: 32px;
-    border-top: 1px solid var(--rule);
+    margin-top: auto;
+    padding-top: clamp(28px, 4vh, 44px);
+}
+.prep .prep-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 8px;
 }
 .prep h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
     font-size: 20px;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    margin-bottom: 6px;
-}
-.prep .prep-intro {
-    font-size: 14.5px;
-    line-height: 1.65;
-    color: var(--muted);
-    max-width: 52ch;
-    margin-bottom: 20px;
-}
-
-.prep-grid {
-    display: grid;
-    gap: 12px;
-}
-@media (min-width: 560px) {
-    .prep-grid { grid-template-columns: 1fr 1fr; }
-}
-.prep-item {
-    padding: 16px 18px;
-    background: var(--card);
-    border: 1px solid var(--rule);
-    border-radius: var(--r);
-}
-.prep-item .k-title {
-    display: block;
-    font-size: 14.5px;
-    font-weight: 650;
     letter-spacing: -0.01em;
-    margin-bottom: 3px;
 }
-.prep-item .k-body {
-    display: block;
-    font-size: 13.5px;
-    line-height: 1.6;
-    color: var(--muted);
+.prep .prep-head span {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-2);
 }
+.prep ol { list-style: none; }
+.prep li {
+    display: flex;
+    gap: 18px;
+    padding: 13px 0;
+    border-top: 1px solid var(--line);
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--ink-2);
+}
+.prep li:last-child { border-bottom: 1px solid var(--line); }
+.prep li b {
+    font-family: var(--font-mono);
+    font-weight: 400;
+    font-size: 12px;
+    color: var(--red);
+    flex: 0 0 2.2em;
+    padding-top: 2px;
+}
+.prep li strong { color: var(--ink); font-weight: 700; }
 
 /* ============================================================
-   RIGHT — BOOKING
+   RIGHT — BOOKING DOCK
    ============================================================ */
-.booking-card {
-    background: var(--card);
-    border: 1px solid var(--rule);
-    border-radius: var(--r);
-    overflow: hidden;
+.book {
+    display: flex;
+    flex-direction: column;
+    background: var(--panel);
 }
 
-.booking-head {
+.book-head {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 10px;
-    padding: 14px 18px;
-    border-bottom: 1px solid var(--rule);
+    gap: 12px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--line);
 }
-.bh-title { font-size: 14.5px; font-weight: 700; letter-spacing: -0.012em; }
-.bh-sub { font-size: 12px; font-weight: 500; color: var(--muted); margin-top: 1px; }
-.dot {
+.book-head .bh {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+}
+.book-head .bh b {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--ink);
+    margin-top: 2px;
+}
+.live {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    font-size: 11.5px;
-    font-weight: 650;
-    color: var(--ok);
-    white-space: nowrap;
+    gap: 7px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--green);
 }
-.dot::before {
+.live::before {
     content: "";
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: var(--ok);
+    background: var(--green);
+    animation: pulse 2s ease infinite;
+}
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
 }
 
-.booking-frame-wrap {
+.frame-wrap {
     position: relative;
-    height: 1150px;              /* mobile: full height, page scrolls */
-    background: var(--card);
+    flex: 1;
+    min-height: 1150px;          /* mobile: full height, page scrolls */
+    background: var(--panel);
 }
-@media (min-width: 1000px) {
-    .booking-frame-wrap {
-        height: calc(100vh - var(--mast-h) - 120px);
-        min-height: 620px;
-        max-height: 880px;
-    }
+@media (min-width: 1020px) {
+    .frame-wrap { min-height: 0; height: auto; }
 }
 
-.booking-frame-wrap iframe {
+.frame-wrap iframe {
     position: relative;
     z-index: 1;
     width: 100%;
@@ -403,7 +379,7 @@ h1 em {
     display: block;
 }
 
-.frame-loader {
+.loader {
     position: absolute;
     inset: 0;
     z-index: 0;
@@ -415,98 +391,73 @@ h1 em {
     padding: 24px;
     transition: opacity 0.4s ease;
 }
-.booking-frame-wrap.loaded .frame-loader {
-    opacity: 0;
-    pointer-events: none;
-}
-.frame-loader .spin {
-    width: 28px;
-    height: 28px;
+.frame-wrap.loaded .loader { opacity: 0; pointer-events: none; }
+.loader .spin {
+    width: 26px;
+    height: 26px;
     border-radius: 50%;
-    border: 2.5px solid var(--accent-rule);
-    border-top-color: var(--accent);
+    border: 2px solid var(--line);
+    border-top-color: var(--red);
     animation: rotate 0.9s linear infinite;
 }
 @keyframes rotate { to { transform: rotate(360deg); } }
-.frame-loader .load-txt { font-size: 13px; font-weight: 600; }
-
-.frame-fallback { margin-top: 6px; font-size: 13px; color: var(--muted); }
-.frame-fallback a {
-    color: var(--accent-deep);
-    text-decoration: none;
-    border-bottom: 1px solid var(--accent-rule);
-    padding-bottom: 1px;
-}
-.frame-fallback a:hover { color: var(--accent); border-bottom-color: var(--accent); }
-[data-theme="dark"] .frame-fallback a,
-[data-theme="fun"] .frame-fallback a { color: var(--accent); }
+.loader p { font-family: var(--font-mono); font-size: 12px; color: var(--ink-2); }
+.loader a { color: var(--red); text-decoration: none; }
+.loader a:hover { text-decoration: underline; }
 
 /* ============================================================
-   COLOPHON
+   FOOTER
    ============================================================ */
-.colophon {
-    border-top: 1px solid var(--rule);
-    padding-block: 32px 44px;
+footer {
+    border-top: 1px solid var(--line);
+    padding: 24px var(--gutter) 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 32px;
+    align-items: baseline;
+    justify-content: space-between;
+    font-size: 12.5px;
+    color: var(--ink-2);
 }
-.colophon-grid { display: grid; gap: 20px; }
-@media (min-width: 760px) {
-    .colophon-grid { grid-template-columns: minmax(0, 1fr) auto; align-items: end; }
-}
-.colophon .motto {
+footer .motto {
     font-family: var(--font-serif);
-    font-size: clamp(18px, 2.2vw, 24px);
     font-style: italic;
-    margin-bottom: 6px;
+    font-size: 17px;
+    color: var(--ink);
 }
-.colophon .motto span { color: var(--accent-deep); }
-[data-theme="dark"] .colophon .motto span,
-[data-theme="fun"] .colophon .motto span { color: var(--accent); }
-.colophon .fca {
-    font-size: 13px;
-    font-weight: 600;
-    margin-bottom: 10px;
-}
-.colophon .fca strong { color: var(--accent-deep); font-weight: 700; }
-[data-theme="dark"] .colophon .fca strong,
-[data-theme="fun"] .colophon .fca strong { color: var(--accent); }
-.colophon .legal {
-    font-size: 13px;
-    line-height: 1.7;
-    color: var(--muted);
-    max-width: 62ch;
-}
-.colophon .foot-right {
-    display: grid;
-    gap: 8px;
-    justify-items: start;
-    font-size: 12px;
-    color: var(--muted);
-}
-@media (min-width: 760px) {
-    .colophon .foot-right { justify-items: end; text-align: right; }
-}
-.colophon a.site {
-    font-size: 13.5px;
-    font-weight: 600;
-    color: var(--accent-deep);
+footer .motto span { color: var(--red); }
+footer a {
+    color: var(--ink);
     text-decoration: none;
-    border-bottom: 1px solid var(--accent-rule);
-    padding-bottom: 1px;
+    border-bottom: 1px solid var(--line);
 }
-.colophon a.site:hover { color: var(--accent); border-bottom-color: var(--accent); }
-[data-theme="dark"] .colophon a.site,
-[data-theme="fun"] .colophon a.site { color: var(--accent); }
+footer a:hover { color: var(--red); border-color: var(--red); }
+footer .refs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 24px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+}
 
 /* ============================================================
    SMALL SCREENS
    ============================================================ */
-@media (max-width: 620px) {
-    :root { --mast-h: 56px; }
-    .masthead { padding: 0 16px; }
-    .mast-title em { display: none; }
-    .shell { padding-inline: 16px; }
-    .layout { padding-block: 28px 40px; }
-    .adviser-avatar { width: 84px; }
+@media (max-width: 1019px) {
+    main { min-height: 0; }
+    .spiel { padding-bottom: 36px; }
+}
+@media (max-width: 640px) {
+    :root { --mast-h: 58px; }
+    .topbar { padding: 0 16px; }
+    .spiel { padding-inline: 16px; }
+    .meta > div { flex: 1 1 100%; }
+    .meta > div + div {
+        border-left: 0;
+        border-top: 1px solid var(--line);
+        padding-left: 0;
+    }
+    footer { padding-inline: 16px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -519,146 +470,91 @@ h1 em {
 </head>
 <body>
 
-<!-- ============ MASTHEAD ============ -->
-<header class="masthead">
-    <div class="mast-left">
-        <a class="icon-btn" href="index.html" aria-label="Back to the service summary" title="Back to the service summary">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M19 12H5"/>
-                <path d="M12 19l-7-7 7-7"/>
-            </svg>
-        </a>
-        <a class="mast-mark" href="index.html">
-            <span class="loop-mark" aria-hidden="true"><i></i><i></i></span>
-            <span class="mast-title">Hoop <em>&times;</em> Advantage FS</span>
-        </a>
-    </div>
-
-    <div class="mast-right">
-        <span class="mast-capsule">Book an Appointment</span>
-        <button class="icon-btn theme-btn" id="themeToggle" type="button" aria-label="Change colour theme" title="Change colour theme">
-            <svg class="s-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
-                <circle cx="12" cy="12" r="4.2"/>
-                <path d="M12 2.4v2.2M12 19.4v2.2M2.4 12h2.2M19.4 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/>
-            </svg>
-            <svg class="s-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
-                <path d="M20.5 14.4A8.6 8.6 0 0 1 9.6 3.5a8.6 8.6 0 1 0 10.9 10.9Z"/>
-            </svg>
-            <svg class="s-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
-                <path d="M12 3.2v3M12 17.8v3M3.2 12h3M17.8 12h3M12 7.4a4.6 4.6 0 0 0-4.6 4.6c0 1.9 1.1 3 2 3.9.7.7 1.2 1.4 1.3 2.5h2.6c.1-1.1.6-1.8 1.3-2.5.9-.9 2-2 2-3.9A4.6 4.6 0 0 0 12 7.4Z"/>
-                <path d="M10.4 21h3.2"/>
-            </svg>
-        </button>
+<header class="topbar">
+    <a class="wordmark" href="index.html"><i></i>Advantage&nbsp;FS</a>
+    <span class="tag">Protection advice — Hoop candidates</span>
+    <div class="top-right">
+        <a class="chip" href="index.html">Back</a>
+        <button class="chip" id="themeToggle" type="button" aria-label="Change colour theme">Theme</button>
     </div>
 </header>
 
-<main class="shell">
-    <div class="layout">
+<main>
 
-        <!-- ============ LEFT: SPIEL ============ -->
-        <div class="spiel">
+    <!-- ============ LEFT ============ -->
+    <section class="spiel">
 
-            <img class="adviser-avatar"
-                 src="adviser.png"
-                 alt="Laurence, Specialist Protection Adviser at Advantage Financial Solutions"
-                 loading="lazy" decoding="async">
+        <p class="kicker">Step 02 — Initial appointment</p>
 
-            <p class="eyebrow">Income Protection &middot; Free appointment</p>
+        <h1>Book your appointment with <span class="serif">Laurence.</span></h1>
 
-            <h1>Book your appointment with <em>Laurence</em>.</h1>
+<p class="lede">
+    Choose a time that suits you below. Your initial <strong>20-minute call</strong> is an
+    informal chat with Laurence, your dedicated specialist protection adviser — a
+    comprehensive overview of the options available for Income Protection, Life Insurance
+    &amp; Critical Illness Cover.
+</p>
 
-            <p class="lede">
-                Choose a time that suits you below. Your initial <strong>20-minute call</strong> is an
-                informal chat with Laurence, your dedicated specialist protection adviser — a
-                comprehensive overview of the options available for Income Protection, Life Insurance
-                &amp; Critical Illness Cover.
-            </p>
+        <dl class="meta">
+            <div>
+                <dt>Duration</dt>
+                <dd>20 min</dd>
+            </div>
+            <div>
+                <dt>Cost</dt>
+                <dd class="good">Free</dd>
+            </div>
+            <div>
+                <dt>Commitment</dt>
+                <dd>None</dd>
+            </div>
+        </dl>
 
-            <p class="free">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-                This advisory service is completely free.
-            </p>
+        <section class="prep" aria-label="Worth having to hand">
+            <div class="prep-head">
+                <h2>Worth having to hand</h2>
+                <span>optional</span>
+            </div>
+            <ol>
+                <li><b>01</b><span><strong>Existing policies</strong> — provider names and cover amounts, if you hold any.</span></li>
+                <li><b>02</b><span><strong>Monthly earnings</strong> — a ballpark, so any recommendation is sized correctly.</span></li>
+                <li><b>03</b><span><strong>Major outgoings</strong> — mortgage or rent, to gauge the cover you'd need.</span></li>
+                <li><b>04</b><span><strong>A quiet 20 minutes</strong> — informal call, so a cup of tea helps.</span></li>
+            </ol>
+        </section>
 
-            <!-- ============ PREP ============ -->
-            <section class="prep" aria-label="Before your call">
-                <h2>Before your call</h2>
-                <p class="prep-intro">
-                    Nothing here is essential, but having details to hand makes the conversation
-                    more productive.
-                </p>
+    </section>
 
-                <div class="prep-grid">
-                    <div class="prep-item">
-                        <span class="k-title">Existing policies</span>
-                        <span class="k-body">Provider names and cover amounts for any protection you hold from previous employment or past advice.</span>
-                    </div>
-                    <div class="prep-item">
-                        <span class="k-title">Monthly earnings</span>
-                        <span class="k-body">A ballpark of your typical monthly income, so any Income Protection recommendation is sized correctly.</span>
-                    </div>
-                    <div class="prep-item">
-                        <span class="k-title">Monthly commitments</span>
-                        <span class="k-body">Your mortgage or rent and major outgoings, to establish the cover your household would need.</span>
-                    </div>
-                    <div class="prep-item">
-                        <span class="k-title">A quiet 20 minutes</span>
-                        <span class="k-body">The call is informal — a quiet space means you can focus and ask anything on your mind.</span>
-                    </div>
-                </div>
-            </section>
-
+    <!-- ============ RIGHT ============ -->
+    <aside class="book" id="book">
+        <div class="book-head">
+            <p class="bh"><b>Laurence's diary</b>Choose a slot below</p>
+            <span class="live">Live</span>
         </div>
 
-        <!-- ============ RIGHT: BOOKING ============ -->
-        <div class="booking-col">
-            <div class="booking-card">
-                <div class="booking-head">
-                    <div>
-                        <p class="bh-title">Book your appointment</p>
-                        <p class="bh-sub">with Laurence &middot; 20 minutes &middot; free</p>
-                    </div>
-                    <span class="dot">Available</span>
-                </div>
+        <div class="frame-wrap" id="frameWrap">
+            <iframe
+                id="bookingFrame"
+                src="https://bookings.cloud.microsoft/book/AdvantageProtection@NETORGFT5872714.onmicrosoft.com/?ismsaljsauthenabled"
+                title="Book an income protection appointment with Laurence"
+                allowfullscreen></iframe>
 
-                <div class="booking-frame-wrap" id="frameWrap">
-                    <iframe
-                        id="bookingFrame"
-                        src="https://bookings.cloud.microsoft/book/AdvantageProtection@NETORGFT5872714.onmicrosoft.com/?ismsaljsauthenabled"
-                        title="Book an income protection appointment with Laurence"
-                        allowfullscreen></iframe>
-
-                    <div class="frame-loader" aria-hidden="true">
-                        <div class="spin"></div>
-                        <p class="load-txt">Loading booking calendar&hellip;</p>
-                        <p class="frame-fallback">
-                            Calendar not showing? <a href="https://bookings.cloud.microsoft/book/AdvantageProtection@NETORGFT5872714.onmicrosoft.com/?ismsaljsauthenabled" target="_blank" rel="noopener">Open it in a new tab &nearr;</a>
-                        </p>
-                    </div>
-                </div>
+            <div class="loader" aria-hidden="true">
+                <div class="spin"></div>
+                <p>Loading calendar — <a href="https://bookings.cloud.microsoft/book/AdvantageProtection@NETORGFT5872714.onmicrosoft.com/?ismsaljsauthenabled" target="_blank" rel="noopener">open in a new tab</a></p>
             </div>
         </div>
+    </aside>
 
-    </div>
 </main>
 
-<!-- ============ COLOPHON ============ -->
-<footer class="colophon">
-    <div class="shell colophon-grid">
-        <div>
-            <p class="motto">Our Experience. <span>Your Advantage.</span></p>
-            <p class="fca">Advantage Financial Solutions · <strong>FCA 965036</strong></p>
-            <p class="legal">
-                Provided in partnership with Hoop Recruitment. Based in Bristol — advising clients
-                across the UK. Protection advice is free of charge; if a protection policy is
-                arranged, Advantage FS is paid commission by the provider — never by you.
-            </p>
-        </div>
-
-        <div class="foot-right">
-            <a class="site" href="https://advantagefs.co.uk" target="_blank" rel="noopener">advantagefs.co.uk</a>
-            <p class="ref">&copy; 2026 Advantage Financial Solutions</p>
-            <p class="ref">FCA 965036 · Company no. 12291836</p>
-        </div>
+<footer>
+    <p class="motto">Our Experience. <span>Your Advantage.</span></p>
+    <p>Advantage Financial Solutions, in partnership with Hoop Recruitment. Advice is free; we're paid commission by the provider — never by you.</p>
+    <div class="refs">
+        <a href="https://advantagefs.co.uk" target="_blank" rel="noopener">advantagefs.co.uk</a>
+        <span>FCA 965036</span>
+        <span>&copy; 2026</span>
     </div>
 </footer>
 
@@ -675,19 +571,17 @@ h1 em {
 
     function applyTheme(t) {
         root.setAttribute('data-theme', t);
-        var label = 'Theme: ' + LABELS[t] + ' — click to change';
-        themeBtn.title = label;
-        themeBtn.setAttribute('aria-label', label);
+        themeBtn.textContent = 'Theme: ' + LABELS[t];
         try { localStorage.setItem('avs-theme', t); } catch (e) {}
     }
 
-    var savedTheme = null;
-    try { savedTheme = localStorage.getItem('avs-theme'); } catch (e) {}
-    if (ORDER.indexOf(savedTheme) === -1) {
-        savedTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    var saved = null;
+    try { saved = localStorage.getItem('avs-theme'); } catch (e) {}
+    if (ORDER.indexOf(saved) === -1) {
+        saved = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
-    applyTheme(savedTheme);
-
+    applyTheme(saved);
+i
     themeBtn.addEventListener('click', function () {
         var cur = root.getAttribute('data-theme') || 'light';
         applyTheme(ORDER[(ORDER.indexOf(cur) + 1) % ORDER.length]);
@@ -697,16 +591,11 @@ h1 em {
     var frameWrap = document.getElementById('frameWrap');
     var bookingFrame = document.getElementById('bookingFrame');
 
-    function markLoaded() {
-        frameWrap.classList.add('loaded');
-    }
-
+    function markLoaded() { frameWrap.classList.add('loaded'); }
     bookingFrame.addEventListener('load', markLoaded);
-
-    // Safety net: fade the loader out after 6 seconds so the
-    // fallback link is visible even if the load event never fires.
     setTimeout(markLoaded, 6000);
 })();
 </script>
+
 </body>
 </html>
