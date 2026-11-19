@@ -14,18 +14,18 @@
      ============================================================ -->
 
 <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
-<link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=satoshi@400,500,700&f[]=jetbrains-mono@400&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 
 <style>
 /* ============================================================
-   ADVANTAGE FS · INTRODUCER PROGRAMME · V1.0
+   ADVANTAGE FS · INTRODUCER PROGRAMME · V1.1
    ------------------------------------------------------------
-   Matches the booking & index pages: warm-grey neutrals,
-   booking red as the brand accent, no sidebar. Built around a
-   single introducer enquiry form.
+   Master typography matched to the booking page: Clash Display,
+   Satoshi, JetBrains Mono, Instrument Serif. Two-level ink
+   system. Booking-style hero. No sidebar.
    ============================================================ */
 
 /* ---- Tokens ---- */
@@ -40,6 +40,7 @@
     --paper: #f6f6f4;
     --paper-2: #ecece9;
     --ink: #0e0e10;
+    --ink-2: #55555c;
     --rule: #dcdcd8;
     --rule-strong: #c3c3bd;
     --card: #ffffff;
@@ -55,6 +56,7 @@
     --font-display: 'Clash Display', system-ui, sans-serif;
     --font-body: 'Satoshi', system-ui, sans-serif;
     --font-serif: 'Instrument Serif', Georgia, serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
     --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -64,6 +66,7 @@
     --paper: #0e0e10;
     --paper-2: #17171a;
     --ink: #f2f2ef;
+    --ink-2: #9a9aa2;
     --rule: #26262b;
     --rule-strong: #3a3a41;
     --card: #141417;
@@ -228,10 +231,11 @@ body {
 }
 
 /* ============================================================
-   HERO
+   HERO — booking-style: mono kicker, oversized display
+   headline with serif italic accent, secondary-grey lede
    ============================================================ */
 .hero {
-    padding-block: clamp(48px, 9vh, 104px) clamp(40px, 6vh, 72px);
+    padding-block: clamp(32px, 5vh, 64px) clamp(40px, 6vh, 72px);
 }
 
 .logo-plate {
@@ -246,49 +250,55 @@ body {
 }
 .logo-plate img { max-height: clamp(60px, 8vw, 96px); width: auto; }
 
+/* Mono kicker — matches the booking page exactly */
 .eyebrow {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     gap: 12px;
-    font-size: 16px;
-    font-weight: 500;
-    color: var(--ink);
-    margin-bottom: 20px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    margin-bottom: clamp(20px, 3vh, 36px);
 }
-.eyebrow::before {
+.eyebrow::after {
     content: "";
-    width: 26px;
-    height: 2px;
-    background: var(--accent);
+    flex: 1;
+    max-width: 220px;
+    height: 1px;
+    background: var(--rule-strong);
 }
 
 .hero h1 {
     font-family: var(--font-display);
-    font-size: clamp(36px, 5.6vw, 72px);
+    font-size: clamp(44px, 7.5vw, 96px);
     font-weight: 600;
-    line-height: 1.0;
-    letter-spacing: -0.025em;
+    line-height: 0.98;
+    letter-spacing: -0.02em;
     color: var(--ink);
     text-wrap: balance;
-    margin-bottom: 24px;
+    margin-bottom: clamp(20px, 3vh, 32px);
 }
-.hero h1 em {
-    display: block;
-    font-family: var(--font-display);
-    font-style: normal;
-    font-weight: 500;
-    letter-spacing: -0.02em;
+
+/* Serif italic accent — the booking page signature move */
+.hero h1 .serif {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.01em;
     color: var(--accent);
 }
 
 .hero-standfirst {
-    max-width: 56ch;
+    max-width: 46ch;
     font-size: clamp(15.5px, 1.35vw, 18px);
     line-height: 1.7;
-    color: var(--ink);
+    color: var(--ink-2);
     text-wrap: pretty;
 }
-.hero-standfirst strong { font-weight: 700; }
+.hero-standfirst strong { color: var(--ink); font-weight: 700; }
 
 /* ============================================================
    SECTIONS
@@ -314,10 +324,10 @@ body {
     max-width: var(--measure);
     font-size: clamp(15px, 1.15vw, 16.5px);
     line-height: 1.78;
-    color: var(--ink);
+    color: var(--ink-2);
     text-wrap: pretty;
 }
-.prose strong { font-weight: 700; }
+.prose strong { color: var(--ink); font-weight: 700; }
 .prose + .prose { margin-top: 16px; }
 
 .pullquote {
@@ -362,7 +372,7 @@ body {
     display: block;
     font-size: 15px;
     line-height: 1.68;
-    color: var(--ink);
+    color: var(--ink-2);
 }
 .keyed .k-title em {
     font-style: normal;
@@ -394,7 +404,7 @@ body {
 .product-card p {
     font-size: 15px;
     line-height: 1.68;
-    color: var(--ink);
+    color: var(--ink-2);
 }
 
 /* ---- Process ---- */
@@ -431,9 +441,9 @@ body {
     border-radius: 50%;
     border: 1px solid var(--rule-strong);
     background: var(--card);
-    font-family: var(--font-display);
-    font-size: 13px;
-    font-weight: 600;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 400;
     color: var(--ink);
     transition: background 0.3s, border-color 0.3s, color 0.3s;
 }
@@ -454,7 +464,7 @@ body {
     display: block;
     font-size: 15px;
     line-height: 1.72;
-    color: var(--ink);
+    color: var(--ink-2);
 }
 
 /* ============================================================
@@ -472,10 +482,11 @@ body {
 .form-intro {
     font-size: 15px;
     line-height: 1.7;
-    color: var(--ink);
+    color: var(--ink-2);
     margin-bottom: 26px;
     max-width: 52ch;
 }
+.form-intro strong { color: var(--ink); }
 
 .f-grid { display: grid; gap: 18px; }
 @media (min-width: 560px) {
@@ -490,7 +501,7 @@ body {
     color: var(--ink);
     margin-bottom: 7px;
 }
-.f-field label .opt { font-weight: 400; opacity: 0.6; }
+.f-field label .opt { font-weight: 400; color: var(--ink-2); }
 
 .f-field input,
 .f-field select,
@@ -549,7 +560,7 @@ body {
 .f-consent label {
     font-size: 13.5px;
     line-height: 1.6;
-    color: var(--ink);
+    color: var(--ink-2);
     cursor: pointer;
 }
 
@@ -573,12 +584,10 @@ body {
 .f-submit:active { transform: translateY(0) scale(0.98); }
 .f-submit svg { width: 15px; height: 15px; }
 
-/* Success message (shown after redirect-back / no-JS fallback note) */
 .f-note {
     font-size: 13.5px;
     line-height: 1.6;
-    color: var(--ink);
-    opacity: 0.7;
+    color: var(--ink-2);
     margin-top: 16px;
 }
 
@@ -604,7 +613,7 @@ body {
     flex: 0 0 auto;
     color: var(--success);
 }
-.assure .sub { font-weight: 400; }
+.assure .sub { font-weight: 400; color: var(--ink-2); }
 
 /* ============================================================
    COLOPHON
@@ -633,21 +642,24 @@ body {
 .colophon .legal {
     font-size: 13.5px;
     line-height: 1.7;
-    color: var(--ink);
+    color: var(--ink-2);
     max-width: 62ch;
     margin-bottom: 14px;
 }
 
 .colophon .ref {
-    font-size: 13.5px;
-    color: var(--ink);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--ink-2);
     margin-bottom: 4px;
 }
 
 .gh-credit {
     margin-top: 18px;
+    font-family: var(--font-mono);
     font-size: 10px;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.06em;
     color: var(--ink);
     opacity: 0.35;
 }
@@ -661,6 +673,7 @@ body {
     --paper: #fff1f8;
     --paper-2: #ffe6f3;
     --ink: #47126b;
+    --ink-2: #7a4d99;
     --rule: #f7d2ea;
     --rule-strong: #efb6dd;
     --card: #ffffff;
@@ -685,7 +698,7 @@ body {
     border-top: 2px solid;
     border-image: linear-gradient(90deg, #00b8ff, #ff8a00, #ff2d92) 1;
 }
-[data-theme="fun"] .eyebrow::before {
+[data-theme="fun"] .eyebrow::after {
     background: linear-gradient(90deg, #ff2d92, #ff8a00);
 }
 [data-theme="fun"] .icon-btn { border-radius: 999px; }
@@ -732,7 +745,7 @@ body {
     :root { --mast-h: 60px; }
     .mast-title em { display: none; }
     .shell { padding-inline: 18px; }
-    .hero { padding-block: 32px 36px; }
+    .hero { padding-block: 28px 36px; }
     .section { padding-block: 36px; }
     .colophon { padding-block: 30px 36px; }
 }
@@ -780,7 +793,7 @@ body {
         </div>
 
         <p class="eyebrow">Introducer Programme</p>
-        <h1>Refer your clients. <em>We'll do the rest.</em></h1>
+        <h1>Refer your clients. <span class="serif">We'll do the rest.</span></h1>
         <p class="hero-standfirst">
             <strong>Advantage Financial Solutions</strong> partners with professionals — accountants,
             recruitment firms, solicitors and advisers — who want to give their clients access to
@@ -988,7 +1001,7 @@ body {
             arranged, Advantage FS is paid commission by the provider — never by your client.
         </p>
         <p class="ref">&copy; 2026 Advantage Financial Solutions · FCA 965036 · Company no. 12291836</p>
-        <p class="ref">Introducer Programme · V1.0</p>
+        <p class="ref">Introducer Programme · V1.1</p>
 
         <p class="gh-credit">Site by Gavin Hoffman Web Design</p>
     </footer>
