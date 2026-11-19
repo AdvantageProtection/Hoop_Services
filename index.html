@@ -15,19 +15,12 @@
 
 <style>
 /* ============================================================
-   HOOP × ADVANTAGE FS · "LIVING DOCUMENT" · V9.1 (editorial)
+   HOOP × ADVANTAGE FS · "LIVING DOCUMENT" · V9.2 (editorial)
    ------------------------------------------------------------
-   V9.1 edits:
-   - All three logos (hero main + pair, and section logos)
-     sit in signature-style plates: grey hairline border with
-     a thicker grey left edge.
-   - Palette unified to the booking page's neutral greys/ink;
-     the mortgage blue is the only section colour retained.
-   - Sidebar links are uniform: booking links no longer
-     indented/smaller and now anchor to the on-page booking
-     buttons (#book-protection / #book-mortgage).
-   - Style system collapsed to header / body / bold body.
-     Mono micro-labels removed; JetBrains Mono dropped.
+   Palette matched to the booking page: warm-grey neutrals with
+   the booking red as the brand accent. Mortgage blue retained
+   for mortgage sections. Logo plates use the signature box
+   shape with a grey hairline border and thicker grey left edge.
    ============================================================ */
 
 /* ---- Tokens ---- */
@@ -50,12 +43,11 @@
     --rule-strong: #c3c3bd;
     --card: #ffffff;
 
-    /* Neutral accent — matches the booking page's monochrome
-       system. The only colour on the page is the mortgage blue. */
-    --accent: #0e0e10;
-    --accent-deep: #0e0e10;
-    --accent-wash: rgba(14, 14, 16, 0.05);
-    --accent-rule: rgba(14, 14, 16, 0.25);
+    /* Brand accent — matches the booking page red */
+    --accent: #e91837;
+    --accent-deep: #b8122c;
+    --accent-wash: rgba(233, 24, 55, 0.07);
+    --accent-rule: rgba(233, 24, 55, 0.30);
 
     /* Mortgage accent — blue. Mortgage sections only. */
     --m-accent: #4a72a8;
@@ -64,7 +56,7 @@
     --m-accent-rule: rgba(74, 114, 168, 0.32);
 
     /* Section CTA colours */
-    --cta-bg: #0e0e10;
+    --cta-bg: #e91837;
     --cta-ink: #ffffff;
 
     --success: #0e9f5d;
@@ -90,18 +82,18 @@
     --rule-strong: #3a3a41;
     --card: #141417;
 
-    --accent: #f2f2ef;
-    --accent-deep: #f2f2ef;
-    --accent-wash: rgba(255, 255, 255, 0.07);
-    --accent-rule: rgba(255, 255, 255, 0.28);
+    --accent: #ff4d67;
+    --accent-deep: #ff8093;
+    --accent-wash: rgba(255, 77, 103, 0.12);
+    --accent-rule: rgba(255, 77, 103, 0.32);
 
     --m-accent: hsl(210 65% 72%);
     --m-accent-deep: hsl(210 70% 80%);
     --m-accent-wash: hsla(210, 65%, 70%, 0.10);
     --m-accent-rule: hsla(210, 65%, 70%, 0.30);
 
-    --cta-bg: #f2f2ef;
-    --cta-ink: #141417;
+    --cta-bg: #ff4d67;
+    --cta-ink: #ffffff;
 
     --success: #3fd692;
     --success-deep: #7ce8b8;
@@ -389,7 +381,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     top: 12px;
     bottom: 12px;
     width: 2px;
-    background: var(--ink);
+    background: var(--accent);
 }
 .side-link.active { padding-left: 18px; }
 
@@ -517,7 +509,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     content: "";
     width: 26px;
     height: 2px;
-    background: var(--ink);
+    background: var(--accent);
 }
 
 .hero h1 {
@@ -621,7 +613,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     position: relative;
     max-width: 60ch;
     padding-left: 26px;
-    border-left: 2px solid var(--ink);
+    border-left: 2px solid var(--accent);
     font-family: var(--font-serif);
     font-size: clamp(22px, 2.6vw, 30px);
     font-style: italic;
@@ -668,7 +660,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 /* ============================================================
    MORTGAGE ACCENT · blue
    Applied to mortgage sections only. Everything else on the
-   page is neutral ink/grey.
+   page carries the booking red.
    ============================================================ */
 .theme-mortgage {
     --accent: var(--m-accent);
@@ -801,7 +793,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     position: absolute;
     inset: 0 auto 0 0;
     width: 3px;
-    background: var(--ink);
+    background: var(--accent);
     transform: scaleY(0);
     transform-origin: 50% 0;
     transition: transform 0.36s var(--ease-out);
@@ -1130,7 +1122,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     border-bottom: 1px solid var(--rule-strong);
     transition: border-color 0.2s, gap 0.24s var(--ease-out);
 }
-.jump:hover { border-bottom-color: var(--ink); gap: 11px; }
+.jump:hover { border-bottom-color: var(--accent); gap: 11px; }
 .jump svg { width: 15px; height: 15px; }
 
 /* ============================================================
@@ -1185,7 +1177,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     border-bottom: 1px solid var(--rule-strong);
     padding-bottom: 2px;
 }
-.colophon a.site:hover { border-bottom-color: var(--ink); }
+.colophon a.site:hover { border-bottom-color: var(--accent); }
 
 .colophon .ref {
     font-size: 13.5px;
@@ -1373,7 +1365,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     </nav>
 
     <div class="side-foot">
-        <p class="side-foot-note">Service Summary &middot; V9.1</p>
+        <p class="side-foot-note">Service Summary &middot; V9.2</p>
     </div>
 </aside>
 
@@ -1865,7 +1857,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 
             <div class="foot-right">
                 <a class="site" href="https://advantagefs.co.uk" target="_blank" rel="noopener">advantagefs.co.uk</a>
-                <p class="ref">Service summary &middot; V9.1</p>
+                <p class="ref">Service summary &middot; V9.2</p>
                 <p class="ref">&copy; 2026 Advantage Financial Solutions</p>
                 <p class="ref">FCA 965036 · Company no. 12291836</p>
             </div>
