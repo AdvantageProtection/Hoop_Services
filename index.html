@@ -16,13 +16,6 @@
 <style>
 /* ============================================================
    HOOP × ADVANTAGE FS · "LIVING DOCUMENT" · V9 (editorial)
-   ------------------------------------------------------------
-   Same content, structure, sidebar, themes and behaviour as
-   V8.1 — restyled to match the booking page's editorial
-   system: Clash Display headlines, Satoshi body, JetBrains
-   Mono micro-labels, hairline structure instead of shadows.
-   Dual accents retained: brand red (protection/general),
-   mortgage blue (mortgage sections only).
    ============================================================ */
 
 /* ---- Tokens ---- */
@@ -37,7 +30,7 @@
 
     --paper: #f6f6f4;
     --paper-2: #ecece9;
-    --ink: #0e0e10;      /* uniform darkest for ALL text */
+    --ink: #0e0e10;
     --ink-2: #0e0e10;
     --ink-3: #0e0e10;
     --ink-4: #0e0e10;
@@ -45,7 +38,6 @@
     --rule-strong: #c3c3bd;
     --card: #ffffff;
 
-    /* Advantage Protection brand colour — the standard accent */
     --brand: #e91837;
     --accent: #e91837;
     --accent-deep: #b8122c;
@@ -54,14 +46,11 @@
     --navy: #3d5a6e;
     --navy-deep: #2b4354;
 
-    /* Mortgage accent — blue. Mortgage sections NEVER use
-       the brand red. */
     --m-accent: #4a72a8;
     --m-accent-deep: #3a5c8a;
     --m-accent-wash: rgba(74, 114, 168, 0.08);
     --m-accent-rule: rgba(74, 114, 168, 0.32);
 
-    /* Section CTA colours */
     --cta-bg: var(--accent-deep);
     --cta-ink: #ffffff;
 
@@ -268,7 +257,7 @@ img { max-width: 100%; display: block; }
 [data-theme="fun"] .theme-btn .s-spark { display: block; }
 
 /* ============================================================
-   SIDEBAR
+   SIDEBAR — all links uniform (no indentation levels)
    ============================================================ */
 .sidebar {
     position: fixed;
@@ -380,18 +369,6 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 }
 .side-link.active { padding-left: 18px; }
 
-/* Booking sub-links — nested under their service summary entry,
-   same link layout, indented one level */
-.side-link.sub {
-    padding-left: 30px;
-    padding-top: 9px;
-    padding-bottom: 9px;
-}
-.side-link.sub .t {
-    font-size: 13.5px;
-    font-weight: 400;
-}
-
 .side-foot {
     margin: 14px 16px 0;
     padding: 16px 8px 20px;
@@ -466,7 +443,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 }
 
 /* ============================================================
-   HERO — logos, then oversized editorial headline
+   HERO — logos in grey boxes, then oversized editorial headline
    ============================================================ */
 .hero {
     padding-block: clamp(44px, 8vh, 96px) clamp(40px, 6vh, 72px);
@@ -482,6 +459,16 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     gap: clamp(20px, 3vw, 34px);
     width: 100%;
     max-width: 760px;
+}
+
+/* Grey logo boxes — restored */
+.hero-logo-main,
+.hero-logo-pair img,
+.section-logo {
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+    border-radius: var(--r);
+    padding: clamp(14px, 2vw, 22px) clamp(20px, 3vw, 34px);
 }
 
 .hero-logo-main {
@@ -609,7 +596,6 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 .title-protection { color: var(--accent-deep); }
 .title-mortgage { color: var(--m-accent); }
 
-/* Heading-scoped rules so they outrank `.section h2` */
 .section h2.title-protection { color: var(--accent-deep); }
 .section h2.title-mortgage { color: var(--m-accent); }
 [data-theme="dark"] .section h2.title-protection { color: var(--accent); }
@@ -694,8 +680,6 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 
 /* ============================================================
    MORTGAGE ACCENT · booking-button blue
-   Applied to mortgage sections only. The brand colour is
-   NEVER used inside mortgage sections.
    ============================================================ */
 .theme-mortgage {
     --accent: var(--m-accent);
@@ -1259,6 +1243,19 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     color: var(--ink-2);
 }
 
+/* Tiny site credit */
+.site-credit {
+    margin-top: 34px;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: var(--ink-2);
+    opacity: 0.75;
+}
+
 /* ============================================================
    FUN MODE · CANDY POP
    ============================================================ */
@@ -1320,6 +1317,9 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 [data-theme="fun"] .fee-row.is-key { border-radius: 16px; }
 [data-theme="fun"] .g-badge { border-radius: 999px; }
 [data-theme="fun"] .cta-btn { border-radius: 999px; }
+[data-theme="fun"] .hero-logo-main,
+[data-theme="fun"] .hero-logo-pair img,
+[data-theme="fun"] .section-logo { border-radius: 20px; }
 
 [data-theme="fun"] .bento-card:nth-of-type(1) .ghost { color: #ff2d92; opacity: 0.13; }
 [data-theme="fun"] .bento-card:nth-of-type(2) .ghost { color: #ff8a00; opacity: 0.13; }
@@ -1424,13 +1424,13 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
         <a class="side-link" href="#protection-service" data-spy="protection-service">
             <span class="t">Protection Service Summary</span>
         </a>
-        <a class="side-link sub" href="https://advantageprotection.github.io/Hoop_Services/booking_page_protection.html" target="_blank" rel="noopener">
+        <a class="side-link" href="https://advantageprotection.github.io/Hoop_Services/booking_page_protection.html" target="_blank" rel="noopener">
             <span class="t">Book Your Protection Appointment</span>
         </a>
         <a class="side-link" href="#mortgage-service" data-spy="mortgage-service">
             <span class="t">Mortgage Service Summary</span>
         </a>
-        <a class="side-link sub" href="booking_page_mortgage.html" target="_blank" rel="noopener">
+        <a class="side-link" href="https://advantageprotection.github.io/Hoop_Services/booking_page_mortgage.html" target="_blank" rel="noopener">
             <span class="t">Book Your Mortgage Appointment</span>
         </a>
         <a class="side-link" href="#why-choose" data-spy="why-choose">
@@ -1580,7 +1580,8 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 
             <p class="cta-row reveal">
                 <a class="cta-btn"
-                   href="https://advantageprotection.github.io/Hoop_Services/booking_page_protection.html">
+                   href="https://advantageprotection.github.io/Hoop_Services/booking_page_protection.html"
+                   target="_blank" rel="noopener">
                     Book your Protection appointment
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
                 </a>
@@ -1746,7 +1747,8 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 
             <p class="cta-row reveal">
                 <a class="cta-btn"
-                   href="booking_page_mortgage.html">
+                   href="https://advantageprotection.github.io/Hoop_Services/booking_page_mortgage.html"
+                   target="_blank" rel="noopener">
                     Book your Mortgage appointment
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
                 </a>
@@ -1926,6 +1928,8 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
                 <p class="ref">FCA 965036 · Company no. 12291836</p>
             </div>
         </div>
+
+        <p class="site-credit">Created by Gavin Hoffman Web Services</p>
     </footer>
 
 </main>
