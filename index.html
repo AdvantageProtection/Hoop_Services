@@ -461,14 +461,17 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     max-width: 760px;
 }
 
-/* Grey logo boxes — restored */
+/* Grey logo bubbles — pill style, like the green cost callout,
+   with a solid grey bar on the left */
 .hero-logo-main,
 .hero-logo-pair img,
 .section-logo {
     background: var(--paper-2);
     border: 1px solid var(--rule);
-    border-radius: var(--r);
-    padding: clamp(14px, 2vw, 22px) clamp(20px, 3vw, 34px);
+    border-left: 3px solid var(--rule-strong);
+    border-radius: 999px;
+    padding: clamp(14px, 2vw, 22px) clamp(24px, 3.5vw, 38px);
+    overflow: hidden;
 }
 
 .hero-logo-main {
