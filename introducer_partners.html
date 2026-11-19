@@ -21,18 +21,17 @@
 
 <style>
 /* ============================================================
-   ADVANTAGE FS · INTRODUCER PROGRAMME · V1.1
-   ------------------------------------------------------------
-   Master typography matched to the booking page: Clash Display,
-   Satoshi, JetBrains Mono, Instrument Serif. Two-level ink
-   system. Booking-style hero. No sidebar.
+   ADVANTAGE FS · INTRODUCER PROGRAMME · V2 (booking layout)
+   Two-column like the booking page: editorial spiel on the
+   left, sticky registration dock on the right. Pill logo
+   bubble with white interior + solid grey bar.
    ============================================================ */
 
 /* ---- Tokens ---- */
 :root {
     color-scheme: light;
 
-    --gutter: clamp(20px, 5vw, 72px);
+    --gutter: clamp(20px, 4vw, 56px);
     --measure: 74ch;
     --mast-h: 68px;
     --r: 10px;
@@ -100,10 +99,11 @@ body {
     transition: background-color 0.4s var(--ease-out), color 0.4s var(--ease-out);
 }
 
+img { max-width: 100%; }
 ::selection { background: var(--accent); color: var(--paper); }
 
 :focus-visible {
-    outline: 2px solid var(--ink);
+    outline: 2px solid var(--accent);
     outline-offset: 3px;
     border-radius: 3px;
 }
@@ -216,39 +216,77 @@ body {
 .icon-btn:hover { background: var(--paper-2); border-color: var(--rule-strong); }
 .icon-btn svg { width: 17px; height: 17px; }
 
+.chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 9px 16px;
+    border: 1px solid var(--ink);
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    transition: background 0.15s, color 0.15s;
+}
+.chip:hover { background: var(--ink); color: var(--paper); }
+
 .theme-btn svg { display: none; }
 [data-theme="light"] .theme-btn .s-sun { display: block; }
 [data-theme="dark"] .theme-btn .s-moon { display: block; }
 [data-theme="fun"] .theme-btn .s-spark { display: block; }
 
 /* ============================================================
-   LAYOUT
+   MAIN GRID — two columns, like the booking page
    ============================================================ */
-.shell {
-    max-width: 900px;
-    margin-inline: auto;
-    padding-inline: var(--gutter);
+main {
+    display: grid;
+    min-height: calc(100vh - var(--mast-h));
+}
+@media (min-width: 1020px) {
+    main {
+        grid-template-columns: minmax(0, 1fr) minmax(430px, 520px);
+    }
+    .dock {
+        border-left: 1px solid var(--rule);
+        position: sticky;
+        top: var(--mast-h);
+        height: calc(100vh - var(--mast-h));
+        overflow-y: auto;
+    }
 }
 
 /* ============================================================
-   HERO — booking-style: mono kicker, oversized display
-   headline with serif italic accent, secondary-grey lede
+   LEFT — EDITORIAL SPIEL
    ============================================================ */
-.hero {
-    padding-block: clamp(32px, 5vh, 64px) clamp(40px, 6vh, 72px);
+.spiel {
+    display: flex;
+    flex-direction: column;
+    padding: clamp(32px, 5vh, 64px) var(--gutter) 48px;
+    min-width: 0;
 }
 
+/* Pill logo bubble — white interior matching the logos' own
+   white backgrounds, capsule shape like the green cost callout,
+   solid grey bar on the left */
 .logo-plate {
     display: inline-flex;
     align-items: center;
-    padding: clamp(16px, 2.2vw, 26px) clamp(20px, 3vw, 34px);
-    background: var(--card);
+    align-self: flex-start;
+    background: #ffffff;
     border: 1px solid var(--rule);
-    border-left: 5px solid var(--rule-strong);
-    border-radius: 12px;
+    border-left: 3px solid var(--rule-strong);
+    border-radius: 999px;
+    padding: clamp(14px, 2vw, 22px) clamp(24px, 3.5vw, 38px);
+    overflow: hidden;
     margin-bottom: clamp(26px, 4vw, 44px);
 }
-.logo-plate img { max-height: clamp(60px, 8vw, 96px); width: auto; }
+.logo-plate img {
+    max-height: clamp(52px, 7vw, 84px);
+    width: auto;
+    display: block;
+}
 
 /* Mono kicker — matches the booking page exactly */
 .eyebrow {
@@ -300,12 +338,11 @@ body {
 }
 .hero-standfirst strong { color: var(--ink); font-weight: 700; }
 
-/* ============================================================
-   SECTIONS
-   ============================================================ */
+/* ---- Sections within the spiel column ---- */
 .section {
-    padding-block: clamp(40px, 6vh, 76px);
+    padding-block: clamp(36px, 5vh, 64px);
     border-top: 1px solid var(--rule);
+    margin-top: clamp(28px, 4vh, 48px);
 }
 
 .section h2 {
@@ -341,14 +378,6 @@ body {
     color: var(--ink);
     text-wrap: pretty;
     margin-bottom: clamp(24px, 3vw, 36px);
-}
-
-.subhead {
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--ink);
-    margin-top: 34px;
-    margin-bottom: 14px;
 }
 
 /* ---- Keyed benefit list ---- */
@@ -468,15 +497,70 @@ body {
 }
 
 /* ============================================================
-   INTRODUCER FORM
+   RIGHT — REGISTRATION DOCK
+   Sticky column, styled like the booking dock: header strip,
+   then the form body. Scrolls internally if tall.
    ============================================================ */
-.form-panel {
-    max-width: 640px;
-    padding: clamp(24px, 4vw, 40px);
+.dock {
+    display: flex;
+    flex-direction: column;
     background: var(--card);
-    border: 1px solid var(--rule);
-    border-left: 5px solid var(--accent);
-    border-radius: 12px;
+    border-top: 1px solid var(--rule);
+}
+
+.dock-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--rule);
+    flex: 0 0 auto;
+}
+.dock-head .bh {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+}
+.dock-head .bh b {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--ink);
+    margin-top: 2px;
+}
+.live {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--success);
+    white-space: nowrap;
+}
+.live::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--success);
+    animation: pulse 2s ease infinite;
+}
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
+}
+
+.dock-body {
+    padding: clamp(24px, 3vw, 36px) 24px 32px;
+    flex: 1 0 auto;
 }
 
 .form-intro {
@@ -597,7 +681,6 @@ body {
     align-items: center;
     gap: 16px;
     flex-wrap: wrap;
-    max-width: 640px;
     margin-top: 22px;
     padding: 16px 20px;
     border: 1px solid var(--success-rule);
@@ -620,7 +703,7 @@ body {
    ============================================================ */
 .colophon {
     border-top: 1px solid var(--rule-strong);
-    padding-block: 40px 48px;
+    padding: 32px var(--gutter) 48px;
 }
 
 .colophon .motto {
@@ -702,15 +785,14 @@ body {
     background: linear-gradient(90deg, #ff2d92, #ff8a00);
 }
 [data-theme="fun"] .icon-btn { border-radius: 999px; }
-[data-theme="fun"] .logo-plate { border-radius: 20px; }
 [data-theme="fun"] .product-card { border-radius: 20px; }
-[data-theme="fun"] .form-panel { border-radius: 24px; }
 [data-theme="fun"] .f-field input,
 [data-theme="fun"] .f-field select,
 [data-theme="fun"] .f-field textarea { border-radius: 999px; }
 [data-theme="fun"] .f-field textarea { border-radius: 20px; }
 [data-theme="fun"] .f-submit { border-radius: 999px; }
 [data-theme="fun"] .assure { border-radius: 999px; }
+[data-theme="fun"] .chip { border-radius: 999px; }
 
 /* ============================================================
    REVEALS
@@ -740,19 +822,26 @@ body {
 /* ============================================================
    SMALL SCREENS
    ============================================================ */
+@media (max-width: 1019px) {
+    .spiel { padding-bottom: 36px; }
+    .dock { scroll-margin-top: var(--mast-h); }
+}
+
 @media (max-width: 620px) {
     .masthead { padding: 0 16px; height: 60px; }
     :root { --mast-h: 60px; }
     .mast-title em { display: none; }
-    .shell { padding-inline: 18px; }
-    .hero { padding-block: 28px 36px; }
-    .section { padding-block: 36px; }
-    .colophon { padding-block: 30px 36px; }
+    .spiel { padding-inline: 16px; }
+    .dock-head { padding: 14px 16px; }
+    .dock-body { padding: 22px 16px 28px; }
+    .colophon { padding-inline: 16px; }
+    .hero { padding-block: 24px 8px; }
 }
 
 @media (max-width: 400px) {
     .loop-mark { display: none; }
     .mast-title { font-size: 14px; }
+    .mast-right .chip { display: none; }
 }
 </style>
 </head>
@@ -768,6 +857,7 @@ body {
     </a>
 
     <div class="mast-right">
+        <a class="chip" href="#register">Enquire</a>
         <button class="icon-btn theme-btn" id="themeToggle" type="button" aria-label="Change colour theme" title="Change colour theme">
             <svg class="s-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
                 <circle cx="12" cy="12" r="4.2"/>
@@ -784,130 +874,138 @@ body {
     </div>
 </header>
 
-<main class="shell" id="top">
+<main id="top">
 
-    <!-- ============ HERO ============ -->
-    <section class="hero">
-        <div class="logo-plate">
-            <img src="bbb.png" alt="Advantage Financial Solutions" decoding="async">
+    <!-- ============ LEFT — SPIEL ============ -->
+    <section class="spiel">
+
+        <!-- ============ HERO ============ -->
+        <div class="hero">
+            <div class="logo-plate">
+                <img src="bbb.png" alt="Advantage Financial Solutions" decoding="async">
+            </div>
+
+            <p class="eyebrow">Introducer Programme</p>
+            <h1>Refer your clients. <span class="serif">We'll do the rest.</span></h1>
+            <p class="hero-standfirst">
+                <strong>Advantage Financial Solutions</strong> partners with professionals — accountants,
+                recruitment firms, solicitors and advisers — who want to give their clients access to
+                specialist, tax-efficient protection advice. The referral model is completely turnkey:
+                you make the introduction, we handle the advice, underwriting and compliance from start
+                to finish, and your practice receives a generous, compliant share of any commission
+                generated.
+            </p>
         </div>
 
-        <p class="eyebrow">Introducer Programme</p>
-        <h1>Refer your clients. <span class="serif">We'll do the rest.</span></h1>
-        <p class="hero-standfirst">
-            <strong>Advantage Financial Solutions</strong> partners with professionals — accountants,
-            recruitment firms, solicitors and advisers — who want to give their clients access to
-            specialist, tax-efficient protection advice. The referral model is completely turnkey:
-            you make the introduction, we handle the advice, underwriting and compliance from start
-            to finish, and your practice receives a generous, compliant share of any commission
-            generated.
-        </p>
+        <!-- ============ WHY PARTNER ============ -->
+        <section class="section" id="why-partner">
+            <h2>A partnership that complements what you already do</h2>
+
+            <p class="pullquote reveal">
+                The majority of your clients already hold some form of personal protection — very few
+                are aware it can be repositioned for tax efficiency through their limited company.
+            </p>
+
+            <p class="prose reveal">
+                Our most successful introducer partnerships are with independent accountancy practices,
+                helping their limited company directors access specialist, tax-efficient protection.
+                The service directly complements the advice you already provide, saves your clients
+                potentially £1,000s, is 100% free of charge for them — and provides you with a
+                consistent, comprehensive income stream.
+            </p>
+
+            <ul class="keyed reveal">
+                <li>
+                    <span class="k-title">No extra workload</span>
+                    <span class="k-body">You simply flag clients who could benefit from tax-efficient cover and introduce them to us for free advice. We handle the advice, underwriting, and compliance from start to finish.</span>
+                </li>
+                <li>
+                    <span class="k-title">Substantial revenue stream</span>
+                    <span class="k-body">Your practice receives a generous, compliant share of any commission generated — typically <em>£250 to £2,000+ per client</em>.</span>
+                </li>
+                <li>
+                    <span class="k-title">Genuine client value</span>
+                    <span class="k-body">It reinforces your status as a proactive adviser, saving your clients significant money while protecting their families and businesses.</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- ============ THE PRODUCTS ============ -->
+        <section class="section" id="products">
+            <h2>Specialist, tax-efficient cover</h2>
+
+            <p class="prose reveal">
+                We look after a team of 15 mortgage advisers and their clients' personal and business
+                protection needs. The two policies driving the strongest introducer partnerships are
+                <strong>Relevant Life Cover</strong> and <strong>Executive Income Protection</strong> —
+                once niche products, now offered by every mainstream provider and extremely popular with
+                company directors.
+            </p>
+
+            <div class="products reveal">
+                <article class="product-card">
+                    <h3>Relevant Life Cover</h3>
+                    <p>Company-funded life insurance for directors. Premiums are paid by the business as
+                    an allowable business expense — saving on Corporation Tax — without incurring a
+                    Benefit-in-Kind charge. Personal cover, at a fraction of the personal cost.</p>
+                </article>
+
+                <article class="product-card">
+                    <h3>Executive Income Protection</h3>
+                    <p>Income protection funded through the company, providing a tax-efficient replacement
+                    income for a director if illness or injury stops them working. A natural extension of
+                    the tax planning you already deliver.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- ============ HOW IT WORKS ============ -->
+        <section class="section" id="how-it-works">
+            <h2>How the referral model works</h2>
+
+            <ol class="process reveal">
+                <li>
+                    <span class="p-title">You make the introduction</span>
+                    <span class="p-body">Flag any client who could benefit from tax-efficient protection and pass their details to us — by form, email, or a three-way introduction. That's the entire commitment on your side.</span>
+                </li>
+                <li>
+                    <span class="p-title">We advise, free of charge</span>
+                    <span class="p-body">Laurence, our specialist adviser, provides your client with completely free, independent advice — researching the whole market and recommending the most suitable, tax-efficient structure.</span>
+                </li>
+                <li>
+                    <span class="p-title">We handle everything else</span>
+                    <span class="p-body">Applications, underwriting, and compliance are managed by us from start to finish. Your client is looked after professionally and kept informed at every stage.</span>
+                </li>
+                <li>
+                    <span class="p-title">You receive the commission share</span>
+                    <span class="p-body">Once the policy is set up, your practice receives its compliant share of the commission — typically £250 to £2,000+ per client, paid promptly and fully documented.</span>
+                </li>
+            </ol>
+        </section>
+
+        <!-- ============ WHO WE WORK WITH ============ -->
+        <section class="section" id="who">
+            <h2>Built for any client-facing profession</h2>
+
+            <p class="prose reveal">
+                While our strongest partnerships have historically been with accountancy practices, the
+                referral framework works for any professional who advises limited company directors or
+                self-employed individuals — including recruitment firms, financial advisers, solicitors,
+                and business consultants. If your clients run their own company, this conversation is
+                relevant to them.
+            </p>
+        </section>
+
     </section>
 
-    <!-- ============ WHY PARTNER ============ -->
-    <section class="section" id="why-partner">
-        <h2>A partnership that complements what you already do</h2>
-
-        <p class="pullquote reveal">
-            The majority of your clients already hold some form of personal protection — very few
-            are aware it can be repositioned for tax efficiency through their limited company.
-        </p>
-
-        <p class="prose reveal">
-            Our most successful introducer partnerships are with independent accountancy practices,
-            helping their limited company directors access specialist, tax-efficient protection.
-            The service directly complements the advice you already provide, saves your clients
-            potentially £1,000s, is 100% free of charge for them — and provides you with a
-            consistent, comprehensive income stream.
-        </p>
-
-        <ul class="keyed reveal">
-            <li>
-                <span class="k-title">No extra workload</span>
-                <span class="k-body">You simply flag clients who could benefit from tax-efficient cover and introduce them to us for free advice. We handle the advice, underwriting, and compliance from start to finish.</span>
-            </li>
-            <li>
-                <span class="k-title">Substantial revenue stream</span>
-                <span class="k-body">Your practice receives a generous, compliant share of any commission generated — typically <em>£250 to £2,000+ per client</em>.</span>
-            </li>
-            <li>
-                <span class="k-title">Genuine client value</span>
-                <span class="k-body">It reinforces your status as a proactive adviser, saving your clients significant money while protecting their families and businesses.</span>
-            </li>
-        </ul>
-    </section>
-
-    <!-- ============ THE PRODUCTS ============ -->
-    <section class="section" id="products">
-        <h2>Specialist, tax-efficient cover</h2>
-
-        <p class="prose reveal">
-            We look after a team of 15 mortgage advisers and their clients' personal and business
-            protection needs. The two policies driving the strongest introducer partnerships are
-            <strong>Relevant Life Cover</strong> and <strong>Executive Income Protection</strong> —
-            once niche products, now offered by every mainstream provider and extremely popular with
-            company directors.
-        </p>
-
-        <div class="products reveal">
-            <article class="product-card">
-                <h3>Relevant Life Cover</h3>
-                <p>Company-funded life insurance for directors. Premiums are paid by the business as
-                an allowable business expense — saving on Corporation Tax — without incurring a
-                Benefit-in-Kind charge. Personal cover, at a fraction of the personal cost.</p>
-            </article>
-
-            <article class="product-card">
-                <h3>Executive Income Protection</h3>
-                <p>Income protection funded through the company, providing a tax-efficient replacement
-                income for a director if illness or injury stops them working. A natural extension of
-                the tax planning you already deliver.</p>
-            </article>
+    <!-- ============ RIGHT — REGISTRATION DOCK ============ -->
+    <aside class="dock" id="register">
+        <div class="dock-head">
+            <p class="bh"><b>Register your interest</b>Laurence replies personally</p>
+            <span class="live">No obligation</span>
         </div>
-    </section>
 
-    <!-- ============ HOW IT WORKS ============ -->
-    <section class="section" id="how-it-works">
-        <h2>How the referral model works</h2>
-
-        <ol class="process reveal">
-            <li>
-                <span class="p-title">You make the introduction</span>
-                <span class="p-body">Flag any client who could benefit from tax-efficient protection and pass their details to us — by form, email, or a three-way introduction. That's the entire commitment on your side.</span>
-            </li>
-            <li>
-                <span class="p-title">We advise, free of charge</span>
-                <span class="p-body">Laurence, our specialist adviser, provides your client with completely free, independent advice — researching the whole market and recommending the most suitable, tax-efficient structure.</span>
-            </li>
-            <li>
-                <span class="p-title">We handle everything else</span>
-                <span class="p-body">Applications, underwriting, and compliance are managed by us from start to finish. Your client is looked after professionally and kept informed at every stage.</span>
-            </li>
-            <li>
-                <span class="p-title">You receive the commission share</span>
-                <span class="p-body">Once the policy is set up, your practice receives its compliant share of the commission — typically £250 to £2,000+ per client, paid promptly and fully documented.</span>
-            </li>
-        </ol>
-    </section>
-
-    <!-- ============ WHO WE WORK WITH ============ -->
-    <section class="section" id="who">
-        <h2>Built for any client-facing profession</h2>
-
-        <p class="prose reveal">
-            While our strongest partnerships have historically been with accountancy practices, the
-            referral framework works for any professional who advises limited company directors or
-            self-employed individuals — including recruitment firms, financial advisers, solicitors,
-            and business consultants. If your clients run their own company, this conversation is
-            relevant to them.
-        </p>
-    </section>
-
-    <!-- ============ FORM ============ -->
-    <section class="section" id="register">
-        <h2>Register your interest</h2>
-
-        <div class="form-panel reveal">
+        <div class="dock-body">
             <p class="form-intro">
                 Complete the form below and Laurence will be in touch to talk through the
                 partnership — with no obligation and nothing to set up until you're ready.
@@ -982,31 +1080,31 @@ body {
                 Prefer to talk first? Just email us and ask for Laurence — we're happy to walk
                 through the model informally before anything is committed to writing.
             </p>
+
+            <div class="assure">
+                <svg class="sig-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                <span>No cost, no obligation <span class="sub">— the enquiry form and the initial conversation are both completely free.</span></span>
+            </div>
         </div>
-
-        <div class="assure reveal">
-            <svg class="sig-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-            <span>No cost, no obligation <span class="sub">— the enquiry form and the initial conversation are both completely free.</span></span>
-        </div>
-    </section>
-
-    <!-- ============ COLOPHON ============ -->
-    <footer class="colophon">
-        <p class="motto"><span>Our Experience.</span> Your Advantage.</p>
-        <p class="fca">Advantage Financial Solutions · FCA 965036</p>
-        <p class="legal">
-            Based in Bristol — advising clients across the UK. Introducer commission shares are paid
-            in line with FCA rules and fully documented for your records. The advice given to your
-            clients is independent, whole-of-market, and free of charge to them. If a policy is
-            arranged, Advantage FS is paid commission by the provider — never by your client.
-        </p>
-        <p class="ref">&copy; 2026 Advantage Financial Solutions · FCA 965036 · Company no. 12291836</p>
-        <p class="ref">Introducer Programme · V1.1</p>
-
-        <p class="gh-credit">Site by Gavin Hoffman Web Design</p>
-    </footer>
+    </aside>
 
 </main>
+
+<!-- ============ COLOPHON ============ -->
+<footer class="colophon">
+    <p class="motto"><span>Our Experience.</span> Your Advantage.</p>
+    <p class="fca">Advantage Financial Solutions · FCA 965036</p>
+    <p class="legal">
+        Based in Bristol — advising clients across the UK. Introducer commission shares are paid
+        in line with FCA rules and fully documented for your records. The advice given to your
+        clients is independent, whole-of-market, and free of charge to them. If a policy is
+        arranged, Advantage FS is paid commission by the provider — never by your client.
+    </p>
+    <p class="ref">&copy; 2026 Advantage Financial Solutions · FCA 965036 · Company no. 12291836</p>
+    <p class="ref">Introducer Programme · V2.0</p>
+
+    <p class="gh-credit">Site by Gavin Hoffman Web Design</p>
+</footer>
 
 <script>
 (function () {
