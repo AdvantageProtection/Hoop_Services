@@ -7,26 +7,22 @@
 <meta name="description" content="Hoop Recruitment has officially partnered with Advantage Financial Solutions to give every candidate direct, exclusive access to expert, independent mortgage and protection advice.">
 <title>Hoop × Advantage FS — Partnership Service Summary</title>
 
-<!-- ============================================================
-     Made and compiled by Gavin Hoffman
-     Gavin Hoffman Web Design — 2026
-     All rights reserved.
-     ============================================================ -->
-
 <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
 <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
 /* ============================================================
-   HOOP × ADVANTAGE FS · "LIVING DOCUMENT" · V9.3 (editorial)
+   HOOP × ADVANTAGE FS · "LIVING DOCUMENT" · V9 (editorial)
    ------------------------------------------------------------
-   Palette matched to the booking page: warm-grey neutrals with
-   the booking red as the brand accent. Mortgage blue retained
-   for mortgage sections. Logo plates use the signature box
-   shape with a grey hairline border and thicker grey left edge.
+   Same content, structure, sidebar, themes and behaviour as
+   V8.1 — restyled to match the booking page's editorial
+   system: Clash Display headlines, Satoshi body, JetBrains
+   Mono micro-labels, hairline structure instead of shadows.
+   Dual accents retained: brand red (protection/general),
+   mortgage blue (mortgage sections only).
    ============================================================ */
 
 /* ---- Tokens ---- */
@@ -49,29 +45,35 @@
     --rule-strong: #c3c3bd;
     --card: #ffffff;
 
-    /* Brand accent — matches the booking page red */
+    /* Advantage Protection brand colour — the standard accent */
+    --brand: #e91837;
     --accent: #e91837;
     --accent-deep: #b8122c;
-    --accent-wash: rgba(233, 24, 55, 0.07);
+    --accent-wash: rgba(233, 24, 55, 0.08);
     --accent-rule: rgba(233, 24, 55, 0.30);
+    --navy: #3d5a6e;
+    --navy-deep: #2b4354;
 
-    /* Mortgage accent — blue. Mortgage sections only. */
+    /* Mortgage accent — blue. Mortgage sections NEVER use
+       the brand red. */
     --m-accent: #4a72a8;
     --m-accent-deep: #3a5c8a;
     --m-accent-wash: rgba(74, 114, 168, 0.08);
     --m-accent-rule: rgba(74, 114, 168, 0.32);
 
     /* Section CTA colours */
-    --cta-bg: #e91837;
+    --cta-bg: var(--accent-deep);
     --cta-ink: #ffffff;
 
     --success: #0e9f5d;
     --success-deep: #0b7c49;
+    --success-wash: rgba(14, 159, 93, 0.08);
     --success-rule: rgba(14, 159, 93, 0.35);
 
     --font-display: 'Clash Display', system-ui, sans-serif;
     --font-body: 'Satoshi', system-ui, sans-serif;
     --font-serif: 'Instrument Serif', Georgia, serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
     --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -89,20 +91,22 @@
     --card: #141417;
 
     --accent: #ff4d67;
-    --accent-deep: #ff8093;
-    --accent-wash: rgba(255, 77, 103, 0.12);
-    --accent-rule: rgba(255, 77, 103, 0.32);
+    --accent-deep: #ff6a80;
+    --accent-wash: rgba(233, 24, 55, 0.14);
+    --accent-rule: rgba(233, 24, 55, 0.40);
+    --navy: #eaf2f7;
+    --navy-deep: #ffffff;
 
     --m-accent: hsl(210 65% 72%);
     --m-accent-deep: hsl(210 70% 80%);
     --m-accent-wash: hsla(210, 65%, 70%, 0.10);
     --m-accent-rule: hsla(210, 65%, 70%, 0.30);
-
-    --cta-bg: #ff4d67;
-    --cta-ink: #ffffff;
+    --cta-bg: var(--accent);
+    --cta-ink: #141417;
 
     --success: #3fd692;
     --success-deep: #7ce8b8;
+    --success-wash: rgba(63, 214, 146, 0.10);
     --success-rule: rgba(63, 214, 146, 0.32);
 }
 
@@ -127,32 +131,12 @@ body {
 }
 
 img { max-width: 100%; display: block; }
-::selection { background: var(--accent); color: var(--paper); }
+::selection { background: var(--accent); color: #fff; }
 
 :focus-visible {
-    outline: 2px solid var(--ink);
+    outline: 2px solid var(--accent);
     outline-offset: 3px;
     border-radius: 3px;
-}
-
-/* ============================================================
-   LOGO PLATE — signature-style box, grey hairline border,
-   thicker grey left edge. Used for every logo on the page.
-   ============================================================ */
-.logo-plate {
-    display: flex;
-    align-items: center;
-    padding: clamp(16px, 2.2vw, 26px) clamp(20px, 3vw, 34px);
-    background: var(--card);
-    border: 1px solid var(--rule);
-    border-left: 5px solid var(--rule-strong);
-    border-radius: 12px;
-}
-.logo-plate img {
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    object-fit: contain;
 }
 
 /* ============================================================
@@ -225,7 +209,7 @@ img { max-width: 100%; display: block; }
     width: 22px;
     height: 22px;
     border-radius: 50%;
-    border: 2.5px solid var(--ink);
+    border: 2.5px solid var(--navy);
 }
 .loop-mark i:first-child { left: 0; }
 .loop-mark i:last-child {
@@ -284,7 +268,7 @@ img { max-width: 100%; display: block; }
 [data-theme="fun"] .theme-btn .s-spark { display: block; }
 
 /* ============================================================
-   SIDEBAR — uniform links, no sub-level styling
+   SIDEBAR
    ============================================================ */
 .sidebar {
     position: fixed;
@@ -343,16 +327,21 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     line-height: 1.3;
 }
 .side-sub {
-    font-size: 14px;
-    color: var(--ink);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-2);
     margin-top: 4px;
 }
 
 .side-label {
     padding: 26px 24px 12px;
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--ink);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-2);
 }
 
 .side-nav { padding: 0 12px 12px; }
@@ -391,14 +380,29 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 }
 .side-link.active { padding-left: 18px; }
 
+/* Booking sub-links — nested under their service summary entry,
+   same link layout, indented one level */
+.side-link.sub {
+    padding-left: 30px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+}
+.side-link.sub .t {
+    font-size: 13.5px;
+    font-weight: 400;
+}
+
 .side-foot {
     margin: 14px 16px 0;
     padding: 16px 8px 20px;
     border-top: 1px solid var(--rule);
 }
 .side-foot-note {
-    font-size: 13.5px;
-    color: var(--ink);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-2);
 }
 
 /* ============================================================
@@ -462,7 +466,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 }
 
 /* ============================================================
-   HERO — logos in plates, then oversized editorial headline
+   HERO — logos, then oversized editorial headline
    ============================================================ */
 .hero {
     padding-block: clamp(44px, 8vh, 96px) clamp(40px, 6vh, 72px);
@@ -475,46 +479,56 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 .hero-logos {
     display: grid;
     justify-items: start;
-    gap: clamp(18px, 2.6vw, 28px);
+    gap: clamp(20px, 3vw, 34px);
     width: 100%;
     max-width: 760px;
 }
 
-.hero-logo-main-plate img {
-    max-height: clamp(72px, 9vw, 110px);
+.hero-logo-main {
+    width: auto;
+    max-width: min(420px, 82vw);
+    height: auto;
+    max-height: clamp(88px, 11vw, 140px);
+    object-fit: contain;
 }
 
 .hero-logo-pair {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    align-items: stretch;
-    gap: clamp(16px, 3vw, 28px);
+    align-items: center;
+    justify-items: start;
+    gap: clamp(20px, 4vw, 48px);
     width: 100%;
 }
-.hero-logo-pair .logo-plate:last-child { justify-self: end; }
-.hero-logo-pair .logo-plate img {
-    max-height: clamp(52px, 7vw, 84px);
+.hero-logo-pair img:last-child { justify-self: end; }
+.hero-logo-pair img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: clamp(64px, 8.5vw, 104px);
+    object-fit: contain;
 }
 
 @media (max-width: 560px) {
-    .hero-logo-pair { gap: 14px; }
-    .hero-logo-pair .logo-plate { padding: 14px 18px; }
-    .hero-logo-pair .logo-plate img { max-height: 48px; }
+    .hero-logo-pair { gap: 16px; }
+    .hero-logo-pair img { max-height: 56px; }
 }
 
 .eyebrow {
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    font-size: 16px;
-    font-weight: 500;
-    color: var(--ink);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-2);
     margin-bottom: 20px;
 }
 .eyebrow::before {
     content: "";
     width: 26px;
-    height: 2px;
+    height: 1px;
     background: var(--accent);
 }
 
@@ -535,17 +549,18 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     font-style: normal;
     font-weight: 500;
     letter-spacing: -0.02em;
-    color: var(--accent);
+    color: var(--accent-deep);
 }
+[data-theme="dark"] .hero h1 em { color: var(--accent); }
 
 .hero-standfirst {
     max-width: 52ch;
     font-size: clamp(15.5px, 1.35vw, 18px);
     line-height: 1.7;
-    color: var(--ink);
+    color: var(--ink-2);
     text-wrap: pretty;
 }
-.hero-standfirst strong { font-weight: 700; }
+.hero-standfirst strong { color: var(--ink); font-weight: 700; }
 
 /* ============================================================
    SECTIONS
@@ -565,16 +580,17 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     margin-bottom: clamp(26px, 3.6vw, 44px);
 }
 
-/* Stacked brand heading: logo plate left-aligned, title below */
+/* Stacked brand heading: logo left-aligned, title below it */
 .section-head-stacked {
     display: block;
 }
-.section-logo-plate {
-    display: inline-flex;
-    margin-bottom: 18px;
-}
-.section-logo-plate img {
-    max-height: 64px;
+.section-head-stacked .section-logo {
+    width: auto;
+    max-width: min(230px, 60vw);
+    height: auto;
+    max-height: 92px;
+    object-fit: contain;
+    margin-bottom: 14px;
 }
 .section-head-stacked h2 { max-width: none; }
 
@@ -589,34 +605,41 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     max-width: 30ch;
 }
 
-/* Mortgage titles keep the blue */
-.section h2.title-mortgage { color: var(--m-accent); }
+/* Coloured service titles */
+.title-protection { color: var(--accent-deep); }
+.title-mortgage { color: var(--m-accent); }
 
-/* Protection titles carry the booking red */
-.section h2.title-accent { color: var(--accent); }
+/* Heading-scoped rules so they outrank `.section h2` */
+.section h2.title-protection { color: var(--accent-deep); }
+.section h2.title-mortgage { color: var(--m-accent); }
+[data-theme="dark"] .section h2.title-protection { color: var(--accent); }
 
 .section-body {
     display: grid;
     gap: 22px;
 }
 
-/* Subheads: body-sized bold — no intermediate text style */
+/* Subheads: mono kickers with accent colour, uppercase */
 .subhead {
-    font-size: 16px;
-    font-weight: 700;
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     line-height: 1.5;
-    color: var(--ink);
+    color: var(--accent-deep);
     margin-top: 30px;
 }
+[data-theme="dark"] .subhead { color: var(--accent); }
 
 .prose {
     max-width: var(--measure);
     font-size: clamp(15px, 1.15vw, 16.5px);
     line-height: 1.78;
-    color: var(--ink);
+    color: var(--ink-2);
     text-wrap: pretty;
 }
-.prose strong { font-weight: 700; }
+.prose strong { color: var(--ink); font-weight: 700; }
 
 .pullquote {
     position: relative;
@@ -631,8 +654,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     text-wrap: pretty;
 }
 
-/* Signature: the "completely free" callout — the only green
-   on the page, kept for its semantic meaning */
+/* Signature: the "completely free" callout — flat green note */
 .signature {
     display: flex;
     align-items: center;
@@ -641,22 +663,26 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     padding: 18px 22px;
     background: transparent;
     border: 1px solid var(--success-rule);
-    border-left: 5px solid var(--success);
-    border-radius: 12px;
+    border-left: 3px solid var(--success);
+    border-radius: var(--r);
     max-width: var(--measure);
 }
 
 .signature .sig-label {
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--ink);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--success-deep);
 }
 .signature .sig-value {
     display: inline-flex;
     align-items: center;
     gap: 9px;
-    font-size: 16px;
-    font-weight: 700;
+    font-family: var(--font-display);
+    font-size: clamp(16px, 1.5vw, 19px);
+    font-weight: 600;
+    letter-spacing: -0.01em;
     color: var(--ink);
 }
 .signature .sig-check {
@@ -667,9 +693,9 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 }
 
 /* ============================================================
-   MORTGAGE ACCENT · blue
-   Applied to mortgage sections only. Everything else on the
-   page carries the booking red.
+   MORTGAGE ACCENT · booking-button blue
+   Applied to mortgage sections only. The brand colour is
+   NEVER used inside mortgage sections.
    ============================================================ */
 .theme-mortgage {
     --accent: var(--m-accent);
@@ -693,7 +719,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     background: var(--cta-bg);
     color: var(--cta-ink);
     font-family: var(--font-display);
-    font-size: 15px;
+    font-size: 14.5px;
     font-weight: 600;
     letter-spacing: 0.01em;
     text-decoration: none;
@@ -701,7 +727,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 }
 .cta-btn svg { width: 15px; height: 15px; flex: 0 0 auto; }
 .cta-btn:hover {
-    filter: brightness(1.15);
+    filter: brightness(1.12);
     transform: translateY(-1px);
 }
 .cta-btn:active { transform: translateY(0) scale(0.98); }
@@ -729,16 +755,18 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 }
 .keyed .k-title {
     display: block;
-    font-size: 16px;
-    font-weight: 700;
+    font-family: var(--font-display);
+    font-size: 15.5px;
+    font-weight: 600;
+    letter-spacing: -0.008em;
     color: var(--ink);
     margin-bottom: 4px;
 }
 .keyed .k-body {
     display: block;
-    font-size: 15px;
+    font-size: 14.5px;
     line-height: 1.68;
-    color: var(--ink);
+    color: var(--ink-2);
 }
 
 /* ============================================================
@@ -770,10 +798,11 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     margin-bottom: 8px;
     text-wrap: balance;
 }
+[data-theme="dark"] .svc-item h3 { color: var(--m-accent); }
 .svc-item p {
-    font-size: 15px;
+    font-size: 14px;
     line-height: 1.68;
-    color: var(--ink);
+    color: var(--ink-2);
 }
 
 /* ============================================================
@@ -801,7 +830,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     content: "";
     position: absolute;
     inset: 0 auto 0 0;
-    width: 3px;
+    width: 2px;
     background: var(--accent);
     transform: scaleY(0);
     transform-origin: 50% 0;
@@ -811,14 +840,17 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 .aud-card:hover::before { transform: scaleY(1); }
 
 .aud-card .aud-kicker {
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--ink);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-deep);
     margin-bottom: 10px;
 }
+[data-theme="dark"] .aud-card .aud-kicker { color: var(--accent); }
 .aud-card h3 {
     font-family: var(--font-display);
-    font-size: 16px;
+    font-size: 15.5px;
     font-weight: 600;
     letter-spacing: -0.008em;
     line-height: 1.32;
@@ -827,13 +859,13 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     text-wrap: balance;
 }
 .aud-card p {
-    font-size: 15px;
+    font-size: 14px;
     line-height: 1.68;
-    color: var(--ink);
+    color: var(--ink-2);
 }
 
 /* ============================================================
-   PROCESS — numbered steps
+   PROCESS — numbered steps, mono numerals
    ============================================================ */
 .process {
     list-style: none;
@@ -872,31 +904,33 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     border-radius: 50%;
     border: 1px solid var(--rule-strong);
     background: var(--card);
-    font-family: var(--font-display);
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--ink);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--accent-deep);
     transition: background 0.3s, border-color 0.3s, color 0.3s;
 }
 .process li:hover::after {
     background: var(--accent);
     border-color: var(--accent);
-    color: var(--paper);
+    color: #fff;
 }
 
 .process .p-title {
     display: block;
-    font-size: 16px;
-    font-weight: 700;
+    font-family: var(--font-display);
+    font-size: 15.5px;
+    font-weight: 600;
+    letter-spacing: -0.008em;
     color: var(--ink);
     margin-bottom: 5px;
     padding-top: 5px;
 }
 .process .p-body {
     display: block;
-    font-size: 15px;
+    font-size: 14.5px;
     line-height: 1.72;
-    color: var(--ink);
+    color: var(--ink-2);
 }
 
 /* ============================================================
@@ -940,11 +974,25 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 .adviser:hover .adviser-photo img { filter: saturate(1.04); }
 
 .adviser-meta {
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-deep);
     margin-bottom: 10px;
 }
+.adviser-meta::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+}
+
+[data-theme="dark"] .adviser-meta { color: var(--accent); }
 
 .adviser h3 {
     font-family: var(--font-display);
@@ -955,14 +1003,15 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     margin-bottom: 3px;
 }
 .adviser .adviser-role {
-    font-size: 15px;
-    color: var(--ink);
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--ink-2);
     margin-bottom: 14px;
 }
 .adviser p {
-    font-size: 15px;
+    font-size: 14.5px;
     line-height: 1.72;
-    color: var(--ink);
+    color: var(--ink-2);
 }
 
 /* ============================================================
@@ -983,24 +1032,28 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     .fee-row { grid-template-columns: 190px minmax(0, 1fr); align-items: baseline; }
 }
 .fee-row dt {
-    font-size: 16px;
-    font-weight: 700;
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.005em;
     color: var(--ink);
     padding-top: 2px;
 }
 .fee-row dd {
-    font-size: 15px;
+    font-size: 14.5px;
     line-height: 1.7;
-    color: var(--ink);
+    color: var(--ink-2);
 }
-.fee-row dd strong { font-weight: 700; }
+.fee-row dd strong { color: var(--ink); font-weight: 700; }
 
 .fee-row.is-key {
-    background: var(--m-accent-wash);
+    background: var(--accent-wash);
     border-radius: 8px;
     padding-inline: 14px;
     margin-inline: -14px;
 }
+.fee-row.is-key dt { color: var(--accent-deep); font-weight: 600; }
+[data-theme="dark"] .fee-row.is-key dt { color: var(--accent); }
 
 /* ============================================================
    BENTO — flat hairline cards, oversized ghost numerals
@@ -1030,9 +1083,9 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     position: absolute;
     right: -6px;
     bottom: -22px;
-    font-family: var(--font-display);
+    font-family: var(--font-mono);
     font-size: 88px;
-    font-weight: 600;
+    font-weight: 400;
     letter-spacing: -0.05em;
     line-height: 1;
     color: var(--ink);
@@ -1056,9 +1109,9 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 }
 .bento-card p {
     position: relative;
-    font-size: 15px;
+    font-size: 14px;
     line-height: 1.68;
-    color: var(--ink);
+    color: var(--ink-2);
     max-width: 48ch;
 }
 
@@ -1101,7 +1154,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 .rating-card .stars {
     font-size: 16px;
     letter-spacing: 2px;
-    color: var(--ink);
+    color: var(--accent);
 }
 .rating-card .rating-figure .num {
     font-family: var(--font-display);
@@ -1112,27 +1165,32 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     color: var(--ink);
 }
 .rating-card .rating-figure .of {
-    font-size: 14px;
-    color: var(--ink);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-2);
 }
 
 /* ============================================================
-   JUMP LINKS
+   JUMP LINKS — mono underlined links
    ============================================================ */
 .jump {
     display: inline-flex;
     align-items: center;
     gap: 7px;
-    font-size: 16px;
+    font-family: var(--font-body);
+    font-size: 14.5px;
     font-weight: 700;
-    color: var(--ink);
+    color: var(--accent-deep);
     text-decoration: none;
     padding-bottom: 2px;
-    border-bottom: 1px solid var(--rule-strong);
-    transition: border-color 0.2s, gap 0.24s var(--ease-out);
+    border-bottom: 1px solid var(--accent-rule);
+    transition: color 0.2s, border-color 0.2s, gap 0.24s var(--ease-out);
 }
-.jump:hover { border-bottom-color: var(--accent); gap: 11px; }
-.jump svg { width: 15px; height: 15px; }
+.jump:hover { color: var(--accent); border-bottom-color: var(--accent); gap: 11px; }
+.jump svg { width: 13px; height: 13px; }
+[data-theme="dark"] .jump { color: var(--accent); }
 
 /* ============================================================
    COLOPHON
@@ -1156,19 +1214,22 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     color: var(--ink);
     margin-bottom: 8px;
 }
-.colophon .motto span { color: var(--accent); }
+.colophon .motto span { color: var(--accent-deep); }
+[data-theme="dark"] .colophon .motto span { color: var(--accent); }
 
 .colophon .fca {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 700;
     color: var(--ink);
     margin-bottom: 12px;
 }
+.colophon .fca strong { color: var(--accent-deep); font-weight: 700; }
+[data-theme="dark"] .colophon .fca strong { color: var(--accent); }
 
 .colophon .legal {
-    font-size: 13.5px;
+    font-size: 13px;
     line-height: 1.7;
-    color: var(--ink);
+    color: var(--ink-2);
     max-width: 62ch;
 }
 
@@ -1180,27 +1241,22 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 @media (min-width: 760px) { .colophon .foot-right { justify-items: end; text-align: right; } }
 
 .colophon a.site {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 700;
-    color: var(--ink);
+    color: var(--accent-deep);
     text-decoration: none;
-    border-bottom: 1px solid var(--rule-strong);
+    border-bottom: 1px solid var(--accent-rule);
     padding-bottom: 2px;
 }
-.colophon a.site:hover { border-bottom-color: var(--accent); }
+.colophon a.site:hover { color: var(--accent); border-bottom-color: var(--accent); }
+[data-theme="dark"] .colophon a.site { color: var(--accent); }
 
 .colophon .ref {
-    font-size: 13.5px;
-    color: var(--ink);
-}
-
-/* Tiny designer credit — right at the very bottom */
-.gh-credit {
-    margin-top: 18px;
-    font-size: 10px;
-    letter-spacing: 0.04em;
-    color: var(--ink);
-    opacity: 0.35;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-2);
 }
 
 /* ============================================================
@@ -1223,12 +1279,12 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     --accent-deep: #cf0f74;
     --accent-wash: rgba(255, 45, 146, 0.10);
     --accent-rule: rgba(255, 45, 146, 0.32);
-
-    --cta-bg: #cf0f74;
-    --cta-ink: #ffffff;
+    --navy: #6d28d9;
+    --navy-deep: #4c1d95;
 
     --success: #00b374;
     --success-deep: #00855a;
+    --success-wash: rgba(0, 179, 116, 0.10);
     --success-rule: rgba(0, 179, 116, 0.35);
 }
 
@@ -1255,7 +1311,6 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 [data-theme="fun"] .side-doc { border-radius: 16px; }
 [data-theme="fun"] .side-link { border-radius: 999px; }
 [data-theme="fun"] .side-link.active { padding-left: 12px; }
-[data-theme="fun"] .logo-plate { border-radius: 20px; }
 [data-theme="fun"] .aud-card { border-radius: 20px; }
 [data-theme="fun"] .svc-item { border-radius: 20px; }
 [data-theme="fun"] .bento-card { border-radius: 20px; }
@@ -1369,13 +1424,13 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
         <a class="side-link" href="#protection-service" data-spy="protection-service">
             <span class="t">Protection Service Summary</span>
         </a>
-        <a class="side-link" href="#book-protection">
+        <a class="side-link sub" href="https://advantageprotection.github.io/Hoop_Services/booking_page_protection.html" target="_blank" rel="noopener">
             <span class="t">Book Your Protection Appointment</span>
         </a>
         <a class="side-link" href="#mortgage-service" data-spy="mortgage-service">
             <span class="t">Mortgage Service Summary</span>
         </a>
-        <a class="side-link" href="#book-mortgage">
+        <a class="side-link sub" href="booking_page_mortgage.html" target="_blank" rel="noopener">
             <span class="t">Book Your Mortgage Appointment</span>
         </a>
         <a class="side-link" href="#why-choose" data-spy="why-choose">
@@ -1384,7 +1439,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     </nav>
 
     <div class="side-foot">
-        <p class="side-foot-note">Service Summary &middot; V9.3</p>
+        <p class="side-foot-note">Service Summary &middot; V9</p>
     </div>
 </aside>
 
@@ -1427,16 +1482,10 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     <!-- ============ HERO / OVERVIEW ============ -->
     <section class="hero" id="overview">
         <div class="hero-logos reveal-soft">
-            <div class="logo-plate hero-logo-main-plate">
-                <img src="oop.png" alt="Hoop Recruitment" decoding="async">
-            </div>
+            <img class="hero-logo-main" src="oop.png" alt="Hoop Recruitment" decoding="async">
             <div class="hero-logo-pair">
-                <div class="logo-plate">
-                    <img src="bbb.png" alt="Advantage Protection" decoding="async">
-                </div>
-                <div class="logo-plate">
-                    <img src="aaa.png" alt="Advantage Mortgage Advice" decoding="async">
-                </div>
+                <img src="bbb.png" alt="Advantage Protection" decoding="async">
+                <img src="aaa.png" alt="Advantage Mortgage Advice" decoding="async">
             </div>
         </div>
 
@@ -1455,7 +1504,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     <!-- ============ PROTECTION ADVICE (INTRO) ============ -->
     <section class="section" id="protection" data-spy-as="protection-service">
         <div class="section-head">
-            <h2 class="title-accent">Protection advice for locums &amp; contractors</h2>
+            <h2><span class="title-protection">Protection</span> advice for locums &amp; contractors</h2>
         </div>
 
         <div class="section-body">
@@ -1479,7 +1528,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     <!-- ============ MORTGAGE ADVICE (INTRO) ============ -->
     <section class="section theme-mortgage" id="mortgage-advice" data-spy-as="mortgage-service">
         <div class="section-head">
-            <h2 class="title-mortgage">Mortgage advice for locums &amp; contractors</h2>
+            <h2><span class="title-mortgage">Mortgage</span> advice for locums &amp; contractors</h2>
         </div>
 
         <div class="section-body">
@@ -1502,10 +1551,8 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     <!-- ============ PROTECTION SERVICE ============ -->
     <section class="section" id="protection-service">
         <div class="section-head section-head-stacked">
-            <div class="logo-plate section-logo-plate">
-                <img src="bbb.png" alt="Advantage Protection" loading="lazy" decoding="async">
-            </div>
-            <h2 class="title-accent">Protection Service Summary</h2>
+            <img class="section-logo" src="bbb.png" alt="Advantage Protection" loading="lazy" decoding="async">
+            <h2 class="title-protection">Protection Service Summary</h2>
         </div>
 
         <div class="section-body">
@@ -1531,7 +1578,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
                 </span>
             </div>
 
-            <p class="cta-row reveal" id="book-protection">
+            <p class="cta-row reveal">
                 <a class="cta-btn"
                    href="https://advantageprotection.github.io/Hoop_Services/booking_page_protection.html">
                     Book your Protection appointment
@@ -1637,9 +1684,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     <!-- ============ MORTGAGE SERVICE ============ -->
     <section class="section theme-mortgage" id="mortgage-service">
         <div class="section-head section-head-stacked">
-            <div class="logo-plate section-logo-plate">
-                <img src="aaa.png" alt="Advantage Mortgage Advice" loading="lazy" decoding="async">
-            </div>
+            <img class="section-logo" src="aaa.png" alt="Advantage Mortgage Advice" loading="lazy" decoding="async">
             <h2 class="title-mortgage">Mortgage Service Summary</h2>
         </div>
 
@@ -1699,7 +1744,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
                 </div>
             </dl>
 
-            <p class="cta-row reveal" id="book-mortgage">
+            <p class="cta-row reveal">
                 <a class="cta-btn"
                    href="booking_page_mortgage.html">
                     Book your Mortgage appointment
@@ -1862,8 +1907,8 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     <footer class="colophon">
         <div class="colophon-grid">
             <div>
-                <p class="motto"><span>Our Experience.</span> Your Advantage.</p>
-                <p class="fca">Advantage Financial Solutions · FCA 965036</p>
+                <p class="motto">Our Experience. <span>Your Advantage.</span></p>
+                <p class="fca">Advantage Financial Solutions · <strong>FCA 965036</strong></p>
                 <p class="legal">
                     Provided in partnership with Hoop Recruitment. Based in Bristol — advising clients
                     across the UK. Your home may be repossessed if you do not keep up repayments on your
@@ -1876,13 +1921,11 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 
             <div class="foot-right">
                 <a class="site" href="https://advantagefs.co.uk" target="_blank" rel="noopener">advantagefs.co.uk</a>
-                <p class="ref">Service summary &middot; V9.3</p>
+                <p class="ref">Service summary &middot; V9</p>
                 <p class="ref">&copy; 2026 Advantage Financial Solutions</p>
                 <p class="ref">FCA 965036 · Company no. 12291836</p>
             </div>
         </div>
-
-        <p class="gh-credit">Site by Gavin Hoffman Web Design</p>
     </footer>
 
 </main>
