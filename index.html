@@ -3,26 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#fafbfc">
+<meta name="theme-color" content="#f6f6f4">
 <meta name="description" content="Hoop Recruitment has officially partnered with Advantage Financial Solutions to give every candidate direct, exclusive access to expert, independent mortgage and protection advice.">
 <title>Hoop × Advantage FS — Partnership Service Summary</title>
 
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
 /* ============================================================
-   HOOP × ADVANTAGE FS · "LIVING DOCUMENT" · V8
+   HOOP × ADVANTAGE FS · "LIVING DOCUMENT" · V9 (editorial)
    ------------------------------------------------------------
-   V8.1 edits:
-   - Sidebar: "Book Your Protection Appointment" nested under
-     Protection Service Summary, and "Book Your Mortgage
-     Appointment" nested under Mortgage Service Summary.
-   - Hero guide title now uses the standard display font.
-   - Fixed specificity clash so the Protection Service Summary
-     heading renders in the brand colour and the Mortgage
-     Service Summary heading renders in the mortgage blue.
+   Same content, structure, sidebar, themes and behaviour as
+   V8.1 — restyled to match the booking page's editorial
+   system: Clash Display headlines, Satoshi body, JetBrains
+   Mono micro-labels, hairline structure instead of shadows.
+   Dual accents retained: brand red (protection/general),
+   mortgage blue (mortgage sections only).
    ============================================================ */
 
 /* ---- Tokens ---- */
@@ -33,31 +33,32 @@
     --gutter: clamp(20px, 5vw, 72px);
     --measure: 74ch;
     --mast-h: 68px;
+    --r: 10px;
 
-    --paper: #fafbfc;
-    --paper-2: #f2f5f7;
-    --ink: #222222;      /* uniform darkest grey for ALL text */
-    --ink-2: #222222;
-    --ink-3: #222222;
-    --ink-4: #222222;
-    --rule: #dfe6ec;
-    --rule-strong: #c4d2dc;
+    --paper: #f6f6f4;
+    --paper-2: #ecece9;
+    --ink: #0e0e10;      /* uniform darkest for ALL text */
+    --ink-2: #0e0e10;
+    --ink-3: #0e0e10;
+    --ink-4: #0e0e10;
+    --rule: #dcdcd8;
+    --rule-strong: #c3c3bd;
     --card: #ffffff;
 
     /* Advantage Protection brand colour — the standard accent */
     --brand: #e91837;
     --accent: #e91837;
     --accent-deep: #b8122c;
-    --accent-wash: rgba(233, 24, 55, 0.10);
+    --accent-wash: rgba(233, 24, 55, 0.08);
     --accent-rule: rgba(233, 24, 55, 0.30);
     --navy: #3d5a6e;
     --navy-deep: #2b4354;
 
-    /* Mortgage accent — matches the "Book an appointment" button blue.
-       Mortgage sections NEVER use the brand purple/red. */
+    /* Mortgage accent — blue. Mortgage sections NEVER use
+       the brand red. */
     --m-accent: #4a72a8;
     --m-accent-deep: #3a5c8a;
-    --m-accent-wash: rgba(74, 114, 168, 0.10);
+    --m-accent-wash: rgba(74, 114, 168, 0.08);
     --m-accent-rule: rgba(74, 114, 168, 0.32);
 
     /* Section CTA colours */
@@ -66,10 +67,11 @@
 
     --success: #0e9f5d;
     --success-deep: #0b7c49;
-    --success-wash: rgba(14, 159, 93, 0.10);
-    --success-rule: rgba(14, 159, 93, 0.38);
+    --success-wash: rgba(14, 159, 93, 0.08);
+    --success-rule: rgba(14, 159, 93, 0.35);
 
-    --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+    --font-display: 'Clash Display', system-ui, sans-serif;
+    --font-body: 'Satoshi', system-ui, sans-serif;
     --font-serif: 'Instrument Serif', Georgia, serif;
     --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
@@ -78,34 +80,34 @@
 
 [data-theme="dark"] {
     color-scheme: dark;
-    --paper: #0c1419;
-    --paper-2: #111d25;
-    --ink: #eaf2f7;
-    --ink-2: #dbe4ea;
-    --ink-3: #dbe4ea;
-    --ink-4: #dbe4ea;
-    --rule: #1e2f3b;
-    --rule-strong: #2c4353;
-    --card: #101c24;
+    --paper: #0e0e10;
+    --paper-2: #17171a;
+    --ink: #f2f2ef;
+    --ink-2: #f2f2ef;
+    --ink-3: #f2f2ef;
+    --ink-4: #f2f2ef;
+    --rule: #26262b;
+    --rule-strong: #3a3a41;
+    --card: #141417;
 
     --accent: #ff4d67;
     --accent-deep: #ff6a80;
-    --accent-wash: rgba(233, 24, 55, 0.16);
+    --accent-wash: rgba(233, 24, 55, 0.14);
     --accent-rule: rgba(233, 24, 55, 0.40);
     --navy: #eaf2f7;
     --navy-deep: #ffffff;
 
     --m-accent: hsl(210 65% 72%);
     --m-accent-deep: hsl(210 70% 80%);
-    --m-accent-wash: hsla(210, 65%, 70%, 0.12);
+    --m-accent-wash: hsla(210, 65%, 70%, 0.10);
     --m-accent-rule: hsla(210, 65%, 70%, 0.30);
     --cta-bg: var(--accent);
-    --cta-ink: #101c24;
+    --cta-ink: #141417;
 
     --success: #3fd692;
     --success-deep: #7ce8b8;
-    --success-wash: rgba(63, 214, 146, 0.12);
-    --success-rule: rgba(63, 214, 146, 0.35);
+    --success-wash: rgba(63, 214, 146, 0.10);
+    --success-rule: rgba(63, 214, 146, 0.32);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -117,7 +119,7 @@ html {
 }
 
 body {
-    font-family: var(--font-display);
+    font-family: var(--font-body);
     font-size: 16px;
     line-height: 1.65;
     color: var(--ink);
@@ -129,7 +131,7 @@ body {
 }
 
 img { max-width: 100%; display: block; }
-::selection { background: var(--accent-wash); color: var(--ink); }
+::selection { background: var(--accent); color: #fff; }
 
 :focus-visible {
     outline: 2px solid var(--accent);
@@ -143,8 +145,8 @@ img { max-width: 100%; display: block; }
 .scroll-progress {
     position: fixed;
     inset: 0 0 auto 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent), var(--navy));
+    height: 2px;
+    background: var(--accent);
     transform: scaleX(0);
     transform-origin: 0 50%;
     z-index: 300;
@@ -173,9 +175,9 @@ img { max-width: 100%; display: block; }
     gap: 16px;
     padding: 0 var(--gutter);
     height: var(--mast-h);
-    background: color-mix(in srgb, var(--paper) 82%, transparent);
-    backdrop-filter: blur(20px) saturate(1.8);
-    -webkit-backdrop-filter: blur(20px) saturate(1.8);
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(20px) saturate(1.4);
+    -webkit-backdrop-filter: blur(20px) saturate(1.4);
     border-bottom: 1px solid var(--rule);
 }
 
@@ -219,9 +221,9 @@ img { max-width: 100%; display: block; }
 
 .mast-title {
     font-family: var(--font-display);
-    font-size: 14px;
-    font-weight: 650;
-    letter-spacing: -0.015em;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
     color: var(--ink);
     white-space: nowrap;
     overflow: hidden;
@@ -247,21 +249,18 @@ img { max-width: 100%; display: block; }
     display: inline-grid;
     place-items: center;
     border: 1px solid var(--rule);
-    border-radius: 10px;
+    border-radius: var(--r);
     background: transparent;
     color: var(--ink);
     cursor: pointer;
-    transition: color 0.18s, background 0.18s, border-color 0.18s, transform 0.18s;
+    transition: color 0.18s, background 0.18s, border-color 0.18s;
 }
 .icon-btn:hover {
     color: var(--ink);
     background: var(--paper-2);
     border-color: var(--rule-strong);
 }
-.icon-btn:active { transform: scale(0.94); }
 .icon-btn svg { width: 17px; height: 17px; }
-[data-theme="dark"] .icon-btn { border-color: var(--rule-strong); background: rgba(255,255,255,0.04); color: var(--ink-2); }
-[data-theme="dark"] .icon-btn:hover { background: rgba(255,255,255,0.09); color: #fff; }
 
 .theme-btn svg { display: none; }
 [data-theme="light"] .theme-btn .s-sun { display: block; }
@@ -278,9 +277,9 @@ img { max-width: 100%; display: block; }
     left: 0;
     width: var(--side-w);
     z-index: 190;
-    background: color-mix(in srgb, var(--paper) 88%, transparent);
-    backdrop-filter: blur(20px) saturate(1.8);
-    -webkit-backdrop-filter: blur(20px) saturate(1.8);
+    background: color-mix(in srgb, var(--paper) 92%, transparent);
+    backdrop-filter: blur(20px) saturate(1.4);
+    -webkit-backdrop-filter: blur(20px) saturate(1.4);
     border-right: 1px solid var(--rule);
     transform: translateX(-100%);
     transition: transform 0.42s var(--ease-out);
@@ -312,8 +311,8 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     margin: 16px 16px 0;
     padding: 16px;
     border: 1px solid var(--rule);
-    border-radius: 12px;
-    background: color-mix(in srgb, var(--card) 55%, transparent);
+    border-radius: var(--r);
+    background: transparent;
 }
 
 .side-doc .loop-mark { width: 30px; height: 20px; }
@@ -322,28 +321,27 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 .side-title {
     font-family: var(--font-display);
     font-size: 16px;
-    font-weight: 700;
-    letter-spacing: -0.012em;
+    font-weight: 600;
+    letter-spacing: -0.01em;
     color: var(--ink);
     line-height: 1.3;
 }
 .side-sub {
-    font-family: var(--font-display);
-    font-size: 13px;
-    letter-spacing: 0;
-    text-transform: none;
-    color: var(--ink);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-2);
     margin-top: 4px;
 }
 
 .side-label {
     padding: 26px 24px 12px;
-    font-family: var(--font-display);
-    font-size: 15px;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    text-transform: none;
-    color: var(--ink);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-2);
 }
 
 .side-nav { padding: 0 12px 12px; }
@@ -351,22 +349,22 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 .side-link {
     position: relative;
     display: block;
-    padding: 14px 14px;
-    border-radius: 9px;
+    padding: 12px 14px;
+    border-radius: 8px;
     text-decoration: none;
     color: var(--ink);
     transition: color 0.2s, background 0.2s, padding-left 0.24s var(--ease-out);
 }
 .side-link:hover {
     color: var(--ink);
-    background: color-mix(in srgb, var(--paper-2) 70%, transparent);
+    background: var(--paper-2);
 }
 .side-link .t {
     display: block;
     font-family: var(--font-display);
-    font-size: 15.5px;
-    font-weight: 600;
-    letter-spacing: -0.012em;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: -0.008em;
     line-height: 1.45;
 }
 
@@ -377,8 +375,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     left: 0;
     top: 12px;
     bottom: 12px;
-    width: 3px;
-    border-radius: 2px;
+    width: 2px;
     background: var(--accent);
 }
 .side-link.active { padding-left: 18px; }
@@ -387,13 +384,12 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
    same link layout, indented one level */
 .side-link.sub {
     padding-left: 30px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 9px;
+    padding-bottom: 9px;
 }
 .side-link.sub .t {
-    font-size: 14px;
-    font-weight: 550;
-    letter-spacing: -0.008em;
+    font-size: 13.5px;
+    font-weight: 400;
 }
 
 .side-foot {
@@ -402,11 +398,11 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     border-top: 1px solid var(--rule);
 }
 .side-foot-note {
-    font-family: var(--font-display);
-    font-size: 12px;
-    letter-spacing: 0;
-    text-transform: none;
-    color: var(--ink);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-2);
 }
 
 /* ============================================================
@@ -438,7 +434,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     height: 100%;
     transform-origin: 50% 0;
     transform: scaleY(0);
-    background: linear-gradient(180deg, var(--accent), var(--navy));
+    background: var(--accent);
 }
 
 @supports (animation-timeline: scroll()) {
@@ -466,11 +462,11 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 }
 
 @media (max-width: 1079px) {
-    .sidebar { width: min(var(--side-w), 86vw); box-shadow: 0 24px 60px -24px rgba(28,47,61,0.35); }
+    .sidebar { width: min(var(--side-w), 86vw); box-shadow: 0 24px 60px -24px rgba(14,14,16,0.30); }
 }
 
 /* ============================================================
-   HERO — clean central logo stack (no wobbly plate)
+   HERO — logos, then oversized editorial headline
    ============================================================ */
 .hero {
     padding-block: clamp(44px, 8vh, 96px) clamp(40px, 6vh, 72px);
@@ -521,49 +517,47 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 .eyebrow {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    font-family: var(--font-display);
-    font-size: 15px;
-    font-weight: 500;
-    letter-spacing: 0;
-    text-transform: none;
-    color: var(--ink);
+    gap: 12px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-2);
     margin-bottom: 20px;
 }
 .eyebrow::before {
     content: "";
     width: 26px;
-    height: 2px;
+    height: 1px;
     background: var(--accent);
 }
 
 .hero h1 {
     font-family: var(--font-display);
-    font-size: clamp(34px, 5.4vw, 62px);
-    font-weight: 700;
-    line-height: 1.04;
-    letter-spacing: -0.032em;
+    font-size: clamp(36px, 5.6vw, 72px);
+    font-weight: 600;
+    line-height: 1.0;
+    letter-spacing: -0.025em;
     color: var(--ink);
     text-wrap: balance;
     margin-bottom: 24px;
 }
 
-/* V8.1: guide title now uses the same display font as everything
-   else (was Instrument Serif italic) */
 .hero h1 em {
     display: block;
     font-family: var(--font-display);
     font-style: normal;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: -0.02em;
     color: var(--accent-deep);
 }
+[data-theme="dark"] .hero h1 em { color: var(--accent); }
 
 .hero-standfirst {
     max-width: 52ch;
     font-size: clamp(15.5px, 1.35vw, 18px);
-    line-height: 1.65;
-    color: var(--ink);
+    line-height: 1.7;
+    color: var(--ink-2);
     text-wrap: pretty;
 }
 .hero-standfirst strong { color: var(--ink); font-weight: 700; }
@@ -602,10 +596,10 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 
 .section h2 {
     font-family: var(--font-display);
-    font-size: clamp(24px, 3.2vw, 38px);
-    font-weight: 700;
-    line-height: 1.1;
-    letter-spacing: -0.028em;
+    font-size: clamp(26px, 3.4vw, 44px);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
     color: var(--ink);
     text-wrap: balance;
     max-width: 30ch;
@@ -614,11 +608,8 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 /* Coloured service titles */
 .title-protection { color: var(--accent-deep); }
 .title-mortgage { color: var(--m-accent); }
-[data-theme="dark"] .title-protection { color: var(--accent); }
 
-/* V8.1: heading-scoped rules so they outrank `.section h2` —
-   previously `.section h2` (0,1,1) beat `.title-protection`
-   (0,1,0), so the big Summary headings stayed default ink */
+/* Heading-scoped rules so they outrank `.section h2` */
 .section h2.title-protection { color: var(--accent-deep); }
 .section h2.title-mortgage { color: var(--m-accent); }
 [data-theme="dark"] .section h2.title-protection { color: var(--accent); }
@@ -628,25 +619,24 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     gap: 22px;
 }
 
-/* Subheads: bold accent headings */
+/* Subheads: mono kickers with accent colour, uppercase */
 .subhead {
-    font-family: var(--font-display);
-    font-size: clamp(19px, 2vw, 23px);
-    font-weight: 720;
-    letter-spacing: -0.02em;
-    line-height: 1.25;
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    line-height: 1.5;
     color: var(--accent-deep);
-    margin-top: 26px;
-    text-wrap: balance;
+    margin-top: 30px;
 }
 [data-theme="dark"] .subhead { color: var(--accent); }
-[data-theme="fun"] .subhead { color: var(--accent-deep); }
 
 .prose {
     max-width: var(--measure);
     font-size: clamp(15px, 1.15vw, 16.5px);
     line-height: 1.78;
-    color: var(--ink);
+    color: var(--ink-2);
     text-wrap: pretty;
 }
 .prose strong { color: var(--ink); font-weight: 700; }
@@ -657,34 +647,32 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     padding-left: 26px;
     border-left: 2px solid var(--accent);
     font-family: var(--font-serif);
-    font-size: clamp(20px, 2.4vw, 27px);
+    font-size: clamp(22px, 2.6vw, 30px);
     font-style: italic;
-    line-height: 1.42;
+    line-height: 1.38;
     color: var(--ink);
     text-wrap: pretty;
 }
 
-/* Signature: the "completely free" callout — green, loud */
+/* Signature: the "completely free" callout — flat green note */
 .signature {
     display: flex;
     align-items: center;
     gap: 16px;
     flex-wrap: wrap;
-    padding: 20px 24px;
-    background: linear-gradient(90deg, var(--success-wash), transparent 78%);
+    padding: 18px 22px;
+    background: transparent;
     border: 1px solid var(--success-rule);
-    border-left: 5px solid var(--success);
-    border-radius: 14px;
+    border-left: 3px solid var(--success);
+    border-radius: var(--r);
     max-width: var(--measure);
-    box-shadow: 0 8px 22px -14px rgba(14, 159, 93, 0.45);
 }
 
 .signature .sig-label {
-    font-family: var(--font-display);
-    font-size: 15px;
-    font-weight: 700;
-    letter-spacing: 0;
-    text-transform: none;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     color: var(--success-deep);
 }
 .signature .sig-value {
@@ -692,24 +680,22 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     align-items: center;
     gap: 9px;
     font-family: var(--font-display);
-    font-size: clamp(16.5px, 1.5vw, 19px);
-    font-weight: 720;
-    letter-spacing: -0.015em;
+    font-size: clamp(16px, 1.5vw, 19px);
+    font-weight: 600;
+    letter-spacing: -0.01em;
     color: var(--ink);
 }
 .signature .sig-check {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     flex: 0 0 auto;
     color: var(--success);
 }
-[data-theme="dark"] .signature .sig-label { color: var(--success-deep); }
 
 /* ============================================================
    MORTGAGE ACCENT · booking-button blue
-   Applied to mortgage sections only. Protection and general
-   elements keep the Advantage brand colour. The brand colour
-   is NEVER used inside mortgage sections.
+   Applied to mortgage sections only. The brand colour is
+   NEVER used inside mortgage sections.
    ============================================================ */
 .theme-mortgage {
     --accent: var(--m-accent);
@@ -728,24 +714,21 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     display: inline-flex;
     align-items: center;
     gap: 11px;
-    padding: 15px 28px;
-    border-radius: 999px;
+    padding: 14px 26px;
+    border-radius: var(--r);
     background: var(--cta-bg);
     color: var(--cta-ink);
     font-family: var(--font-display);
     font-size: 14.5px;
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: 0.01em;
-    text-transform: none;
     text-decoration: none;
-    box-shadow: 0 14px 28px -14px rgba(28, 47, 61, 0.45);
-    transition: transform 0.24s var(--ease-out), box-shadow 0.24s, filter 0.2s;
+    transition: filter 0.2s, transform 0.2s var(--ease-out);
 }
 .cta-btn svg { width: 15px; height: 15px; flex: 0 0 auto; }
 .cta-btn:hover {
-    transform: translateY(-2px);
-    filter: brightness(0.93);
-    box-shadow: 0 18px 34px -14px rgba(28, 47, 61, 0.55);
+    filter: brightness(1.12);
+    transform: translateY(-1px);
 }
 .cta-btn:active { transform: translateY(0) scale(0.98); }
 
@@ -772,9 +755,10 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 }
 .keyed .k-title {
     display: block;
+    font-family: var(--font-display);
     font-size: 15.5px;
-    font-weight: 650;
-    letter-spacing: -0.012em;
+    font-weight: 600;
+    letter-spacing: -0.008em;
     color: var(--ink);
     margin-bottom: 4px;
 }
@@ -782,15 +766,15 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     display: block;
     font-size: 14.5px;
     line-height: 1.68;
-    color: var(--ink);
+    color: var(--ink-2);
 }
 
 /* ============================================================
-   SERVICE OVERVIEW (Mortgage) — two-column plain-English grid
+   SERVICE OVERVIEW (Mortgage) — flat hairline grid
    ============================================================ */
 .svc-overview {
     display: grid;
-    gap: 14px;
+    gap: 12px;
     margin-top: 6px;
 }
 @media (min-width: 700px) {
@@ -800,18 +784,15 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     padding: 20px 20px 22px;
     background: var(--card);
     border: 1px solid var(--rule);
-    border-radius: 14px;
-    transition: border-color 0.3s, box-shadow 0.3s, transform 0.32s var(--ease-out);
+    border-radius: var(--r);
+    transition: border-color 0.25s;
 }
-.svc-item:hover {
-    border-color: var(--rule-strong);
-    box-shadow: 0 12px 30px -14px rgba(28,47,61,0.24);
-    transform: translateY(-3px);
-}
+.svc-item:hover { border-color: var(--rule-strong); }
 .svc-item h3 {
+    font-family: var(--font-display);
     font-size: 16px;
-    font-weight: 680;
-    letter-spacing: -0.014em;
+    font-weight: 600;
+    letter-spacing: -0.008em;
     line-height: 1.3;
     color: var(--m-accent-deep);
     margin-bottom: 8px;
@@ -821,15 +802,15 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 .svc-item p {
     font-size: 14px;
     line-height: 1.68;
-    color: var(--ink);
+    color: var(--ink-2);
 }
 
 /* ============================================================
-   AUDIENCE CARDS
+   AUDIENCE CARDS — flat hairline cards
    ============================================================ */
 .audience {
     display: grid;
-    gap: 14px;
+    gap: 12px;
     margin-top: 6px;
 }
 @media (min-width: 700px) {
@@ -841,9 +822,9 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     padding: 22px 20px 24px;
     background: var(--card);
     border: 1px solid var(--rule);
-    border-radius: 14px;
+    border-radius: var(--r);
     overflow: hidden;
-    transition: transform 0.32s var(--ease-out), border-color 0.32s, box-shadow 0.32s;
+    transition: border-color 0.25s;
 }
 .aud-card::before {
     content: "";
@@ -855,26 +836,23 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     transform-origin: 50% 0;
     transition: transform 0.36s var(--ease-out);
 }
-.aud-card:hover {
-    transform: translateY(-3px);
-    border-color: var(--rule-strong);
-    box-shadow: 0 12px 30px -14px rgba(28,47,61,0.24);
-}
+.aud-card:hover { border-color: var(--rule-strong); }
 .aud-card:hover::before { transform: scaleY(1); }
 
 .aud-card .aud-kicker {
-    font-family: var(--font-display);
-    font-size: 14px;
-    font-weight: 650;
-    letter-spacing: 0;
-    text-transform: none;
-    color: var(--ink);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-deep);
     margin-bottom: 10px;
 }
+[data-theme="dark"] .aud-card .aud-kicker { color: var(--accent); }
 .aud-card h3 {
+    font-family: var(--font-display);
     font-size: 15.5px;
-    font-weight: 650;
-    letter-spacing: -0.014em;
+    font-weight: 600;
+    letter-spacing: -0.008em;
     line-height: 1.32;
     color: var(--ink);
     margin-bottom: 8px;
@@ -883,11 +861,11 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 .aud-card p {
     font-size: 14px;
     line-height: 1.68;
-    color: var(--ink);
+    color: var(--ink-2);
 }
 
 /* ============================================================
-   PROCESS — animated step numbers kept, in brand colour
+   PROCESS — numbered steps, mono numerals
    ============================================================ */
 .process {
     list-style: none;
@@ -909,13 +887,13 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     left: 17px;
     top: 30px;
     bottom: -6px;
-    width: 2px;
-    background: linear-gradient(180deg, var(--accent-rule), transparent);
+    width: 1px;
+    background: var(--rule);
 }
 .process li:last-child::before { display: none; }
 
 .process li::after {
-    content: counter(step);
+    content: counter(step, decimal-leading-zero);
     position: absolute;
     left: 0;
     top: 0;
@@ -924,26 +902,26 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     display: grid;
     place-items: center;
     border-radius: 50%;
-    border: 1.5px solid var(--accent-rule);
+    border: 1px solid var(--rule-strong);
     background: var(--card);
-    font-family: var(--font-display);
-    font-size: 14px;
-    font-weight: 700;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
     color: var(--accent-deep);
-    transition: background 0.3s, border-color 0.3s, color 0.3s, transform 0.3s var(--ease-out);
+    transition: background 0.3s, border-color 0.3s, color 0.3s;
 }
 .process li:hover::after {
     background: var(--accent);
     border-color: var(--accent);
     color: #fff;
-    transform: scale(1.06);
 }
 
 .process .p-title {
     display: block;
+    font-family: var(--font-display);
     font-size: 15.5px;
-    font-weight: 640;
-    letter-spacing: -0.014em;
+    font-weight: 600;
+    letter-spacing: -0.008em;
     color: var(--ink);
     margin-bottom: 5px;
     padding-top: 5px;
@@ -952,11 +930,11 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     display: block;
     font-size: 14.5px;
     line-height: 1.72;
-    color: var(--ink);
+    color: var(--ink-2);
 }
 
 /* ============================================================
-   ADVISER
+   ADVISER — flat hairline panel
    ============================================================ */
 .adviser {
     display: grid;
@@ -966,7 +944,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     padding: 24px;
     background: var(--card);
     border: 1px solid var(--rule);
-    border-radius: 16px;
+    border-radius: var(--r);
     margin-top: 8px;
 }
 
@@ -979,10 +957,10 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     width: 100%;
     max-width: 132px;
     aspect-ratio: 3 / 4;
-    border-radius: 10px;
+    border-radius: 8px;
     overflow: hidden;
     background: var(--paper-2);
-    box-shadow: 0 10px 26px -12px rgba(28,47,61,0.34);
+    border: 1px solid var(--rule);
 }
 
 .adviser-photo img {
@@ -991,22 +969,18 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     object-fit: cover;
     object-position: center 12%;
     filter: saturate(0.96);
-    transition: filter 0.4s, transform 0.6s var(--ease-out);
+    transition: filter 0.4s;
 }
-.adviser:hover .adviser-photo img {
-    filter: saturate(1.04);
-    transform: scale(1.03);
-}
+.adviser:hover .adviser-photo img { filter: saturate(1.04); }
 
 .adviser-meta {
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-family: var(--font-display);
-    font-size: 13.5px;
-    font-weight: 600;
-    letter-spacing: 0;
-    text-transform: none;
+    gap: 9px;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     color: var(--accent-deep);
     margin-bottom: 10px;
 }
@@ -1016,31 +990,28 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     height: 6px;
     border-radius: 50%;
     background: var(--accent);
-    box-shadow: 0 0 0 3px var(--accent-wash);
 }
 
 [data-theme="dark"] .adviser-meta { color: var(--accent); }
 
 .adviser h3 {
-    font-size: 21px;
-    font-weight: 700;
-    letter-spacing: -0.024em;
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
     color: var(--ink);
     margin-bottom: 3px;
 }
 .adviser .adviser-role {
-    font-family: var(--font-display);
     font-size: 13.5px;
     font-weight: 500;
-    letter-spacing: 0;
-    text-transform: none;
-    color: var(--ink);
+    color: var(--ink-2);
     margin-bottom: 14px;
 }
 .adviser p {
     font-size: 14.5px;
     line-height: 1.72;
-    color: var(--ink);
+    color: var(--ink-2);
 }
 
 /* ============================================================
@@ -1063,34 +1034,33 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 .fee-row dt {
     font-family: var(--font-display);
     font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0;
-    text-transform: none;
+    font-weight: 600;
+    letter-spacing: -0.005em;
     color: var(--ink);
     padding-top: 2px;
 }
 .fee-row dd {
     font-size: 14.5px;
     line-height: 1.7;
-    color: var(--ink);
+    color: var(--ink-2);
 }
 .fee-row dd strong { color: var(--ink); font-weight: 700; }
 
 .fee-row.is-key {
-    background: linear-gradient(90deg, var(--accent-wash), transparent 70%);
+    background: var(--accent-wash);
     border-radius: 8px;
     padding-inline: 14px;
     margin-inline: -14px;
 }
-.fee-row.is-key dt { color: var(--accent-deep); font-weight: 700; }
+.fee-row.is-key dt { color: var(--accent-deep); font-weight: 600; }
 [data-theme="dark"] .fee-row.is-key dt { color: var(--accent); }
 
 /* ============================================================
-   BENTO
+   BENTO — flat hairline cards, oversized ghost numerals
    ============================================================ */
 .bento {
     display: grid;
-    gap: 14px;
+    gap: 12px;
     margin-top: 6px;
 }
 @media (min-width: 700px) {
@@ -1103,36 +1073,34 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     padding: 26px 24px;
     background: var(--card);
     border: 1px solid var(--rule);
-    border-radius: 16px;
+    border-radius: var(--r);
     overflow: hidden;
-    transition: border-color 0.3s, box-shadow 0.3s;
+    transition: border-color 0.25s;
 }
-.bento-card:hover {
-    border-color: var(--rule-strong);
-    box-shadow: 0 14px 34px -18px rgba(28,47,61,0.22);
-}
+.bento-card:hover { border-color: var(--rule-strong); }
 
 .bento-card .ghost {
     position: absolute;
     right: -6px;
     bottom: -22px;
-    font-family: var(--font-display);
-    font-size: 92px;
-    font-weight: 800;
+    font-family: var(--font-mono);
+    font-size: 88px;
+    font-weight: 400;
     letter-spacing: -0.05em;
     line-height: 1;
     color: var(--ink);
-    opacity: 0.035;
+    opacity: 0.04;
     pointer-events: none;
     user-select: none;
 }
-[data-theme="dark"] .bento-card .ghost { opacity: 0.06; }
+[data-theme="dark"] .bento-card .ghost { opacity: 0.07; }
 
 .bento-card h3 {
     position: relative;
-    font-size: 16px;
-    font-weight: 650;
-    letter-spacing: -0.016em;
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.008em;
     line-height: 1.32;
     color: var(--ink);
     margin-bottom: 9px;
@@ -1143,7 +1111,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     position: relative;
     font-size: 14px;
     line-height: 1.68;
-    color: var(--ink);
+    color: var(--ink-2);
     max-width: 48ch;
 }
 
@@ -1165,22 +1133,16 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     text-decoration: none;
     padding: 8px 14px;
     border: 1px solid var(--rule);
-    border-radius: 999px;
+    border-radius: var(--r);
     background: var(--paper);
-    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s var(--ease-out);
+    transition: border-color 0.2s;
 }
-.g-badge:hover {
-    border-color: var(--rule-strong);
-    box-shadow: 0 6px 16px -8px rgba(28,47,61,0.30);
-    transform: translateY(-1px);
-}
+.g-badge:hover { border-color: var(--rule-strong); }
 .g-badge svg { width: 22px; height: 22px; }
 .g-badge .g-word {
     font-family: var(--font-display);
     font-size: 13px;
     font-weight: 600;
-    letter-spacing: 0;
-    text-transform: none;
     color: var(--ink);
 }
 
@@ -1196,31 +1158,30 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 }
 .rating-card .rating-figure .num {
     font-family: var(--font-display);
-    font-size: 40px;
-    font-weight: 700;
-    letter-spacing: -0.04em;
+    font-size: 42px;
+    font-weight: 600;
+    letter-spacing: -0.03em;
     line-height: 1;
     color: var(--ink);
 }
 .rating-card .rating-figure .of {
-    font-family: var(--font-display);
-    font-size: 13px;
-    letter-spacing: 0;
-    color: var(--ink);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-2);
 }
 
 /* ============================================================
-   JUMP LINKS — regular text in standard brand colour
+   JUMP LINKS — mono underlined links
    ============================================================ */
 .jump {
     display: inline-flex;
     align-items: center;
     gap: 7px;
-    font-family: var(--font-display);
+    font-family: var(--font-body);
     font-size: 14.5px;
-    font-weight: 600;
-    letter-spacing: 0;
-    text-transform: none;
+    font-weight: 700;
     color: var(--accent-deep);
     text-decoration: none;
     padding-bottom: 2px;
@@ -1248,7 +1209,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 
 .colophon .motto {
     font-family: var(--font-serif);
-    font-size: clamp(20px, 2.4vw, 26px);
+    font-size: clamp(22px, 2.6vw, 30px);
     font-style: italic;
     color: var(--ink);
     margin-bottom: 8px;
@@ -1257,11 +1218,8 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 [data-theme="dark"] .colophon .motto span { color: var(--accent); }
 
 .colophon .fca {
-    font-family: var(--font-display);
     font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0;
-    text-transform: none;
+    font-weight: 700;
     color: var(--ink);
     margin-bottom: 12px;
 }
@@ -1271,7 +1229,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 .colophon .legal {
     font-size: 13px;
     line-height: 1.7;
-    color: var(--ink);
+    color: var(--ink-2);
     max-width: 62ch;
 }
 
@@ -1283,23 +1241,22 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 @media (min-width: 760px) { .colophon .foot-right { justify-items: end; text-align: right; } }
 
 .colophon a.site {
-    font-family: var(--font-display);
     font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0;
+    font-weight: 700;
     color: var(--accent-deep);
     text-decoration: none;
     border-bottom: 1px solid var(--accent-rule);
     padding-bottom: 2px;
 }
 .colophon a.site:hover { color: var(--accent); border-bottom-color: var(--accent); }
+[data-theme="dark"] .colophon a.site { color: var(--accent); }
 
 .colophon .ref {
-    font-family: var(--font-display);
-    font-size: 12px;
-    letter-spacing: 0;
-    text-transform: none;
-    color: var(--ink);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-2);
 }
 
 /* ============================================================
@@ -1327,8 +1284,8 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 
     --success: #00b374;
     --success-deep: #00855a;
-    --success-wash: rgba(0, 179, 116, 0.12);
-    --success-rule: rgba(0, 179, 116, 0.38);
+    --success-wash: rgba(0, 179, 116, 0.10);
+    --success-rule: rgba(0, 179, 116, 0.35);
 }
 
 [data-theme="fun"] .scroll-progress {
@@ -1351,17 +1308,18 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 }
 
 [data-theme="fun"] .icon-btn { border-radius: 999px; }
-[data-theme="fun"] .side-doc { border-radius: 18px; }
+[data-theme="fun"] .side-doc { border-radius: 16px; }
 [data-theme="fun"] .side-link { border-radius: 999px; }
 [data-theme="fun"] .side-link.active { padding-left: 12px; }
-[data-theme="fun"] .aud-card { border-radius: 22px; }
-[data-theme="fun"] .svc-item { border-radius: 22px; }
-[data-theme="fun"] .bento-card { border-radius: 22px; }
-[data-theme="fun"] .adviser { border-radius: 22px; }
-[data-theme="fun"] .adviser-photo { border-radius: 18px; }
+[data-theme="fun"] .aud-card { border-radius: 20px; }
+[data-theme="fun"] .svc-item { border-radius: 20px; }
+[data-theme="fun"] .bento-card { border-radius: 20px; }
+[data-theme="fun"] .adviser { border-radius: 20px; }
+[data-theme="fun"] .adviser-photo { border-radius: 14px; }
 [data-theme="fun"] .signature { border-radius: 999px; }
-[data-theme="fun"] .fee-row.is-key { border-radius: 18px; }
+[data-theme="fun"] .fee-row.is-key { border-radius: 16px; }
 [data-theme="fun"] .g-badge { border-radius: 999px; }
+[data-theme="fun"] .cta-btn { border-radius: 999px; }
 
 [data-theme="fun"] .bento-card:nth-of-type(1) .ghost { color: #ff2d92; opacity: 0.13; }
 [data-theme="fun"] .bento-card:nth-of-type(2) .ghost { color: #ff8a00; opacity: 0.13; }
@@ -1419,7 +1377,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     .aud-card { padding: 18px 16px 20px; }
     .svc-item { padding: 18px 16px 20px; }
     .bento-card { padding: 20px 18px; }
-    .bento-card .ghost { font-size: 68px; }
+    .bento-card .ghost { font-size: 64px; }
 }
 
 /* ============================================================
@@ -1433,13 +1391,13 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
     .hero { padding-block: 32px 36px; }
     .section { padding-block: 38px; }
     .adviser { padding: 18px; }
-    .bento-card .ghost { font-size: 64px; }
+    .bento-card .ghost { font-size: 60px; }
     .colophon { padding-block: 30px 36px; }
 }
 
 @media (max-width: 400px) {
     .loop-mark { display: none; }
-    .mast-title { font-size: 13px; }
+    .mast-title { font-size: 14px; }
 }
 </style>
 </head>
@@ -1473,15 +1431,15 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
             <span class="t">Mortgage Service Summary</span>
         </a>
         <a class="side-link sub" href="booking_page_mortgage.html" target="_blank" rel="noopener">
-    <span class="t">Book Your Mortgage Appointment</span>
-</a>
+            <span class="t">Book Your Mortgage Appointment</span>
+        </a>
         <a class="side-link" href="#why-choose" data-spy="why-choose">
             <span class="t">Why Advantage</span>
         </a>
     </nav>
 
     <div class="side-foot">
-        <p class="side-foot-note">Service Summary &middot; V8</p>
+        <p class="side-foot-note">Service Summary &middot; V9</p>
     </div>
 </aside>
 
@@ -1787,12 +1745,12 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
             </dl>
 
             <p class="cta-row reveal">
-    <a class="cta-btn"
-       href="booking_page_mortgage.html">
-        Book your Mortgage appointment
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
-    </a>
-</p>
+                <a class="cta-btn"
+                   href="booking_page_mortgage.html">
+                    Book your Mortgage appointment
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+                </a>
+            </p>
 
             <p class="subhead">Who this service is most useful for</p>
 
@@ -1963,7 +1921,7 @@ body.side-open .sidebar-backdrop { opacity: 1; visibility: visible; }
 
             <div class="foot-right">
                 <a class="site" href="https://advantagefs.co.uk" target="_blank" rel="noopener">advantagefs.co.uk</a>
-                <p class="ref">Service summary &middot; V8</p>
+                <p class="ref">Service summary &middot; V9</p>
                 <p class="ref">&copy; 2026 Advantage Financial Solutions</p>
                 <p class="ref">FCA 965036 · Company no. 12291836</p>
             </div>
