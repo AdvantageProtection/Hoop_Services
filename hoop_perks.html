@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f6f7f9">
+  <meta name="theme-color" content="#14161a">
   <meta name="description" content="Book a protection advice appointment with Laurence at Advantage Financial Solutions.">
   <title>Book a call with Laurence | Advantage Financial Solutions</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,17 +12,18 @@
   <style>
     :root {
       color-scheme: light;
-      --ink: #111318;
-      --body: #565d6b;
-      --soft: #868d9c;
-      --line: #e9eaee;
-      --line-strong: #dfe1e7;
-      --bg: #f6f7f9;
+      --ink: #14161a;
+      --body: #4b515e;
+      --soft: #7a8190;
+      --line: #e8e9ee;
+      --bg: #fafaab;
+      --bg: #f7f7f5;
       --white: #fff;
-      --accent: #2a4ed8;
-      --accent-soft: #eef1fd;
-      --radius: 16px;
-      --shadow: 0 1px 2px rgba(17, 19, 24, .04), 0 12px 32px -16px rgba(17, 19, 24, .16);
+      --accent: #e91837;
+      --accent-dark: #c40f2b;
+      --accent-soft: #fdeef1;
+      --radius: 14px;
+      --shadow: 0 1px 2px rgba(20,22,26,.05), 0 16px 40px -20px rgba(20,22,26,.18);
     }
     * { box-sizing: border-box; }
     html, body { min-height: 100%; margin: 0; }
@@ -30,55 +31,59 @@
       background: var(--bg);
       color: var(--ink);
       font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      font-size: 14px;
-      font-feature-settings: "cv11" 1, "ss01" 1;
+      font-size: 15px;
       -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
     a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; text-underline-offset: 2px; }
+    a:hover { text-decoration: underline; text-underline-offset: 3px; }
     :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
 
     /* ---------- top bar ---------- */
     .bar {
       background: var(--white);
       border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
     .bar-in {
-      width: min(1160px, 100%);
+      width: min(1120px, 100%);
       margin: 0 auto;
-      padding: 0 28px;
-      height: 62px;
+      padding: 0 32px;
+      height: 64px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 20px;
     }
-    .logos { display: flex; align-items: center; gap: 14px; }
+    .logos { display: flex; align-items: center; gap: 16px; }
     .logos img { display: block; width: auto; max-width: 118px; height: 26px; object-fit: contain; }
-    .logos i { width: 1px; height: 20px; background: var(--line-strong); }
+    .logos i { width: 1px; height: 22px; background: var(--line); }
     .bar-tag {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
-      padding: 6px 11px;
+      gap: 8px;
+      padding: 7px 14px;
       border-radius: 999px;
-      background: var(--accent-soft);
-      color: var(--accent);
-      font-size: 11.5px;
-      font-weight: 500;
-      letter-spacing: .01em;
+      background: var(--ink);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
       white-space: nowrap;
     }
-    .bar-tag::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+    .bar-tag::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
 
     /* ---------- layout ---------- */
     .wrap {
-      width: min(1160px, 100%);
+      width: min(1120px, 100%);
       margin: 0 auto;
-      padding: 34px 28px 56px;
+      padding: 48px 32px 72px;
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1.06fr);
-      gap: 24px;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+      gap: 40px;
       align-items: start;
     }
     .card {
@@ -89,93 +94,112 @@
     }
 
     /* ---------- info card ---------- */
-    .info { padding: 28px 28px 26px; }
+    .info { padding: 36px 36px 32px; }
 
-    .host { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+    .host { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
     .avatar {
       flex: 0 0 auto;
-      width: 44px;
-      height: 44px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       display: grid;
       place-items: center;
-      background: var(--accent-soft);
-      color: var(--accent);
-      font-size: 16px;
+      background: var(--ink);
+      color: #fff;
+      font-size: 17px;
       font-weight: 600;
-      letter-spacing: -.01em;
     }
-    .host-txt { min-width: 0; }
-    .host-name { display: flex; align-items: center; gap: 6px; font-size: 13.5px; font-weight: 600; }
+    .host-name { display: flex; align-items: center; gap: 7px; font-size: 14.5px; font-weight: 600; }
     .host-name svg { color: var(--accent); }
-    .host-role { color: var(--soft); font-size: 12.5px; margin-top: 1px; }
+    .host-role { color: var(--soft); font-size: 13px; margin-top: 2px; }
 
     h1 {
       margin: 0;
-      font-size: clamp(23px, 2.2vw, 28px);
-      font-weight: 600;
-      line-height: 1.25;
-      letter-spacing: -.025em;
-      max-width: 26ch;
+      font-size: clamp(26px, 2.6vw, 32px);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -.03em;
     }
 
-    .meta { margin: 18px 0 0; display: flex; flex-direction: column; gap: 9px; }
-    .meta div { display: flex; align-items: center; gap: 10px; color: var(--body); font-size: 13.5px; }
-    .meta svg { flex: 0 0 auto; color: var(--soft); }
+    .lede {
+      margin: 14px 0 0;
+      color: var(--body);
+      font-size: 15.5px;
+      line-height: 1.65;
+      max-width: 42ch;
+    }
+
+    .meta { margin: 26px 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 16px; }
+    .meta div {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      color: var(--body);
+      font-size: 13.5px;
+      padding: 11px 14px;
+      background: var(--bg);
+      border-radius: 10px;
+    }
+    .meta svg { flex: 0 0 auto; color: var(--accent); }
     .meta b { font-weight: 600; color: var(--ink); }
 
-    .divider { height: 1px; background: var(--line); margin: 22px 0; }
+    .divider { height: 1px; background: var(--line); margin: 28px 0; border: 0; }
 
-    .info p { margin: 0 0 12px; color: var(--body); font-size: 13.5px; line-height: 1.72; }
+    .info p { margin: 0 0 14px; color: var(--body); font-size: 14.5px; line-height: 1.75; }
     .info p:last-of-type { margin-bottom: 0; }
 
     .label {
-      margin: 20px 0 9px;
+      margin: 24px 0 12px;
       font-size: 11px;
-      font-weight: 600;
-      letter-spacing: .08em;
+      font-weight: 700;
+      letter-spacing: .1em;
       text-transform: uppercase;
       color: var(--soft);
     }
-    .chips { display: flex; flex-wrap: wrap; gap: 7px; margin: 0; padding: 0; list-style: none; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
     .chips li {
-      background: #f4f5f8;
-      border-radius: 8px;
-      padding: 5px 10px;
-      font-size: 12.5px;
-      color: #4a5160;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 7px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--body);
     }
 
     .small {
-      margin: 22px 0 0;
+      margin: 26px 0 0;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
       color: var(--soft);
-      font-size: 11.5px;
-      line-height: 1.65;
+      font-size: 12px;
+      line-height: 1.7;
     }
     .small b { color: var(--body); font-weight: 600; }
 
     /* ---------- booking card ---------- */
-    .book { overflow: hidden; display: flex; flex-direction: column; min-width: 0; }
+    .book { overflow: hidden; display: flex; flex-direction: column; min-width: 0; position: sticky; top: 88px; }
     .book-head {
-      padding: 20px 22px 16px;
+      padding: 22px 26px 18px;
       border-bottom: 1px solid var(--line);
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       justify-content: space-between;
       gap: 14px;
     }
-    .book-head h2 { margin: 0; font-size: 15.5px; font-weight: 600; letter-spacing: -.01em; }
-    .book-head p { margin: 3px 0 0; color: var(--soft); font-size: 12.5px; }
+    .book-head h2 { margin: 0; font-size: 16px; font-weight: 600; letter-spacing: -.01em; }
+    .book-head p { margin: 4px 0 0; color: var(--soft); font-size: 13px; }
     .tz {
       flex: 0 0 auto;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 5px 10px;
-      border: 1px solid var(--line-strong);
+      gap: 7px;
+      padding: 6px 12px;
+      border: 1px solid var(--line);
       border-radius: 999px;
       color: var(--body);
-      font-size: 11.5px;
+      font-size: 12px;
+      font-weight: 500;
       white-space: nowrap;
     }
     .book iframe {
@@ -183,40 +207,39 @@
       width: 100%;
       border: 0;
       background: var(--white);
-      min-height: 640px;
-      height: 640px;
+      min-height: 680px;
+      height: 680px;
     }
 
     /* ---------- footer ---------- */
-    .foot {
-      border-top: 1px solid var(--line);
-      background: var(--white);
-    }
+    .foot { border-top: 1px solid var(--line); background: var(--white); }
     .foot-in {
-      width: min(1160px, 100%);
+      width: min(1120px, 100%);
       margin: 0 auto;
-      padding: 16px 28px 20px;
+      padding: 18px 32px 22px;
       display: flex;
       flex-wrap: wrap;
       gap: 6px 28px;
       justify-content: space-between;
       color: var(--soft);
-      font-size: 11.5px;
-      line-height: 1.6;
+      font-size: 12px;
     }
     .foot-in b { color: var(--body); font-weight: 600; }
 
     @media (max-width: 940px) {
-      .wrap { grid-template-columns: 1fr; padding: 20px 16px 40px; gap: 16px; }
+      .wrap { grid-template-columns: 1fr; padding: 24px 16px 48px; gap: 20px; }
       .bar-in, .foot-in { padding-left: 16px; padding-right: 16px; }
-      .info { padding: 22px 20px 24px; }
+      .info { padding: 26px 22px 26px; }
+      .book { position: static; }
       .book iframe { min-height: 760px; height: 760px; }
-      h1 { max-width: none; }
+      .meta { grid-template-columns: 1fr; }
+      h1 { font-size: 26px; }
     }
     @media (max-width: 560px) {
       .bar-tag { display: none; }
       .logos img { max-width: 100px; height: 22px; }
       .book iframe { min-height: 820px; height: 820px; }
+      .tz { display: none; }
     }
   </style>
 </head>
@@ -236,10 +259,10 @@
     <section class="card info" aria-labelledby="event-title">
       <div class="host">
         <span class="avatar" aria-hidden="true">L</span>
-        <div class="host-txt">
+        <div>
           <div class="host-name">
             Laurence
-            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <circle cx="8" cy="8" r="7" fill="currentColor"/>
               <path d="M4.8 8.2l2.1 2.1 4.3-4.4" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -249,32 +272,32 @@
       </div>
 
       <h1 id="event-title">Protection advice appointment</h1>
+      <p class="lede">A relaxed, no-obligation conversation about protecting what matters to you.</p>
 
       <div class="meta">
         <div>
           <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.4" stroke="currentColor" stroke-width="1.4"/><path d="M8 4.6V8l2.3 1.4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span><b>20 min</b></span>
+          <span><b>20 minutes</b></span>
         </div>
         <div>
           <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1.6" y="4.2" width="8.6" height="7.6" rx="1.6" stroke="currentColor" stroke-width="1.4"/><path d="M10.2 7.4l3.3-1.9v5l-3.3-1.9z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
-          <span>Phone or video call</span>
-        </div>
-        <div>
-          <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.4" stroke="currentColor" stroke-width="1.4"/><path d="M1.6 8h12.8M8 1.6c1.7 1.8 2.6 4 2.6 6.4S9.7 12.6 8 14.4C6.3 12.6 5.4 10.4 5.4 8S6.3 3.4 8 1.6z" stroke="currentColor" stroke-width="1.2"/></svg>
-          <span>Web conferencing details sent on confirmation</span>
+          <span>Phone or video</span>
         </div>
         <div>
           <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8.4 1.9H3.3a1.4 1.4 0 00-1.4 1.4v5.1c0 .4.1.7.4 1l5.3 5.3c.5.5 1.4.5 2 0l4.4-4.4c.5-.5.5-1.4 0-2L8.4 2.3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="5.5" cy="5.5" r="1.1" fill="currentColor"/></svg>
           <span>Discounted staff rate</span>
+        </div>
+        <div>
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.4" stroke="currentColor" stroke-width="1.4"/><path d="M1.6 8h12.8M8 1.6c1.7 1.8 2.6 4 2.6 6.4S9.7 12.6 8 14.4C6.3 12.6 5.4 10.4 5.4 8S6.3 3.4 8 1.6z" stroke="currentColor" stroke-width="1.2"/></svg>
+          <span>Details sent on confirmation</span>
         </div>
       </div>
 
       <hr class="divider">
 
       <p>
-        A relaxed, no-obligation conversation about protecting what matters to you.
-        Laurence will talk through your situation, answer questions and set out what
-        cover would actually cost — with no pressure to proceed.
+        Laurence will talk through your situation, answer any questions and set out
+        what cover would actually cost — with no pressure to proceed.
       </p>
       <p>
         The first call is 20 minutes by phone or video, whichever you prefer. There is
@@ -301,7 +324,7 @@
       <div class="book-head">
         <div>
           <h2 id="book-title">Select a date &amp; time</h2>
-          <p>Appointments Monday to Friday, 09:00–17:30</p>
+          <p>Monday to Friday, 09:00–17:30</p>
         </div>
         <span class="tz">
           <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.2" stroke="currentColor" stroke-width="1.4"/><path d="M8 4.8V8l2.2 1.3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
