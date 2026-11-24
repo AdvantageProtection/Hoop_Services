@@ -1,462 +1,208 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#f5f6ff">
-<meta name="description" content="Benefits for Hoop Recruitment staff: completely free mortgage advice with the broker fee waived, plus discounted protection advice from Advantage Financial Solutions.">
-<title>Hoop Staff Benefits — Mortgage &amp; Protection | Advantage FS</title>
-<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
-<link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-:root{color-scheme:light;--gutter:clamp(18px,4vw,56px);--measure:74ch;--r:16px;
---paper:#f5f6ff;--ink:#15123b;--soft:rgba(21,18,59,.78);--rule:#d6d9f5;--card:#fff;--edge:#15123b;--shadow-c:#15123b;
---red:#ff2e57;--red-deep:#d3123b;--blue:#2f5bff;--blue-deep:#1d3fd1;--sun:#ffd23f;--green:#0fa968;
---accent:var(--red);--accent-deep:var(--red-deep);--on-accent:#fff;
---panel-p:#ffe3ea;--panel-m:#dfe7ff;--panel-plain:#fff;
---font-display:'Clash Display',system-ui,sans-serif;--font-body:'Satoshi',system-ui,sans-serif;--font-serif:'Instrument Serif',Georgia,serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;--ease:cubic-bezier(.16,1,.3,1)}
-[data-theme="dark"]{color-scheme:dark;--paper:#0d0b24;--ink:#f4f3ff;--soft:rgba(244,243,255,.8);--rule:#2b2759;--card:#17143a;--edge:#a8a4ff;--shadow-c:#a8a4ff;
---red:#ff5a7a;--red-deep:#ff8aa1;--blue:#6f8dff;--blue-deep:#9db3ff;--on-accent:#0d0b24;--green:#3fd692;
---panel-p:#2a1230;--panel-m:#141a3f;--panel-plain:#13102f}
-.theme-mortgage,#mortgage-service{--accent:var(--blue);--accent-deep:var(--blue-deep)}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:100px;-webkit-text-size-adjust:100%}
-body{font-family:var(--font-body);font-size:16px;line-height:1.65;color:var(--ink);background-color:var(--paper);
-background-image:radial-gradient(700px 500px at 0 0,rgba(255,46,87,.16),transparent 70%),radial-gradient(700px 600px at 100% 30%,rgba(47,91,255,.16),transparent 70%),radial-gradient(700px 500px at 20% 100%,rgba(255,210,63,.22),transparent 70%);
-background-attachment:fixed;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background-color .4s,color .4s}
-[data-theme="dark"] body{background-image:radial-gradient(700px 500px at 0 0,rgba(255,90,122,.16),transparent 70%),radial-gradient(700px 600px at 100% 30%,rgba(111,141,255,.18),transparent 70%),radial-gradient(700px 500px at 20% 100%,rgba(255,210,63,.07),transparent 70%)}
-body::before{content:"";position:fixed;inset:0;z-index:1000;pointer-events:none;opacity:.4;mix-blend-mode:multiply;
-background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .2 0 0 0 0 .18 0 0 0 0 .35 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-[data-theme="dark"] body::before{mix-blend-mode:screen;opacity:.2}
-img{max-width:100%;display:block}
-::selection{background:var(--sun);color:#15123b}
-:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:4px}
-.scroll-progress{position:fixed;inset:0 0 auto 0;height:4px;background:linear-gradient(90deg,var(--red),var(--sun),var(--blue));transform:scaleX(0);transform-origin:0 50%;z-index:1100}
-@supports(animation-timeline:scroll()){.scroll-progress{animation:grow linear both;animation-timeline:scroll(root block)}@keyframes grow{to{transform:scaleX(1)}}}
-
-/* ===== FLOATING TOP BAR ===== */
-.topbar{position:fixed;top:14px;left:0;right:0;z-index:500;display:flex;justify-content:center;padding-inline:12px;pointer-events:none}
-.pill{pointer-events:auto;position:relative;width:min(1100px,100%);display:flex;align-items:center;gap:10px;padding:8px 8px 8px 16px;
-background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(18px) saturate(1.5);-webkit-backdrop-filter:blur(18px) saturate(1.5);
-border:2px solid var(--edge);border-radius:999px;box-shadow:4px 4px 0 var(--shadow-c)}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit;margin-right:auto;min-width:0}
-.loop-mark{position:relative;width:34px;height:22px;flex:0 0 auto}
-.loop-mark i{position:absolute;top:0;width:22px;height:22px;border-radius:50%;border:3px solid var(--blue)}
-.loop-mark i:first-child{left:0}
-.loop-mark i:last-child{right:0;border-color:var(--red)}
-.brand-t{font-family:var(--font-display);font-weight:700;font-size:15px;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.brand-t em{font-family:var(--font-serif);font-style:italic;font-weight:400;font-size:17px}
-.nav-links{display:flex;align-items:center;gap:2px}
-.nav-links a{font-family:var(--font-display);font-weight:500;font-size:14px;color:var(--ink);text-decoration:none;padding:9px 15px;border-radius:999px;transition:background .2s,color .2s}
-.nav-links a:hover{background:color-mix(in srgb,var(--ink) 9%,transparent)}
-.nav-links a.active{background:var(--ink);color:var(--paper)}
-.icon-btn{width:40px;height:40px;display:inline-grid;place-items:center;border:2px solid var(--edge);border-radius:50%;background:var(--card);color:var(--ink);cursor:pointer;transition:transform .2s var(--ease),background .2s}
-.icon-btn:hover{background:var(--sun);color:#15123b;transform:rotate(18deg)}
-.icon-btn svg{width:17px;height:17px}
-.theme-btn svg{display:none}
-[data-theme="light"] .s-sun,[data-theme="dark"] .s-moon{display:block}
-.nav-book{font-family:var(--font-display);font-weight:600;font-size:14px;text-decoration:none;color:#15123b;background:var(--sun);border:2px solid var(--edge);padding:8px 18px;border-radius:999px;transition:transform .2s var(--ease)}
-.nav-book:hover{transform:translateY(-2px) rotate(-2deg)}
-.menu-btn{display:none}
-@media(max-width:860px){
-  .menu-btn{display:inline-grid}
-  .nav-links{position:absolute;top:calc(100% + 12px);left:0;right:0;flex-direction:column;align-items:stretch;gap:4px;padding:12px;background:var(--card);border:2px solid var(--edge);border-radius:24px;box-shadow:4px 4px 0 var(--shadow-c);opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .25s,transform .25s var(--ease),visibility .25s}
-  body.menu-open .nav-links{opacity:1;visibility:visible;transform:none}
-  .nav-links a{padding:13px 18px;font-size:16px}
-  .nav-book{padding:8px 14px}
-}
-@media(max-width:420px){.loop-mark{display:none}.brand-t{font-size:14px}.brand-t em{display:none}}
-
-/* ===== LAYOUT ===== */
-.shell{max-width:1180px;margin-inline:auto;padding:92px var(--gutter) 0}
-
-/* ===== HERO ===== */
-.hero{position:relative;overflow:hidden;isolation:isolate;display:grid;gap:clamp(26px,4.5vw,48px);justify-items:center;text-align:center;
-padding:clamp(40px,7vw,84px) clamp(20px,4vw,56px);border-radius:36px;color:#fff;border:2px solid var(--edge);box-shadow:8px 8px 0 var(--shadow-c);
-background:linear-gradient(135deg,#2a1bff 0%,#4f2cff 32%,#b01f9a 72%,#ff2e57 100%)}
-.hero::before,.hero::after{content:"";position:absolute;z-index:-1;border-radius:50%;pointer-events:none}
-.hero::before{width:clamp(180px,26vw,340px);aspect-ratio:1;right:-70px;top:-70px;background:var(--sun);opacity:.95}
-.hero::after{width:clamp(150px,20vw,260px);aspect-ratio:1;left:-60px;bottom:-60px;border:34px solid rgba(255,255,255,.22)}
-.hero-logo-bubble{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:clamp(18px,3vw,34px);background:#fff;border:2px solid #15123b;border-left:3px solid #15123b;border-radius:999px;padding:clamp(16px,2.2vw,24px) clamp(24px,4vw,48px);max-width:100%;box-shadow:5px 5px 0 #15123b}
-.hero-logo-bubble img{width:auto;height:clamp(34px,5.5vw,58px);object-fit:contain}
-.logo-sep{width:1px;align-self:stretch;background:#d6d9f5}
-@media(max-width:560px){.hero-logo-bubble{gap:14px;border-radius:28px}.hero-logo-bubble img{height:30px}.logo-sep{display:none}.hero{border-radius:26px}}
-.eyebrow{display:inline-flex;align-items:center;gap:12px;font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:20px;color:rgba(255,255,255,.88)}
-.eyebrow::before,.eyebrow::after{content:"";width:26px;height:2px;background:var(--sun)}
-.hero h1{font-family:var(--font-display);font-size:clamp(40px,6.6vw,88px);font-weight:700;line-height:.98;letter-spacing:-.03em;text-wrap:balance;margin-bottom:24px}
-.hero h1 em{display:block;font-family:var(--font-serif);font-style:italic;font-weight:400;letter-spacing:-.01em;color:var(--sun);font-size:1.08em}
-.hero-standfirst{max-width:54ch;margin-inline:auto;font-size:clamp(16px,1.4vw,19px);line-height:1.75;color:rgba(255,255,255,.92);text-wrap:pretty}
-.hero-standfirst strong{color:#fff;font-weight:700}
-.hero-ctas{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:30px}
-
-/* ===== TICKER ===== */
-.ticker{margin:44px -3vw 8px;transform:rotate(-1.4deg);background:var(--ink);color:var(--paper);border-block:2px solid var(--edge);overflow:hidden;white-space:nowrap}
-[data-theme="dark"] .ticker{background:var(--sun);color:#15123b}
-.ticker-track{display:inline-flex;animation:tick 32s linear infinite}
-.ticker span{display:inline-block;padding:14px 0;font-family:var(--font-display);font-weight:600;font-size:clamp(15px,1.6vw,20px);letter-spacing:.02em;text-transform:uppercase}
-.ticker b{display:inline-block;margin-inline:26px;color:var(--sun);font-weight:400}
-[data-theme="dark"] .ticker b{color:var(--red-deep)}
-@keyframes tick{to{transform:translateX(-50%)}}
-
-/* ===== SECTIONS (panels) ===== */
-.section{position:relative;margin-block:clamp(26px,4vw,44px);padding:clamp(30px,5vw,64px) clamp(18px,4vw,56px);border-radius:32px;background:var(--panel-plain);border:2px solid var(--edge);box-shadow:6px 6px 0 var(--shadow-c)}
-#protection-service{background:var(--panel-p)}
-#mortgage-service{background:var(--panel-m)}
-#why-choose{background:#15123b;color:#fff;--ink:#15123b;--card:#fff;--edge:#15123b;--shadow-c:#ffd23f;border-color:#15123b}
-[data-theme="dark"] #why-choose{background:#221d62;border-color:#a8a4ff;--shadow-c:#ffd23f}
-.section-head{margin-bottom:clamp(24px,3.6vw,40px)}
-.section-head-stacked .section-logo{width:auto;max-width:min(230px,60vw);max-height:92px;object-fit:contain;margin-bottom:14px;background:#fff;padding:10px 16px;border:2px solid #15123b;border-radius:16px;box-shadow:3px 3px 0 #15123b}
-.section h2{font-family:var(--font-display);font-size:clamp(30px,4.3vw,58px);font-weight:700;line-height:1.02;letter-spacing:-.03em;text-wrap:balance;max-width:24ch}
-.title-protection{color:var(--red-deep)}.title-mortgage{color:var(--blue-deep)}
-#why-choose h2{color:#fff}
-.section-body{display:grid;gap:22px}
-.subhead{justify-self:start;margin-top:32px;font-family:var(--font-mono);font-size:11.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;line-height:1.5;color:var(--on-accent);background:var(--accent);padding:6px 14px;border-radius:999px;border:2px solid var(--edge)}
-.prose{max-width:var(--measure);font-size:clamp(15.5px,1.2vw,17px);line-height:1.8;color:var(--soft);text-wrap:pretty}
-.prose strong{color:var(--ink);font-weight:700}
-.pullquote{max-width:30ch;font-family:var(--font-serif);font-size:clamp(28px,3.6vw,46px);font-style:italic;line-height:1.14;color:var(--ink);text-wrap:balance;position:relative;padding-left:.2em}
-.pullquote::before{content:"“";position:absolute;left:-.45em;top:-.18em;font-size:2.4em;line-height:1;color:var(--accent);font-style:normal}
-.signature{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:18px 22px;background:var(--card);border:2px solid var(--edge);border-radius:var(--r);box-shadow:4px 4px 0 var(--green);max-width:var(--measure)}
-.sig-label{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;background:var(--green);color:#fff;padding:3px 10px;border-radius:999px}
-.sig-value{display:inline-flex;align-items:center;gap:9px;font-family:var(--font-display);font-size:clamp(16px,1.6vw,20px);font-weight:600;color:var(--ink)}
-.sig-check{width:20px;height:20px;color:var(--green);flex:0 0 auto}
-
-/* ===== BUTTONS ===== */
-.cta-btn{display:inline-flex;align-items:center;gap:11px;padding:15px 28px;border-radius:999px;background:var(--accent);color:var(--on-accent);border:2px solid #15123b;box-shadow:4px 4px 0 #15123b;font-family:var(--font-display);font-size:15px;font-weight:600;letter-spacing:.01em;text-decoration:none;transition:transform .2s var(--ease),box-shadow .2s var(--ease)}
-[data-theme="dark"] .cta-btn{border-color:#f4f3ff;box-shadow:4px 4px 0 #f4f3ff}
-.cta-btn svg{width:15px;height:15px;flex:0 0 auto;transition:transform .2s var(--ease)}
-.cta-btn:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 #15123b}
-[data-theme="dark"] .cta-btn:hover{box-shadow:7px 7px 0 #f4f3ff}
-.cta-btn:hover svg{transform:translateX(4px)}
-.cta-btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 #15123b}
-.cta-btn.red{--accent:var(--red);--on-accent:#fff}
-.cta-btn.blue{--accent:var(--blue);--on-accent:#fff}
-[data-theme="dark"] .cta-btn.red,[data-theme="dark"] .cta-btn.blue{--on-accent:#0d0b24}
-.hero .cta-btn{border-color:#15123b;box-shadow:4px 4px 0 #15123b}
-.hero .cta-btn.red{--accent:#ff2e57;--on-accent:#fff}.hero .cta-btn.blue{--accent:#2f8bff;--on-accent:#fff}
-
-/* ===== CARDS ===== */
-.grid{display:grid;gap:18px;margin-top:6px}
-@media(min-width:700px){.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}.grid.three{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}.grid .wide{grid-column:1/-1}}
-.card{position:relative;padding:24px 22px 26px;background:var(--card);color:var(--ink);border:2px solid var(--edge);border-radius:var(--r);overflow:hidden;box-shadow:4px 4px 0 var(--shadow-c);transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
-.card:hover{transform:translate(-3px,-3px);box-shadow:8px 8px 0 var(--shadow-c)}
-.kicker{display:inline-block;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--on-accent);background:var(--accent);padding:3px 10px;border-radius:999px;margin-bottom:12px}
-.card h3{position:relative;font-family:var(--font-display);font-size:19px;font-weight:700;letter-spacing:-.015em;line-height:1.2;margin-bottom:8px;text-wrap:balance}
-.card p{position:relative;font-size:14.5px;line-height:1.7;color:var(--soft)}
-#why-choose .card{--soft:rgba(21,18,59,.78)}
-.ghost{position:absolute;right:-4px;bottom:-24px;font-family:var(--font-display);font-weight:700;font-size:104px;letter-spacing:-.05em;line-height:1;color:var(--accent);opacity:.12;pointer-events:none}
-
-/* ===== FEES ===== */
-.fees{max-width:var(--measure);border:2px solid var(--edge);border-radius:var(--r);background:var(--card);box-shadow:4px 4px 0 var(--shadow-c);overflow:hidden}
-.fee-row{display:grid;gap:4px 24px;padding:18px 20px;border-bottom:2px solid var(--edge)}
-.fee-row:last-child{border-bottom:0}
-@media(min-width:640px){.fee-row{grid-template-columns:170px minmax(0,1fr);align-items:baseline}}
-.fee-row dt{font-family:var(--font-display);font-size:15px;font-weight:700}
-.fee-row dd{font-size:14.5px;line-height:1.7;color:var(--soft)}
-.fee-row dd strong{color:var(--ink);font-weight:700}
-.fee-row.is-key{background:var(--sun)}
-.fee-row.is-key dt,.fee-row.is-key dd,.fee-row.is-key dd strong{color:#15123b}
-
-/* ===== PROCESS ===== */
-.process{list-style:none;counter-reset:step;max-width:var(--measure);margin-top:10px}
-.process li{position:relative;counter-increment:step;padding:0 0 28px 62px}
-.process li:last-child{padding-bottom:0}
-.process li::before{content:"";position:absolute;left:21px;top:42px;bottom:-4px;width:2px;background:var(--edge);opacity:.35}
-.process li:last-child::before{display:none}
-.process li::after{content:counter(step);position:absolute;left:0;top:0;width:44px;height:44px;display:grid;place-items:center;border-radius:50%;border:2px solid var(--edge);background:var(--accent);font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--on-accent);box-shadow:3px 3px 0 var(--shadow-c);transition:transform .3s var(--ease)}
-.process li:hover::after{transform:rotate(-12deg) scale(1.08)}
-.p-title{display:block;font-family:var(--font-display);font-size:18px;font-weight:700;letter-spacing:-.01em;margin-bottom:5px;padding-top:8px}
-.p-body{display:block;font-size:15px;line-height:1.75;color:var(--soft)}
-
-/* ===== ADVISER ===== */
-.adviser{display:grid;gap:26px;align-items:start;max-width:var(--measure);padding:24px;background:var(--card);border:2px solid var(--edge);border-radius:24px;box-shadow:5px 5px 0 var(--shadow-c);margin-top:8px}
-@media(min-width:620px){.adviser{grid-template-columns:140px minmax(0,1fr);gap:28px}}
-.adviser-photo{width:100%;max-width:140px;aspect-ratio:3/4;border-radius:18px;overflow:hidden;background:var(--sun);border:2px solid var(--edge)}
-.adviser-photo img{width:100%;height:100%;object-fit:cover;object-position:center 12%}
-.adviser-meta{display:inline-block;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--on-accent);background:var(--accent);padding:3px 10px;border-radius:999px;margin-bottom:12px}
-.adviser h3{font-family:var(--font-serif);font-size:38px;font-weight:400;font-style:italic;line-height:1;margin-bottom:4px}
-.adviser-role{font-size:14px;font-weight:700;margin-bottom:14px}
-.adviser p:last-child{font-size:15px;line-height:1.75;color:var(--soft)}
-
-/* ===== JUMP / FINAL CTA / FOOTER ===== */
-.jump{display:inline-flex;align-items:center;gap:7px;font-size:14.5px;font-weight:700;color:var(--ink);text-decoration:none;border-bottom:2px solid var(--accent);padding-bottom:2px;transition:gap .24s var(--ease)}
-.jump:hover{gap:11px}.jump svg{width:13px;height:13px}
-.book-band{background:var(--sun);color:#15123b;text-align:center;display:grid;justify-items:center;gap:20px;--edge:#15123b;--shadow-c:#15123b}
-.book-band h2{max-width:none;font-family:var(--font-serif);font-weight:400;font-style:italic;font-size:clamp(40px,6vw,80px);letter-spacing:-.02em;line-height:1}
-.book-band p{max-width:46ch;color:rgba(21,18,59,.82);font-size:17px}
-.book-band .hero-ctas{margin-top:6px}
-.book-band .cta-btn,[data-theme="dark"] .book-band .cta-btn{border-color:#15123b;box-shadow:4px 4px 0 #15123b}
-.book-band .cta-btn.red{--accent:#ff2e57;--on-accent:#fff}.book-band .cta-btn.blue{--accent:#2f5bff;--on-accent:#fff}
-.colophon{margin-top:clamp(30px,5vw,56px);border-top:4px solid var(--ink);padding-block:40px 48px}
-.colophon-grid{display:grid;gap:24px}
-@media(min-width:760px){.colophon-grid{grid-template-columns:minmax(0,1fr) auto;align-items:end}.foot-right{justify-items:end;text-align:right}}
-.motto{font-family:var(--font-serif);font-size:clamp(26px,3vw,38px);font-style:italic;margin-bottom:8px}
-.motto span{color:var(--red-deep)}
-.fca{font-size:13px;font-weight:700;margin-bottom:12px}
-.fca strong{color:var(--blue-deep)}
-.legal{font-size:13px;line-height:1.7;color:var(--soft);max-width:62ch}
-.foot-right{display:grid;gap:10px;justify-items:start}
-.site{font-size:14px;font-weight:700;color:var(--ink);text-decoration:none;border-bottom:2px solid var(--red);padding-bottom:2px}
-.ref{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
-.site-credit{margin-top:34px;padding-top:16px;border-top:2px dashed var(--rule);text-align:center;font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;color:var(--soft)}
-
-/* ===== MOTION ===== */
-@supports(animation-timeline:view()){@media(prefers-reduced-motion:no-preference){.reveal{animation:rin linear both;animation-timeline:view();animation-range:entry 8% cover 26%}@keyframes rin{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ticker-track{animation:none}*,*::before,*::after{transition-duration:.01ms!important}}
-@media(max-width:620px){.shell{padding-top:84px}.section{border-radius:24px}.adviser{padding:18px}.ticker{margin-inline:-6vw}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8fc">
+  <meta name="description" content="Book your Advantage Financial Solutions protection advice appointment.">
+  <title>Book an Appointment | Advantage Financial Solutions</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17213b;
+      --muted: #687187;
+      --line: #e6e9f0;
+      --paper: #f7f8fc;
+      --white: #fff;
+      --accent: #d92f55;
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; }
+    html, body { min-height: 100%; margin: 0; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .page {
+      width: min(1440px, 100%);
+      min-height: 100vh;
+      margin: 0 auto;
+      padding: 28px;
+      display: grid;
+      grid-template-columns: minmax(280px, .78fr) minmax(520px, 1.5fr);
+      gap: 28px;
+      align-items: stretch;
+    }
+    .intro {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: clamp(28px, 4vw, 54px);
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 64px;
+    }
+    .brand img {
+      display: block;
+      width: auto;
+      max-width: 155px;
+      height: 42px;
+      object-fit: contain;
+    }
+    .brand-divider { width: 1px; height: 34px; background: var(--line); }
+    .eyebrow {
+      margin: 0 0 16px;
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    h1 {
+      max-width: 12ch;
+      margin: 0;
+      font-size: clamp(38px, 4.2vw, 62px);
+      line-height: 1.02;
+      letter-spacing: -.055em;
+      font-weight: 700;
+    }
+    .lead {
+      max-width: 42ch;
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.75;
+    }
+    .details {
+      display: grid;
+      gap: 18px;
+      margin-top: 42px;
+    }
+    .detail {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 13px;
+      align-items: start;
+    }
+    .detail-icon {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: #fff0f3;
+      color: var(--accent);
+      font-size: 16px;
+    }
+    .detail strong { display: block; margin: 1px 0 4px; font-size: 14px; }
+    .detail span:last-child { color: var(--muted); font-size: 13px; line-height: 1.55; }
+    .footer {
+      margin-top: 48px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.7;
+    }
+    .footer strong { color: var(--ink); }
+    .booking {
+      min-width: 0;
+      min-height: calc(100vh - 56px);
+      overflow: hidden;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 12px 40px rgba(23, 33, 59, .05);
+    }
+    .booking iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: calc(100vh - 58px);
+      border: 0;
+      background: var(--white);
+    }
+    @media (max-width: 900px) {
+      .page { grid-template-columns: 1fr; padding: 16px; gap: 16px; }
+      .intro { padding: 28px; }
+      .brand { margin-bottom: 42px; }
+      h1 { max-width: 15ch; font-size: clamp(38px, 9vw, 54px); }
+      .details { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .booking { min-height: 760px; }
+      .booking iframe { min-height: 760px; }
+    }
+    @media (max-width: 560px) {
+      .details { grid-template-columns: 1fr; }
+      .brand img { max-width: 128px; height: 34px; }
+      .booking { min-height: 820px; }
+      .booking iframe { min-height: 820px; }
+    }
+  </style>
 </head>
 <body>
-<div class="scroll-progress"></div>
+  <main class="page">
+    <section class="intro" aria-labelledby="page-title">
+      <div>
+        <div class="brand" aria-label="Hoop Recruitment and Advantage Financial Solutions">
+          <img src="oop.png" alt="Hoop Recruitment">
+          <span class="brand-divider" aria-hidden="true"></span>
+          <img src="bbb.png" alt="Advantage Protection">
+        </div>
 
-<!-- ============ FLOATING TOP BAR ============ -->
-<header class="topbar">
-  <nav class="pill" aria-label="Main">
-    <a class="brand" href="#top">
-      <span class="loop-mark" aria-hidden="true"><i></i><i></i></span>
-      <span class="brand-t">Hoop <em>&times;</em> Advantage FS</span>
-    </a>
-    <div class="nav-links" id="navLinks">
-      <a href="#overview" data-spy="overview">Benefits</a>
-      <a href="#mortgage-service" data-spy="mortgage-service">Mortgage</a>
-      <a href="#protection-service" data-spy="protection-service">Protection</a>
-      <a href="#why-choose" data-spy="why-choose">Why Advantage</a>
-    </div>
-    <button class="icon-btn theme-btn" id="themeToggle" type="button" aria-label="Switch light or dark theme" title="Switch theme">
-      <svg class="s-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.4v2.2M12 19.4v2.2M2.4 12h2.2M19.4 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/></svg>
-      <svg class="s-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20.5 14.4A8.6 8.6 0 0 1 9.6 3.5a8.6 8.6 0 1 0 10.9 10.9Z"/></svg>
-    </button>
-    <a class="nav-book" href="#book">Book now</a>
-    <button class="icon-btn menu-btn" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 8h16M4 16h16"/></svg>
-    </button>
-  </nav>
-</header>
+        <p class="eyebrow">Hoop team · Staff benefit</p>
+        <h1>Let’s talk about protecting what matters.</h1>
+        <p class="lead">
+          Book a relaxed, no-obligation conversation with Laurence, your dedicated
+          protection adviser at Advantage Financial Solutions. As a Hoop team member,
+          you can access specialist protection advice at a discounted staff rate.
+        </p>
 
-<main class="shell" id="top">
-
-  <!-- ============ HERO ============ -->
-  <section class="hero" id="overview">
-    <div class="hero-logo-bubble" role="img" aria-label="Hoop Recruitment in partnership with Advantage Protection and Advantage Mortgage Advice">
-      <img src="oop.png" alt="Hoop Recruitment" decoding="async">
-      <span class="logo-sep" aria-hidden="true"></span>
-      <img src="bbb.png" alt="Advantage Protection" decoding="async">
-      <span class="logo-sep" aria-hidden="true"></span>
-      <img src="aaa.png" alt="Advantage Mortgage Advice" decoding="async">
-    </div>
-    <div>
-      <p class="eyebrow">For the Hoop Team &middot; Staff Benefits</p>
-      <h1>Your Hoop benefits: <em>Mortgage &amp; Protection Advice</em></h1>
-      <p class="hero-standfirst">
-        <strong>Hoop Recruitment has partnered with Advantage Financial Solutions</strong>
-        to offer the Hoop team completely free mortgage advice, with the broker fee waived, alongside
-        discounted protection advice, all from independent, whole-of-market specialists.
-      </p>
-      <div class="hero-ctas">
-        <a class="cta-btn blue" href="https://advantageprotection.github.io/Hoop_Services/booking_page_mortgage.html" target="_blank" rel="noopener">Book mortgage advice
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
-        <a class="cta-btn red" href="https://advantageprotection.github.io/Hoop_Services/booking_page_protection.html" target="_blank" rel="noopener">Book protection advice
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
-      </div>
-    </div>
-  </section>
-
-  <div class="ticker" aria-hidden="true">
-    <div class="ticker-track">
-      <span>Free mortgage advice<b>&#10022;</b>Broker fee waived<b>&#10022;</b>Discounted protection advice<b>&#10022;</b>Independent &amp; whole-of-market<b>&#10022;</b>Free mortgage advice<b>&#10022;</b>Broker fee waived<b>&#10022;</b>Discounted protection advice<b>&#10022;</b>Independent &amp; whole-of-market<b>&#10022;</b></span>
-      <span>Free mortgage advice<b>&#10022;</b>Broker fee waived<b>&#10022;</b>Discounted protection advice<b>&#10022;</b>Independent &amp; whole-of-market<b>&#10022;</b>Free mortgage advice<b>&#10022;</b>Broker fee waived<b>&#10022;</b>Discounted protection advice<b>&#10022;</b>Independent &amp; whole-of-market<b>&#10022;</b></span>
-    </div>
-  </div>
-
-  <!-- ============ AT A GLANCE ============ -->
-  <section class="section" aria-label="Your benefits at a glance">
-    <div class="section-head"><h2>Your benefits <span class="title-protection">at a glance</span></h2></div>
-    <div class="section-body">
-      <div class="grid two reveal">
-        <article class="card theme-mortgage">
-          <span class="ghost" aria-hidden="true">01</span>
-          <p class="kicker">Mortgage</p>
-          <h3>Completely free, fee waived</h3>
-          <p>Every stage of mortgage advice is free for Hoop staff, and the broker fee is waived entirely.</p>
-        </article>
-        <article class="card">
-          <span class="ghost" aria-hidden="true">02</span>
-          <p class="kicker">Protection</p>
-          <h3>Discounted protection advice</h3>
-          <p>Specialist income protection, life insurance and critical illness advice at a staff discount, with Laurence as your dedicated adviser.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ MORTGAGE ============ -->
-  <section class="section theme-mortgage" id="mortgage-service">
-    <div class="section-head section-head-stacked">
-      <img class="section-logo" src="aaa.png" alt="Advantage Mortgage Advice" loading="lazy" decoding="async">
-      <h2 class="title-mortgage">Free Mortgage Advice for Hoop Staff</h2>
-    </div>
-    <div class="section-body">
-      <div class="reveal"><p class="pullquote">Whether you are buying your first home or your fifth, the advice and the broker fee are on us.</p></div>
-      <p class="prose reveal">
-        Through our partnership with Advantage Financial Solutions, you have access to a
-        <strong>team of 15 specialist mortgage advisers</strong> who work with the whole of the market. Whether you
-        are employed, self-employed or have a more complex income, they will find the right lender and
-        position your application properly.
-      </p>
-      <div class="signature reveal">
-        <span class="sig-label">Staff cost</span>
-        <span class="sig-value">
-          <svg class="sig-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-          Mortgage advice is completely free, with no broker fee.
-        </span>
-      </div>
-
-      <p class="subhead">Fee structure for Hoop staff</p>
-      <dl class="fees reveal">
-        <div class="fee-row"><dt>Initial advice</dt><dd><strong>Free.</strong> Consultations, borrowing assessments and Agreement in Principle (AIP) setups are all free.</dd></div>
-        <div class="fee-row is-key"><dt>Broker fee</dt><dd><strong>Waived for Hoop staff.</strong> If you proceed to a full mortgage application, the broker fee is waived entirely, so you pay nothing at any stage.</dd></div>
-        <div class="fee-row"><dt>Lifetime service</dt><dd><strong>Free for life.</strong> Remortgaging, moving home and arranging additional borrowing are all covered at no cost to you.</dd></div>
-      </dl>
-
-      <p class="subhead">Our services at a glance</p>
-      <div class="grid two reveal">
-        <article class="card"><h3>First home</h3><p>We work out what you can borrow, secure your Agreement in Principle, and guide you from offer to keys in hand.</p></article>
-        <article class="card"><h3>Moving home</h3><p>Upsizing, downsizing or relocating, we port your existing deal or find a better one and handle the chain with you.</p></article>
-        <article class="card"><h3>Remortgage</h3><p>When your deal ends, we search the market for a better rate, potentially saving you hundreds of pounds a year.</p></article>
-        <article class="card"><h3>Buy to let</h3><p>We find lenders who understand rental income calculations and structure your investment borrowing correctly.</p></article>
-        <article class="card"><h3>Commercial &amp; bridging finance</h3><p>For business premises or short-term funding gaps, we arrange finance tailored to your timescale.</p></article>
-        <article class="card"><h3>Equity release</h3><p>If you want to unlock money tied up in your home, we explain all your options clearly, with no obligation and no jargon.</p></article>
-      </div>
-
-      <p class="subhead">How the mortgage process works</p>
-      <ol class="process reveal">
-        <li><span class="p-title">Initial free consultation</span><span class="p-body">A quick, informal chat with a specialist adviser to review your circumstances and homebuying goals.</span></li>
-        <li><span class="p-title">Borrowing assessment &amp; market research</span><span class="p-body">The team assesses your income across the market to find your maximum borrowing and the lenders offering the best rates for you.</span></li>
-        <li><span class="p-title">Agreement in principle (AIP)</span><span class="p-body">Your adviser secures an AIP so you can make offers on properties with confidence.</span></li>
-        <li><span class="p-title">Full application &amp; lifetime support</span><span class="p-body">Your adviser handles the application end to end, liaising with underwriters, estate agents and solicitors through to completion, with no broker fee for you.</span></li>
-      </ol>
-
-      <p class="reveal" style="margin-top:12px"><a class="cta-btn blue" href="https://advantageprotection.github.io/Hoop_Services/booking_page_mortgage.html" target="_blank" rel="noopener">Book your Mortgage appointment
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a></p>
-    </div>
-  </section>
-
-  <!-- ============ PROTECTION ============ -->
-  <section class="section" id="protection-service">
-    <div class="section-head section-head-stacked">
-      <img class="section-logo" src="bbb.png" alt="Advantage Protection" loading="lazy" decoding="async">
-      <h2 class="title-protection">Discounted Protection Advice for Hoop Staff</h2>
-    </div>
-    <div class="section-body">
-      <p class="prose reveal">
-        Protecting your income and your family matters whatever your role. As a Hoop team member you receive
-        <strong>discounted protection advice</strong> from <strong>Laurence</strong>, a specialist adviser, covering
-        income protection, life insurance and critical illness cover. It is an independent, whole-of-market
-        service offered to you at a staff rate.
-      </p>
-
-      <div class="adviser reveal">
-        <div class="adviser-photo"><img src="adviser.png" alt="Laurence, Specialist Protection Adviser at Advantage Financial Solutions" width="132" height="176" loading="lazy" decoding="async"></div>
-        <div>
-          <p class="adviser-meta">Your dedicated adviser</p>
-          <h3>Laurence</h3>
-          <p class="adviser-role">Specialist protection adviser</p>
-          <p>Laurence will guide you through every stage, from the initial informal call, through market research and recommendations, to application and underwriting support, making sure your cover is set up correctly and stays affordable and comprehensive as your life changes.</p>
+        <div class="details">
+          <div class="detail">
+            <span class="detail-icon" aria-hidden="true">◷</span>
+            <span><strong>Start with a 20-minute call</strong><span>An informal first conversation to understand what matters to you.</span></span>
+          </div>
+          <div class="detail">
+            <span class="detail-icon" aria-hidden="true">♡</span>
+            <span><strong>Advice tailored to you</strong><span>Explore life insurance, income protection and critical illness cover.</span></span>
+          </div>
+          <div class="detail">
+            <span class="detail-icon" aria-hidden="true">✓</span>
+            <span><strong>Independent, whole-of-market</strong><span>Understand suitable options, costs and next steps without pressure.</span></span>
+          </div>
+          <div class="detail">
+            <span class="detail-icon" aria-hidden="true">⌂</span>
+            <span><strong>Already have cover?</strong><span>You can also use the call to review policies you already hold.</span></span>
+          </div>
         </div>
       </div>
 
-      <p class="subhead">Who this is most useful for</p>
-      <div class="grid three reveal">
-        <article class="card"><p class="kicker">No cover yet</p><h3>Starting from scratch</h3><p>Understand the options for protecting your income, your mortgage and your loved ones if the unexpected happens.</p></article>
-        <article class="card"><p class="kicker">Existing policies</p><h3>Reviewing current cover</h3><p>Ideal if your policies are years old, or you have not checked they still fit your life, family and finances.</p></article>
-        <article class="card"><p class="kicker">New home</p><h3>Buying or moving</h3><p>Make sure your new mortgage is protected. Pair protection advice with your free mortgage advice.</p></article>
-      </div>
+      <footer class="footer">
+        <strong>Advantage Financial Solutions</strong><br>
+        FCA registered · Firm reference number 965036<br>
+        Protection advice is offered at a discounted staff rate. If a policy is arranged,
+        Advantage Financial Solutions may also receive commission from the provider.
+      </footer>
+    </section>
 
-      <p class="subhead">How the advisory process works</p>
-      <ol class="process reveal">
-        <li><span class="p-title">Initial 20-minute call</span><span class="p-body">A brief, informal discussion to understand your situation, with an overview of Income Protection, Life Insurance and Critical Illness Cover. Details of existing policies are useful but not essential.</span></li>
-        <li><span class="p-title">Tailored market research</span><span class="p-body">Laurence researches the market for the most comprehensive and cost-effective cover based on your health, earnings and lifestyle.</span></li>
-        <li><span class="p-title">Options &amp; recommendations summary</span><span class="p-body">You receive a clear summary of the options and the factors that affect cost, then Laurence tailors policies to your budget and requirements.</span></li>
-        <li><span class="p-title">Application &amp; underwriting support</span><span class="p-body">Laurence manages the application, handles the paperwork and liaises directly with underwriters so your cover is set up accurately.</span></li>
-      </ol>
-
-      <p class="reveal" style="margin-top:12px"><a class="cta-btn red" href="https://advantageprotection.github.io/Hoop_Services/booking_page_protection.html" target="_blank" rel="noopener">Book your Protection appointment
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a></p>
-    </div>
-  </section>
-
-  <!-- ============ WHY ADVANTAGE ============ -->
-  <section class="section" id="why-choose">
-    <div class="section-head"><h2>Why choose Advantage Financial Solutions?</h2></div>
-    <div class="section-body">
-      <div class="grid two reveal">
-        <article class="card"><span class="ghost" aria-hidden="true">01</span><h3>Truly independent &amp; whole-of-market</h3><p>Unlike bank advisers restricted to single-brand products, Advantage searches the entire UK market for the best rates and terms for you.</p></article>
-        <article class="card"><span class="ghost" aria-hidden="true">02</span><h3>Benefits for the Hoop team</h3><p>Free mortgage advice with the broker fee waived, plus discounted protection advice, offered to the Hoop team.</p></article>
-        <article class="card wide"><span class="ghost" aria-hidden="true">03</span><h3>Proven 5-star track record</h3><p>Advantage holds a 5.0 out of 5-star rating across nearly 1,000 Google reviews from clients who value clear, reliable, straightforward advice.</p>
-          <p style="margin-top:12px"><a class="jump" href="https://www.google.com/search?q=advantage+fs+bristol+google+score" target="_blank" rel="noopener">See our Google reviews
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a></p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ BOOK ============ -->
-  <section class="section book-band" id="book">
-    <h2>Ready when you are.</h2>
-    <p>Pick a time that suits you. Initial conversations are relaxed, informal and free of obligation.</p>
-    <div class="hero-ctas">
-      <a class="cta-btn blue" href="https://advantageprotection.github.io/Hoop_Services/booking_page_mortgage.html" target="_blank" rel="noopener">Book mortgage advice
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
-      <a class="cta-btn red" href="https://advantageprotection.github.io/Hoop_Services/booking_page_protection.html" target="_blank" rel="noopener">Book protection advice
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
-    </div>
-  </section>
-
-  <footer class="colophon">
-    <div class="colophon-grid">
-      <div>
-        <p class="motto">Our Experience. <span>Your Advantage.</span></p>
-        <p class="fca">Advantage Financial Solutions · <strong>FCA 965036</strong></p>
-        <p class="legal">Provided in partnership with Hoop Recruitment for Hoop staff. Based in Bristol, advising clients across the UK. Your home may be repossessed if you do not keep up repayments on your mortgage. Mortgage advice is free to Hoop staff and the broker fee is waived. Protection advice is offered at a discounted staff rate; if a protection policy is arranged, Advantage FS may also be paid commission by the provider.</p>
-      </div>
-      <div class="foot-right">
-        <a class="site" href="https://advantagefs.co.uk" target="_blank" rel="noopener">advantagefs.co.uk</a>
-        <p class="ref">Staff benefits &middot; V4</p>
-        <p class="ref">&copy; 2026 Advantage Financial Solutions</p>
-        <p class="ref">FCA 965036 · Company no. 12291836</p>
-      </div>
-    </div>
-    <p class="site-credit">Created by Gavin Hoffman Web Services</p>
-  </footer>
-</main>
-
-<script>
-(function(){
-  var root=document.documentElement,body=document.body,themeBtn=document.getElementById('themeToggle'),
-  menuBtn=document.getElementById('menuToggle'),nav=document.getElementById('navLinks');
-  function applyTheme(t){root.setAttribute('data-theme',t);try{localStorage.setItem('avs-theme',t)}catch(e){}}
-  var st=null;try{st=localStorage.getItem('avs-theme')}catch(e){}
-  if(st!=='light'&&st!=='dark')st=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
-  applyTheme(st);
-  themeBtn.addEventListener('click',function(){applyTheme(root.getAttribute('data-theme')==='dark'?'light':'dark')});
-  function setMenu(o){body.classList.toggle('menu-open',o);menuBtn.setAttribute('aria-expanded',String(o))}
-  menuBtn.addEventListener('click',function(){setMenu(!body.classList.contains('menu-open'))});
-  [].forEach.call(document.querySelectorAll('.nav-links a, .nav-book'),function(a){a.addEventListener('click',function(){setMenu(false)})});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')setMenu(false)});
-  var links=[].slice.call(document.querySelectorAll('.nav-links a[data-spy]'));
-  function setActive(id){links.forEach(function(l){l.classList.toggle('active',l.getAttribute('data-spy')===id)})}
-  if('IntersectionObserver' in window){
-    var spy=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&e.target.id)setActive(e.target.id)})},{rootMargin:'-30% 0px -60% 0px'});
-    [].forEach.call(document.querySelectorAll('section[id]'),function(s){spy.observe(s)});
-  }
-  if(!(window.CSS&&CSS.supports&&CSS.supports('animation-timeline','scroll()'))){
-    var p=document.querySelector('.scroll-progress'),tk=false;
-    function up(){var m=document.documentElement.scrollHeight-innerHeight;p.style.transform='scaleX('+Math.min(m>0?scrollY/m:0,1)+')';tk=false}
-    addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(up)}},{passive:true});up();
-  }
-})();
-</script>
+    <section class="booking" aria-label="Appointment booking calendar">
+      <iframe
+        src="https://bookings.cloud.microsoft/book/AdvantageProtection@NETORGFT5872714.onmicrosoft.com/?ismsaljsauthenabled"
+        title="Book your protection advice appointment"
+        loading="eager"
+        scrolling="yes"
+        allowfullscreen>
+      </iframe>
+    </section>
+  </main>
 </body>
 </html>
