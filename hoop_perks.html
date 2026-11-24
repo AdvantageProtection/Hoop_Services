@@ -3,29 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#fbfbfc">
+  <meta name="theme-color" content="#faf9f8">
   <meta name="description" content="Book your Advantage Financial Solutions protection advice appointment.">
   <title>Book an Appointment | Advantage Financial Solutions</title>
   <style>
     :root {
       color-scheme: light;
-      --ink: #16191f;
-      --muted: #6b7280;
-      --line: #e5e7eb;
-      --paper: #fbfbfc;
+      --ink: #323130;
+      --soft: #605e5c;
+      --faint: #8a8886;
+      --line: #edebe9;
+      --paper: #faf9f8;
       --white: #fff;
-      --accent: #c42b4c;
-      --radius: 12px;
+      --accent: #d92f55;
     }
     * { box-sizing: border-box; }
     html, body { min-height: 100%; margin: 0; }
     body {
       background: var(--paper);
       color: var(--ink);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, system-ui, Roboto, Helvetica, Arial, sans-serif;
       font-size: 14px;
       -webkit-font-smoothing: antialiased;
     }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
     .page {
       width: min(1440px, 100%);
       min-height: 100vh;
@@ -33,176 +37,157 @@
       padding: 24px;
       display: grid;
       grid-template-columns: minmax(0, 1.95fr) minmax(340px, 1fr);
-      gap: 24px;
-      align-items: stretch;
+      gap: 20px;
+      align-items: start;
     }
-    .intro {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: clamp(28px, 3.2vw, 52px);
+
+    .card {
       background: var(--white);
       border: 1px solid var(--line);
-      border-radius: var(--radius);
+      border-radius: 4px;
     }
+
+    .intro { padding: 32px clamp(24px, 3vw, 40px) 36px; }
+
     .brand {
       display: flex;
       align-items: center;
       gap: 14px;
-      margin-bottom: 44px;
+      margin-bottom: 30px;
     }
-    .brand img {
-      display: block;
-      width: auto;
-      max-width: 132px;
-      height: 32px;
-      object-fit: contain;
-    }
-    .brand-divider { width: 1px; height: 26px; background: var(--line); }
-    .eyebrow {
-      margin: 0 0 14px;
-      color: var(--accent);
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-    }
+    .brand img { display: block; width: auto; max-width: 118px; height: 28px; object-fit: contain; }
+    .brand-divider { width: 1px; height: 22px; background: var(--line); }
+
+    .org { margin: 0 0 6px; color: var(--soft); font-size: 13px; }
     h1 {
-      max-width: 22ch;
       margin: 0;
-      font-size: clamp(26px, 2.4vw, 34px);
-      line-height: 1.2;
-      letter-spacing: -.03em;
+      max-width: 24ch;
+      font-size: clamp(21px, 1.9vw, 26px);
       font-weight: 600;
+      line-height: 1.25;
+      letter-spacing: -.01em;
     }
-    .lead {
-      max-width: 58ch;
-      margin: 14px 0 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.65;
-    }
-    .spec {
-      margin: 36px 0 0;
-      border-top: 1px solid var(--line);
-    }
-    .spec-row {
-      display: grid;
-      grid-template-columns: minmax(120px, 200px) minmax(0, 1fr);
-      gap: 20px;
-      padding: 13px 0;
-      border-bottom: 1px solid var(--line);
-      align-items: baseline;
-    }
-    .spec-row dt {
-      margin: 0;
-      color: var(--muted);
-      font-size: 12px;
-      letter-spacing: .01em;
-    }
-    .spec-row dd {
-      margin: 0;
+
+    .facts {
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+      color: var(--soft);
       font-size: 13.5px;
-      line-height: 1.5;
+      line-height: 1.75;
     }
-    .footer {
-      margin-top: 40px;
-      padding-top: 16px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 11.5px;
+    .facts li { display: flex; gap: 10px; }
+    .facts li span:first-child { color: var(--faint); min-width: 68px; }
+
+    .desc {
+      margin: 22px 0 0;
+      max-width: 62ch;
+      color: var(--soft);
+      font-size: 13.5px;
       line-height: 1.65;
-      max-width: 70ch;
     }
-    .footer strong { color: var(--ink); font-weight: 600; }
+    .desc + .desc { margin-top: 10px; }
+
+    .cover { margin: 18px 0 0; padding: 0; list-style: none; max-width: 62ch; color: var(--soft); font-size: 13.5px; line-height: 1.9; }
+    .cover li::before { content: "•"; color: var(--faint); margin-right: 9px; }
+
+    .small {
+      margin: 26px 0 0;
+      max-width: 62ch;
+      color: var(--faint);
+      font-size: 12px;
+      line-height: 1.65;
+    }
+    .small b { color: var(--soft); font-weight: 600; }
+
     .booking {
+      display: flex;
+      flex-direction: column;
       min-width: 0;
       min-height: calc(100vh - 48px);
       overflow: hidden;
-      background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
+    }
+    .booking h2 {
+      margin: 0;
+      padding: 18px 18px 0;
+      font-size: 15px;
+      font-weight: 600;
+    }
+    .booking p {
+      margin: 3px 18px 14px;
+      color: var(--soft);
+      font-size: 12.5px;
     }
     .booking iframe {
       display: block;
+      flex: 1;
       width: 100%;
-      height: 100%;
-      min-height: calc(100vh - 50px);
+      min-height: calc(100vh - 130px);
       border: 0;
       background: var(--white);
     }
+
     @media (max-width: 900px) {
       .page { grid-template-columns: 1fr; padding: 14px; gap: 14px; }
-      .intro { padding: 24px; }
-      .brand { margin-bottom: 32px; }
-      h1 { max-width: 26ch; }
-      .booking, .booking iframe { min-height: 780px; }
+      .intro { padding: 24px 20px 28px; }
+      h1 { max-width: 28ch; }
+      .booking { min-height: 800px; }
+      .booking iframe { min-height: 740px; }
     }
     @media (max-width: 560px) {
-      .spec-row { grid-template-columns: 1fr; gap: 3px; padding: 12px 0; }
-      .brand img { max-width: 110px; height: 27px; }
-      .booking, .booking iframe { min-height: 820px; }
+      .brand img { max-width: 100px; height: 24px; }
+      .facts li { display: block; }
+      .facts li span:first-child { display: block; min-width: 0; }
+      .booking { min-height: 840px; }
+      .booking iframe { min-height: 780px; }
     }
   </style>
 </head>
 <body>
   <main class="page">
-    <section class="intro" aria-labelledby="page-title">
-      <div>
-        <div class="brand" aria-label="Hoop Recruitment and Advantage Financial Solutions">
-          <img src="oop.png" alt="Hoop Recruitment">
-          <span class="brand-divider" aria-hidden="true"></span>
-          <img src="bbb.png" alt="Advantage Protection">
-        </div>
-
-        <p class="eyebrow">Hoop staff benefit</p>
-        <h1 id="page-title">Protection advice appointment</h1>
-        <p class="lead">
-          A no-obligation call with Laurence at Advantage Financial Solutions. Pick a
-          slot that suits you — the first conversation takes 20 minutes and there is
-          nothing to prepare.
-        </p>
-
-        <dl class="spec">
-          <div class="spec-row">
-            <dt>Adviser</dt>
-            <dd>Laurence, Advantage Financial Solutions</dd>
-          </div>
-          <div class="spec-row">
-            <dt>First call</dt>
-            <dd>20 minutes, no obligation</dd>
-          </div>
-          <div class="spec-row">
-            <dt>Format</dt>
-            <dd>Phone or video, whichever you prefer</dd>
-          </div>
-          <div class="spec-row">
-            <dt>Cost</dt>
-            <dd>Discounted staff rate</dd>
-          </div>
-          <div class="spec-row">
-            <dt>Can cover</dt>
-            <dd>Life insurance, income protection, critical illness</dd>
-          </div>
-          <div class="spec-row">
-            <dt>Existing policies</dt>
-            <dd>Reviews welcome — bring what you already hold</dd>
-          </div>
-          <div class="spec-row">
-            <dt>Advice basis</dt>
-            <dd>Independent, whole of market</dd>
-          </div>
-        </dl>
+    <section class="card intro" aria-labelledby="page-title">
+      <div class="brand">
+        <img src="oop.png" alt="Hoop Recruitment">
+        <span class="brand-divider" aria-hidden="true"></span>
+        <img src="bbb.png" alt="Advantage Protection">
       </div>
 
-      <footer class="footer">
-        <strong>Advantage Financial Solutions</strong> · FCA registered, firm reference 965036.
-        If a policy is arranged, Advantage Financial Solutions may receive commission from
-        the provider.
-      </footer>
+      <p class="org">Advantage Financial Solutions</p>
+      <h1 id="page-title">Protection advice appointment</h1>
+
+      <ul class="facts">
+        <li><span>Duration</span><span>20 min</span></li>
+        <li><span>Price</span><span>Free — discounted staff rate</span></li>
+        <li><span>Location</span><span>Phone call or video</span></li>
+        <li><span>Staff</span><span>Laurence</span></li>
+      </ul>
+
+      <p class="desc">
+        A no-obligation conversation about protecting what matters to you. Choose a
+        time on the right and Laurence will call you at the number you provide.
+      </p>
+      <p class="desc">
+        Nothing to prepare — the first call is just a chance to talk through your
+        situation and see whether cover is worth looking at.
+      </p>
+
+      <ul class="cover">
+        <li>Life insurance</li>
+        <li>Income protection</li>
+        <li>Critical illness cover</li>
+        <li>Reviewing policies you already hold</li>
+      </ul>
+
+      <p class="small">
+        <b>Advantage Financial Solutions</b> · FCA registered, firm reference 965036.
+        Independent, whole-of-market advice. If a policy is arranged, commission may
+        be received from the provider.
+      </p>
     </section>
 
-    <section class="booking" aria-label="Appointment booking calendar">
+    <section class="card booking" aria-labelledby="booking-title">
+      <h2 id="booking-title">Select a time</h2>
+      <p>Times shown in your local timezone.</p>
       <iframe
         src="https://bookings.cloud.microsoft/book/AdvantageProtection@NETORGFT5872714.onmicrosoft.com/?ismsaljsauthenabled"
         title="Book your protection advice appointment"
