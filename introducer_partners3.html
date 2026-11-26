@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f4f3ef">
+<meta name="description" content="Advantage Financial Solutions partner programme for accountants. Relevant Life Cover and Executive Income Protection for limited company directors — free advice for your clients, commission share for your practice.">
+<title>Accountant Partnerships — Advantage Financial Solutions</title>
+
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  color-scheme: light;
+  --gutter: clamp(20px, 5vw, 80px);
+  --measure: 68ch;
+  --r: 10px;
+
+  --paper: #fdfcfa;
+  --paper-2: #f2efeb;
+  --card: #fffefc;
+  --ink: #0d0d0f;
+  --ink-2: #4b4b4e;
+  --rule: #e3dfd8;
+  --rule-strong: #c9c3b9;
+
+  --accent: #e91837;
+  --accent-deep: #b8122c;
+  --accent-wash: rgba(233,24,55,0.07);
+  --accent-rule: rgba(233,24,55,0.30);
+  --navy: #3d5a6e;
+
+  --success: #0e9f5d;
+  --success-deep: #0b7c49;
+  --success-rule: rgba(14,159,93,0.35);
+
+  --grain: .15;
+  --tex-grain: .42;
+  --tex-blend: multiply;
+  --glow-1: .20;
+  --glow-2: .15;
+
+  --f-display: 'Clash Display', system-ui, sans-serif;
+  --f-body: 'Satoshi', system-ui, sans-serif;
+  --f-serif: 'Instrument Serif', Georgia, serif;
+  --f-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --ease: cubic-bezier(0.16,1,0.3,1);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #0d0d0f;
+  --paper-2: #16161a;
+  --card: #131316;
+  --ink: #f1f0ec;
+  --ink-2: #a5a4a0;
+  --rule: #26262b;
+  --rule-strong: #3a3a41;
+  --accent: #ff4d67;
+  --accent-deep: #ff6a80;
+  --accent-wash: rgba(233,24,55,0.14);
+  --accent-rule: rgba(233,24,55,0.40);
+  --navy: #eaf2f7;
+  --success: #3fd692;
+  --success-deep: #7ce8b8;
+  --success-rule: rgba(63,214,146,0.32);
+  --grain: .1;
+  --tex-grain: .34;
+  --tex-blend: screen;
+  --glow-1: .30;
+  --glow-2: .22;
+}
+
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 96px; -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--f-body);
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--ink);
+  background-color: var(--paper);
+  background-image:
+    radial-gradient(78% 66% at 50% 26%, rgba(255,255,255,.95) 0%, rgba(255,255,255,.55) 46%, transparent 74%),
+    repeating-linear-gradient(112deg, rgba(233,24,55,.045) 0 1px, transparent 1px 8px);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  transition: background-color .4s var(--ease), color .4s var(--ease);
+}
+
+[data-theme="dark"] body,
+body[data-theme="dark"] {
+  background-image:
+    radial-gradient(78% 66% at 50% 26%, rgba(13,13,15,.92) 0%, rgba(13,13,15,.5) 46%, transparent 74%),
+    repeating-linear-gradient(112deg, rgba(255,77,103,.05) 0 1px, transparent 1px 8px);
+}
+
+/* fine neutral paper grain */
+body::before {
+  content: "";
+  position: fixed; inset: 0; z-index: 3; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  opacity: var(--grain);
+  mix-blend-mode: multiply;
+}
+[data-theme="dark"] body::before { mix-blend-mode: screen; }
+
+/* ---------- red texture bleed ---------- */
+.tex { position: fixed; inset: 0; z-index: 1; pointer-events: none; }
+
+/* soft red glow into the corners */
+.tex::before {
+  content: ""; position: absolute; inset: 0;
+  mix-blend-mode: var(--tex-blend);
+  background-image:
+    radial-gradient(62% 54% at -4% -6%, rgba(233,24,55,var(--glow-1)) 0%, rgba(233,24,55,.07) 34%, transparent 66%),
+    radial-gradient(56% 50% at 104% 106%, rgba(233,24,55,var(--glow-2)) 0%, rgba(233,24,55,.05) 36%, transparent 68%),
+    radial-gradient(110% 26% at 50% -8%, rgba(233,24,55,.10) 0%, transparent 70%);
+}
+
+/* red grain, only at the edges */
+.tex::after {
+  content: ""; position: absolute; inset: 0;
+  background-color: var(--accent);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  background-blend-mode: multiply;
+  mix-blend-mode: var(--tex-blend);
+  opacity: var(--tex-grain);
+  -webkit-mask-image:
+    radial-gradient(86% 72% at -2% -4%, #000 0%, rgba(0,0,0,.62) 30%, transparent 62%),
+    radial-gradient(72% 64% at 102% 104%, #000 0%, rgba(0,0,0,.6) 28%, transparent 60%),
+    radial-gradient(120% 32% at 50% -6%, #000 0%, transparent 68%);
+  mask-image:
+    radial-gradient(86% 72% at -2% -4%, #000 0%, rgba(0,0,0,.62) 30%, transparent 62%),
+    radial-gradient(72% 64% at 102% 104%, #000 0%, rgba(0,0,0,.6) 28%, transparent 60%),
+    radial-gradient(120% 32% at 50% -6%, #000 0%, transparent 68%);
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+img { max-width: 100%; display: block; }
+::selection { background: var(--accent); color: #fff; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+
+/* ---------- top progress ---------- */
+.progress {
+  position: fixed; inset: 0 0 auto 0; height: 2px;
+  background: var(--accent); transform: scaleX(0); transform-origin: 0 50%;
+  z-index: 300;
+}
+@supports (animation-timeline: scroll()) {
+  .progress { animation: bar linear both; animation-timeline: scroll(root block); }
+  @keyframes bar { to { transform: scaleX(1); } }
+}
+
+/* ---------- vertical index rail ---------- */
+.vrail {
+  display: none; position: fixed; left: 0; top: 68px; bottom: 0; width: 2px;
+  background: var(--rule); z-index: 195; pointer-events: none;
+}
+.vrail::after {
+  content: ""; position: absolute; inset: 0; background: var(--accent);
+  transform: scaleY(0); transform-origin: 50% 0;
+}
+@supports (animation-timeline: scroll()) {
+  .vrail::after { animation: grow linear both; animation-timeline: scroll(root block); }
+  @keyframes grow { to { transform: scaleY(1); } }
+}
+
+.vindex {
+  display: none; position: fixed; left: 0; top: 68px; bottom: 0; width: 48px;
+  z-index: 194;
+}
+@media (min-width: 1200px) {
+  .vrail, .vindex { display: flex; }
+  .vindex { flex-direction: column; align-items: flex-start; justify-content: center; gap: 16px; padding-left: 18px; }
+  .shell { padding-left: calc(var(--gutter) + 44px); }
+}
+
+.vindex a {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: var(--f-mono);
+  font-size: 9.5px;
+  letter-spacing: .17em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink-2);
+  opacity: .5;
+  padding: 3px 0;
+  transition: color .25s, opacity .25s, letter-spacing .3s var(--ease);
+}
+.vindex a:hover { opacity: 1; color: var(--accent-deep); letter-spacing: .2em; }
+.vindex a.on { opacity: 1; color: var(--accent-deep); }
+
+/* ---------- masthead ---------- */
+.mast {
+  position: sticky; top: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 0 var(--gutter); height: 68px;
+  background: color-mix(in srgb, var(--paper) 80%, transparent);
+  backdrop-filter: blur(22px) saturate(1.3);
+  -webkit-backdrop-filter: blur(22px) saturate(1.3);
+  border-bottom: 1px solid var(--rule);
+}
+
+.brand { display: flex; align-items: center; gap: 11px; text-decoration: none; color: inherit; }
+
+.mark { position: relative; width: 32px; height: 21px; flex: 0 0 auto; }
+.mark i { position: absolute; top: 0; width: 21px; height: 21px; border-radius: 50%; border: 2.4px solid var(--navy); }
+.mark i:first-child { left: 0; }
+.mark i:last-child { right: 0; border-color: var(--accent); mix-blend-mode: multiply; }
+[data-theme="dark"] .mark i:last-child { mix-blend-mode: screen; }
+
+.brand-txt { font-family: var(--f-display); font-size: 14.5px; font-weight: 600; letter-spacing: .01em; white-space: nowrap; }
+.brand-txt em { font-family: var(--f-serif); font-style: italic; font-weight: 400; font-size: 15px; }
+
+.mast-right { display: flex; align-items: center; gap: 8px; }
+
+.icon-btn {
+  width: 38px; height: 38px; display: inline-grid; place-items: center;
+  border: 1px solid var(--rule); border-radius: var(--r);
+  background: transparent; color: var(--ink); cursor: pointer;
+  transition: background .18s, border-color .18s;
+}
+.icon-btn:hover { background: var(--paper-2); border-color: var(--rule-strong); }
+.icon-btn svg { width: 17px; height: 17px; }
+.icon-btn .s-moon { display: none; }
+[data-theme="dark"] .icon-btn .s-sun { display: none; }
+[data-theme="dark"] .icon-btn .s-moon { display: block; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 11px 20px; border-radius: var(--r);
+  background: var(--accent-deep); color: #fff;
+  font-family: var(--f-display); font-size: 14px; font-weight: 600;
+  letter-spacing: .01em; text-decoration: none; border: 0; cursor: pointer;
+  transition: filter .2s, transform .2s var(--ease);
+}
+.btn svg { width: 14px; height: 14px; flex: 0 0 auto; }
+.btn:hover { filter: brightness(1.12); transform: translateY(-1px); }
+.btn:active { transform: translateY(0) scale(.985); }
+.btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--rule-strong); }
+.btn-ghost:hover { background: var(--paper-2); filter: none; }
+.btn-sm { padding: 9px 16px; font-size: 13px; }
+
+/* ---------- shell ---------- */
+.shell { max-width: 1140px; margin-inline: auto; padding-inline: var(--gutter); }
+
+/* ---------- hero ---------- */
+.hero { padding-block: clamp(44px, 7vh, 76px) clamp(38px, 5vh, 58px); }
+
+.letterhead {
+  display: flex; flex-wrap: wrap; gap: 8px 22px;
+  padding-bottom: 14px; margin-bottom: 30px;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--f-mono); font-size: 9.5px; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--ink-2);
+}
+.letterhead span:first-child { color: var(--accent-deep); }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 11px;
+  font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--accent-deep); margin-bottom: 22px;
+}
+.eyebrow::before { content: ""; width: 22px; height: 1px; background: var(--accent); }
+
+h1 {
+  font-family: var(--f-display);
+  font-size: clamp(37px, 5.9vw, 80px);
+  font-weight: 600; line-height: .97; letter-spacing: -.03em;
+  max-width: 17ch; text-wrap: balance;
+}
+h1 em { display: block; font-style: normal; font-weight: 500; color: var(--accent-deep); letter-spacing: -.025em; }
+
+.standfirst {
+  max-width: 56ch; margin-top: 26px;
+  font-size: clamp(16px, 1.4vw, 18.5px); line-height: 1.7; color: var(--ink-2); text-wrap: pretty;
+}
+.standfirst strong { color: var(--ink); font-weight: 700; }
+
+.hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+
+/* ---------- stats ---------- */
+.stats {
+  display: grid; gap: 1px; margin-top: clamp(36px, 5vh, 58px);
+  background: var(--rule); border: 1px solid var(--rule); border-radius: var(--r);
+  overflow: hidden;
+}
+@media (min-width: 700px) { .stats { grid-template-columns: repeat(4, minmax(0,1fr)); } }
+.stat { padding: 22px 20px; background: color-mix(in srgb, var(--card) 78%, transparent); }
+.stat .num {
+  font-family: var(--f-display); font-size: clamp(26px, 3vw, 34px);
+  font-weight: 600; letter-spacing: -.03em; line-height: 1; color: var(--ink);
+}
+.stat .num .u { font-size: .55em; vertical-align: super; color: var(--accent-deep); }
+.stat .lbl {
+  margin-top: 8px; font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2);
+}
+
+/* ---------- sections ---------- */
+.section { padding-block: clamp(48px, 8vh, 92px); border-top: 1px solid var(--rule); }
+
+.split { display: grid; gap: 28px 56px; }
+@media (min-width: 900px) {
+  .split { grid-template-columns: minmax(0, 290px) minmax(0, 1fr); align-items: start; }
+  .split-label { position: sticky; top: 104px; }
+}
+
+.split-label .kicker {
+  font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--accent-deep); margin-bottom: 12px;
+}
+.split-label h2 {
+  font-family: var(--f-display); font-size: clamp(24px, 2.5vw, 33px);
+  font-weight: 600; line-height: 1.08; letter-spacing: -.02em; text-wrap: balance;
+}
+
+.h2-wide {
+  font-family: var(--f-display); font-size: clamp(28px, 3.7vw, 48px);
+  font-weight: 600; line-height: 1.03; letter-spacing: -.025em;
+  max-width: 24ch; margin-bottom: clamp(26px, 4vw, 44px); text-wrap: balance;
+}
+.h2-wide em { font-style: normal; color: var(--accent-deep); }
+
+.prose { max-width: var(--measure); font-size: clamp(15px, 1.1vw, 16.5px); line-height: 1.78; color: var(--ink-2); }
+.prose + .prose { margin-top: 16px; }
+.prose strong { color: var(--ink); font-weight: 700; }
+
+.pull {
+  max-width: 34ch; padding-left: 24px; border-left: 2px solid var(--accent);
+  font-family: var(--f-serif); font-style: italic;
+  font-size: clamp(23px, 2.7vw, 33px); line-height: 1.32; color: var(--ink);
+  margin-bottom: 28px; text-wrap: pretty;
+}
+
+/* ---------- cards ---------- */
+.grid-2 { display: grid; gap: 12px; margin-top: 8px; }
+@media (min-width: 700px) { .grid-2 { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+
+.card {
+  position: relative; padding: 24px 22px 26px;
+  background: color-mix(in srgb, var(--card) 92%, transparent);
+  border: 1px solid var(--rule); border-radius: var(--r);
+  box-shadow: 0 1px 0 rgba(255,255,255,.6) inset, 0 1px 2px rgba(13,13,15,.03);
+  overflow: hidden; transition: border-color .25s, box-shadow .25s;
+}
+[data-theme="dark"] .card { box-shadow: 0 1px 0 rgba(255,255,255,.03) inset, 0 1px 3px rgba(0,0,0,.3); }
+.card:hover { border-color: var(--rule-strong); box-shadow: 0 2px 10px rgba(13,13,15,.05); }
+.card::before {
+  content: ""; position: absolute; inset: 0 auto 0 0; width: 2px; background: var(--accent);
+  transform: scaleY(0); transform-origin: 50% 0; transition: transform .36s var(--ease);
+}
+.card:hover::before { transform: scaleY(1); }
+.card .tag {
+  font-family: var(--f-mono); font-size: 10px; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--accent-deep); margin-bottom: 10px;
+}
+.card h3 {
+  font-family: var(--f-display); font-size: 17px; font-weight: 600;
+  line-height: 1.3; letter-spacing: -.01em; margin-bottom: 9px; text-wrap: balance;
+}
+.card p { font-size: 14.5px; line-height: 1.68; color: var(--ink-2); }
+.card p + p { margin-top: 10px; }
+.card .fine { font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .06em; color: var(--ink-2); margin-top: 14px; }
+
+/* ---------- keyed list ---------- */
+.keyed { list-style: none; max-width: var(--measure); border-top: 1px solid var(--rule); margin-top: 8px; }
+.keyed li { padding: 15px 0; border-bottom: 1px solid var(--rule); break-inside: avoid; }
+@media (min-width: 700px) { .keyed { column-count: 2; column-gap: 44px; } }
+.keyed .k-t { display: block; font-family: var(--f-display); font-size: 15.5px; font-weight: 600; margin-bottom: 4px; }
+.keyed .k-b { display: block; font-size: 14.5px; line-height: 1.68; color: var(--ink-2); }
+
+/* ---------- callout ---------- */
+.callout {
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  padding: 17px 20px; border: 1px solid var(--success-rule);
+  border-left: 3px solid var(--success); border-radius: var(--r);
+  max-width: var(--measure); margin-top: 20px;
+  background: rgba(14,159,93,.035);
+}
+.callout .lbl { font-family: var(--f-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--success-deep); }
+.callout .val { display: inline-flex; align-items: center; gap: 8px; font-family: var(--f-display); font-size: clamp(15px,1.4vw,18px); font-weight: 600; }
+.callout svg { width: 17px; height: 17px; color: var(--success); flex: 0 0 auto; }
+
+/* ---------- process ---------- */
+.process { list-style: none; counter-reset: s; max-width: var(--measure); margin-top: 10px; }
+.process li { position: relative; counter-increment: s; padding: 0 0 28px 54px; }
+.process li:last-child { padding-bottom: 0; }
+.process li::before { content: ""; position: absolute; left: 17px; top: 32px; bottom: -6px; width: 1px; background: var(--rule); }
+.process li:last-child::before { display: none; }
+.process li::after {
+  content: counter(s, decimal-leading-zero); position: absolute; left: 0; top: 0;
+  width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%;
+  border: 1px solid var(--rule-strong); background: var(--card);
+  font-family: var(--f-mono); font-size: 11px; color: var(--accent-deep);
+  transition: background .3s, border-color .3s, color .3s;
+}
+.process li:hover::after { background: var(--accent); border-color: var(--accent); color: #fff; }
+.process .p-t { display: block; font-family: var(--f-display); font-size: 15.5px; font-weight: 600; margin-bottom: 5px; padding-top: 5px; }
+.process .p-b { display: block; font-size: 14.5px; line-height: 1.72; color: var(--ink-2); }
+
+/* ---------- bento ---------- */
+.bento { display: grid; gap: 12px; margin-top: 8px; }
+@media (min-width: 700px) { .bento { grid-template-columns: repeat(2, minmax(0,1fr)); } .bento .wide { grid-column: 1 / -1; } }
+.bento .card .ghost {
+  position: absolute; right: -6px; bottom: -22px;
+  font-family: var(--f-mono); font-size: 88px; line-height: 1; letter-spacing: -.05em;
+  color: var(--ink); opacity: .04; pointer-events: none; user-select: none;
+}
+[data-theme="dark"] .bento .card .ghost { opacity: .07; }
+
+.rating-top { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; margin-bottom: 16px; }
+.g-badge {
+  display: inline-flex; align-items: center; gap: 9px; text-decoration: none;
+  padding: 7px 13px; border: 1px solid var(--rule); border-radius: var(--r);
+  background: var(--paper); transition: border-color .2s;
+}
+.g-badge:hover { border-color: var(--rule-strong); }
+.g-badge svg { width: 20px; height: 20px; }
+.g-badge .g-w { font-family: var(--f-display); font-size: 12.5px; font-weight: 600; color: var(--ink); }
+.rating-fig { display: flex; align-items: baseline; gap: 9px; }
+.rating-fig .stars { font-size: 15px; letter-spacing: 2px; color: var(--accent); }
+.rating-fig .num { font-family: var(--f-display); font-size: 40px; font-weight: 600; letter-spacing: -.03em; line-height: 1; }
+.rating-fig .of { font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); }
+
+/* ---------- faq ---------- */
+.faq { max-width: var(--measure); border-top: 1px solid var(--rule); }
+.faq details { border-bottom: 1px solid var(--rule); }
+.faq summary {
+  cursor: pointer; list-style: none; padding: 17px 30px 17px 0; position: relative;
+  font-family: var(--f-display); font-size: 16px; font-weight: 600; letter-spacing: -.008em;
+  color: var(--ink); transition: color .2s;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary:hover { color: var(--accent-deep); }
+.faq summary::after {
+  content: "+"; position: absolute; right: 4px; top: 15px;
+  font-family: var(--f-mono); font-size: 17px; font-weight: 400; color: var(--accent-deep);
+  transition: transform .25s var(--ease);
+}
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq .a { padding: 0 30px 20px 0; font-size: 14.5px; line-height: 1.75; color: var(--ink-2); }
+.faq .a strong { color: var(--ink); font-weight: 700; }
+
+/* ---------- cta band ---------- */
+.band {
+  background: var(--ink); color: var(--paper);
+  border-radius: var(--r); padding: clamp(34px, 5vw, 64px);
+  margin-block: clamp(48px, 8vh, 92px);
+  position: relative; overflow: hidden;
+}
+.band::before {
+  content: ""; position: absolute; inset: 0;
+  background-image:
+    radial-gradient(72% 120% at -6% -10%, rgba(233,24,55,.42) 0%, transparent 62%),
+    radial-gradient(60% 100% at 106% 110%, rgba(233,24,55,.26) 0%, transparent 64%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 100% 100%, 100% 100%, 200px 200px;
+  opacity: .3; mix-blend-mode: screen; pointer-events: none;
+}
+[data-theme="dark"] .band { background: var(--paper-2); border: 1px solid var(--rule); }
+.band > * { position: relative; }
+.band h2 {
+  font-family: var(--f-display); font-size: clamp(28px, 4.1vw, 52px);
+  font-weight: 600; line-height: 1.02; letter-spacing: -.03em; max-width: 20ch; text-wrap: balance;
+}
+.band h2 em { font-style: normal; color: #ff8a9c; }
+[data-theme="dark"] .band h2 em { color: var(--accent); }
+.band p { max-width: 52ch; margin-top: 18px; font-size: 16px; line-height: 1.7; opacity: .78; }
+.band .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+.band .btn { background: var(--accent); color: #fff; }
+.band .btn-ghost { background: transparent; color: var(--paper); border-color: rgba(255,255,255,.3); }
+.band .btn-ghost:hover { background: rgba(255,255,255,.1); }
+[data-theme="dark"] .band .btn-ghost { color: var(--ink); border-color: var(--rule-strong); }
+
+/* ---------- colophon ---------- */
+.colophon { border-top: 1px solid var(--rule-strong); padding-block: 44px 52px; }
+.colo-grid { display: grid; gap: 26px; }
+@media (min-width: 780px) { .colo-grid { grid-template-columns: minmax(0,1fr) auto; align-items: end; } }
+.motto { font-family: var(--f-serif); font-style: italic; font-size: clamp(23px, 2.6vw, 31px); margin-bottom: 10px; }
+.motto span { color: var(--accent-deep); }
+.fca { font-size: 13px; font-weight: 700; margin-bottom: 12px; }
+.fca strong { color: var(--accent-deep); }
+.legal { font-size: 12.5px; line-height: 1.72; color: var(--ink-2); max-width: 70ch; }
+.foot-right { display: grid; gap: 9px; justify-items: start; }
+@media (min-width: 780px) { .foot-right { justify-items: end; text-align: right; } }
+.foot-right a.site { font-size: 14px; font-weight: 700; color: var(--accent-deep); text-decoration: none; border-bottom: 1px solid var(--accent-rule); padding-bottom: 2px; }
+.foot-right a.site:hover { color: var(--accent); }
+.ref { font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
+.credit { margin-top: 34px; padding-top: 16px; border-top: 1px solid var(--rule); text-align: center; font-family: var(--f-mono); font-size: 10px; letter-spacing: .08em; color: var(--ink-2); opacity: .75; }
+
+/* ---------- reveal ---------- */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .rv { animation: rv-in linear both; animation-timeline: view(); animation-range: entry 8% cover 26%; }
+    @keyframes rv-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,*::before,*::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+
+@media (max-width: 640px) {
+  .mast { height: 60px; padding: 0 16px; }
+  html { scroll-padding-top: 74px; }
+  .brand-txt em { display: none; }
+  .mast-right .btn { display: none; }
+  .band { border-radius: 0; margin-inline: calc(var(--gutter) * -1); }
+  .letterhead { font-size: 9px; gap: 6px 14px; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress" aria-hidden="true"></div>
+<div class="tex" aria-hidden="true"></div>
+<div class="vrail" aria-hidden="true"></div>
+
+<nav class="vindex" aria-label="Section index">
+  <a href="#gap" data-v>01 Gap</a>
+  <a href="#products" data-v>02 Products</a>
+  <a href="#yes" data-v>03 Why yes</a>
+  <a href="#process" data-v>04 Process</a>
+  <a href="#proof" data-v>05 Proof</a>
+  <a href="#faq" data-v>06 Questions</a>
+  <a href="#talk" data-v>07 Call</a>
+</nav>
+
+<header class="mast">
+  <a class="brand" href="#top">
+    <span class="mark" aria-hidden="true"><i></i><i></i></span>
+    <span class="brand-txt">Advantage <em>&middot;</em> Partner Programme</span>
+  </a>
+  <div class="mast-right">
+    <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle colour theme" title="Toggle colour theme">
+      <svg class="s-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.4v2.2M12 19.4v2.2M2.4 12h2.2M19.4 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/></svg>
+      <svg class="s-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20.5 14.4A8.6 8.6 0 0 1 9.6 3.5a8.6 8.6 0 1 0 10.9 10.9Z"/></svg>
+    </button>
+    <a class="btn btn-sm" href="#talk">Book a 15-min call
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+    </a>
+  </div>
+</header>
+
+<main class="shell" id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="letterhead"><span>Advantage Financial Solutions</span><span>Partner Programme</span><span>Bristol</span><span>FCA 965036</span></p>
+
+    <p class="eyebrow">Accountant referral partnerships</p>
+    <h1>Turn tax planning into <em>an immediate saving for your directors.</em></h1>
+    <p class="standfirst">
+      <strong>Relevant Life Cover and Executive Income Protection</strong> let a limited company pay for
+      protection its directors are already buying personally — as an allowable business expense, without
+      a benefit-in-kind charge. You flag it. We do the work. Your practice shares the commission.
+    </p>
+    <div class="hero-actions">
+      <a class="btn" href="#talk">Book a 15-minute call
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+      </a>
+      <a class="btn btn-ghost" href="#talk">Send me the one-page summary</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><p class="num">5.0<span class="u">★</span></p><p class="lbl">Google rating</p></div>
+      <div class="stat"><p class="num">~1,000</p><p class="lbl">Five-star reviews</p></div>
+      <div class="stat"><p class="num">15</p><p class="lbl">Mortgage advisers in-house</p></div>
+      <div class="stat"><p class="num">£0</p><p class="lbl">Cost to your client</p></div>
+    </div>
+  </section>
+
+  <!-- 01 THE GAP -->
+  <section class="section rv" id="gap">
+    <div class="split">
+      <div class="split-label">
+        <p class="kicker">01 — The gap</p>
+        <h2>Most directors are paying for cover out of money that's already been taxed</h2>
+      </div>
+      <div>
+        <p class="pull">The conversation belongs in the tax planning meeting. It just rarely gets started.</p>
+        <p class="prose">
+          Almost every limited company director you act for already holds personal life insurance or
+          income protection. In the overwhelming majority of cases it's paid from their personal account,
+          out of income that has already suffered tax and National Insurance.
+        </p>
+        <p class="prose">
+          The company could pay for the same protection instead — as a legitimate, allowable business
+          expense, and without the director being taxed on it as a benefit in kind. For a director paying
+          a few hundred pounds a month, that's a five-figure swing over the life of the policy.
+        </p>
+        <p class="prose">
+          <strong>They just don't know the option exists.</strong> And because it sits squarely inside the
+          tax planning work you already do, it lands with you long before it lands with a broker.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 PRODUCTS -->
+  <section class="section rv" id="products">
+    <div class="split">
+      <div class="split-label">
+        <p class="kicker">02 — The two products</p>
+        <h2>What actually gets arranged</h2>
+      </div>
+      <div>
+        <p class="prose" style="margin-bottom:24px;">
+          Both are company-funded. Both are designed to be treated as a business expense rather than a
+          P11D benefit. Both are arranged properly, under advice, with the tax position documented.
+        </p>
+
+        <div class="grid-2">
+          <article class="card">
+            <p class="tag">Lump sum</p>
+            <h3>Relevant Life Cover</h3>
+            <p>A single-life policy written for a director or key employee. The company pays the premium
+            and claims it as an allowable expense. The benefit is paid to nominated beneficiaries,
+            normally outside the estate.</p>
+            <p>The director stops funding personal life cover out of post-tax income and the company
+            takes it on instead.</p>
+            <p class="fine">Must meet HMRC relevant life conditions · under age 75</p>
+          </article>
+
+          <article class="card">
+            <p class="tag">Monthly income</p>
+            <h3>Executive Income Protection</h3>
+            <p>Replaces a director's earnings if illness or injury stops them working. Premiums are paid
+            by the company as an allowable expense, and the claim pays out to fund salary or sick pay.</p>
+            <p>It's the corporate version of the personal income protection most directors already hold —
+            and already resent paying for.</p>
+            <p class="fine">Structured to meet HMRC conditions · limited term options</p>
+          </article>
+        </div>
+
+        <div class="callout">
+          <span class="lbl">Cost to the director</span>
+          <span class="val">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            A completely free, whole-of-market review.
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 WHY YES -->
+  <section class="section rv" id="yes">
+    <div class="split">
+      <div class="split-label">
+        <p class="kicker">03 — The pitch to your client</p>
+        <h2>Why a director says yes in one conversation</h2>
+      </div>
+      <div>
+        <ul class="keyed">
+          <li>
+            <span class="k-t">Same cover, better funded</span>
+            <span class="k-b">The protection stays in place. It's simply paid for by the business rather than out of taxed salary.</span>
+          </li>
+          <li>
+            <span class="k-t">Immediate, quantified saving</span>
+            <span class="k-b">The saving is calculable in the meeting — typically thousands a year for a director already paying for personal cover.</span>
+          </li>
+          <li>
+            <span class="k-t">Allowable business expense</span>
+            <span class="k-b">Premiums are deductible for the company when the policy is set up correctly.</span>
+          </li>
+          <li>
+            <span class="k-t">No benefit-in-kind charge</span>
+            <span class="k-b">Structured to sit outside the P11D regime, so there's no personal tax hit on the benefit.</span>
+          </li>
+          <li>
+            <span class="k-t">Benefit outside the estate</span>
+            <span class="k-b">Relevant Life Cover pays to nominated beneficiaries via trustees, keeping the sum out of the estate in the normal course.</span>
+          </li>
+          <li>
+            <span class="k-t">Advice at no cost</span>
+            <span class="k-b">A full, independent review and recommendation, funded by provider commission rather than the client.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 PROCESS -->
+  <section class="section rv" id="process">
+    <div class="split">
+      <div class="split-label">
+        <p class="kicker">04 — The process</p>
+        <h2>Four steps. The third one is ours.</h2>
+      </div>
+      <div>
+        <ol class="process">
+          <li>
+            <span class="p-t">You raise the relevance</span>
+            <span class="p-b">In a tax planning review, you point out that the director's personal cover could be company-funded. No technical detail needed — that's our job.</span>
+          </li>
+          <li>
+            <span class="p-t">You make the introduction</span>
+            <span class="p-b">A forwarded email or a warm cc. We take over from there and keep you copied at every stage.</span>
+          </li>
+          <li>
+            <span class="p-t">We run a free, independent review</span>
+            <span class="p-b">Full fact-find, whole-of-market research, written recommendation, application, underwriting and ongoing service. All free to the client.</span>
+          </li>
+          <li>
+            <span class="p-t">Your practice is paid</span>
+            <span class="p-b">A worthwhile share of the commission, paid on every case, for an introduction that took you two minutes.</span>
+          </li>
+        </ol>
+        <p class="prose" style="margin-top:22px;">
+          <strong>No extra work, no admin, no liability.</strong> We're the adviser of record. You stay the
+          trusted tax planner.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 PROOF -->
+  <section class="section rv" id="proof">
+    <h2 class="h2-wide">Why accountants put their <em>name</em> to us</h2>
+    <div class="bento">
+      <article class="card">
+        <span class="ghost" aria-hidden="true">01</span>
+        <h3>Regulated and accountable</h3>
+        <p>Advantage Financial Solutions is directly authorised by the FCA, number 965036. We carry the
+        advice, the compliance and the file.</p>
+      </article>
+
+      <article class="card">
+        <span class="ghost" aria-hidden="true">02</span>
+        <h3>Independent, whole of market</h3>
+        <p>No panel, no single-provider tie. Research runs across the market so the recommendation stands
+        up to scrutiny.</p>
+      </article>
+
+      <article class="card wide">
+        <span class="ghost" aria-hidden="true">04</span>
+        <div class="rating-top">
+          <a class="g-badge" href="https://www.google.com/search?q=advantage+fs+bristol+google+score" target="_blank" rel="noopener" aria-label="See Advantage FS Google reviews">
+            <svg viewBox="0 0 48 48" aria-hidden="true">
+              <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+              <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+              <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+              <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+            </svg>
+            <span class="g-w">Google</span>
+          </a>
+          <div class="rating-fig">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <span class="num">5.0</span>
+            <span class="of">out of 5</span>
+          </div>
+        </div>
+        <h3>Nearly 1,000 five-star reviews</h3>
+        <p>One of the top-rated independent mortgage and financial advice firms in the country. When you
+        refer a client, they arrive somewhere with a reputation you can point at.</p>
+      </article>
+
+      <article class="card wide">
+        <span class="ghost" aria-hidden="true">03</span>
+        <h3>Built for exactly this work</h3>
+        <p>Corporate protection for directors is core business here, not a sideline. We look after the
+        financial advice for a team of 15 mortgage advisers and a specialist recruitment agency for
+        doctors and social workers — so the referrals, the paperwork and the service are already
+        running at volume.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- 06 FAQ -->
+  <section class="section rv" id="faq">
+    <div class="split">
+      <div class="split-label">
+        <p class="kicker">06 — Straight answers</p>
+        <h2>The questions accountants actually ask</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Does this create work for me?</summary>
+          <p class="a">No. You flag the relevance and make the introduction. We fact-find, research,
+          recommend, apply and service. You're copied in, not drafted in.</p>
+        </details>
+        <details>
+          <summary>What does it cost my client?</summary>
+          <p class="a">Nothing for the advice. The review is free and independent. The client pays the
+          provider's premium, funded through the company rather than personally — usually for less than
+          they were already paying out of taxed income.</p>
+        </details>
+        <details>
+          <summary>How much do we get?</summary>
+          <p class="a">A worthwhile share of the commission on every case placed, agreed up front and
+          paid as standard. We'll put the figure in writing before you refer anyone.</p>
+        </details>
+        <details>
+          <summary>Who carries the regulatory responsibility?</summary>
+          <p class="a"><strong>We do.</strong> Advantage Financial Solutions is directly authorised by the
+          FCA, 965036. We're the adviser of record, we hold the file, and we handle the compliance.</p>
+        </details>
+        <details>
+          <summary>What if the director already has cover?</summary>
+          <p class="a">That's the usual starting point, and usually the best case. We review what's in
+          place and show what a corporate-funded equivalent looks like. Sometimes existing cover can be
+          moved; sometimes it's better kept and supplemented. They get told either way.</p>
+        </details>
+        <details>
+          <summary>Are the tax advantages guaranteed?</summary>
+          <p class="a">Not guaranteed — they depend on the policy meeting HMRC conditions and on the
+          director's circumstances. That's precisely why it's arranged under advice, with the tax
+          position documented on file, rather than sold off a shelf.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 CTA -->
+  <section class="band" id="talk">
+    <h2>Fifteen minutes. <em>Then you'll know if it's worth it.</em></h2>
+    <p>No deck, no pressure. I'll walk you through the mechanics, the compliance position and the
+    commission share, and you can decide whether it fits your client base. Prefer to read first? I'll
+    send the one-pager instead.</p>
+    <div class="actions">
+      <a class="btn" href="mailto:laurence@advantagefs.co.uk?subject=Partner%20call%20%E2%80%94%2015%20minutes">Book a 15-minute call
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+      </a>
+      <a class="btn btn-ghost" href="mailto:laurence@advantagefs.co.uk?subject=One-page%20summary%20please">Send the one-pager</a>
+    </div>
+  </section>
+
+  <!-- COLOPHON -->
+  <footer class="colophon">
+    <div class="colo-grid">
+      <div>
+        <p class="motto">Our experience. <span>Your advantage.</span></p>
+        <p class="fca">Advantage Financial Solutions &middot; <strong>FCA 965036</strong></p>
+        <p class="legal">
+          Advantage Financial Solutions is directly authorised and regulated by the Financial Conduct
+          Authority. Relevant Life Cover and Executive Income Protection are arranged under advice and
+          are subject to provider underwriting and to the policy meeting HMRC conditions for the
+          intended tax treatment. Tax treatment depends on individual circumstances and may change.
+          Commission is paid by the provider, never by the client; introducer arrangements are disclosed
+          in writing before any referral. Based in Bristol, advising across the UK.
+        </p>
+      </div>
+      <div class="foot-right">
+        <a class="site" href="https://advantagefs.co.uk" target="_blank" rel="noopener">advantagefs.co.uk</a>
+        <p class="ref">Partner programme</p>
+        <p class="ref">&copy; 2026 Advantage Financial Solutions</p>
+        <p class="ref">FCA 965036 · Company no. 12291836</p>
+      </div>
+    </div>
+    <p class="credit">Created by Gavin Hoffman Web Services</p>
+  </footer>
+
+</main>
+
+<script>
+(function () {
+  'use strict';
+  var root = document.documentElement;
+  var btn = document.getElementById('themeBtn');
+  var saved = null;
+  try { saved = localStorage.getItem('avs-partner-theme'); } catch (e) {}
+  if (!saved) saved = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  root.setAttribute('data-theme', saved);
+
+  btn.addEventListener('click', function () {
+    var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('avs-partner-theme', next); } catch (e) {}
+  });
+
+  /* vertical index active state */
+  var links = Array.prototype.slice.call(document.querySelectorAll('.vindex a[data-v]'));
+  if (links.length && 'IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        links.forEach(function (l) {
+          l.classList.toggle('on', l.getAttribute('href') === '#' + en.target.id);
+        });
+      });
+    }, { rootMargin: '-35% 0px -55% 0px', threshold: 0 });
+    document.querySelectorAll('section[id]').forEach(function (s) { obs.observe(s); });
+  }
+
+  /* progress fallback */
+  if (!(window.CSS && CSS.supports && CSS.supports('animation-timeline', 'scroll()'))) {
+    var bar = document.querySelector('.progress'), tick = false;
+    function upd() {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(window.scrollY / max, 1) : 0) + ')';
+      tick = false;
+    }
+    window.addEventListener('scroll', function () {
+      if (!tick) { tick = true; requestAnimationFrame(upd); }
+    }, { passive: true });
+    upd();
+  }
+})();
+</script>
+</body>
+</html>
