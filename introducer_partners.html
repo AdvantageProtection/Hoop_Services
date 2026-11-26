@@ -4,1174 +4,750 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#f6f6f4">
-<meta name="description" content="Partner with Advantage Financial Solutions. Introduce your clients for specialist, tax-efficient protection advice — a fully turnkey referral model with a generous, compliant revenue share.">
-<title>Introducer Programme — Advantage Financial Solutions</title>
-
-<!-- ============================================================
-     Made and compiled by Gavin Hoffman
-     Gavin Hoffman Web Design — 2026
-     All rights reserved.
-     ============================================================ -->
+<meta name="description" content="Advantage Financial Solutions partner programme for accountants. Relevant Life Cover and Executive Income Protection for limited company directors — free advice for your clients, commission share for your practice.">
+<title>Accountant Partnerships — Advantage Financial Solutions</title>
 
 <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
-<link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=satoshi@400,500,700&f[]=jetbrains-mono@400&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
-/* ============================================================
-   ADVANTAGE FS · INTRODUCER PROGRAMME · V2 (booking layout)
-   Two-column like the booking page: editorial spiel on the
-   left, sticky registration dock on the right. Pill logo
-   bubble with white interior + solid grey bar.
-   ============================================================ */
-
-/* ---- Tokens ---- */
 :root {
-    color-scheme: light;
+  color-scheme: light;
+  --gutter: clamp(20px, 5vw, 80px);
+  --measure: 68ch;
+  --r: 10px;
 
-    --gutter: clamp(20px, 4vw, 56px);
-    --measure: 74ch;
-    --mast-h: 68px;
-    --r: 10px;
+  --paper: #f6f6f4;
+  --paper-2: #ecece9;
+  --card: #ffffff;
+  --ink: #0e0e10;
+  --ink-2: #4a4a4e;
+  --rule: #dcdcd8;
+  --rule-strong: #c3c3bd;
 
-    --paper: #f6f6f4;
-    --paper-2: #ecece9;
-    --ink: #0e0e10;
-    --ink-2: #55555c;
-    --rule: #dcdcd8;
-    --rule-strong: #c3c3bd;
-    --card: #ffffff;
+  --accent: #e91837;
+  --accent-deep: #b8122c;
+  --accent-wash: rgba(233,24,55,0.07);
+  --accent-rule: rgba(233,24,55,0.30);
+  --navy: #3d5a6e;
 
-    --accent: #e91837;
-    --accent-deep: #b8122c;
-    --accent-wash: rgba(233, 24, 55, 0.07);
-    --accent-rule: rgba(233, 24, 55, 0.30);
+  --success: #0e9f5d;
+  --success-deep: #0b7c49;
+  --success-rule: rgba(14,159,93,0.35);
 
-    --success: #0e9f5d;
-    --success-rule: rgba(14, 159, 93, 0.35);
-
-    --font-display: 'Clash Display', system-ui, sans-serif;
-    --font-body: 'Satoshi', system-ui, sans-serif;
-    --font-serif: 'Instrument Serif', Georgia, serif;
-    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
-
-    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --f-display: 'Clash Display', system-ui, sans-serif;
+  --f-body: 'Satoshi', system-ui, sans-serif;
+  --f-serif: 'Instrument Serif', Georgia, serif;
+  --f-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --ease: cubic-bezier(0.16,1,0.3,1);
 }
 
 [data-theme="dark"] {
-    color-scheme: dark;
-    --paper: #0e0e10;
-    --paper-2: #17171a;
-    --ink: #f2f2ef;
-    --ink-2: #9a9aa2;
-    --rule: #26262b;
-    --rule-strong: #3a3a41;
-    --card: #141417;
-
-    --accent: #ff4d67;
-    --accent-deep: #ff8093;
-    --accent-wash: rgba(255, 77, 103, 0.12);
-    --accent-rule: rgba(255, 77, 103, 0.32);
-
-    --success: #3fd692;
-    --success-rule: rgba(63, 214, 146, 0.32);
+  color-scheme: dark;
+  --paper: #0e0e10;
+  --paper-2: #17171a;
+  --card: #141417;
+  --ink: #f2f2ef;
+  --ink-2: #a8a8ac;
+  --rule: #26262b;
+  --rule-strong: #3a3a41;
+  --accent: #ff4d67;
+  --accent-deep: #ff6a80;
+  --accent-wash: rgba(233,24,55,0.14);
+  --accent-rule: rgba(233,24,55,0.40);
+  --navy: #eaf2f7;
+  --success: #3fd692;
+  --success-deep: #7ce8b8;
+  --success-rule: rgba(63,214,146,0.32);
 }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 96px;
-    -webkit-text-size-adjust: 100%;
-}
+html { scroll-behavior: smooth; scroll-padding-top: 90px; -webkit-text-size-adjust: 100%; }
 
 body {
-    font-family: var(--font-body);
-    font-size: 16px;
-    line-height: 1.65;
-    color: var(--ink);
-    background: var(--paper);
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    overflow-x: hidden;
-    transition: background-color 0.4s var(--ease-out), color 0.4s var(--ease-out);
+  font-family: var(--f-body);
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  transition: background-color .4s var(--ease), color .4s var(--ease);
 }
 
-img { max-width: 100%; }
-::selection { background: var(--accent); color: var(--paper); }
+img { max-width: 100%; display: block; }
+::selection { background: var(--accent); color: #fff; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
 
-:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 3px;
-    border-radius: 3px;
+/* ---------- progress ---------- */
+.progress {
+  position: fixed; inset: 0 0 auto 0; height: 2px;
+  background: var(--accent); transform: scaleX(0); transform-origin: 0 50%;
+  z-index: 300;
 }
-
-/* ============================================================
-   SCROLL PROGRESS
-   ============================================================ */
-.scroll-progress {
-    position: fixed;
-    inset: 0 0 auto 0;
-    height: 2px;
-    background: var(--accent);
-    transform: scaleX(0);
-    transform-origin: 0 50%;
-    z-index: 300;
-    transition: transform 60ms linear;
-}
-
 @supports (animation-timeline: scroll()) {
-    .scroll-progress {
-        animation: grow-bar linear both;
-        animation-timeline: scroll(root block);
-        transition: none;
-    }
-    @keyframes grow-bar { to { transform: scaleX(1); } }
+  .progress { animation: bar linear both; animation-timeline: scroll(root block); }
+  @keyframes bar { to { transform: scaleX(1); } }
 }
 
-/* ============================================================
-   MASTHEAD
-   ============================================================ */
-.masthead {
-    position: sticky;
-    top: 0;
-    z-index: 200;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    gap: 16px;
-    padding: 0 var(--gutter);
-    height: var(--mast-h);
-    background: color-mix(in srgb, var(--paper) 88%, transparent);
-    backdrop-filter: blur(20px) saturate(1.4);
-    -webkit-backdrop-filter: blur(20px) saturate(1.4);
-    border-bottom: 1px solid var(--rule);
+/* ---------- masthead ---------- */
+.mast {
+  position: sticky; top: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 0 var(--gutter); height: 68px;
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border-bottom: 1px solid var(--rule);
 }
 
-.mast-mark {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-    color: inherit;
-    min-width: 0;
-}
+.brand { display: flex; align-items: center; gap: 11px; text-decoration: none; color: inherit; }
 
-.loop-mark {
-    position: relative;
-    width: 34px;
-    height: 22px;
-    flex: 0 0 auto;
-}
-.loop-mark i {
-    position: absolute;
-    top: 0;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    border: 2.5px solid var(--ink);
-}
-.loop-mark i:first-child { left: 0; }
-.loop-mark i:last-child {
-    right: 0;
-    border-color: var(--accent);
-    mix-blend-mode: multiply;
-}
-[data-theme="dark"] .loop-mark i:last-child { mix-blend-mode: screen; }
+.mark { position: relative; width: 32px; height: 21px; flex: 0 0 auto; }
+.mark i { position: absolute; top: 0; width: 21px; height: 21px; border-radius: 50%; border: 2.4px solid var(--navy); }
+.mark i:first-child { left: 0; }
+.mark i:last-child { right: 0; border-color: var(--accent); mix-blend-mode: multiply; }
+[data-theme="dark"] .mark i:last-child { mix-blend-mode: screen; }
 
-.mast-title {
-    font-family: var(--font-display);
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: 0.01em;
-    color: var(--ink);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-.mast-title em {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-weight: 400;
-    font-size: 16px;
-    color: var(--ink);
-}
+.brand-txt { font-family: var(--f-display); font-size: 14.5px; font-weight: 600; letter-spacing: .01em; white-space: nowrap; }
+.brand-txt em { font-family: var(--f-serif); font-style: italic; font-weight: 400; font-size: 15px; }
 
 .mast-right { display: flex; align-items: center; gap: 8px; }
 
 .icon-btn {
-    width: 38px;
-    height: 38px;
-    display: inline-grid;
-    place-items: center;
-    border: 1px solid var(--rule);
-    border-radius: var(--r);
-    background: transparent;
-    color: var(--ink);
-    cursor: pointer;
-    transition: color 0.18s, background 0.18s, border-color 0.18s;
+  width: 38px; height: 38px; display: inline-grid; place-items: center;
+  border: 1px solid var(--rule); border-radius: var(--r);
+  background: transparent; color: var(--ink); cursor: pointer;
+  transition: background .18s, border-color .18s;
 }
 .icon-btn:hover { background: var(--paper-2); border-color: var(--rule-strong); }
 .icon-btn svg { width: 17px; height: 17px; }
+.icon-btn .s-moon { display: none; }
+[data-theme="dark"] .icon-btn .s-sun { display: none; }
+[data-theme="dark"] .icon-btn .s-moon { display: block; }
 
-.chip {
-    display: inline-flex;
-    align-items: center;
-    padding: 9px 16px;
-    border: 1px solid var(--ink);
-    border-radius: 999px;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--ink);
-    text-decoration: none;
-    transition: background 0.15s, color 0.15s;
+.btn {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 11px 20px; border-radius: var(--r);
+  background: var(--accent-deep); color: #fff;
+  font-family: var(--f-display); font-size: 14px; font-weight: 600;
+  letter-spacing: .01em; text-decoration: none; border: 0; cursor: pointer;
+  transition: filter .2s, transform .2s var(--ease);
 }
-.chip:hover { background: var(--ink); color: var(--paper); }
+.btn svg { width: 14px; height: 14px; flex: 0 0 auto; }
+.btn:hover { filter: brightness(1.12); transform: translateY(-1px); }
+.btn:active { transform: translateY(0) scale(.985); }
+.btn-ghost {
+  background: transparent; color: var(--ink); border: 1px solid var(--rule-strong);
+}
+.btn-ghost:hover { background: var(--paper-2); filter: none; }
+.btn-sm { padding: 9px 16px; font-size: 13px; }
 
-.theme-btn svg { display: none; }
-[data-theme="light"] .theme-btn .s-sun { display: block; }
-[data-theme="dark"] .theme-btn .s-moon { display: block; }
-[data-theme="fun"] .theme-btn .s-spark { display: block; }
+/* ---------- shell ---------- */
+.shell { max-width: 1180px; margin-inline: auto; padding-inline: var(--gutter); }
 
-/* ============================================================
-   MAIN GRID — two columns, like the booking page
-   ============================================================ */
-main {
-    display: grid;
-    min-height: calc(100vh - var(--mast-h));
-}
-@media (min-width: 1020px) {
-    main {
-        grid-template-columns: minmax(0, 1fr) minmax(430px, 520px);
-    }
-    .dock {
-        border-left: 1px solid var(--rule);
-        position: sticky;
-        top: var(--mast-h);
-        height: calc(100vh - var(--mast-h));
-        overflow-y: auto;
-    }
-}
+/* ---------- hero ---------- */
+.hero { padding-block: clamp(52px, 9vh, 104px) clamp(40px, 6vh, 64px); }
 
-/* ============================================================
-   LEFT — EDITORIAL SPIEL
-   ============================================================ */
-.spiel {
-    display: flex;
-    flex-direction: column;
-    padding: clamp(32px, 5vh, 64px) var(--gutter) 48px;
-    min-width: 0;
-}
-
-/* Pill logo bubble — white interior matching the logos' own
-   white backgrounds, capsule shape like the green cost callout,
-   solid grey bar on the left */
-.logo-plate {
-    display: inline-flex;
-    align-items: center;
-    align-self: flex-start;
-    background: #ffffff;
-    border: 1px solid var(--rule);
-    border-left: 3px solid var(--rule-strong);
-    border-radius: 999px;
-    padding: clamp(14px, 2vw, 22px) clamp(24px, 3.5vw, 38px);
-    overflow: hidden;
-    margin-bottom: clamp(26px, 4vw, 44px);
-}
-.logo-plate img {
-    max-height: clamp(52px, 7vw, 84px);
-    width: auto;
-    display: block;
-}
-
-/* Mono kicker — matches the booking page exactly */
 .eyebrow {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    font-weight: 400;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-2);
-    margin-bottom: clamp(20px, 3vh, 36px);
+  display: inline-flex; align-items: center; gap: 11px;
+  font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--accent-deep); margin-bottom: 22px;
 }
-.eyebrow::after {
-    content: "";
-    flex: 1;
-    max-width: 220px;
-    height: 1px;
-    background: var(--rule-strong);
+.eyebrow::before { content: ""; width: 22px; height: 1px; background: var(--accent); }
+
+h1 {
+  font-family: var(--f-display);
+  font-size: clamp(38px, 6.2vw, 84px);
+  font-weight: 600; line-height: .97; letter-spacing: -.03em;
+  max-width: 17ch; text-wrap: balance;
+}
+h1 em { display: block; font-style: normal; font-weight: 500; color: var(--accent-deep); letter-spacing: -.025em; }
+
+.standfirst {
+  max-width: 56ch; margin-top: 26px;
+  font-size: clamp(16px, 1.45vw, 19px); line-height: 1.7; color: var(--ink-2); text-wrap: pretty;
+}
+.standfirst strong { color: var(--ink); font-weight: 700; }
+
+.hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+
+/* ---------- stat strip ---------- */
+.stats {
+  display: grid; gap: 1px; margin-top: clamp(38px, 6vh, 64px);
+  background: var(--rule); border: 1px solid var(--rule); border-radius: var(--r);
+  overflow: hidden;
+}
+@media (min-width: 700px) { .stats { grid-template-columns: repeat(4, minmax(0,1fr)); } }
+
+.stat { padding: 22px 20px; background: var(--paper); }
+.stat .num {
+  font-family: var(--f-display); font-size: clamp(26px, 3vw, 34px);
+  font-weight: 600; letter-spacing: -.03em; line-height: 1; color: var(--ink);
+}
+.stat .num .u { font-size: .55em; vertical-align: super; color: var(--accent-deep); }
+.stat .lbl {
+  margin-top: 8px; font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2);
 }
 
-.hero h1 {
-    font-family: var(--font-display);
-    font-size: clamp(44px, 7.5vw, 96px);
-    font-weight: 600;
-    line-height: 0.98;
-    letter-spacing: -0.02em;
-    color: var(--ink);
-    text-wrap: balance;
-    margin-bottom: clamp(20px, 3vh, 32px);
+/* ---------- sections ---------- */
+.section { padding-block: clamp(48px, 8vh, 92px); border-top: 1px solid var(--rule); }
+
+.split { display: grid; gap: 28px 56px; }
+@media (min-width: 900px) {
+  .split { grid-template-columns: minmax(0, 300px) minmax(0, 1fr); align-items: start; }
+  .split-label { position: sticky; top: 100px; }
 }
 
-/* Serif italic accent — the booking page signature move */
-.hero h1 .serif {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-weight: 400;
-    letter-spacing: -0.01em;
-    color: var(--accent);
+.split-label .kicker {
+  font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--accent-deep); margin-bottom: 12px;
+}
+.split-label h2 {
+  font-family: var(--f-display); font-size: clamp(24px, 2.6vw, 34px);
+  font-weight: 600; line-height: 1.08; letter-spacing: -.02em; text-wrap: balance;
 }
 
-.hero-standfirst {
-    max-width: 46ch;
-    font-size: clamp(15.5px, 1.35vw, 18px);
-    line-height: 1.7;
-    color: var(--ink-2);
-    text-wrap: pretty;
+.h2-wide {
+  font-family: var(--f-display); font-size: clamp(28px, 3.8vw, 50px);
+  font-weight: 600; line-height: 1.03; letter-spacing: -.025em;
+  max-width: 24ch; margin-bottom: clamp(26px, 4vw, 44px); text-wrap: balance;
 }
-.hero-standfirst strong { color: var(--ink); font-weight: 700; }
+.h2-wide em { font-style: normal; color: var(--accent-deep); }
 
-/* ---- Sections within the spiel column ---- */
-.section {
-    padding-block: clamp(36px, 5vh, 64px);
-    border-top: 1px solid var(--rule);
-    margin-top: clamp(28px, 4vh, 48px);
-}
-
-.section h2 {
-    font-family: var(--font-display);
-    font-size: clamp(26px, 3.4vw, 44px);
-    font-weight: 600;
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    color: var(--accent);
-    text-wrap: balance;
-    max-width: 30ch;
-    margin-bottom: clamp(24px, 3.4vw, 40px);
-}
-
-.prose {
-    max-width: var(--measure);
-    font-size: clamp(15px, 1.15vw, 16.5px);
-    line-height: 1.78;
-    color: var(--ink-2);
-    text-wrap: pretty;
-}
-.prose strong { color: var(--ink); font-weight: 700; }
+.prose { max-width: var(--measure); font-size: clamp(15px, 1.1vw, 16.5px); line-height: 1.78; color: var(--ink-2); }
 .prose + .prose { margin-top: 16px; }
+.prose strong { color: var(--ink); font-weight: 700; }
 
-.pullquote {
-    max-width: 60ch;
-    padding-left: 26px;
-    border-left: 2px solid var(--accent);
-    font-family: var(--font-serif);
-    font-size: clamp(22px, 2.6vw, 30px);
-    font-style: italic;
-    line-height: 1.38;
-    color: var(--ink);
-    text-wrap: pretty;
-    margin-bottom: clamp(24px, 3vw, 36px);
+.pull {
+  max-width: 34ch; padding-left: 24px; border-left: 2px solid var(--accent);
+  font-family: var(--f-serif); font-style: italic;
+  font-size: clamp(23px, 2.8vw, 34px); line-height: 1.32; color: var(--ink);
+  margin-bottom: 28px; text-wrap: pretty;
 }
 
-/* ---- Keyed benefit list ---- */
-.keyed {
-    list-style: none;
-    max-width: var(--measure);
-    border-top: 1px solid var(--rule);
-}
-.keyed li {
-    padding: 16px 0;
-    border-bottom: 1px solid var(--rule);
-}
-.keyed .k-title {
-    display: block;
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--ink);
-    margin-bottom: 4px;
-}
-.keyed .k-body {
-    display: block;
-    font-size: 15px;
-    line-height: 1.68;
-    color: var(--ink-2);
-}
-.keyed .k-title em {
-    font-style: normal;
-    color: var(--accent);
-}
+/* ---------- cards ---------- */
+.grid-2 { display: grid; gap: 12px; margin-top: 8px; }
+@media (min-width: 700px) { .grid-2 { grid-template-columns: repeat(2, minmax(0,1fr)); } }
 
-/* ---- Product cards ---- */
-.products {
-    display: grid;
-    gap: 12px;
+.card {
+  position: relative; padding: 24px 22px 26px;
+  background: var(--card); border: 1px solid var(--rule); border-radius: var(--r);
+  overflow: hidden; transition: border-color .25s;
 }
-@media (min-width: 640px) { .products { grid-template-columns: 1fr 1fr; } }
+.card:hover { border-color: var(--rule-strong); }
+.card::before {
+  content: ""; position: absolute; inset: 0 auto 0 0; width: 2px; background: var(--accent);
+  transform: scaleY(0); transform-origin: 50% 0; transition: transform .36s var(--ease);
+}
+.card:hover::before { transform: scaleY(1); }
+.card .tag {
+  font-family: var(--f-mono); font-size: 10px; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--accent-deep); margin-bottom: 10px;
+}
+.card h3 {
+  font-family: var(--f-display); font-size: 17px; font-weight: 600;
+  line-height: 1.3; letter-spacing: -.01em; margin-bottom: 9px; text-wrap: balance;
+}
+.card p { font-size: 14.5px; line-height: 1.68; color: var(--ink-2); }
+.card p + p { margin-top: 10px; }
+.card .fine { font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .06em; color: var(--ink-2); margin-top: 14px; }
 
-.product-card {
-    padding: 26px 24px;
-    background: var(--card);
-    border: 1px solid var(--rule);
-    border-left: 5px solid var(--accent);
-    border-radius: var(--r);
-}
-.product-card h3 {
-    font-family: var(--font-display);
-    font-size: 18px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    color: var(--ink);
-    margin-bottom: 8px;
-}
-.product-card p {
-    font-size: 15px;
-    line-height: 1.68;
-    color: var(--ink-2);
-}
+/* ---------- keyed list ---------- */
+.keyed { list-style: none; max-width: var(--measure); border-top: 1px solid var(--rule); margin-top: 8px; }
+.keyed li { padding: 15px 0; border-bottom: 1px solid var(--rule); break-inside: avoid; }
+@media (min-width: 700px) { .keyed { column-count: 2; column-gap: 44px; } }
+.keyed .k-t { display: block; font-family: var(--f-display); font-size: 15.5px; font-weight: 600; margin-bottom: 4px; }
+.keyed .k-b { display: block; font-size: 14.5px; line-height: 1.68; color: var(--ink-2); }
 
-/* ---- Process ---- */
-.process {
-    list-style: none;
-    counter-reset: step;
-    max-width: var(--measure);
+/* ---------- callout ---------- */
+.callout {
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  padding: 17px 20px; border: 1px solid var(--success-rule);
+  border-left: 3px solid var(--success); border-radius: var(--r);
+  max-width: var(--measure); margin-top: 20px;
 }
-.process li {
-    position: relative;
-    counter-increment: step;
-    padding: 0 0 26px 54px;
-}
+.callout .lbl { font-family: var(--f-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--success-deep); }
+.callout .val { display: inline-flex; align-items: center; gap: 8px; font-family: var(--f-display); font-size: clamp(15px,1.4vw,18px); font-weight: 600; }
+.callout svg { width: 17px; height: 17px; color: var(--success); flex: 0 0 auto; }
+
+/* ---------- process ---------- */
+.process { list-style: none; counter-reset: s; max-width: var(--measure); margin-top: 10px; }
+.process li { position: relative; counter-increment: s; padding: 0 0 28px 54px; }
 .process li:last-child { padding-bottom: 0; }
-.process li::before {
-    content: "";
-    position: absolute;
-    left: 17px;
-    top: 30px;
-    bottom: -6px;
-    width: 1px;
-    background: var(--rule);
-}
+.process li::before { content: ""; position: absolute; left: 17px; top: 32px; bottom: -6px; width: 1px; background: var(--rule); }
 .process li:last-child::before { display: none; }
 .process li::after {
-    content: counter(step, decimal-leading-zero);
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 36px;
-    height: 36px;
-    display: grid;
-    place-items: center;
-    border-radius: 50%;
-    border: 1px solid var(--rule-strong);
-    background: var(--card);
-    font-family: var(--font-mono);
-    font-size: 12px;
-    font-weight: 400;
-    color: var(--ink);
-    transition: background 0.3s, border-color 0.3s, color 0.3s;
+  content: counter(s, decimal-leading-zero); position: absolute; left: 0; top: 0;
+  width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%;
+  border: 1px solid var(--rule-strong); background: var(--card);
+  font-family: var(--f-mono); font-size: 11px; color: var(--accent-deep);
+  transition: background .3s, border-color .3s, color .3s;
 }
-.process li:hover::after {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: var(--paper);
-}
-.process .p-title {
-    display: block;
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--ink);
-    margin-bottom: 5px;
-    padding-top: 5px;
-}
-.process .p-body {
-    display: block;
-    font-size: 15px;
-    line-height: 1.72;
-    color: var(--ink-2);
-}
+.process li:hover::after { background: var(--accent); border-color: var(--accent); color: #fff; }
+.process .p-t { display: block; font-family: var(--f-display); font-size: 15.5px; font-weight: 600; margin-bottom: 5px; padding-top: 5px; }
+.process .p-b { display: block; font-size: 14.5px; line-height: 1.72; color: var(--ink-2); }
 
-/* ============================================================
-   RIGHT — REGISTRATION DOCK
-   Sticky column, styled like the booking dock: header strip,
-   then the form body. Scrolls internally if tall.
-   ============================================================ */
-.dock {
-    display: flex;
-    flex-direction: column;
-    background: var(--card);
-    border-top: 1px solid var(--rule);
-}
+/* ---------- bento ---------- */
+.bento { display: grid; gap: 12px; margin-top: 8px; }
+@media (min-width: 700px) { .bento { grid-template-columns: repeat(2, minmax(0,1fr)); } .bento .wide { grid-column: 1 / -1; } }
 
-.dock-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 16px 24px;
-    border-bottom: 1px solid var(--rule);
-    flex: 0 0 auto;
+.bento .card .ghost {
+  position: absolute; right: -6px; bottom: -22px;
+  font-family: var(--f-mono); font-size: 88px; line-height: 1; letter-spacing: -.05em;
+  color: var(--ink); opacity: .04; pointer-events: none; user-select: none;
 }
-.dock-head .bh {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--ink-2);
-}
-.dock-head .bh b {
-    display: block;
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: 16px;
-    letter-spacing: 0;
-    text-transform: none;
-    color: var(--ink);
-    margin-top: 2px;
-}
-.live {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--success);
-    white-space: nowrap;
-}
-.live::before {
-    content: "";
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--success);
-    animation: pulse 2s ease infinite;
-}
-@keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.35; }
-}
+[data-theme="dark"] .bento .card .ghost { opacity: .07; }
 
-.dock-body {
-    padding: clamp(24px, 3vw, 36px) 24px 32px;
-    flex: 1 0 auto;
+.rating-top { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; margin-bottom: 16px; }
+.g-badge {
+  display: inline-flex; align-items: center; gap: 9px; text-decoration: none;
+  padding: 7px 13px; border: 1px solid var(--rule); border-radius: var(--r);
+  background: var(--paper); transition: border-color .2s;
 }
+.g-badge:hover { border-color: var(--rule-strong); }
+.g-badge svg { width: 20px; height: 20px; }
+.g-badge .g-w { font-family: var(--f-display); font-size: 12.5px; font-weight: 600; color: var(--ink); }
+.rating-fig { display: flex; align-items: baseline; gap: 9px; }
+.rating-fig .stars { font-size: 15px; letter-spacing: 2px; color: var(--accent); }
+.rating-fig .num { font-family: var(--f-display); font-size: 40px; font-weight: 600; letter-spacing: -.03em; line-height: 1; }
+.rating-fig .of { font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); }
 
-.form-intro {
-    font-size: 15px;
-    line-height: 1.7;
-    color: var(--ink-2);
-    margin-bottom: 26px;
-    max-width: 52ch;
+/* ---------- faq ---------- */
+.faq { max-width: var(--measure); border-top: 1px solid var(--rule); }
+.faq details { border-bottom: 1px solid var(--rule); }
+.faq summary {
+  cursor: pointer; list-style: none; padding: 17px 30px 17px 0; position: relative;
+  font-family: var(--f-display); font-size: 16px; font-weight: 600; letter-spacing: -.008em;
+  color: var(--ink); transition: color .2s;
 }
-.form-intro strong { color: var(--ink); }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary:hover { color: var(--accent-deep); }
+.faq summary::after {
+  content: "+"; position: absolute; right: 4px; top: 15px;
+  font-family: var(--f-mono); font-size: 17px; font-weight: 400; color: var(--accent-deep);
+  transition: transform .25s var(--ease);
+}
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq .a { padding: 0 30px 20px 0; font-size: 14.5px; line-height: 1.75; color: var(--ink-2); }
+.faq .a strong { color: var(--ink); font-weight: 700; }
 
-.f-grid { display: grid; gap: 18px; }
-@media (min-width: 560px) {
-    .f-grid { grid-template-columns: 1fr 1fr; }
-    .f-full { grid-column: 1 / -1; }
+/* ---------- cta band ---------- */
+.band { background: var(--ink); color: var(--paper); border-radius: var(--r); padding: clamp(34px, 5vw, 64px); margin-block: clamp(48px, 8vh, 92px); }
+[data-theme="dark"] .band { background: var(--paper-2); border: 1px solid var(--rule); }
+.band h2 {
+  font-family: var(--f-display); font-size: clamp(28px, 4.2vw, 54px);
+  font-weight: 600; line-height: 1.02; letter-spacing: -.03em; max-width: 20ch; text-wrap: balance;
 }
+.band h2 em { font-style: normal; color: #ff8a9c; }
+[data-theme="dark"] .band h2 em { color: var(--accent); }
+.band p { max-width: 52ch; margin-top: 18px; font-size: 16px; line-height: 1.7; opacity: .78; }
+.band .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+.band .btn { background: var(--accent); color: #fff; }
+.band .btn-ghost { background: transparent; color: var(--paper); border-color: rgba(255,255,255,.3); }
+.band .btn-ghost:hover { background: rgba(255,255,255,.1); }
+[data-theme="dark"] .band .btn-ghost { color: var(--ink); border-color: var(--rule-strong); }
 
-.f-field label {
-    display: block;
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--ink);
-    margin-bottom: 7px;
-}
-.f-field label .opt { font-weight: 400; color: var(--ink-2); }
+/* ---------- colophon ---------- */
+.colophon { border-top: 1px solid var(--rule-strong); padding-block: 44px 52px; }
+.colo-grid { display: grid; gap: 26px; }
+@media (min-width: 780px) { .colo-grid { grid-template-columns: minmax(0,1fr) auto; align-items: end; } }
+.motto { font-family: var(--f-serif); font-style: italic; font-size: clamp(23px, 2.7vw, 32px); margin-bottom: 10px; }
+.motto span { color: var(--accent-deep); }
+.fca { font-size: 13px; font-weight: 700; margin-bottom: 12px; }
+.fca strong { color: var(--accent-deep); }
+.legal { font-size: 12.5px; line-height: 1.72; color: var(--ink-2); max-width: 70ch; }
+.foot-right { display: grid; gap: 9px; justify-items: start; }
+@media (min-width: 780px) { .foot-right { justify-items: end; text-align: right; } }
+.foot-right a.site { font-size: 14px; font-weight: 700; color: var(--accent-deep); text-decoration: none; border-bottom: 1px solid var(--accent-rule); padding-bottom: 2px; }
+.foot-right a.site:hover { color: var(--accent); }
+.ref { font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
+.credit { margin-top: 34px; padding-top: 16px; border-top: 1px solid var(--rule); text-align: center; font-family: var(--f-mono); font-size: 10px; letter-spacing: .08em; color: var(--ink-2); opacity: .75; }
 
-.f-field input,
-.f-field select,
-.f-field textarea {
-    width: 100%;
-    font-family: var(--font-body);
-    font-size: 15px;
-    color: var(--ink);
-    background: var(--paper);
-    border: 1px solid var(--rule-strong);
-    border-radius: 8px;
-    padding: 12px 14px;
-    transition: border-color 0.2s, box-shadow 0.2s;
-}
-.f-field textarea { resize: vertical; min-height: 110px; }
-
-.f-field input:focus,
-.f-field select:focus,
-.f-field textarea:focus {
-    outline: none;
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px var(--accent-wash);
-}
-
-.f-field select {
-    appearance: none;
-    -webkit-appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23888' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 14px center;
-    padding-right: 40px;
-    cursor: pointer;
-}
-
-/* "Other" reveal */
-.f-other {
-    display: none;
-    margin-top: 10px;
-}
-.f-other.visible { display: block; }
-
-/* Consent */
-.f-consent {
-    display: flex;
-    gap: 11px;
-    align-items: flex-start;
-}
-.f-consent input {
-    width: 17px;
-    height: 17px;
-    margin-top: 3px;
-    flex: 0 0 auto;
-    accent-color: var(--accent);
-    cursor: pointer;
-}
-.f-consent label {
-    font-size: 13.5px;
-    line-height: 1.6;
-    color: var(--ink-2);
-    cursor: pointer;
-}
-
-.f-submit {
-    display: inline-flex;
-    align-items: center;
-    gap: 11px;
-    padding: 14px 30px;
-    border: none;
-    border-radius: var(--r);
-    background: var(--accent);
-    color: #fff;
-    font-family: var(--font-display);
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: 0.01em;
-    cursor: pointer;
-    transition: filter 0.2s, transform 0.2s var(--ease-out);
-}
-.f-submit:hover { filter: brightness(1.15); transform: translateY(-1px); }
-.f-submit:active { transform: translateY(0) scale(0.98); }
-.f-submit svg { width: 15px; height: 15px; }
-
-.f-note {
-    font-size: 13.5px;
-    line-height: 1.6;
-    color: var(--ink-2);
-    margin-top: 16px;
-}
-
-/* Reassurance strip under the form */
-.assure {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
-    margin-top: 22px;
-    padding: 16px 20px;
-    border: 1px solid var(--success-rule);
-    border-left: 5px solid var(--success);
-    border-radius: 12px;
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--ink);
-}
-.assure .sig-check {
-    width: 18px;
-    height: 18px;
-    flex: 0 0 auto;
-    color: var(--success);
-}
-.assure .sub { font-weight: 400; color: var(--ink-2); }
-
-/* ============================================================
-   COLOPHON
-   ============================================================ */
-.colophon {
-    border-top: 1px solid var(--rule-strong);
-    padding: 32px var(--gutter) 48px;
-}
-
-.colophon .motto {
-    font-family: var(--font-serif);
-    font-size: clamp(22px, 2.6vw, 30px);
-    font-style: italic;
-    color: var(--ink);
-    margin-bottom: 8px;
-}
-.colophon .motto span { color: var(--accent); }
-
-.colophon .fca {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--ink);
-    margin-bottom: 12px;
-}
-
-.colophon .legal {
-    font-size: 13.5px;
-    line-height: 1.7;
-    color: var(--ink-2);
-    max-width: 62ch;
-    margin-bottom: 14px;
-}
-
-.colophon .ref {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.06em;
-    color: var(--ink-2);
-    margin-bottom: 4px;
-}
-
-.gh-credit {
-    margin-top: 18px;
-    font-family: var(--font-mono);
-    font-size: 10px;
-    letter-spacing: 0.06em;
-    color: var(--ink);
-    opacity: 0.35;
-}
-
-/* ============================================================
-   FUN MODE · CANDY POP
-   ============================================================ */
-[data-theme="fun"] {
-    color-scheme: light;
-
-    --paper: #fff1f8;
-    --paper-2: #ffe6f3;
-    --ink: #47126b;
-    --ink-2: #7a4d99;
-    --rule: #f7d2ea;
-    --rule-strong: #efb6dd;
-    --card: #ffffff;
-
-    --accent: #ff2d92;
-    --accent-deep: #cf0f74;
-    --accent-wash: rgba(255, 45, 146, 0.10);
-    --accent-rule: rgba(255, 45, 146, 0.32);
-
-    --success: #00b374;
-    --success-rule: rgba(0, 179, 116, 0.35);
-}
-
-[data-theme="fun"] .scroll-progress {
-    background: linear-gradient(90deg, #ff2d92, #ff8a00, #00b8ff);
-}
-[data-theme="fun"] .masthead {
-    border-bottom: 2px solid;
-    border-image: linear-gradient(90deg, #ff2d92, #ff8a00, #00b8ff) 1;
-}
-[data-theme="fun"] .colophon {
-    border-top: 2px solid;
-    border-image: linear-gradient(90deg, #00b8ff, #ff8a00, #ff2d92) 1;
-}
-[data-theme="fun"] .eyebrow::after {
-    background: linear-gradient(90deg, #ff2d92, #ff8a00);
-}
-[data-theme="fun"] .icon-btn { border-radius: 999px; }
-[data-theme="fun"] .product-card { border-radius: 20px; }
-[data-theme="fun"] .f-field input,
-[data-theme="fun"] .f-field select,
-[data-theme="fun"] .f-field textarea { border-radius: 999px; }
-[data-theme="fun"] .f-field textarea { border-radius: 20px; }
-[data-theme="fun"] .f-submit { border-radius: 999px; }
-[data-theme="fun"] .assure { border-radius: 999px; }
-[data-theme="fun"] .chip { border-radius: 999px; }
-
-/* ============================================================
-   REVEALS
-   ============================================================ */
+/* ---------- reveal ---------- */
 @supports (animation-timeline: view()) {
-    @media (prefers-reduced-motion: no-preference) {
-        .reveal {
-            animation: reveal-in linear both;
-            animation-timeline: view();
-            animation-range: entry 8% cover 26%;
-        }
-        @keyframes reveal-in {
-            from { opacity: 0; transform: translateY(18px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-    }
+  @media (prefers-reduced-motion: no-preference) {
+    .rv { animation: rv-in linear both; animation-timeline: view(); animation-range: entry 8% cover 26%; }
+    @keyframes rv-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+  }
 }
-
 @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-    }
+  html { scroll-behavior: auto; }
+  *,*::before,*::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
 
-/* ============================================================
-   SMALL SCREENS
-   ============================================================ */
-@media (max-width: 1019px) {
-    .spiel { padding-bottom: 36px; }
-    .dock { scroll-margin-top: var(--mast-h); }
-}
-
-@media (max-width: 620px) {
-    .masthead { padding: 0 16px; height: 60px; }
-    :root { --mast-h: 60px; }
-    .mast-title em { display: none; }
-    .spiel { padding-inline: 16px; }
-    .dock-head { padding: 14px 16px; }
-    .dock-body { padding: 22px 16px 28px; }
-    .colophon { padding-inline: 16px; }
-    .hero { padding-block: 24px 8px; }
-}
-
-@media (max-width: 400px) {
-    .loop-mark { display: none; }
-    .mast-title { font-size: 14px; }
-    .mast-right .chip { display: none; }
+@media (max-width: 640px) {
+  .mast { height: 60px; padding: 0 16px; }
+  html { scroll-padding-top: 74px; }
+  .brand-txt em { display: none; }
+  .mast-right .btn { display: none; }
+  .band { border-radius: 0; margin-inline: calc(var(--gutter) * -1); }
 }
 </style>
 </head>
-<body data-theme="light">
+<body>
 
-<div class="scroll-progress" id="progress"></div>
+<div class="progress" aria-hidden="true"></div>
 
-<!-- ============ MASTHEAD ============ -->
-<header class="masthead">
-    <a class="mast-mark" href="#top">
-        <span class="loop-mark" aria-hidden="true"><i></i><i></i></span>
-        <span class="mast-title">Advantage <em>&times;</em> Introducers</span>
+<header class="mast">
+  <a class="brand" href="#top">
+    <span class="mark" aria-hidden="true"><i></i><i></i></span>
+    <span class="brand-txt">Advantage <em>&middot;</em> Partner Programme</span>
+  </a>
+  <div class="mast-right">
+    <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle colour theme" title="Toggle colour theme">
+      <svg class="s-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.4v2.2M12 19.4v2.2M2.4 12h2.2M19.4 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/></svg>
+      <svg class="s-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20.5 14.4A8.6 8.6 0 0 1 9.6 3.5a8.6 8.6 0 1 0 10.9 10.9Z"/></svg>
+    </button>
+    <a class="btn btn-sm" href="#talk">Book a 15-min call
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
     </a>
-
-    <div class="mast-right">
-        <a class="chip" href="#register">Enquire</a>
-        <button class="icon-btn theme-btn" id="themeToggle" type="button" aria-label="Change colour theme" title="Change colour theme">
-            <svg class="s-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
-                <circle cx="12" cy="12" r="4.2"/>
-                <path d="M12 2.4v2.2M12 19.4v2.2M2.4 12h2.2M19.4 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/>
-            </svg>
-            <svg class="s-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
-                <path d="M20.5 14.4A8.6 8.6 0 0 1 9.6 3.5a8.6 8.6 0 1 0 10.9 10.9Z"/>
-            </svg>
-            <svg class="s-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
-                <path d="M12 3.2v3M12 17.8v3M3.2 12h3M17.8 12h3M12 7.4a4.6 4.6 0 0 0-4.6 4.6c0 1.9 1.1 3 2 3.9.7.7 1.2 1.4 1.3 2.5h2.6c.1-1.1.6-1.8 1.3-2.5.9-.9 2-2 2-3.9A4.6 4.6 0 0 0 12 7.4Z"/>
-                <path d="M10.4 21h3.2"/>
-            </svg>
-        </button>
-    </div>
+  </div>
 </header>
 
-<main id="top">
+<main class="shell" id="top">
 
-    <!-- ============ LEFT — SPIEL ============ -->
-    <section class="spiel">
+  <!-- HERO -->
+  <section class="hero">
+    <p class="eyebrow">Accountant referral partnerships &middot; Bristol</p>
+    <h1>Turn tax planning into <em>an immediate saving for your directors.</em></h1>
+    <p class="standfirst">
+      <strong>Relevant Life Cover and Executive Income Protection</strong> let a limited company pay for
+      protection its directors are already buying personally — as an allowable business expense, without
+      a benefit-in-kind charge. You flag it. We do the work. Your practice shares the commission.
+    </p>
+    <div class="hero-actions">
+      <a class="btn" href="#talk">Book a 15-minute call
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+      </a>
+      <a class="btn btn-ghost" href="#talk">Send me the one-page summary</a>
+    </div>
 
-        <!-- ============ HERO ============ -->
-        <div class="hero">
-            <div class="logo-plate">
-                <img src="bbb.png" alt="Advantage Financial Solutions" decoding="async">
-            </div>
+    <div class="stats">
+      <div class="stat"><p class="num">5.0<span class="u">★</span></p><p class="lbl">Google rating</p></div>
+      <div class="stat"><p class="num">~1,000</p><p class="lbl">Five-star reviews</p></div>
+      <div class="stat"><p class="num">15</p><p class="lbl">Mortgage advisers in-house</p></div>
+      <div class="stat"><p class="num">£0</p><p class="lbl">Cost to your client</p></div>
+    </div>
+  </section>
 
-            <p class="eyebrow">Introducer Programme</p>
-            <h1>Refer your clients. <span class="serif">We'll do the rest.</span></h1>
-            <p class="hero-standfirst">
-                <strong>Advantage Financial Solutions</strong> partners with professionals — accountants,
-                recruitment firms, solicitors and advisers — who want to give their clients access to
-                specialist, tax-efficient protection advice. The referral model is completely turnkey:
-                you make the introduction, we handle the advice, underwriting and compliance from start
-                to finish, and your practice receives a generous, compliant share of any commission
-                generated.
-            </p>
+  <!-- THE GAP -->
+  <section class="section rv">
+    <div class="split">
+      <div class="split-label">
+        <p class="kicker">01 — The gap</p>
+        <h2>Most directors are paying for cover out of money that's already been taxed</h2>
+      </div>
+      <div>
+        <p class="pull">The conversation belongs in the tax planning meeting. It just rarely gets started.</p>
+        <p class="prose">
+          Almost every limited company director you act for already holds personal life insurance or
+          income protection. In the overwhelming majority of cases it's paid from their personal account,
+          out of income that has already suffered tax and National Insurance.
+        </p>
+        <p class="prose">
+          The company could pay for the same protection instead — as a legitimate, allowable business
+          expense, and without the director being taxed on it as a benefit in kind. For a director paying
+          a few hundred pounds a month, that's a five-figure swing over the life of the policy.
+        </p>
+        <p class="prose">
+          <strong>They just don't know the option exists.</strong> And because it sits squarely inside the
+          tax planning work you already do, it lands with you long before it lands with a broker.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE PRODUCTS -->
+  <section class="section rv">
+    <div class="split">
+      <div class="split-label">
+        <p class="kicker">02 — The two products</p>
+        <h2>What actually gets arranged</h2>
+      </div>
+      <div>
+        <p class="prose" style="margin-bottom:24px;">
+          Both are company-funded. Both are designed to be treated as a business expense rather than a
+          P11D benefit. Both are arranged properly, under advice, with the tax position documented.
+        </p>
+
+        <div class="grid-2">
+          <article class="card">
+            <p class="tag">Lump sum</p>
+            <h3>Relevant Life Cover</h3>
+            <p>A single-life policy written for a director or key employee. The company pays the premium
+            and claims it as an allowable expense. The benefit is paid to nominated beneficiaries,
+            normally outside the estate.</p>
+            <p>The director stops funding personal life cover out of post-tax income and the company
+            takes it on instead.</p>
+            <p class="fine">Must meet HMRC relevant life conditions · under age 75</p>
+          </article>
+
+          <article class="card">
+            <p class="tag">Monthly income</p>
+            <h3>Executive Income Protection</h3>
+            <p>Replaces a director's earnings if illness or injury stops them working. Premiums are paid
+            by the company as an allowable expense, and the claim pays out to fund salary or sick pay.</p>
+            <p>It's the corporate version of the personal income protection most directors already hold —
+            and already resent paying for.</p>
+            <p class="fine">Structured to meet HMRC conditions · limited term options</p>
+          </article>
         </div>
 
-        <!-- ============ WHY PARTNER ============ -->
-        <section class="section" id="why-partner">
-            <h2>A partnership that complements what you already do</h2>
-
-            <p class="pullquote reveal">
-                The majority of your clients already hold some form of personal protection — very few
-                are aware it can be repositioned for tax efficiency through their limited company.
-            </p>
-
-            <p class="prose reveal">
-                Our most successful introducer partnerships are with independent accountancy practices,
-                helping their limited company directors access specialist, tax-efficient protection.
-                The service directly complements the advice you already provide, saves your clients
-                potentially £1,000s, is 100% free of charge for them — and provides you with a
-                consistent, comprehensive income stream.
-            </p>
-
-            <ul class="keyed reveal">
-                <li>
-                    <span class="k-title">No extra workload</span>
-                    <span class="k-body">You simply flag clients who could benefit from tax-efficient cover and introduce them to us for free advice. We handle the advice, underwriting, and compliance from start to finish.</span>
-                </li>
-                <li>
-                    <span class="k-title">Substantial revenue stream</span>
-                    <span class="k-body">Your practice receives a generous, compliant share of any commission generated — typically <em>£250 to £2,000+ per client</em>.</span>
-                </li>
-                <li>
-                    <span class="k-title">Genuine client value</span>
-                    <span class="k-body">It reinforces your status as a proactive adviser, saving your clients significant money while protecting their families and businesses.</span>
-                </li>
-            </ul>
-        </section>
-
-        <!-- ============ THE PRODUCTS ============ -->
-        <section class="section" id="products">
-            <h2>Specialist, tax-efficient cover</h2>
-
-            <p class="prose reveal">
-                We look after a team of 15 mortgage advisers and their clients' personal and business
-                protection needs. The two policies driving the strongest introducer partnerships are
-                <strong>Relevant Life Cover</strong> and <strong>Executive Income Protection</strong> —
-                once niche products, now offered by every mainstream provider and extremely popular with
-                company directors.
-            </p>
-
-            <div class="products reveal">
-                <article class="product-card">
-                    <h3>Relevant Life Cover</h3>
-                    <p>Company-funded life insurance for directors. Premiums are paid by the business as
-                    an allowable business expense — saving on Corporation Tax — without incurring a
-                    Benefit-in-Kind charge. Personal cover, at a fraction of the personal cost.</p>
-                </article>
-
-                <article class="product-card">
-                    <h3>Executive Income Protection</h3>
-                    <p>Income protection funded through the company, providing a tax-efficient replacement
-                    income for a director if illness or injury stops them working. A natural extension of
-                    the tax planning you already deliver.</p>
-                </article>
-            </div>
-        </section>
-
-        <!-- ============ HOW IT WORKS ============ -->
-        <section class="section" id="how-it-works">
-            <h2>How the referral model works</h2>
-
-            <ol class="process reveal">
-                <li>
-                    <span class="p-title">You make the introduction</span>
-                    <span class="p-body">Flag any client who could benefit from tax-efficient protection and pass their details to us — by form, email, or a three-way introduction. That's the entire commitment on your side.</span>
-                </li>
-                <li>
-                    <span class="p-title">We advise, free of charge</span>
-                    <span class="p-body">Laurence, our specialist adviser, provides your client with completely free, independent advice — researching the whole market and recommending the most suitable, tax-efficient structure.</span>
-                </li>
-                <li>
-                    <span class="p-title">We handle everything else</span>
-                    <span class="p-body">Applications, underwriting, and compliance are managed by us from start to finish. Your client is looked after professionally and kept informed at every stage.</span>
-                </li>
-                <li>
-                    <span class="p-title">You receive the commission share</span>
-                    <span class="p-body">Once the policy is set up, your practice receives its compliant share of the commission — typically £250 to £2,000+ per client, paid promptly and fully documented.</span>
-                </li>
-            </ol>
-        </section>
-
-        <!-- ============ WHO WE WORK WITH ============ -->
-        <section class="section" id="who">
-            <h2>Built for any client-facing profession</h2>
-
-            <p class="prose reveal">
-                While our strongest partnerships have historically been with accountancy practices, the
-                referral framework works for any professional who advises limited company directors or
-                self-employed individuals — including recruitment firms, financial advisers, solicitors,
-                and business consultants. If your clients run their own company, this conversation is
-                relevant to them.
-            </p>
-        </section>
-
-    </section>
-
-    <!-- ============ RIGHT — REGISTRATION DOCK ============ -->
-    <aside class="dock" id="register">
-        <div class="dock-head">
-            <p class="bh"><b>Register your interest</b>Laurence replies personally</p>
-            <span class="live">No obligation</span>
+        <div class="callout">
+          <span class="lbl">Cost to the director</span>
+          <span class="val">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            A completely free, whole-of-market review.
+          </span>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="dock-body">
-            <p class="form-intro">
-                Complete the form below and Laurence will be in touch to talk through the
-                partnership — with no obligation and nothing to set up until you're ready.
-            </p>
+  <!-- WHAT'S IN IT FOR THEM -->
+  <section class="section rv">
+    <div class="split">
+      <div class="split-label">
+        <p class="kicker">03 — The pitch to your client</p>
+        <h2>Why a director says yes in one conversation</h2>
+      </div>
+      <div>
+        <ul class="keyed">
+          <li>
+            <span class="k-t">Same cover, better funded</span>
+            <span class="k-b">The protection stays in place. It's simply paid for by the business rather than out of taxed salary.</span>
+          </li>
+          <li>
+            <span class="k-t">Immediate, quantified saving</span>
+            <span class="k-b">The saving is calculable in the meeting — typically thousands a year for a director already paying for personal cover.</span>
+          </li>
+          <li>
+            <span class="k-t">Allowable business expense</span>
+            <span class="k-b">Premiums are deductible for the company when the policy is set up correctly.</span>
+          </li>
+          <li>
+            <span class="k-t">No benefit-in-kind charge</span>
+            <span class="k-b">Structured to sit outside the P11D regime, so there's no personal tax hit on the benefit.</span>
+          </li>
+          <li>
+            <span class="k-t">Benefit outside the estate</span>
+            <span class="k-b">Relevant Life Cover pays to nominated beneficiaries via trustees, keeping the sum out of the estate in the normal course.</span>
+          </li>
+          <li>
+            <span class="k-t">Advice at no cost</span>
+            <span class="k-b">A full, independent review and recommendation, funded by provider commission rather than the client.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-            <form id="introForm" action="https://formsubmit.co/YOUR-EMAIL-HERE" method="POST">
+  <!-- HOW IT WORKS -->
+  <section class="section rv">
+    <div class="split">
+      <div class="split-label">
+        <p class="kicker">04 — The process</p>
+        <h2>Four steps. The third one is ours.</h2>
+      </div>
+      <div>
+        <ol class="process">
+          <li>
+            <span class="p-t">You raise the relevance</span>
+            <span class="p-b">In a tax planning review, you point out that the director's personal cover could be company-funded. No technical detail needed — that's our job.</span>
+          </li>
+          <li>
+            <span class="p-t">You make the introduction</span>
+            <span class="p-b">A forwarded email or a warm cc. We take over from there and keep you copied at every stage.</span>
+          </li>
+          <li>
+            <span class="p-t">We run a free, independent review</span>
+            <span class="p-b">Full fact-find, whole-of-market research, written recommendation, application, underwriting and ongoing service. All free to the client.</span>
+          </li>
+          <li>
+            <span class="p-t">Your practice is paid</span>
+            <span class="p-b">A worthwhile share of the commission, paid on every case, for an introduction that took you two minutes.</span>
+          </li>
+        </ol>
+        <p class="prose" style="margin-top:22px;">
+          <strong>No extra work, no admin, no liability.</strong> We're the adviser of record. You stay the
+          trusted tax planner.
+        </p>
+      </div>
+    </div>
+  </section>
 
-                <input type="hidden" name="_subject" value="New introducer enquiry — Advantage FS website">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_template" value="table">
+  <!-- WHY ADVANTAGE -->
+  <section class="section rv">
+    <h2 class="h2-wide">Why accountants put their <em>name</em> to us</h2>
+    <div class="bento">
+      <article class="card">
+        <span class="ghost" aria-hidden="true">01</span>
+        <h3>Regulated and accountable</h3>
+        <p>Advantage Financial Solutions is directly authorised by the FCA, number 965036. We carry the
+        advice, the compliance and the file.</p>
+      </article>
 
-                <div class="f-grid">
+      <article class="card">
+        <span class="ghost" aria-hidden="true">02</span>
+        <h3>Independent, whole of market</h3>
+        <p>No panel, no single-provider tie. Research runs across the market so the recommendation stands
+        up to scrutiny.</p>
+      </article>
 
-                    <div class="f-field">
-                        <label for="fname">Full name</label>
-                        <input type="text" id="fname" name="name" required autocomplete="name">
-                    </div>
-
-                    <div class="f-field">
-                        <label for="fcompany">Practice / company name</label>
-                        <input type="text" id="fcompany" name="company" required autocomplete="organization">
-                    </div>
-
-                    <div class="f-field">
-                        <label for="femail">Email</label>
-                        <input type="email" id="femail" name="email" required autocomplete="email">
-                    </div>
-
-                    <div class="f-field">
-                        <label for="fphone">Phone <span class="opt">(optional)</span></label>
-                        <input type="tel" id="fphone" name="phone" autocomplete="tel">
-                    </div>
-
-                    <div class="f-field f-full">
-                        <label for="ffield">Your field</label>
-                        <select id="ffield" name="field" required>
-                            <option value="" selected disabled>Please select…</option>
-                            <option value="Accountancy">Accountancy</option>
-                            <option value="Recruitment">Recruitment</option>
-                            <option value="Financial services">Financial services</option>
-                            <option value="Legal">Legal</option>
-                            <option value="Other">Other</option>
-                        </select>
-
-                        <div class="f-other" id="otherWrap">
-                            <label for="fother" style="margin-top:0;">Please specify</label>
-                            <input type="text" id="fother" name="field_other" placeholder="e.g. Business consultancy, Will writing…">
-                        </div>
-                    </div>
-
-                    <div class="f-field f-full">
-                        <label for="fmsg">Anything you'd like to add? <span class="opt">(optional)</span></label>
-                        <textarea id="fmsg" name="message" placeholder="Number of clients, typical client profile, the best way to reach you…"></textarea>
-                    </div>
-
-                    <div class="f-field f-full f-consent">
-                        <input type="checkbox" id="fconsent" name="consent" required>
-                        <label for="fconsent">I'm happy for Advantage Financial Solutions to contact me about the introducer programme. We'll never pass your details to anyone else or add you to a marketing list.</label>
-                    </div>
-
-                    <div class="f-field f-full">
-                        <button class="f-submit" type="submit">
-                            Submit enquiry
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
-                        </button>
-                    </div>
-
-                </div>
-            </form>
-
-            <p class="f-note">
-                Prefer to talk first? Just email us and ask for Laurence — we're happy to walk
-                through the model informally before anything is committed to writing.
-            </p>
-
-            <div class="assure">
-                <svg class="sig-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>No cost, no obligation <span class="sub">— the enquiry form and the initial conversation are both completely free.</span></span>
-            </div>
+      <article class="card wide">
+        <span class="ghost" aria-hidden="true">04</span>
+        <div class="rating-top">
+          <a class="g-badge" href="https://www.google.com/search?q=advantage+fs+bristol+google+score" target="_blank" rel="noopener" aria-label="See Advantage FS Google reviews">
+            <svg viewBox="0 0 48 48" aria-hidden="true">
+              <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+              <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+              <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+              <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+            </svg>
+            <span class="g-w">Google</span>
+          </a>
+          <div class="rating-fig">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <span class="num">5.0</span>
+            <span class="of">out of 5</span>
+          </div>
         </div>
-    </aside>
+        <h3>Nearly 1,000 five-star reviews</h3>
+        <p>One of the top-rated independent mortgage and financial advice firms in the country. When you
+        refer a client, they arrive somewhere with a reputation you can point at.</p>
+      </article>
+
+      <article class="card wide">
+        <span class="ghost" aria-hidden="true">03</span>
+        <h3>Built for exactly this work</h3>
+        <p>Corporate protection for directors is core business here, not a sideline. We look after the
+        financial advice for a team of 15 mortgage advisers and a specialist recruitment agency for
+        doctors and social workers — so the referrals, the paperwork and the service are already
+        running at volume.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section rv">
+    <div class="split">
+      <div class="split-label">
+        <p class="kicker">05 — Straight answers</p>
+        <h2>The questions accountants actually ask</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Does this create work for me?</summary>
+          <p class="a">No. You flag the relevance and make the introduction. We fact-find, research,
+          recommend, apply and service. You're copied in, not drafted in.</p>
+        </details>
+        <details>
+          <summary>What does it cost my client?</summary>
+          <p class="a">Nothing for the advice. The review is free and independent. The client pays the
+          provider's premium, funded through the company rather than personally — usually for less than
+          they were already paying out of taxed income.</p>
+        </details>
+        <details>
+          <summary>How much do we get?</summary>
+          <p class="a">A worthwhile share of the commission on every case placed, agreed up front and
+          paid as standard. We'll put the figure in writing before you refer anyone.</p>
+        </details>
+        <details>
+          <summary>Who carries the regulatory responsibility?</summary>
+          <p class="a"><strong>We do.</strong> Advantage Financial Solutions is directly authorised by the
+          FCA, 965036. We're the adviser of record, we hold the file, and we handle the compliance.</p>
+        </details>
+        <details>
+          <summary>What if the director already has cover?</summary>
+          <p class="a">That's the usual starting point, and usually the best case. We review what's in
+          place and show what a corporate-funded equivalent looks like. Sometimes existing cover can be
+          moved; sometimes it's better kept and supplemented. They get told either way.</p>
+        </details>
+        <details>
+          <summary>Are the tax advantages guaranteed?</summary>
+          <p class="a">Not guaranteed — they depend on the policy meeting HMRC conditions and on the
+          director's circumstances. That's precisely why it's arranged under advice, with the tax
+          position documented on file, rather than sold off a shelf.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="band" id="talk">
+    <h2>Fifteen minutes. <em>Then you'll know if it's worth it.</em></h2>
+    <p>No deck, no pressure. I'll walk you through the mechanics, the compliance position and the
+    commission share, and you can decide whether it fits your client base. Prefer to read first? I'll
+    send the one-pager instead.</p>
+    <div class="actions">
+      <a class="btn" href="mailto:laurence@advantagefs.co.uk?subject=Partner%20call%20%E2%80%94%2015%20minutes">Book a 15-minute call
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+      </a>
+      <a class="btn btn-ghost" href="mailto:laurence@advantagefs.co.uk?subject=One-page%20summary%20please">Send the one-pager</a>
+    </div>
+  </section>
+
+  <!-- COLOPHON -->
+  <footer class="colophon">
+    <div class="colo-grid">
+      <div>
+        <p class="motto">Our experience. <span>Your advantage.</span></p>
+        <p class="fca">Advantage Financial Solutions &middot; <strong>FCA 965036</strong></p>
+        <p class="legal">
+          Advantage Financial Solutions is directly authorised and regulated by the Financial Conduct
+          Authority. Relevant Life Cover and Executive Income Protection are arranged under advice and
+          are subject to provider underwriting and to the policy meeting HMRC conditions for the
+          intended tax treatment. Tax treatment depends on individual circumstances and may change.
+          Commission is paid by the provider, never by the client; introducer arrangements are disclosed
+          in writing before any referral. Based in Bristol, advising across the UK.
+        </p>
+      </div>
+      <div class="foot-right">
+        <a class="site" href="https://advantagefs.co.uk" target="_blank" rel="noopener">advantagefs.co.uk</a>
+        <p class="ref">Partner programme</p>
+        <p class="ref">&copy; 2026 Advantage Financial Solutions</p>
+        <p class="ref">FCA 965036 · Company no. 12291836</p>
+      </div>
+    </div>
+    <p class="credit">Created by Gavin Hoffman Web Services</p>
+  </footer>
 
 </main>
 
-<!-- ============ COLOPHON ============ -->
-<footer class="colophon">
-    <p class="motto"><span>Our Experience.</span> Your Advantage.</p>
-    <p class="fca">Advantage Financial Solutions · FCA 965036</p>
-    <p class="legal">
-        Based in Bristol — advising clients across the UK. Introducer commission shares are paid
-        in line with FCA rules and fully documented for your records. The advice given to your
-        clients is independent, whole-of-market, and free of charge to them. If a policy is
-        arranged, Advantage FS is paid commission by the provider — never by your client.
-    </p>
-    <p class="ref">&copy; 2026 Advantage Financial Solutions · FCA 965036 · Company no. 12291836</p>
-    <p class="ref">Introducer Programme · V2.0</p>
-
-    <p class="gh-credit">Site by Gavin Hoffman Web Design</p>
-</footer>
-
 <script>
 (function () {
-    'use strict';
+  'use strict';
+  var root = document.documentElement;
+  var btn = document.getElementById('themeBtn');
+  var saved = null;
+  try { saved = localStorage.getItem('avs-partner-theme'); } catch (e) {}
+  if (!saved) saved = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  root.setAttribute('data-theme', saved);
 
-    var root = document.body;
-    var themeBtn = document.getElementById('themeToggle');
-    var progress = document.getElementById('progress');
+  btn.addEventListener('click', function () {
+    var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('avs-partner-theme', next); } catch (e) {}
+  });
 
-    /* ---------- Theme: light → dark → fun ---------- */
-    var ORDER = ['light', 'dark', 'fun'];
-    var LABELS = { light: 'Light', dark: 'Dark', fun: 'Fun' };
-
-    function applyTheme(t) {
-        root.setAttribute('data-theme', t);
-        var label = 'Theme: ' + LABELS[t] + ' — click to change';
-        themeBtn.title = label;
-        themeBtn.setAttribute('aria-label', label);
-        try { localStorage.setItem('avs-theme', t); } catch (e) {}
+  if (!(window.CSS && CSS.supports && CSS.supports('animation-timeline', 'scroll()'))) {
+    var bar = document.querySelector('.progress'), tick = false;
+    function upd() {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(window.scrollY / max, 1) : 0) + ')';
+      tick = false;
     }
-
-    var savedTheme = null;
-    try { savedTheme = localStorage.getItem('avs-theme'); } catch (e) {}
-    if (ORDER.indexOf(savedTheme) === -1) {
-        savedTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
-    applyTheme(savedTheme);
-
-    themeBtn.addEventListener('click', function () {
-        var cur = root.getAttribute('data-theme') || 'light';
-        applyTheme(ORDER[(ORDER.indexOf(cur) + 1) % ORDER.length]);
-    });
-
-    /* ---------- Progress bar: JS fallback only ---------- */
-    var supportsTimeline = window.CSS &&
-        CSS.supports && CSS.supports('animation-timeline', 'scroll()');
-
-    if (!supportsTimeline) {
-        var ticking = false;
-        function updateProgress() {
-            var doc = document.documentElement;
-            var max = doc.scrollHeight - window.innerHeight;
-            var ratio = max > 0 ? window.scrollY / max : 0;
-            progress.style.transform = 'scaleX(' + Math.min(ratio, 1) + ')';
-            ticking = false;
-        }
-        window.addEventListener('scroll', function () {
-            if (!ticking) {
-                ticking = true;
-                window.requestAnimationFrame(updateProgress);
-            }
-        }, { passive: true });
-        window.addEventListener('resize', updateProgress);
-        updateProgress();
-    }
-
-    /* ---------- "Other" field reveal ---------- */
-    var fieldSelect = document.getElementById('ffield');
-    var otherWrap = document.getElementById('otherWrap');
-    var otherInput = document.getElementById('fother');
-
-    fieldSelect.addEventListener('change', function () {
-        var isOther = fieldSelect.value === 'Other';
-        otherWrap.classList.toggle('visible', isOther);
-        otherInput.required = isOther;
-        if (!isOther) otherInput.value = '';
-    });
+    window.addEventListener('scroll', function () {
+      if (!tick) { tick = true; requestAnimationFrame(upd); }
+    }, { passive: true });
+    upd();
+  }
 })();
 </script>
 </body>
